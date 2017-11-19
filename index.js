@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native';
-import Application from './src/screens';
+import Application from './src';
 
 AppRegistry.registerComponent('PersonalFinanceAssistant', () => Application);

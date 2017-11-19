@@ -1,3 +1,3 @@
-import LogInScreen from './LogInScreen';
+import LogInScreen from './LogInScreenContainer';
 
 export default LogInScreen;
