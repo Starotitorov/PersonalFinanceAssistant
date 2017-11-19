@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
-import LogInForm from './components/LogInForm';
+import SignUpForm from './components/SignUpForm';
 
-export default function LogInScreen({ onLogInUser, onNewUser }) {
+export default function LogInScreen({ onSignUpUser, onHaveAccount }) {
     return (
         <View style={styles.container}>
-            <LogInForm onSubmit={onLogInUser}/>
-            <TouchableOpacity style={styles.newUserBtn} onPress={onNewUser}>
-                <Text style={styles.newUserLabel}>I am a new user</Text>
+            <SignUpForm onSubmit={onSignUpUser}/>
+            <TouchableOpacity style={styles.haveAccountBtn} onPress={onHaveAccount}>
+                <Text style={styles.haveAccountLabel}>Already have an account</Text>
             </TouchableOpacity>
         </View>
     );
@@ -19,10 +19,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
-    newUserBtn: {
+    haveAccountBtn: {
         marginVertical: 12
     },
-    newUserLabel: {
+    haveAccountLabel: {
         textDecorationLine: 'underline',
         fontStyle: 'italic'
     }

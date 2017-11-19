@@ -13,21 +13,31 @@ export const setToken = createAction(
     token => ({ token })
 );
 
+const saveUser = (user, token) => async dispatch => {
+    AsyncStorage.multiSet(
+        [asyncStorageKeys.USER_KEY, user],
+        [asyncStorageKeys.TOKEN_KEY, token]
+    );
+
+    dispatch(setCurrentUser(user));
+
+    dispatch(setToken(token));
+};
+
 export const logIn = (email, password) => async dispatch => {
     return api.signIn(email, password)
         .then(response => response.json())
-        .then(({ user, token}) => {
-            AsyncStorage.multiSet(
-                [asyncStorageKeys.USER_KEY, user],
-                [asyncStorageKeys.TOKEN_KEY, token]
-            );
-            debugger;
-
-            dispatch(setCurrentUser(user));
-
-            dispatch(setToken(token));
-        })
+        .then(({ user, token}) => dispatch(saveUser(user, token)))
         .catch(error => Promise.reject(new SubmissionError({
             _error: error
+        })));
+};
+
+export const singUp = (userData) => async dispatch => {
+    return api.signUp(userData)
+        .then(response => response.json())
+        .then(({ user, token }) => dispatch(saveUser(user, token)))
+        .catch(({ errors }) => Promise.reject(new SubmissionError({
+            errors
         })));
 };

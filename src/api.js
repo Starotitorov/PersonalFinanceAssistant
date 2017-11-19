@@ -11,3 +11,13 @@ export const signIn = (email, password) => fetch(`${AUTH_API_URL}/signin`, {
     },
     body: JSON.stringify({ email, password })
 });
+
+export const signUp = (userData) => fetch(`${AUTH_API_URL}/signup`, {
+    method: 'POST',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ user: userData })
+});
+

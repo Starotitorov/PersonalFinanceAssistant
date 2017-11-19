@@ -3,12 +3,20 @@ import { View, Button } from 'react-native';
 import { Field, reduxForm } from 'redux-form';
 import { TextInputField } from 'src/components';
 import validate from './validate';
-import { LOG_IN_FORM } from 'src/constants/forms';
-import styles from './LogInFormStyles';
+import { SIGN_UP_FORM } from 'src/constants/forms';
+import styles from './SignUpFormStyles';
 
-function LogInForm({ handleSubmit, submitting, invalid }) {
+function SignUpForm({ handleSubmit, submitting, invalid }) {
     return (
         <View style={styles.container}>
+            <Field
+                name="name"
+                props={{
+                    label: 'Name',
+                    placeholder: 'Enter name...'
+                }}
+                component={TextInputField}
+            />
             <Field
                 name="email"
                 props={{
@@ -20,14 +28,23 @@ function LogInForm({ handleSubmit, submitting, invalid }) {
             <Field
                 name="password"
                 props={{
-                    secureTextEntry: true,
                     label: 'Password',
+                    secureTextEntry: true,
                     placeholder: 'Enter password...'
                 }}
                 component={TextInputField}
             />
+            <Field
+                name="passwordConfirmation"
+                props={{
+                    secureTextEntry: true,
+                    label: 'Password confirmation',
+                    placeholder: 'Enter password one more time...'
+                }}
+                component={TextInputField}
+            />
             <Button
-                title="Log in"
+                title="Sign up"
                 disabled={submitting || invalid}
                 onPress={handleSubmit}
             />
@@ -36,6 +53,6 @@ function LogInForm({ handleSubmit, submitting, invalid }) {
 }
 
 export default reduxForm({
-    form: LOG_IN_FORM,
+    form: SIGN_UP_FORM,
     validate
-})(LogInForm);
+})(SignUpForm);
