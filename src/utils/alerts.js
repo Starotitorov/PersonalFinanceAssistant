@@ -1,4 +1,5 @@
 import { Alert } from 'react-native';
+import RNExitApp from 'react-native-exit-app';
 
 export const showFacebookLoginErrorAlert = (error) => {
     Alert.alert(
@@ -17,5 +18,19 @@ export const showFacebookLoginCancelledAlert = () => {
         [
             { text: 'OK' }
         ]
+    );
+};
+
+export const showFatalErrorAlert = () => {
+    Alert.alert(
+        'Unexpected error occurred',
+        'Please close the app and start again!',
+        [
+            {
+                text: 'Close',
+                onPress: RNExitApp.exitApp
+            }
+        ],
+        { cancelable: false }
     );
 };

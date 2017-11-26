@@ -3,6 +3,8 @@ package com.personalfinanceassistant;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.github.wumke.RNExitApp.RNExitAppPackage;
+import com.masteratul.exceptionhandler.ReactNativeExceptionHandlerPackage;
 import com.react.rnspinkit.RNSpinkitPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.react.rnspinkit.RNSpinkitPackage;
@@ -37,6 +39,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNExitAppPackage(),
+            new ReactNativeExceptionHandlerPackage(),
             new RNSpinkitPackage(),
             new VectorIconsPackage(),
             new RNSpinkitPackage(),
