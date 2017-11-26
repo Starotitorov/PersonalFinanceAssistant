@@ -4,22 +4,25 @@ import { alerts } from 'src/utils';
 
 export default function FacebookLoginBtnView(WrappedComponent) {
     return class extends Component {
-        handleLoginFinish = (error, result) => {
+        handleLogin = () => {
             const { onLoginSuccess } = this.props;
 
-            if (error) {
-                alerts.showFacebookLoginErrorAlert(error);
-            } else if (result.isCancelled) {
-                alerts.showFacebookLoginCancelledAlert();
-            } else {
-                AccessToken.getCurrentAccessToken()
-                    .then(onLoginSuccess);
-            }
+            LoginManager.logInWithReadPermissions(['public_profile','email']).then(
+                result => {
+                    if (result.isCancelled) {
+                        alerts.showFacebookLoginCancelledAlert();
+                    } else {
+                        AccessToken.getCurrentAccessToken()
+                            .then(onLoginSuccess);
+                    }
+                },
+                error => alerts.showFacebookLoginErrorAlert(error)
+            );
         };
 
         render() {
             return (
-                <WrappedComponent onLoginFinish={this.handleLoginFinish} />
+                <WrappedComponent onLogin={this.handleLogin} />
             );
         }
     }

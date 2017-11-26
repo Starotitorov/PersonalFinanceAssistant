@@ -1,4 +1,5 @@
 import config from './config';
+import { fetch } from 'src/lib';
 
 const API_URL = config.apiUrl;
 const AUTH_API_URL = `${API_URL}/auth`;

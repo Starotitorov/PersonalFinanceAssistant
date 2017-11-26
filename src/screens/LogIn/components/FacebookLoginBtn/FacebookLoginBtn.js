@@ -1,10 +1,13 @@
 import React from 'react';
-import { LoginButton } from 'react-native-fbsdk';
+import { Button } from 'react-native';
 import FacebookLoginBtnView from './FacebookLoginBtnView';
 
-function FacebookLoginBtn({ onLoginFinish }) {
+function FacebookLoginBtn({ onLogin }) {
     return (
-        <LoginButton onLoginFinished={onLoginFinish} />
+        <Button
+            onPress={onLogin}
+            title="Log in with Facebook"
+        />
     );
 }
 
