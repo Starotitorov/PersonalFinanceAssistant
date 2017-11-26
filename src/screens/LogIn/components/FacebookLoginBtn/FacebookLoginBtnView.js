@@ -7,6 +7,8 @@ export default function FacebookLoginBtnView(WrappedComponent) {
         handleLogin = () => {
             const { onLoginSuccess } = this.props;
 
+            LoginManager.setLoginBehavior('web_only');
+
             LoginManager.logInWithReadPermissions(['public_profile','email']).then(
                 result => {
                     if (result.isCancelled) {

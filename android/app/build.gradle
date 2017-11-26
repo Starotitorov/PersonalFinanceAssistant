@@ -145,6 +145,7 @@ dependencies {
     }
     compile('com.facebook.android:facebook-android-sdk:4.22.1')
     compile project(':react-native-vector-icons')
+    compile project(':react-native-spinkit')
 }
 
 // Run this once to be able to run the application with BUCK

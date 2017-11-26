@@ -15,6 +15,9 @@ export const setToken = createAction(
     token => ({ token })
 );
 
+export const fetchCurrentUserStart = createAction('AUTHORIZATION/FETCH_CURRENT_USER_START');
+export const fetchCurrentUserFinish = createAction('AUTHORIZATION/FETCH_CURRENT_USER_FINISH');
+
 const saveUser = (user, token) => async dispatch => {
     await AsyncStorage.setItem(asyncStorageKeys.USER_KEY, JSON.stringify(user));
     await AsyncStorage.setItem(asyncStorageKeys.TOKEN_KEY, JSON.stringify(token));
@@ -86,4 +89,32 @@ export const logout = () => async dispatch => {
             NavigationActions.navigate({ routeName: 'LogIn' })
         ]
     }));
+};
+
+export const getCurrentUser = () => async dispatch => {
+    dispatch(fetchCurrentUserStart());
+
+    let user = null;
+    let token = null;
+    try {
+        const userObject = await AsyncStorage.getItem(asyncStorageKeys.USER_KEY);
+        const tokenObject = await AsyncStorage.getItem(asyncStorageKeys.TOKEN_KEY);
+
+        user = JSON.parse(userObject);
+        token = JSON.parse(tokenObject);
+    } catch(e) {}
+
+    dispatch(setCurrentUser(user));
+    dispatch(setToken(token));
+
+    dispatch(fetchCurrentUserFinish());
+
+    if (!user || !token) {
+        dispatch(NavigationActions.reset({
+            index: 0,
+            actions: [
+                NavigationActions.navigate({ routeName: 'LogIn' })
+            ]
+        }));
+    }
 };

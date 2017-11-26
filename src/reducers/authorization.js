@@ -2,7 +2,9 @@ import { combineReducers } from 'redux';
 import { handleActions } from 'redux-actions';
 import {
     setCurrentUser,
-    setToken
+    setToken,
+    fetchCurrentUserStart,
+    fetchCurrentUserFinish
 } from 'src/actions/authorization';
 
 const user = handleActions({
@@ -17,7 +19,13 @@ const token = handleActions({
     }
 }, null);
 
+const fetching = handleActions({
+    [fetchCurrentUserStart]: () => true,
+    [fetchCurrentUserFinish]: () => false
+}, false);
+
 export default combineReducers({
     user,
-    token
+    token,
+    fetching
 })
