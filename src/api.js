@@ -21,3 +21,12 @@ export const signUp = (userData) => fetch(`${AUTH_API_URL}/signup`, {
     body: JSON.stringify({ user: userData })
 });
 
+export const logInFacebook = accessToken => fetch(`${AUTH_API_URL}/signin/facebook`, {
+    method: 'POST',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ token: accessToken })
+});
+

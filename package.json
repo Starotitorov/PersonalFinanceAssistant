@@ -12,6 +12,7 @@
 		"prop-types": "^15.6.0",
 		"react": "16.0.0",
 		"react-native": "0.50.3",
+		"react-native-fbsdk": "^0.6.3",
 		"react-native-fetch-mock": "^0.3.1",
 		"react-navigation": "^1.0.0-beta.19",
 		"react-redux": "^5.0.6",

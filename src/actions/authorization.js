@@ -13,31 +13,37 @@ export const setToken = createAction(
     token => ({ token })
 );
 
-const saveUser = (user, token) => async dispatch => {
-    AsyncStorage.multiSet(
-        [asyncStorageKeys.USER_KEY, user],
-        [asyncStorageKeys.TOKEN_KEY, token]
-    );
+const saveUser = (user, token) => dispatch => {
+    debugger;
+    AsyncStorage.setItem(asyncStorageKeys.USER_KEY, JSON.stringify(user));
+    AsyncStorage.setItem(asyncStorageKeys.TOKEN_KEY, token);
 
     dispatch(setCurrentUser(user));
 
     dispatch(setToken(token));
 };
 
-export const logIn = (email, password) => async dispatch => {
+export const logIn = (email, password) => dispatch => {
     return api.signIn(email, password)
         .then(response => response.json())
         .then(({ user, token}) => dispatch(saveUser(user, token)))
-        .catch(error => Promise.reject(new SubmissionError({
+        .catch(({ error }) => Promise.reject(new SubmissionError({
             _error: error
         })));
 };
 
-export const singUp = (userData) => async dispatch => {
+export const singUp = (userData) => dispatch => {
     return api.signUp(userData)
         .then(response => response.json())
         .then(({ user, token }) => dispatch(saveUser(user, token)))
         .catch(({ errors }) => Promise.reject(new SubmissionError({
             errors
         })));
+};
+
+export const logInFacebook = ({ accessToken }) => dispatch => {
+    debugger;
+    return api.logInFacebook(accessToken)
+        .then(response => response.json())
+        .then(({ user, token }) => dispatch(saveUser(user, token)));
 };

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { NavigationActions } from 'react-navigation';
-import { logIn } from 'src/actions/authorization';
+import { logIn, logInFacebook } from 'src/actions/authorization';
 import LogInScreen from './LogInScreen';
 
 const mapDispatchToProps = dispatch => {
@@ -11,6 +11,10 @@ const mapDispatchToProps = dispatch => {
 
         onNewUser() {
             dispatch(NavigationActions.navigate({ routeName: 'SignUp' }));
+        },
+
+        onLoginFacebook(data) {
+            dispatch(logInFacebook(data));
         }
     }
 };
