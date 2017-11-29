@@ -59,7 +59,7 @@ export const singUp = (userData) => dispatch => {
             }));
         })
         .catch(({ errors }) => Promise.reject(new SubmissionError({
-            errors
+            ...errors
         })));
 };
 
