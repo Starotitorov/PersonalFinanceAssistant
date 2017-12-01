@@ -9,7 +9,7 @@ export default function withLoadingIndicator(WrappedComponent, size=40) {
             return (
                 <View style={styles.container}>
                     <Spinner
-                        color={colors.PRIMARY_COLOR}
+                        color={colors.COLOR_PRIMARY}
                         size={size}
                         type="Circle"
                     />
