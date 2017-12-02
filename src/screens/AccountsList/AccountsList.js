@@ -2,13 +2,13 @@ import React from 'react'
 import { View, Text, StyleSheet } from 'react-native';
 import { ActionButton } from 'src/components';
 
-export default function AccountsListScreen() {
+export default function AccountsListScreen({ onAddAccount }) {
     return (
         <View style={styles.container}>
             <Text>Accounts List Screen</Text>
-            <ActionButton
-                iconName="add"
-                backgroundColor="#f00"
+            <ActionButton.Button
+                type={ActionButton.types.ADD}
+                onPress={onAddAccount}
             />
         </View>
     )

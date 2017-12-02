@@ -1,3 +1,7 @@
-import ActionButton from './ActionButton';
+import ConcreteActionButton from './ConcreteActionButton';
+import * as types from './types';
 
-export default ActionButton;
+export default {
+    Button: ConcreteActionButton,
+    types
+};

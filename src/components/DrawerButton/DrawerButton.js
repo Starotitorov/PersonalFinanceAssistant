@@ -18,5 +18,5 @@ export default function DrawerButton({ navigation }) {
 }
 
 DrawerButton.propTypes = {
-    navigation: PropTypes.object.isRequired,
+    navigation: PropTypes.object.isRequired
 };

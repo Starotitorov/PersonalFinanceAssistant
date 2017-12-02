@@ -1,6 +1,6 @@
 import React from 'react';
 import { StackNavigator } from 'react-navigation';
-import { DrawerButton } from 'src/components';
+import { DrawerButton, RemoveHeaderIcon } from 'src/components';
 import AccountsList from '../AccountsList';
 
 export default StackNavigator({
@@ -9,7 +9,8 @@ export default StackNavigator({
         navigationOptions: ({ navigation }) => {
             return {
                 title: 'Accounts',
-                headerLeft: <DrawerButton navigation={navigation} />
+                headerLeft: <DrawerButton navigation={navigation} />,
+                headerRight: <RemoveHeaderIcon />
             }
         }
     }
