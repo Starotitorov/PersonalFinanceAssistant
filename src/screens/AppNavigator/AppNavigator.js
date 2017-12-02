@@ -3,7 +3,7 @@ import { StackNavigator } from 'react-navigation';
 import { LogOutIcon } from 'src/components';
 import LogIn from '../LogIn';
 import SignUp from '../SignUp';
-import Home from '../Home';
+import HomeDrawerNavigator from '../HomeDrawerNavigator';
 
 const AppNavigator = StackNavigator({
     LogIn: {
@@ -19,12 +19,13 @@ const AppNavigator = StackNavigator({
         }
     },
     Home: {
-        screen: Home,
+        screen: HomeDrawerNavigator,
         navigationOptions: {
-            headerRight: <LogOutIcon />,
-            title: 'Home'
+            header: null
         }
     }
+}, {
+    initialRouteName: 'Home'
 });
 
 export const AppRouter = AppNavigator.router;

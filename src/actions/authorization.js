@@ -112,6 +112,7 @@ export const getCurrentUser = () => async dispatch => {
     if (!user || !token) {
         dispatch(NavigationActions.reset({
             index: 0,
+            key: null,
             actions: [
                 NavigationActions.navigate({ routeName: 'LogIn' })
             ]
