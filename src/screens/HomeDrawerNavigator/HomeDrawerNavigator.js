@@ -1,7 +1,7 @@
 import React from 'react';
 import { DrawerNavigator } from 'react-navigation'
 import AccountsNavigator from '../AccountsNavigator';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import { DrawerIcon } from 'src/components';
 import {colors } from 'src/styles'
 
 export default DrawerNavigator({
@@ -9,13 +9,9 @@ export default DrawerNavigator({
         screen: AccountsNavigator,
         navigationOptions: {
             drawerLabel: 'Accounts',
-            drawerIcon: ({ tintColor }) => (
-                <Icon
-                    name="credit-card"
-                    size={24}
-                    color={tintColor}
-                />
-            )
+            drawerIcon: ({ tintColor }) =>
+                <DrawerIcon name="credit-card" tintColor={tintColor} />
+
         }
     }
 }, {
