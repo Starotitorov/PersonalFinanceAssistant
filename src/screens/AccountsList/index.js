@@ -1,3 +1,3 @@
-import AccountsList from './AccountsList';
+import AccountsListScreen from './AccountsListScreenContainer';
 
-export default AccountsList;
+export default AccountsListScreen;

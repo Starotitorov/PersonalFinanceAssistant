@@ -1,11 +1,12 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { ActionButton } from 'src/components';
+import AccountsList from './components/AccountsList';
 
-export default function AccountsListScreen({ onAddAccount }) {
+export default function AccountsListScreen({ accounts, onAddAccount, onSelectAccount }) {
     return (
         <View style={styles.container}>
-            <Text>Accounts List Screen</Text>
+            <AccountsList accounts={accounts} onSelectAccount={onSelectAccount} />
             <ActionButton.Button
                 type={ActionButton.types.ADD}
                 onPress={onAddAccount}
@@ -17,7 +18,6 @@ export default function AccountsListScreen({ onAddAccount }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'stretch'
     }
 });

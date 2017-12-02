@@ -38,5 +38,51 @@ export default {
             },
             token: 'token'
         };
+    },
+    [`GET ${API_URL}/accounts`]: ({ method, url, params, urlparams, headers }) => {
+        return {
+            accounts: [
+                {
+                    id: 1,
+                    name: 'Credit card',
+                    icon: 'credit-card',
+                    balance: 12000
+                },
+                {
+                    id: 2,
+                    name: 'Credit card',
+                    icon: 'credit-card',
+                    balance: 10000
+                },
+                {
+                    id: 3,
+                    name: 'Credit card',
+                    icon: 'credit-card',
+                    balance: 8000
+                },
+                {
+                    id: 4,
+                    name: 'Credit card',
+                    icon: 'credit-card',
+                    balance: 2000
+                },
+                {
+                    id: 5,
+                    name: 'Credit card',
+                    icon: 'credit-card',
+                    balance: 15000
+                }
+            ],
+        };
+    },
+    [`POST ${API_URL}/accounts`]: ({ method, url, params, urlparams, headers }) => {
+        const { initialBalance: balance, name, initialDate } = params.account;
+
+        return {
+            id: 10001,
+            name,
+            balance,
+            initialDate
+        };
     }
 }

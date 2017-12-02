@@ -35,3 +35,22 @@ export const logInFacebook = accessToken => fetch(`${AUTH_API_URL}/signin/facebo
     body: JSON.stringify({ token: accessToken })
 });
 
+export const fetchAccounts = token => fetch(`${API_URL}/accounts`, {
+    method: 'GET',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'token': token
+    }
+});
+
+export const addAccount = (token, accountData) => fetch(`${API_URL}/accounts`, {
+    method: 'POST',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'token': token
+    },
+    body: JSON.stringify({ account: accountData })
+});
+

@@ -2,6 +2,7 @@ import React from 'react';
 import { StackNavigator } from 'react-navigation';
 import { DrawerButton, RemoveHeaderIcon } from 'src/components';
 import AccountsList from '../AccountsList';
+import AddAccount from '../AddAccount';
 
 export default StackNavigator({
     AccountsList: {
@@ -10,10 +11,17 @@ export default StackNavigator({
             return {
                 title: 'Accounts',
                 headerLeft: <DrawerButton navigation={navigation} />,
-                headerRight: <RemoveHeaderIcon />
             }
+        }
+    },
+    AddAccount: {
+        screen: AddAccount,
+        navigationOptions: ({ navigation }) => {
+            return {
+                title: 'New account',
+            };
         }
     }
 }, {
     initialRouteName: 'AccountsList'
-})
+});
