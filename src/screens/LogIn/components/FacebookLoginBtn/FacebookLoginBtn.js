@@ -1,14 +1,25 @@
 import React from 'react';
-import { Button } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { SocialIcon } from 'react-native-elements';
 import FacebookLoginBtnView from './FacebookLoginBtnView';
 
 function FacebookLoginBtn({ onLogin }) {
     return (
-        <Button
+        <SocialIcon
+            title='Log In With Facebook'
+            button
+            type='facebook'
             onPress={onLogin}
-            title="Log in with Facebook"
+            iconSize={18}
+            style={styles.button}
         />
     );
 }
+
+const styles = StyleSheet.create({
+    button: {
+        paddingHorizontal: 24
+    }
+});
 
 export default FacebookLoginBtnView(FacebookLoginBtn);
