@@ -3,6 +3,8 @@ import { StackNavigator } from 'react-navigation';
 import { DrawerButton, RemoveHeaderIcon } from 'src/components';
 import AccountsList from '../AccountsList';
 import AddAccount from '../AddAccount';
+import EditAccount from '../EditAccount';
+import EditAccountHeaderRight from '../EditAccountHeaderRight';
 
 export default StackNavigator({
     AccountsList: {
@@ -16,10 +18,15 @@ export default StackNavigator({
     },
     AddAccount: {
         screen: AddAccount,
-        navigationOptions: ({ navigation }) => {
-            return {
-                title: 'New account',
-            };
+        navigationOptions: {
+            title: 'New account'
+        }
+    },
+    EditAccount: {
+        screen: EditAccount,
+        navigationOptions: {
+            title: 'Edit account',
+            headerRight: <EditAccountHeaderRight />
         }
     }
 }, {

@@ -79,10 +79,29 @@ export default {
         const { initialBalance: balance, name, initialDate } = params.account;
 
         return {
-            id: 10001,
-            name,
-            balance,
-            initialDate
+            account: {
+                id: 10001,
+                name,
+                balance,
+                initialDate
+            }
+        };
+    },
+    [`PUT ${API_URL}/accounts/{id}`]: ({ method, url, params, urlparams, headers }) => {
+        const { id } = urlparams;
+        const { name, initialDate } = params.account;
+
+        return {
+            account: {
+                id,
+                name,
+                initialDate
+            }
+        };
+    },
+    [`DELETE ${API_URL}/accounts/{id}`]: ({ method, url, params, urlparams, headers }) => {
+        return {
+            status: 200
         };
     }
 }

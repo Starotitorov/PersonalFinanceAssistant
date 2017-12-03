@@ -1,12 +1,12 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { View, StyleSheet, Button } from 'react-native';
-import { ADD_ACCOUNT_FORM } from 'src/constants/forms';
+import { EDIT_ACCOUNT_FORM } from 'src/constants/forms';
 import moment from 'moment';
 import { TextInputField, DatePickerField } from 'src/components';
 import validate from './validate';
 
-function AddAccountForm({ handleSubmit, submitting, invalid }) {
+function EditAccountForm({ handleSubmit, submitting, invalid }) {
     return (
         <View style={styles.container}>
             <Field
@@ -14,14 +14,6 @@ function AddAccountForm({ handleSubmit, submitting, invalid }) {
                 props={{
                     label: 'Name',
                     placeholder: 'Enter account name...'
-                }}
-                component={TextInputField}
-            />
-            <Field
-                name="initialBalance"
-                props={{
-                    label: 'Initial balance',
-                    placeholder: 'Enter initial balance...'
                 }}
                 component={TextInputField}
             />
@@ -35,7 +27,7 @@ function AddAccountForm({ handleSubmit, submitting, invalid }) {
                 component={DatePickerField}
             />
             <Button
-                title="Add account"
+                title="Edit account"
                 disabled={submitting || invalid}
                 onPress={handleSubmit}
             />
@@ -44,12 +36,9 @@ function AddAccountForm({ handleSubmit, submitting, invalid }) {
 }
 
 export default reduxForm({
-    form: ADD_ACCOUNT_FORM,
-    initialValues: {
-        initialDate: moment.now()
-    },
+    form: EDIT_ACCOUNT_FORM,
     validate
-})(AddAccountForm);
+})(EditAccountForm);
 
 const styles = StyleSheet.create({
     container: {

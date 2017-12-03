@@ -1,6 +1,7 @@
 import config from './config';
 import FetchMock from 'react-native-fetch-mock';
 import { fetch } from 'src/lib';
+import { JWTStorage } from 'src/utils';
 
 const API_URL = config.apiUrl;
 const AUTH_API_URL = `${API_URL}/auth`;
@@ -35,22 +36,41 @@ export const logInFacebook = accessToken => fetch(`${AUTH_API_URL}/signin/facebo
     body: JSON.stringify({ token: accessToken })
 });
 
-export const fetchAccounts = token => fetch(`${API_URL}/accounts`, {
+export const fetchAccounts = async () => fetch(`${API_URL}/accounts`, {
     method: 'GET',
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'token': token
+        'token': await JWTStorage.getToken()
     }
 });
 
-export const addAccount = (token, accountData) => fetch(`${API_URL}/accounts`, {
+export const addAccount = async accountData => fetch(`${API_URL}/accounts`, {
     method: 'POST',
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'token': token
+        'token': await JWTStorage.getToken()
     },
     body: JSON.stringify({ account: accountData })
+});
+
+export const updateAccount = async (id, accountData) => fetch(`${API_URL}/accounts/${id}`, {
+    method: 'PUT',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'token': await JWTStorage.getToken()
+    },
+    body: JSON.stringify({ account: accountData })
+});
+
+export const removeAccount = async id => fetch(`${API_URL}/accounts/${id}`, {
+    method: 'DELETE',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'token': await JWTStorage.getToken()
+    }
 });
 

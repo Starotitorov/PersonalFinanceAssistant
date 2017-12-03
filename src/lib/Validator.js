@@ -16,6 +16,14 @@ export const required = (value, name) => {
     }
 };
 
+export const number = (value, name) => {
+    if (value && value.trim()) {
+        if (isNaN(value) || isNaN(parseFloat(value))) {
+            return `The ${name} is not a valid number`;
+        }
+    }
+};
+
 export const length = (max = Infinity, min = -Infinity) => (value, name) => {
     if (value && value.trim()) {
         if (value.length > max) {

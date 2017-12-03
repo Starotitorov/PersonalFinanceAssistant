@@ -4,6 +4,7 @@ import { AsyncStorage } from 'react-native';
 import * as asyncStorageKeys from 'src/constants/asyncStorage';
 import { NavigationActions } from 'react-navigation';
 import { LoginManager } from 'react-native-fbsdk';
+import { JWTStorage } from 'src/utils';
 import * as api from '../api';
 
 export const setCurrentUser = createAction(
@@ -20,7 +21,7 @@ export const fetchCurrentUserFinish = createAction('AUTHORIZATION/FETCH_CURRENT_
 
 const saveUser = (user, token) => async dispatch => {
     await AsyncStorage.setItem(asyncStorageKeys.USER_KEY, JSON.stringify(user));
-    await AsyncStorage.setItem(asyncStorageKeys.TOKEN_KEY, JSON.stringify(token));
+    await JWTStorage.setToken(token);
 
     dispatch(setCurrentUser(user));
 

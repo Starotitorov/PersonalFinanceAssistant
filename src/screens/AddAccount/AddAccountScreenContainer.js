@@ -5,7 +5,7 @@ import AddAccountScreen from './AddAccountScreen';
 const mapDispatchToProps = dispatch => {
     return {
         onAddAccount(accountData) {
-            dispatch(addAccount(accountData));
+            return dispatch(addAccount(accountData));
         }
     }
 };

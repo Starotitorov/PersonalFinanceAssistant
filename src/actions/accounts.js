@@ -14,22 +14,42 @@ export const selectAccount = createAction(
     (id) => ({ id })
 );
 
-export const fetchAccounts = () => (dispatch, getState) => {
-    const state = getState();
-
+export const fetchAccounts = () => dispatch => {
     dispatch(fetchAccountsStart());
 
-    api.fetchAccounts(state.authorization.token)
+    api.fetchAccounts()
         .then(response => response.json())
         .then(({ accounts }) => {
             dispatch(setAccounts(accounts))
         });
 };
 
-export const addAccount = accountData => (dispatch, getState) => {
-    const { authorization: { token } } = getState();
+export const addAccount = accountData => dispatch => {
+    return api.addAccount(accountData)
+        .then(response => response.json())
+        .then(() => {
+            dispatch(fetchAccounts());
 
-    return api.addAccount(token, accountData)
+            dispatch(NavigationActions.back());
+        });
+};
+
+export const updateAccount = accountData => (dispatch, getState) => {
+    const { accounts: { selected } } = getState();
+
+    return api.updateAccount(selected, accountData)
+        .then(response => response.json())
+        .then(() => {
+            dispatch(fetchAccounts());
+
+            dispatch(NavigationActions.back());
+        });
+};
+
+export const removeAccount = accountData => (dispatch, getState) => {
+    const { accounts: { selected } } = getState();
+
+    return api.removeAccount(selected)
         .then(response => response.json())
         .then(() => {
             dispatch(fetchAccounts());

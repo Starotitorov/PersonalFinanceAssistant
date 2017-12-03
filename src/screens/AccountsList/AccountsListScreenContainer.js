@@ -16,7 +16,7 @@ const mapDispatchToProps = dispatch => {
         onSelectAccount(id) {
             dispatch(selectAccount(id));
 
-            dispatch(NavigationActions.navigate({ routeName: 'AccountView' }));
+            dispatch(NavigationActions.navigate({ routeName: 'EditAccount' }));
         },
 
         onAddAccount() {
