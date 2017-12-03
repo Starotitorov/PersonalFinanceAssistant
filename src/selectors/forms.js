@@ -12,3 +12,21 @@ export const getCategoryFormInitialValues = ({
         categoryType
     };
 };
+
+export const getEditAccountFormInitialValues = ({ accounts: { byId, selected } }) => {
+    if (!selected || !byId[selected]) {
+        return {
+            name: null,
+            icon: icons[0],
+            initialDate: null
+        };
+    }
+
+    const { name, icon, initialDate } = byId[selected];
+
+    return {
+        icon,
+        name,
+        initialDate
+    };
+};

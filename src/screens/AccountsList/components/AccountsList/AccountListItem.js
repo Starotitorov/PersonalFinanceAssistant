@@ -10,7 +10,10 @@ export default function AccountListItem(
     return (
         <ListItem
             title={name}
-            leftIcon={{name: icon}}
+            leftIcon={{
+                name: icon,
+                type: 'material-community'
+            }}
             rightTitle={String(balance)}
             onPress={() => onSelectAccount(id)}
         />

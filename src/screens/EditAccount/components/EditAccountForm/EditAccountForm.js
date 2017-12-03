@@ -3,20 +3,28 @@ import { Field, reduxForm } from 'redux-form';
 import { View, StyleSheet, Button } from 'react-native';
 import { EDIT_ACCOUNT_FORM } from 'src/constants/forms';
 import moment from 'moment';
-import { TextInputField, DatePickerField } from 'src/components';
+import { TextInputField, DatePickerField, IconField } from 'src/components';
 import validate from './validate';
 
 function EditAccountForm({ handleSubmit, submitting, invalid }) {
     return (
         <View style={styles.container}>
-            <Field
-                name="name"
-                props={{
-                    label: 'Name',
-                    placeholder: 'Enter account name...'
-                }}
-                component={TextInputField}
-            />
+            <View style={styles.row}>
+                <Field
+                    name="icon"
+                    component={IconField}
+                />
+                <View style={styles.flexGrow}>
+                    <Field
+                        name="name"
+                        props={{
+                            label: 'Name',
+                            placeholder: 'Enter account name...'
+                        }}
+                        component={TextInputField}
+                    />
+                </View>
+            </View>
             <Field
                 name="initialDate"
                 props={{
@@ -46,5 +54,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'stretch',
         minWidth: 300
+    },
+    row: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    },
+    flexGrow: {
+        flexGrow: 1
     }
 });

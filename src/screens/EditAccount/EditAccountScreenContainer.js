@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
-import { getInitialValues } from 'src/selectors/editAccountForm';
+import { getEditAccountFormInitialValues } from 'src/selectors/forms';
 import { updateAccount } from 'src/actions/accounts';
 import EditAccountScreen from './EditAccountScreen';
 
 const mapStateToProps = state => {
     return {
-        initialValues: getInitialValues(state)
+        initialValues: getEditAccountFormInitialValues(state)
     }
 };
 

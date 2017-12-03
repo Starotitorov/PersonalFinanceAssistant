@@ -4,19 +4,28 @@ import { View, StyleSheet, Button } from 'react-native';
 import { ADD_ACCOUNT_FORM } from 'src/constants/forms';
 import moment from 'moment';
 import { TextInputField, DatePickerField } from 'src/components';
+import { IconField } from 'src/components';
 import validate from './validate';
 
 function AddAccountForm({ handleSubmit, submitting, invalid }) {
     return (
         <View style={styles.container}>
-            <Field
-                name="name"
-                props={{
-                    label: 'Name',
-                    placeholder: 'Enter account name...'
-                }}
-                component={TextInputField}
-            />
+            <View style={styles.row}>
+                <Field
+                    name="icon"
+                    component={IconField}
+                />
+                <View style={styles.flexGrow}>
+                    <Field
+                        name="name"
+                        props={{
+                            label: 'Account name',
+                            placeholder: 'Enter account name...'
+                        }}
+                        component={TextInputField}
+                    />
+                </View>
+            </View>
             <Field
                 name="initialBalance"
                 props={{
@@ -46,6 +55,7 @@ function AddAccountForm({ handleSubmit, submitting, invalid }) {
 export default reduxForm({
     form: ADD_ACCOUNT_FORM,
     initialValues: {
+        icon: 'cash',
         initialDate: moment.now()
     },
     validate
@@ -57,5 +67,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'stretch',
         minWidth: 300
+    },
+    row: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    },
+    flexGrow: {
+        flexGrow: 1
     }
 });

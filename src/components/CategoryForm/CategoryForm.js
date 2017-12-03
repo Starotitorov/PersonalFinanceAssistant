@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Button, StyleSheet } from 'react-native';
 import { Field, reduxForm } from 'redux-form';
 import { CATEGORY_FORM } from 'src/constants/forms';
-import IconInput from '../CategoryIconField';
+import IconInput from '../IconField';
 import SelectInput from '../SelectInputField';
 import TextInput from '../TextInputField';
 import options from './CategoryFormOptions';
