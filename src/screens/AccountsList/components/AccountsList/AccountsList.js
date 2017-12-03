@@ -1,31 +1,41 @@
-import React from 'react';
-import { List, ListItem } from 'react-native-elements';
-import { StyleSheet, ScrollView } from 'react-native';
-import { margins } from 'src/styles';
-import { withLoadingIndicator } from 'src/components';
+import React, { Component } from 'react';
+import { List } from 'react-native-elements';
+import { RefreshControl, FlatList } from 'react-native';
+import { colors } from 'src/styles';
+import AccountListItem from './AccountListItem'
 
-function AccountsList({ accounts, onSelectAccount }) {
-    return (
-        <ScrollView>
-            <List containerStyle={styles.list}>
-                {accounts.map(({ id, icon, balance, name}) => (
-                    <ListItem
-                        key={id}
-                        title={name}
-                        leftIcon={{ name: icon }}
-                        rightTitle={String(balance)}
-                        onPress={() => onSelectAccount(id)}
-                    />
-                ))}
+export default class AccountsList extends Component {
+    keyExtractor = ({ id }) => id;
+
+    renderItem = ({ item }) => {
+        const { onSelectAccount } = this.props;
+
+        return (
+            <AccountListItem
+                account={item}
+                onSelectAccount={onSelectAccount}
+            />
+        );
+    };
+
+    render() {
+        const { isLoading, onRefresh, accounts } = this.props;
+
+        return (
+            <List>
+                <FlatList
+                    refreshControl={
+                        <RefreshControl
+                            refreshing={isLoading}
+                            colors={[colors.COLOR_PRIMARY]}
+                            onRefresh={onRefresh}
+                        />
+                    }
+                    data={accounts}
+                    keyExtractor={this.keyExtractor}
+                    renderItem={this.renderItem}
+                />
             </List>
-        </ScrollView>
-    );
-}
-
-export default withLoadingIndicator(AccountsList);
-
-const styles = StyleSheet.create({
-    list: {
-        marginVertical: margins.MARGIN_L
+        );
     }
-});
+}

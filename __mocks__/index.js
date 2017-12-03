@@ -70,7 +70,60 @@ export default {
                     id: 5,
                     name: 'Credit card',
                     icon: 'credit-card',
+                    balance: 5000
+                },
+                {
+                    id: 6,
+                    name: 'Credit card',
+                    icon: 'credit-card',
                     balance: 15000
+                },
+                {
+                    id: 7,
+                    name: 'Credit card',
+                    icon: 'credit-card',
+                    balance: 2000
+                },
+                {
+                    id: 8,
+                    name: 'Credit card',
+                    icon: 'credit-card',
+                    balance: 15000
+                },                {
+                    id: 9,
+                    name: 'Credit card',
+                    icon: 'credit-card',
+                    balance: 1000
+                },
+                {
+                    id: 10,
+                    name: 'Credit card',
+                    icon: 'credit-card',
+                    balance: 15000
+                },
+                {
+                    id: 11,
+                    name: 'Credit card',
+                    icon: 'credit-card',
+                    balance: 10000
+                },
+                {
+                    id: 12,
+                    name: 'Credit card',
+                    icon: 'credit-card',
+                    balance: 14000
+                },
+                {
+                    id: 13,
+                    name: 'Credit card',
+                    icon: 'credit-card',
+                    balance: 15000
+                },
+                {
+                    id: 14,
+                    name: 'Credit card',
+                    icon: 'credit-card',
+                    balance: 11000
                 }
             ],
         };

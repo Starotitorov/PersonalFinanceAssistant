@@ -8,9 +8,15 @@ export default function AccountsListScreenView(WrappedComponent) {
             onFetch();
         }
 
+        handleRefresh = () => {
+            const { onFetch } = this.props;
+
+            onFetch();
+        };
+
         render() {
             return (
-                <WrappedComponent {...this.props} />
+                <WrappedComponent {...this.props} onRefresh={this.handleRefresh} />
             );
         }
     }
