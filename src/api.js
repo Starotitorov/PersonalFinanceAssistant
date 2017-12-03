@@ -7,7 +7,7 @@ const API_URL = config.apiUrl;
 const AUTH_API_URL = `${API_URL}/auth`;
 
 // Mock api
-global.fetch = new FetchMock(require('../__mocks__')).fetch;
+global.fetch = new FetchMock(require('../mocks/api')).fetch;
 
 export const signIn = (email, password) => fetch(`${AUTH_API_URL}/signin`, {
     method: 'POST',
