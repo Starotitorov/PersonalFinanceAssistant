@@ -4,14 +4,16 @@ import { TOKEN_KEY } from 'src/constants/asyncStorage';
 let token = null;
 
 export const setToken = async value => {
-    await AsyncStorage.setItem(TOKEN_KEY, value);
+    await AsyncStorage.setItem(TOKEN_KEY, JSON.stringify(value));
 
     token = value;
 };
 
-export const getToken = async token => {
+export const getToken = async () => {
     if (!token) {
-        token = await AsyncStorage.getItem(TOKEN_KEY);
+        const tokenObject = await AsyncStorage.getItem(TOKEN_KEY);
+
+        token = JSON.parse(tokenObject);
     }
 
     return token;

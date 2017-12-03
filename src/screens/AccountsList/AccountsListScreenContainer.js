@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getAllAccounts } from 'src/selectors/accounts';
+import { getAllAccounts, isAccountsFetching } from 'src/selectors/accounts';
 import { fetchAccounts, selectAccount } from 'src/actions/accounts';
 import { NavigationActions } from 'react-navigation';
 import AccountsListScreen from './AccountsListScreen';
@@ -7,8 +7,9 @@ import AccountsListScreenView from './AccountsListScreenView';
 
 const mapStateToProps = state => {
     return {
-        accounts: getAllAccounts(state)
-    }
+        accounts: getAllAccounts(state),
+        fetching: isAccountsFetching(state)
+    };
 };
 
 const mapDispatchToProps = dispatch => {

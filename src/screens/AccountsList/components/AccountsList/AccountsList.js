@@ -2,8 +2,9 @@ import React from 'react';
 import { List, ListItem } from 'react-native-elements';
 import { StyleSheet, ScrollView } from 'react-native';
 import { margins } from 'src/styles';
+import { withLoadingIndicator } from 'src/components';
 
-export default function AccountsList({ accounts, onSelectAccount }) {
+function AccountsList({ accounts, onSelectAccount }) {
     return (
         <ScrollView>
             <List containerStyle={styles.list}>
@@ -20,6 +21,8 @@ export default function AccountsList({ accounts, onSelectAccount }) {
         </ScrollView>
     );
 }
+
+export default withLoadingIndicator(AccountsList);
 
 const styles = StyleSheet.create({
     list: {

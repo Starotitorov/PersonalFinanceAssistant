@@ -4,7 +4,7 @@ import { RemoveHeaderIcon } from 'src/components';
 
 const mapDispatchToProps = dispatch => {
     return {
-        onRemove() {
+        onPress() {
             dispatch(removeAccount());
         }
     }

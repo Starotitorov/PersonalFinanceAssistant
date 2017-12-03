@@ -7,6 +7,8 @@ export const setAccounts = createAction(
     accounts => ({ accounts })
 );
 
+export const resetAccounts = createAction('ACCOUNTS/RESET_ACCOUNTS');
+
 export const fetchAccountsStart = createAction('ACCOUNTS/FETCH_ACCOUNTS_START');
 
 export const selectAccount = createAction(
