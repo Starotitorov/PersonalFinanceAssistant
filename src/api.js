@@ -74,3 +74,11 @@ export const removeAccount = async id => fetch(`${API_URL}/accounts/${id}`, {
     }
 });
 
+export const fetchCategories = async () => fetch(`${API_URL}/categories`, {
+    method: 'GET',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'token': await JWTStorage.getToken()
+    }
+})

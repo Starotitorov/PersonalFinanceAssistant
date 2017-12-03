@@ -23,7 +23,7 @@ const AppNavigator = StackNavigator({
         navigationOptions: {
             header: null
         }
-    }
+    },
 }, {
     initialRouteName: 'Home'
 });
