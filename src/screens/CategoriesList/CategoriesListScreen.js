@@ -1,36 +1,41 @@
 import React, { Component } from 'react';
-import { View, TouchableHighlight, FlatList, StyleSheet } from 'react-native';
-import { ActionButton } from 'src/components';
+import { FlatList, RefreshControl } from 'react-native';
+import { List } from 'react-native-elements';
+import CategoriesListItem from './CategoriesListItem';
+import { colors } from 'src/styles';
 
 const keyExtractor = item => item.id;
 
 export default class CategoriesList extends Component {
     renderItem = ({ item }) => {
-        const onPress = this.props.onSelectCategory.bind(null, item);
+        const { onSelectCategory } = this.props;
 
         return (
-            <TouchableHighlight onPress={onPress}>
-                <View style={{ borderWidth: 1, width: '100%' }}/>
-            </TouchableHighlight>
+            <CategoriesListItem
+                category={item}
+                onSelectCategory={onSelectCategory}
+            />
         );
-    }
+    };
 
     render() {
+        const { data, onRefresh, fetching } = this.props;
+
         return (
-            <View style={styles.container}>
+            <List>
                 <FlatList
-                    data={this.props.data}
+                    data={data}
                     renderItem={this.renderItem}
                     keyExtractor={keyExtractor}
+                    refreshControl={
+                        <RefreshControl
+                            colors={[colors.COLOR_PRIMARY]}
+                            refreshing={fetching}
+                            onRefresh={onRefresh}
+                        />
+                    }
                 />
-            </View>
+            </List>
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'stretch'
-    }
-});

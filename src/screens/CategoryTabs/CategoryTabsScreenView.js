@@ -4,8 +4,6 @@ import { ActionButton } from 'src/components';
 
 export default function CategoryTabsScreenView(WrappedComponent) {
     return class extends Component {
-        handleRefresh = this.props.onFetch;
-
         componentDidMount() {
             this.props.onFetch();
         }

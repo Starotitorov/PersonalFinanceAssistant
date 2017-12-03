@@ -1,6 +1,7 @@
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import CategoriesList, { CategoriesListContainer } from '../CategoriesList';
+import { fetchCategories } from 'src/actions/categories';
 
 const mapStateToProps = (state) => {
     const data = [];
@@ -14,11 +15,20 @@ const mapStateToProps = (state) => {
     });
 
     return {
-        data
+        data,
+        fetching: state.categories.fetching
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onRefresh() {
+            dispatch(fetchCategories());
+        }
     };
 };
 
 export default compose(
     CategoriesListContainer,
-    connect(mapStateToProps)
+    connect(mapStateToProps, mapDispatchToProps)
 )(CategoriesList);
