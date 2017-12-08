@@ -4,10 +4,10 @@ import { CategoryForm } from 'src/components';
 import styles from './AddCategoryScreenStyles';
 
 export default class AddCategoryScreen extends Component {
-    handleSubmit = ({ icon, categoryType, ...values }) => {
-        const name = values.name.trim();
+    handleSubmit = ({ name: nameValue, ...rest }) => {
+        const name = nameValue.trim();
 
-        this.props.onAddCategory({ categoryType, icon, name });
+        this.props.onAddCategory({ name, ...rest });
     };
 
     render() {

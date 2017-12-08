@@ -1,22 +1,13 @@
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import CategoriesList, { CategoriesListContainer } from '../CategoriesList';
+import { getOutcomeCategoriesList, isCategoriesFetching } from 'src/selectors/categories';
 import { fetchCategories } from 'src/actions/categories';
 
 const mapStateToProps = (state) => {
-    const data = [];
-
-    state.categories.order.forEach((id) => {
-        const item = state.categories.byId[id];
-
-        if (item.categoryType === 1) {
-            data.push(item);
-        }
-    });
-
     return {
-        data,
-        fetching: state.categories.fetching
+        data: getOutcomeCategoriesList(state),
+        fetching: isCategoriesFetching(state)
     };
 };
 

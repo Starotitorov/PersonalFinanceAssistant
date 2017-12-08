@@ -28,7 +28,7 @@ function CategoryForm({ handleSubmit, submitting, invalid }) {
                 </View>
             </View>
             <Field
-                name="categoryType"
+                name="categoryTypeId"
                 component={SelectInput}
                 options={options.categoryType}
             />

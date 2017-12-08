@@ -4,12 +4,12 @@ import icons from 'src/constants/icons';
 export const getCategoryFormInitialValues = ({
     name = '',
     icon = icons[0],
-    categoryType = INCOME_CATEGORY
+    categoryTypeId = INCOME_CATEGORY
 } = {}) => {
     return {
         name,
         icon,
-        categoryType
+        categoryTypeId
     };
 };
 
