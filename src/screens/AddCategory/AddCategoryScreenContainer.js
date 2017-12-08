@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { getCategoryFormInitialValues } from 'src/selectors/forms';
+import { addCategory } from 'src/actions/categories';
 import AddCategoryScreen from './AddCategoryScreen';
 
 const mapStateToProps = () => {
@@ -10,7 +11,9 @@ const mapStateToProps = () => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onAddCategory() {}
+        onAddCategory(data) {
+            dispatch(addCategory(data))
+        }
     };
 };
 

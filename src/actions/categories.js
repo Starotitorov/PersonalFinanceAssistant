@@ -1,4 +1,5 @@
 import { createAction } from 'redux-actions';
+import { NavigationActions } from 'react-navigation';
 import * as api from 'src/api';
 
 export const setCategories = createAction(
@@ -16,4 +17,13 @@ export const fetchCategories = () => dispatch => {
         .then(({ categories }) => {
             dispatch(setCategories(categories));
         });
+};
+
+export const addCategory = categoryData => dispatch => {
+    return api.addCategory(categoryData)
+        .then(async () => {
+            await dispatch(fetchCategories());
+
+            dispatch(NavigationActions.back());
+        })
 };

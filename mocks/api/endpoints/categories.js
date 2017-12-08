@@ -26,6 +26,18 @@ export default function getCategoriesMocks(API_URL) {
                     }
                 ]
             };
-        }
+        },
+        [`POST ${API_URL}/categories`]: ({method, url, params, urlparams, headers}) => {
+            const {icon, name, categoryType} = params.category;
+
+            return {
+                account: {
+                    id: 10001,
+                    icon,
+                    name,
+                    categoryType
+                }
+            };
+        },
     }
 }

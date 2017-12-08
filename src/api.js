@@ -81,4 +81,14 @@ export const fetchCategories = async () => fetch(`${API_URL}/categories`, {
         'Content-Type': 'application/json',
         'token': await JWTStorage.getToken()
     }
-})
+});
+
+export const addCategory = async categoryData => fetch(`${API_URL}/categories`, {
+    method: 'POST',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'token': await JWTStorage.getToken()
+    },
+    body: JSON.stringify({ category: categoryData })
+});
