@@ -1,6 +1,6 @@
 import React from 'react';
 import { StackNavigator } from 'react-navigation';
-import { DrawerButton, LogOutIcon } from 'src/components';
+import { DrawerButton } from 'src/components';
 import AccountsList from '../AccountsList';
 import AddAccount from '../AddAccount';
 import EditAccount from '../EditAccount';
@@ -12,8 +12,7 @@ export default StackNavigator({
         navigationOptions: ({ navigation }) => {
             return {
                 title: 'Accounts',
-                headerLeft: <DrawerButton navigation={navigation} />,
-                headerRight: <LogOutIcon />
+                headerLeft: <DrawerButton navigation={navigation} />
             }
         }
     },

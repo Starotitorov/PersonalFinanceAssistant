@@ -27,7 +27,7 @@ function AddAccountForm({ handleSubmit, submitting, invalid }) {
                 </View>
             </View>
             <Field
-                name="initialBalance"
+                name="balance"
                 props={{
                     label: 'Initial balance',
                     placeholder: 'Enter initial balance...'

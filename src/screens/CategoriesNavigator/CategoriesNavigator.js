@@ -1,6 +1,6 @@
 import React from 'react';
 import { StackNavigator } from 'react-navigation';
-import { DrawerButton, LogOutIcon } from 'src/components'
+import { DrawerButton } from 'src/components'
 import CategoryTabs from '../CategoryTabs';
 import AddCategory from '../AddCategory';
 
@@ -10,8 +10,7 @@ export default StackNavigator({
         navigationOptions: ({ navigation }) => {
             return {
                 title: 'Categories',
-                headerLeft: <DrawerButton navigation={navigation} />,
-                headerRight: <LogOutIcon />
+                headerLeft: <DrawerButton navigation={navigation} />
             }
         }
     },

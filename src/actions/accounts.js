@@ -27,13 +27,17 @@ export const fetchAccounts = () => dispatch => {
 };
 
 export const addAccount = accountData => dispatch => {
-    return api.addAccount(accountData)
-        .then(response => response.json())
-        .then(() => {
-            dispatch(fetchAccounts());
+    const data = {
+        ...accountData,
+        balance: Number(accountData.balance)
+    };
+
+    return api.addAccount(data)
+        .then(async () => {
+            await dispatch(fetchAccounts());
 
             dispatch(NavigationActions.back());
-        });
+        })
 };
 
 export const updateAccount = accountData => (dispatch, getState) => {
@@ -41,8 +45,8 @@ export const updateAccount = accountData => (dispatch, getState) => {
 
     return api.updateAccount(selected, accountData)
         .then(response => response.json())
-        .then(() => {
-            dispatch(fetchAccounts());
+        .then(async () => {
+            await dispatch(fetchAccounts());
 
             dispatch(NavigationActions.back());
         });
@@ -52,9 +56,8 @@ export const removeAccount = accountData => (dispatch, getState) => {
     const { accounts: { selected } } = getState();
 
     return api.removeAccount(selected)
-        .then(response => response.json())
-        .then(() => {
-            dispatch(fetchAccounts());
+        .then(async () => {
+            await dispatch(fetchAccounts());
 
             dispatch(NavigationActions.back());
         });

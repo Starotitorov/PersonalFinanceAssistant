@@ -4,6 +4,7 @@ import { DrawerIcon } from 'src/components';
 import { colors } from 'src/styles'
 import AccountsNavigator from '../AccountsNavigator';
 import CategoriesNavigator from '../CategoriesNavigator';
+import Settings from '../Settings'
 
 export default DrawerNavigator({
     Accounts: {
@@ -21,6 +22,14 @@ export default DrawerNavigator({
             drawerLabel: 'Categories',
             drawerIcon: ({ tintColor }) =>
                 <DrawerIcon name="sort" tintColor={tintColor} />
+        }
+    },
+    Settings: {
+        screen: Settings,
+        navigationOptions: {
+            drawerLabel: 'Settings',
+            drawerIcon: ({ tintColor }) =>
+                <DrawerIcon name="settings" tintColor={tintColor} />
         }
     }
 }, {

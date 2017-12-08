@@ -126,7 +126,7 @@ export default function getAccountsMocks(API_URL) {
          * }
          */
         [`POST ${API_URL}/accounts`]: ({method, url, params, urlparams, headers}) => {
-            const {initialBalance: balance, name, initialDate} = params.account;
+            const {balance, name, initialDate} = params.account;
 
             return {
                 account: {
