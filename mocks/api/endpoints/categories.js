@@ -28,10 +28,10 @@ export default function getCategoriesMocks(API_URL) {
             };
         },
         [`POST ${API_URL}/categories`]: ({method, url, params, urlparams, headers}) => {
-            const {icon, name, categoryTypeId} = params.category;
+            const { icon, name, categoryTypeId } = params.category;
 
             return {
-                account: {
+                category: {
                     id: 10001,
                     icon,
                     name,
@@ -39,5 +39,23 @@ export default function getCategoriesMocks(API_URL) {
                 }
             };
         },
+        [`PUT ${API_URL}/categories/{id}`]: ({method, url, params, urlparams, headers}) => {
+            const { id } = urlparams;
+            const { icon, name, categoryTypeId } = params.category;
+
+            return {
+                category: {
+                    id,
+                    icon,
+                    name,
+                    categoryTypeId
+                }
+            };
+        },
+        [`DELETE ${API_URL}/categories/{id}`]: ({method, url, params, urlparams, headers}) => {
+            return {
+                status: 200
+            };
+        }
     }
 }

@@ -21,3 +21,9 @@ export const getOutcomeCategoriesList = state =>
     getCategoriesListByType(state, OUTCOME_CATEGORY);
 
 export const isCategoriesFetching = state => state.categories.fetching;
+
+export const getSelectedCategory = state => {
+    const id = state.categories.selected;
+
+    return state.categories.byId[id];
+};

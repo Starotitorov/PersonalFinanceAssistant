@@ -1,12 +1,10 @@
 import React from 'react';
 import { ListItem } from 'react-native-elements';
 
-export default function CategoriesListItem(
-    {
-        category: { id, icon, name },
-        onSelectCategory
-    }
-) {
+export default function CategoriesListItem({
+    category: { name, icon, id },
+    onSelectCategory
+}) {
     return (
         <ListItem
             title={name}

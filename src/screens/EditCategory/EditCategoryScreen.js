@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { CategoryForm } from 'src/components';
-import styles from './AddCategoryScreenStyles';
+import styles from './EditCategoryScreenStyles';
 
-export default class AddCategoryScreen extends Component {
+export default class EditCategoryScreen extends Component {
     handleSubmit = ({ name: nameValue, ...rest }) => {
         const name = nameValue.trim();
 
-        this.props.onAddCategory({ name, ...rest });
+        this.props.onUpdateCategory({ name, ...rest });
     };
 
     render() {
         return (
             <View style={styles.container}>
                 <CategoryForm
-                    createCategory
                     initialValues={this.props.initialValues}
                     onSubmit={this.handleSubmit}
                 />

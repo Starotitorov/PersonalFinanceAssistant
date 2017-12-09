@@ -92,3 +92,22 @@ export const addCategory = async categoryData => fetch(`${API_URL}/categories`, 
     },
     body: JSON.stringify({ category: categoryData })
 });
+
+export const updateCategory = async (id, categoryData) => fetch(`${API_URL}/categories/${id}`, {
+    method: 'PUT',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'token': await JWTStorage.getToken()
+    },
+    body: JSON.stringify({ category: categoryData })
+});
+
+export const removeCategory = async id => fetch(`${API_URL}/categories/${id}`, {
+    method: 'DELETE',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'token': await JWTStorage.getToken()
+    }
+});

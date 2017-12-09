@@ -3,6 +3,8 @@ import { StackNavigator } from 'react-navigation';
 import { DrawerButton } from 'src/components'
 import CategoryTabs from '../CategoryTabs';
 import AddCategory from '../AddCategory';
+import EditCategory from '../EditCategory';
+import EditCategoryHeaderRight from '../EditCategoryHeaderRight'
 
 export default StackNavigator({
     CategoryTabs: {
@@ -20,6 +22,13 @@ export default StackNavigator({
             title: 'New category'
         }
     },
+    EditCategory: {
+        screen: EditCategory,
+        navigationOptions: {
+            title: 'Edit category',
+            headerRight: <EditCategoryHeaderRight />
+        }
+    }
 }, {
     initialRouteName: 'CategoryTabs'
 });

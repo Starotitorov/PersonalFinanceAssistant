@@ -7,6 +7,11 @@ export const setCategories = createAction(
     categories => ({ categories })
 );
 
+export const selectCategory = createAction(
+    'CATEGORIES/SELECT_CATEGORY',
+    (id) => ({ id })
+);
+
 export const fetchCategoriesStart = createAction('CATEGORIES/FETCH_CATEGORIES_START');
 
 export const fetchCategories = () => dispatch => {
@@ -26,4 +31,26 @@ export const addCategory = categoryData => dispatch => {
 
             dispatch(NavigationActions.back());
         })
+};
+
+export const updateCategory = categoryData => (dispatch, getState) => {
+    const { categories: { selected } } = getState();
+
+    return api.updateCategory(selected, categoryData)
+        .then(async () => {
+            await dispatch(fetchCategories());
+
+            dispatch(NavigationActions.back());
+        });
+};
+
+export const removeCategory = categoryData => (dispatch, getState) => {
+    const { categories: { selected } } = getState();
+
+    return api.removeCategory(selected)
+        .then(async () => {
+            await dispatch(fetchCategories());
+
+            dispatch(NavigationActions.back());
+        });
 };

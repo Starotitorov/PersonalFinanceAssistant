@@ -8,7 +8,7 @@ import TextInput from '../TextInputField';
 import options from './CategoryFormOptions';
 import validate from './validate';
 
-function CategoryForm({ handleSubmit, submitting, invalid }) {
+function CategoryForm({ handleSubmit, submitting, invalid, createCategory }) {
     return (
         <View style={styles.container}>
             <View style={styles.row}>
@@ -27,15 +27,18 @@ function CategoryForm({ handleSubmit, submitting, invalid }) {
                     />
                 </View>
             </View>
-            <Field
-                name="categoryTypeId"
-                component={SelectInput}
-                options={options.categoryType}
-            />
+            {
+                createCategory &&
+                    <Field
+                        name="categoryTypeId"
+                        component={SelectInput}
+                        options={options.categoryType}
+                    />
+            }
             <Button
                 disabled={invalid || submitting}
                 onPress={handleSubmit}
-                title="Create category"
+                title={createCategory ? 'Create category' : 'Edit category'}
             />
         </View>
     );
