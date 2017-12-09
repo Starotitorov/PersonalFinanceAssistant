@@ -44,7 +44,6 @@ export const updateAccount = accountData => (dispatch, getState) => {
     const { accounts: { selected } } = getState();
 
     return api.updateAccount(selected, accountData)
-        .then(response => response.json())
         .then(async () => {
             await dispatch(fetchAccounts());
 
@@ -52,7 +51,7 @@ export const updateAccount = accountData => (dispatch, getState) => {
         });
 };
 
-export const removeAccount = accountData => (dispatch, getState) => {
+export const removeAccount = () => (dispatch, getState) => {
     const { accounts: { selected } } = getState();
 
     return api.removeAccount(selected)
