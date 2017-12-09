@@ -7,11 +7,18 @@ import {
     withNetwork
 } from 'src/components';
 import AppNavigator from '../AppNavigator';
+import StatusBarAlert from 'react-native-statusbar-alert';
 import styles from './AppStyles';
 
-function App({ dispatch, navigationState }) {
+function App({ dispatch, navigationState, isConnected }) {
     return (
         <PlatformKeyboardAvoidingView style={styles.container}>
+            <StatusBarAlert
+                visible={!isConnected}
+                message="You are not connected to the internet"
+                backgroundColor="#ff0000"
+                color="white"
+            />
             <AppNavigator navigation={addNavigationHelpers({
                 dispatch,
                 state: navigationState
