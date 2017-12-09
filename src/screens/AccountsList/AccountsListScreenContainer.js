@@ -1,13 +1,16 @@
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { getAllAccounts, isAccountsFetching } from 'src/selectors/accounts';
-import { fetchAccounts, selectAccount } from 'src/actions/accounts';
+import { isApplicationDataFetching } from 'src/selectors/application';
+import { selectAccount, fetchAccounts } from 'src/actions/accounts';
+import { withLoadingIndicator } from 'src/components';
 import { NavigationActions } from 'react-navigation';
 import AccountsListScreen from './AccountsListScreen';
-import AccountsListScreenView from './AccountsListScreenView';
 
 const mapStateToProps = state => {
     return {
         accounts: getAllAccounts(state),
+        isLoading: isApplicationDataFetching(state),
         fetching: isAccountsFetching(state)
     };
 };
@@ -24,10 +27,13 @@ const mapDispatchToProps = dispatch => {
             dispatch(NavigationActions.navigate({routeName: 'AddAccount'}));
         },
 
-        onFetch() {
+        onRefresh() {
             dispatch(fetchAccounts());
         }
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AccountsListScreenView(AccountsListScreen));
+export default compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    withLoadingIndicator
+)(AccountsListScreen);

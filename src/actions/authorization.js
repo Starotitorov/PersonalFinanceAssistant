@@ -4,6 +4,7 @@ import { AsyncStorage } from 'react-native';
 import * as asyncStorageKeys from 'src/constants/asyncStorage';
 import { NavigationActions } from 'react-navigation';
 import { LoginManager } from 'react-native-fbsdk';
+import { fetchApplicationDataRequest } from 'src/actions/application';
 import * as api from '../api';
 
 export const setCurrentUser = createAction(
@@ -20,10 +21,12 @@ export const resetCurrentUser = createAction('AUTHORIZATION/RESET_CURRENT_USER')
 export const fetchCurrentUserStart = createAction('AUTHORIZATION/FETCH_CURRENT_USER_START');
 export const fetchCurrentUserFinish = createAction('AUTHORIZATION/FETCH_CURRENT_USER_FINISH');
 
-const setAuthorizationData = (user, token) => async dispatch => {
+const setAuthorizationData = (user, token) => dispatch => {
     dispatch(setCurrentUser(user));
 
     dispatch(setToken(token));
+
+    dispatch(fetchApplicationDataRequest());
 };
 
 export const logIn = (email, password) => dispatch => {

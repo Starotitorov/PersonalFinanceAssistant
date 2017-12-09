@@ -4,9 +4,11 @@ import navigation from './navigation';
 import authorization from './authorization';
 import accounts from './accounts';
 import categories from './categories';
+import application from './application';
 
 export default combineReducers({
     navigation,
+    application,
     authorization,
     accounts,
     categories,

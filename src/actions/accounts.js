@@ -19,7 +19,7 @@ export const selectAccount = createAction(
 export const fetchAccounts = () => dispatch => {
     dispatch(fetchAccountsStart());
 
-    api.fetchAccounts()
+    return api.fetchAccounts()
         .then(response => response.json())
         .then(({ accounts }) => {
             dispatch(setAccounts(accounts))
@@ -36,7 +36,12 @@ export const addAccount = accountData => dispatch => {
         .then(async () => {
             await dispatch(fetchAccounts());
 
-            dispatch(NavigationActions.back());
+            dispatch(NavigationActions.reset({
+                index: 0,
+                actions: [
+                    NavigationActions.navigate({ routeName: 'AccountsList' })
+                ]
+            }));
         })
 };
 
@@ -47,7 +52,12 @@ export const updateAccount = accountData => (dispatch, getState) => {
         .then(async () => {
             await dispatch(fetchAccounts());
 
-            dispatch(NavigationActions.back());
+            dispatch(NavigationActions.reset({
+                index: 0,
+                actions: [
+                    NavigationActions.navigate({ routeName: 'AccountsList' })
+                ]
+            }));
         });
 };
 
@@ -58,6 +68,11 @@ export const removeAccount = () => (dispatch, getState) => {
         .then(async () => {
             await dispatch(fetchAccounts());
 
-            dispatch(NavigationActions.back());
+            dispatch(NavigationActions.reset({
+                index: 0,
+                actions: [
+                    NavigationActions.navigate({ routeName: 'AccountsList' })
+                ]
+            }));
         });
 };

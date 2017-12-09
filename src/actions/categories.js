@@ -17,7 +17,7 @@ export const fetchCategoriesStart = createAction('CATEGORIES/FETCH_CATEGORIES_ST
 export const fetchCategories = () => dispatch => {
     dispatch(fetchCategoriesStart());
 
-    api.fetchCategories()
+    return api.fetchCategories()
         .then(response => response.json())
         .then(({ categories }) => {
             dispatch(setCategories(categories));
@@ -29,8 +29,13 @@ export const addCategory = categoryData => dispatch => {
         .then(async () => {
             await dispatch(fetchCategories());
 
-            dispatch(NavigationActions.back());
-        })
+            dispatch(NavigationActions.reset({
+                index: 0,
+                actions: [
+                    NavigationActions.navigate({ routeName: 'CategoryTabs' })
+                ]
+            }));
+        });
 };
 
 export const updateCategory = categoryData => (dispatch, getState) => {
