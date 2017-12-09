@@ -1,6 +1,11 @@
 import React from 'react';
+import { compose } from 'redux';
 import { addNavigationHelpers } from 'react-navigation';
-import { PlatformKeyboardAvoidingView, withLoadingIndicator } from 'src/components';
+import {
+    PlatformKeyboardAvoidingView,
+    withLoadingIndicator,
+    withNetwork
+} from 'src/components';
 import AppNavigator from '../AppNavigator';
 import styles from './AppStyles';
 
@@ -16,4 +21,7 @@ function App({ dispatch, navigationState }) {
     );
 }
 
-export default withLoadingIndicator(App, 40);
+export default compose(
+    withNetwork,
+    withLoadingIndicator
+)(App);

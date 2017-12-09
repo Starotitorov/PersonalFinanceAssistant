@@ -5,6 +5,7 @@ import authorization from './authorization';
 import accounts from './accounts';
 import categories from './categories';
 import application from './application';
+import network from './network';
 
 export default combineReducers({
     navigation,
@@ -12,5 +13,6 @@ export default combineReducers({
     authorization,
     accounts,
     categories,
+    network,
     form
 });
