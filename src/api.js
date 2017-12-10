@@ -119,5 +119,5 @@ export const addTransfer = async transferData => fetch(`${API_URL}/transfers`, {
         'Content-Type': 'application/json',
         'token': await JWTStorage.getToken()
     },
-    body: { transfer: transferData }
+    body: JSON.stringify({ transfer: transferData })
 });
