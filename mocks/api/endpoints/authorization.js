@@ -7,8 +7,8 @@ export default {
         return {
             user: {
                 id,
-                name: `User${id}`,
-                email: `user${id}@example.com`
+                name: `Artem Starotitorov`,
+                email: `starotitorov1997@gmail.com`
             },
             token: 'token'
         };

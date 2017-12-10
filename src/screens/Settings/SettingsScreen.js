@@ -1,13 +1,23 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { Button } from 'react-native-elements';
-import { margins, fontSizes, colors } from 'src/styles'
+import { margins, fontSizes, colors } from 'src/styles';
+import { Gravatar } from 'react-native-gravatar';
 
 export default function SettingsScreen({ user, onLogout }) {
     const userName = user ? user.name : '';
+    const userEmail = user ? user.email : '';
 
     return (
         <View style={styles.container}>
+            <Gravatar
+                options={{
+                    email: userEmail,
+                    parameters: { size: '200', d: 'mm' },
+                    secure: true
+                }}
+                style={styles.gravatar}
+            />
             <Text style={styles.userName}>{userName}</Text>
             <Button
                 containerViewStyle={styles.buttonContainer}
@@ -33,6 +43,12 @@ const styles = StyleSheet.create({
     userName: {
         fontWeight: 'bold',
         fontSize: fontSizes.FONT_SIZE_XL,
-        marginVertical: margins.MARGIN_L
+        marginBottom: margins.MARGIN_L
+    },
+    gravatar: {
+        width: 200,
+        height: 200,
+        marginTop: margins.MARGIN_L,
+        marginBottom: margins.MARGIN_M
     }
 });
