@@ -122,6 +122,15 @@ export const addTransfer = async transferData => fetch(`${API_URL}/transfers`, {
     body: JSON.stringify({ transfer: transferData })
 });
 
+export const fetchTransactions = async () => fetch(`${API_URL}/transactions`, {
+    method: 'GET',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'token': await JWTStorage.getToken()
+    }
+});
+
 export const addTransaction = async transactionData => fetch(`${API_URL}/transactions`, {
     method: 'POST',
     headers: {

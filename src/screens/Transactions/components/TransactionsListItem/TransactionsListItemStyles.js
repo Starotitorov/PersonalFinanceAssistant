@@ -1,16 +1,20 @@
 import { StyleSheet } from 'react-native';
+import { margins } from 'src/styles';
 
 export default StyleSheet.create({
+    arrow: {
+        marginRight: margins.MARGIN_XS
+    },
     mainContainer: {
         width: '100%',
-        paddingHorizontal: 10,
+        padding: 10,
         backgroundColor: '#fff',
-        borderWidth: StyleSheet.hairlineWidth
+        borderTopWidth: StyleSheet.hairlineWidth,
+        borderBottomWidth: StyleSheet.hairlineWidth
     },
     groupContainer: {
         flexDirection: 'row',
-        alignItems: 'center',
-        
+        alignItems: 'center'
     },
     textContainer: {
         flex: 1
@@ -20,6 +24,7 @@ export default StyleSheet.create({
     },
     subItemContainer: {
         flexDirection: 'row',
+        padding: 10,
         alignItems: 'center',
         width: '100%',
         backgroundColor: '#aaa'

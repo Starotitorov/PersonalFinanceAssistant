@@ -5,6 +5,7 @@ import {
 } from 'src/actions/application';
 import { fetchAccounts } from 'src/actions/accounts';
 import { fetchCategories } from 'src/actions/categories';
+import { fetchTransactions } from 'src/actions/transactions';
 
 export const fetchApplicationData = ({ dispatch, getState }) => {
     return next => (action) => {
@@ -20,7 +21,8 @@ export const fetchApplicationData = ({ dispatch, getState }) => {
 
                 Promise.all([
                     dispatch(fetchAccounts()),
-                    dispatch(fetchCategories())
+                    dispatch(fetchCategories()),
+                    dispatch(fetchTransactions())
                 ])
                     .then(() => dispatch(fetchApplicationDataSuccess()))
                     .catch(() => dispatch(fetchApplicationDataFailure()));

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { FlatList, View, Text } from 'react-native';
+import { List } from 'react-native-elements';
 import { withEmptyListComponent } from 'src/components';
 import TransactionsListItem from './TransactionsListItem';
 
-const keyExtractor = item => item;
+const keyExtractor = (item, index) => index;
 
 class TransactionsList extends Component {
     renderItem({ item }) {
@@ -12,12 +13,14 @@ class TransactionsList extends Component {
 
     render() {
         return (
-            <FlatList
-                data={this.props.data}
-                keyExtractor={keyExtractor}
-                renderItem={this.renderItem}
-                ListEmptyComponent={this.props.EmptyListComponent}
-            />
+            <List>
+                <FlatList
+                    data={this.props.data}
+                    keyExtractor={keyExtractor}
+                    renderItem={this.renderItem}
+                    ListEmptyComponent={this.props.EmptyListComponent}
+                />
+            </List>
         );
     }
 }

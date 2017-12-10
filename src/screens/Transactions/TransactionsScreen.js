@@ -6,6 +6,7 @@ import TransactionsList from './components/TransactionsList';
 
 export default function TransactionsScreen({
     currentDate,
+    data,
     onChangeCurrentDateForward,
     onChangeCurrentDateBack,
     onAddTransaction
@@ -17,7 +18,7 @@ export default function TransactionsScreen({
                 onPressBack={onChangeCurrentDateBack}
                 onPressForward={onChangeCurrentDateForward}
             />
-            <TransactionsList />
+            <TransactionsList data={data} />
             <ActionButton.Button
                 type={ActionButton.types.ADD}
                 onPress={onAddTransaction}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Badge } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { momentFormat } from 'src/utils';
@@ -8,17 +8,13 @@ import styles from './TransactionsListItemStyles';
 const formatDate = momentFormat.formatTransactionDate;
 
 export default class TransactionsListItem extends Component {
-    constructor(props) {
-        super(props);
+    state = {
+        isOpen: false
+    };
 
-        this.toggleOpen = this.toggleOpen.bind(this);
-
-        this.state = { isOpen: false };
-    }
-
-    toggleOpen() {
+    toggleOpen = () => {
         this.setState({ isOpen: !this.state.isOpen });
-    }
+    };
 
     renderSubItems(data) {
         return data.map(({ date, value }) => (
@@ -33,20 +29,21 @@ export default class TransactionsListItem extends Component {
 
     render() {
         const { isOpen } = this.state;
-        const { transactions, categoryData } = this.props;
+        const { transactions, category } = this.props.data;
 
         return (
-            <View>
-                <TouchableOpacity onPress={this.toggleOpen}>
+            <View style={styles.container}>
+                <TouchableOpacity style={styles.mainContainer} onPress={this.toggleOpen}>
                     <View style={styles.groupContainer}>
                         <Icon
+                            style={styles.arrow}
                             name={isOpen ? 'ios-arrow-up' : 'ios-arrow-down'}
                         />
                         <View style={styles.textContainer}>
-                            <Text>{ categoryData.name }</Text>
+                            <Text>{ category.name }</Text>
                         </View>
                         <Badge value={transactions.length} />
-                        <Text style={styles.transactionsSum}>{ categoryData.value }</Text>
+                        <Text style={styles.transactionsSum}>{ category.value }</Text>
                     </View>
                 </TouchableOpacity>
                 { isOpen && this.renderSubItems(transactions)}

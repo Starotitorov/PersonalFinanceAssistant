@@ -1,18 +1,22 @@
 export default {
     YEAR: {
         label: 'Year',
-        value: 'years'
+        value: 'years',
+        single: 'year'
     },
     MONTH: {
         label: 'Month',
-        value: 'months'
+        value: 'months',
+        single: 'month'
     },
     WEEK: {
         label: 'Week',
-        value: 'weeks'
+        value: 'weeks',
+        single: 'week'
     },
     DAY: {
         label: 'Day',
-        value: 'days'
+        value: 'days',
+        single: 'day'
     }
 }

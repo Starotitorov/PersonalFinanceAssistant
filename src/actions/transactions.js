@@ -22,9 +22,22 @@ export const changeCurrentDate = createAction(
     currentDate => ({ currentDate })
 );
 
-export const fetchTransactions = () => dispatch => {
+export const setTransactions = createAction(
+    'TRANSACTIONS/SET_TRANSACTIONS',
+    transactions => ({ transactions })
+);
 
+export const fetchTransactionsStart = createAction('TRANSACTIONS/FETCH_TRANSACTIONS_START');
+
+export const fetchTransactions = () => dispatch => {
+    dispatch(fetchTransactionsStart());
+
+    return api.fetchTransactions()
+        .then(response => response.json())
+        .then(transactions => dispatch(setTransactions(transactions)));
 };
+
+export const resetTransactions = createAction('TRANSACTIONS/RESET_TRANSACTIONS');
 
 export const addTransaction = transactionData => dispatch => {
     return api.addTransaction(transactionData)
