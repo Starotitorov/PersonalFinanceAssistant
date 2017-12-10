@@ -111,3 +111,13 @@ export const removeCategory = async id => fetch(`${API_URL}/categories/${id}`, {
         'token': await JWTStorage.getToken()
     }
 });
+
+export const addTransfer = async transferData => fetch(`${API_URL}/transfers`, {
+    method: 'POST',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'token': await JWTStorage.getToken()
+    },
+    body: { transfer: transferData }
+});

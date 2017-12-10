@@ -1,5 +1,6 @@
 import { INCOME_CATEGORY } from 'src/constants/categoryTypes';
 import icons from 'src/constants/icons';
+import { values } from 'lodash';
 
 export const getCategoryFormInitialValues = ({
     name = '',
@@ -28,5 +29,14 @@ export const getEditAccountFormInitialValues = ({ accounts: { byId, selected } }
         icon,
         name,
         initialDate
+    };
+};
+
+export const getTransferFormOptions = state => {
+    return {
+        accounts: values(state.accounts.byId).map(({ name, id }) => ({
+            value: id,
+            label: name
+        }))
     };
 };

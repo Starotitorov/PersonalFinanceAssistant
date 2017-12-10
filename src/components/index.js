@@ -1,5 +1,6 @@
 export { default as PlatformKeyboardAvoidingView } from './PlatformKeyboardAvoidingView';
 export { default as TextInputField } from './TextInputField';
+export { default as SelectInputField } from './SelectInputField';
 export { default as LogOutIcon } from './LogOutIcon';
 export { default as DrawerButton } from './DrawerButton';
 export { default as DrawerIcon } from './DrawerIcon';
