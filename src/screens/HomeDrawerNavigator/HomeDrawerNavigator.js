@@ -9,6 +9,14 @@ import Settings from '../Settings'
 import Transactions from '../Transactions';
 
 export default DrawerNavigator({
+    Transactions: {
+        screen: Transactions,
+        navigationOptions: {
+            drawerLabel: 'Transactions',
+            drawerIcon: ({ tintColor }) =>
+                <DrawerIcon name="swap-horiz" tintColor={tintColor} />
+        }
+    },
     Accounts: {
         screen: AccountsNavigator,
         navigationOptions: {
@@ -34,17 +42,9 @@ export default DrawerNavigator({
             drawerIcon: ({ tintColor }) =>
                 <DrawerIcon name="settings" tintColor={tintColor} />
         }
-    },
-    Transactions: {
-        screen: Transactions,
-        navigationOptions: {
-            drawerLabel: 'Transactions',
-            drawerIcon: ({ tintColor }) =>
-                <DrawerIcon name="swap-horiz" tintColor={tintColor} />
-        }
     }
 }, {
-    initialRouteName: 'Accounts',
+    initialRouteName: 'Transactions',
     contentOptions: {
         activeTintColor: colors.COLOR_PRIMARY,
     }

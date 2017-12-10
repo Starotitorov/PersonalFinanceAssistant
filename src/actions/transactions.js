@@ -1,6 +1,6 @@
 import moment from 'moment';
 import { createAction } from 'redux-actions';
-import * as periodTypes from 'src/constants/transactionPeriodTypes';
+import periodTypes from 'src/constants/transactionPeriodTypes';
 
 export const changePeriodView = createAction(
     'TRANSACTIONS/CHANGE_PERIOD_VIEW',
@@ -9,24 +9,7 @@ export const changePeriodView = createAction(
 
 export const changeDate = isChangeForward => (dispatch, getState) => {
     const { transactions: { currentDate, periodType } } = getState();
-    let periodModificator;
-
-    switch(periodType) {
-        case periodTypes.DAYS:
-            periodModificator = 'days';
-            break;
-        case periodTypes.WEEKS:
-            periodModificator = 'weeks';
-            break;
-        case periodTypes.MONTHS:
-            periodModificator = 'months';
-            break;
-        case periodTypes.YEARS:
-            periodModificator = 'years';
-            break;
-        default:
-            return;
-    }
+    let periodModificator = periodType;
 
     const timeModificator = isChangeForward ? 1 : -1;
     const newDate = currentDate.clone().add(timeModificator, periodModificator);

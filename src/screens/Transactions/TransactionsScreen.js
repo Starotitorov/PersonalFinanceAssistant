@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import TransactionsHeader from '../TransactionsHeader';
 import TransactionsPeriodCarousel from './components/TransactionsPeriodCarousel';
+import TransactionsList from './components/TransactionsList';
 
 export default function TransactionsScreen({
     currentDate,
@@ -16,6 +17,7 @@ export default function TransactionsScreen({
                 onPressBack={onChangeCurrentDateBack}
                 onPressForward={onChangeCurrentDateForward}
             />
+            <TransactionsList />
         </View>
     );
 }

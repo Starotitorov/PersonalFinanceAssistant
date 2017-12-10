@@ -1,11 +1,11 @@
 import moment from 'moment';
 import { handleActions } from 'redux-actions';
 import { changeCurrentDate, changePeriodView } from 'src/actions/transactions';
-import { WEEKS } from 'src/constants/transactionPeriodTypes';
+import periodTypes from 'src/constants/transactionPeriodTypes';
 
 const initialState = {
     currentDate: moment(),
-    periodType: WEEKS 
+    periodType: periodTypes.WEEK.value 
 };
 
 const transactions = handleActions({
