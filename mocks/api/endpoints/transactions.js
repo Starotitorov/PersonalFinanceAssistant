@@ -17,7 +17,7 @@ export default {
                 accountId: 1,
                 categoryId: 1,
                 value: 200,
-                date: moment(Date.now()).subtract(1, 'year'),
+                date: Date.now(),
                 note: 'Transaction'
             },
             {
@@ -30,7 +30,7 @@ export default {
             },
             {
                 id: 10004,
-                accountId: 2,
+                accountId: 1,
                 categoryId: 2,
                 value: 200,
                 date: Date.now(),

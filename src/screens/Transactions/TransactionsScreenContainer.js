@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { NavigationActions } from 'react-navigation';
-import { changeDate } from 'src/actions/transactions'
+import { changeDate, fetchTransactions } from 'src/actions/transactions'
 import { getFormattedCurrentDate } from 'src/selectors/transactions';
 import { isApplicationDataFetching } from 'src/selectors/application';
 import { getTransactionsGroupedByCategories, isTransactionsFetching } from 'src/selectors/transactions';
@@ -31,6 +31,10 @@ const mapDispatchToProps = dispatch => {
             dispatch(NavigationActions.navigate({
                 routeName: 'AddTransaction'
             }));
+        },
+
+        onRefresh() {
+            dispatch(fetchTransactions());
         }
     };
 };

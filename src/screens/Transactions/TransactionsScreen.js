@@ -4,13 +4,17 @@ import { ActionButton } from 'src/components';
 import TransactionsPeriodCarousel from './components/TransactionsPeriodCarousel';
 import TransactionsList from './components/TransactionsList';
 
-export default function TransactionsScreen({
-    currentDate,
-    data,
-    onChangeCurrentDateForward,
-    onChangeCurrentDateBack,
-    onAddTransaction
-}) {
+export default function TransactionsScreen(
+    {
+        currentDate,
+        data,
+        onChangeCurrentDateForward,
+        onChangeCurrentDateBack,
+        onRefresh,
+        onAddTransaction,
+        fetching
+    }
+) {
     return (
         <View style={styles.container}>
             <TransactionsPeriodCarousel
@@ -18,7 +22,11 @@ export default function TransactionsScreen({
                 onPressBack={onChangeCurrentDateBack}
                 onPressForward={onChangeCurrentDateForward}
             />
-            <TransactionsList data={data} />
+            <TransactionsList
+                data={data}
+                onRefresh={onRefresh}
+                fetching={fetching}
+            />
             <ActionButton.Button
                 type={ActionButton.types.ADD}
                 onPress={onAddTransaction}

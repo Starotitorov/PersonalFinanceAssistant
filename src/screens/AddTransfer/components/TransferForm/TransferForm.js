@@ -16,7 +16,7 @@ function TransferForm({ handleSubmit, submitting, invalid, options }) {
             <Field
                 name="value"
                 props={{
-                    label: 'Sum',
+                    label: 'Sum, BYN',
                     placeholder: 'Enter sum to transfer...'
                 }}
                 component={TextInput}
@@ -63,5 +63,8 @@ function TransferForm({ handleSubmit, submitting, invalid, options }) {
 }
 
 export default reduxForm({
-    form: TRANSFER_FORM
+    form: TRANSFER_FORM,
+    initialValues: {
+        date: Date.now()
+    }
 })(TransferForm);

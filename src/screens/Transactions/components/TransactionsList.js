@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { FlatList, View, Text } from 'react-native';
-import { List } from 'react-native-elements';
+import { FlatList, View, Text, RefreshControl, StyleSheet } from 'react-native';
 import { withEmptyListComponent } from 'src/components';
+import { colors } from 'src/styles';
 import TransactionsListItem from './TransactionsListItem';
 
 const keyExtractor = (item, index) => index;
@@ -12,17 +12,32 @@ class TransactionsList extends Component {
     }
 
     render() {
+        const { fetching, onRefresh } = this.props;
+
         return (
-            <List>
+            <View style={styles.container}>
                 <FlatList
+                    refreshControl={
+                        <RefreshControl
+                            refreshing={fetching}
+                            colors={[colors.COLOR_PRIMARY]}
+                            onRefresh={onRefresh}
+                        />
+                    }
                     data={this.props.data}
                     keyExtractor={keyExtractor}
                     renderItem={this.renderItem}
                     ListEmptyComponent={this.props.EmptyListComponent}
                 />
-            </List>
+            </View>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        marginTop: 20
+    }
+});
 
 export default withEmptyListComponent(TransactionsList, 'No transactions');

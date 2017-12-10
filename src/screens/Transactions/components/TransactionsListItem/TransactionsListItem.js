@@ -42,8 +42,10 @@ export default class TransactionsListItem extends Component {
                         <View style={styles.textContainer}>
                             <Text>{ category.name }</Text>
                         </View>
-                        <Badge value={transactions.length} />
-                        <Text style={styles.transactionsSum}>{ category.sum }</Text>
+                        <View style={styles.rightText}>
+                            <Badge value={transactions.length} />
+                            <Text style={styles.transactionsSum}>{ category.sum }</Text>
+                        </View>
                     </View>
                 </TouchableOpacity>
                 { isOpen && this.renderSubItems(transactions)}

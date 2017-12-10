@@ -3,7 +3,7 @@ import { margins } from 'src/styles';
 
 export default StyleSheet.create({
     arrow: {
-        marginRight: margins.MARGIN_XS
+        marginRight: margins.MARGIN_M
     },
     mainContainer: {
         width: '100%',
@@ -31,5 +31,11 @@ export default StyleSheet.create({
     },
     subItemDateContainer: {
         flex: 1
+    },
+    rightText: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        width: 100
     }
 })
