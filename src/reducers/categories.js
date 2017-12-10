@@ -1,5 +1,10 @@
 import { handleActions } from 'redux-actions';
-import { fetchCategoriesStart, setCategories, selectCategory } from 'src/actions/categories';
+import {
+    fetchCategoriesStart,
+    setCategories,
+    selectCategory,
+    resetCategories
+} from 'src/actions/categories';
 
 const initialState = {
     byId: {},
@@ -37,7 +42,8 @@ const categories = handleActions({
             ...state,
             selected: action.payload.id
         }
-    }
+    },
+    [resetCategories]: () => initialState
 }, initialState);
 
 export default categories;

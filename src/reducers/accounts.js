@@ -1,5 +1,10 @@
 import { handleActions } from 'redux-actions';
-import { fetchAccountsStart, setAccounts, selectAccount } from 'src/actions/accounts';
+import {
+    fetchAccountsStart,
+    setAccounts,
+    selectAccount,
+    resetAccounts
+} from 'src/actions/accounts';
 
 const initialState = {
     byId: {},
@@ -16,7 +21,7 @@ const accounts = handleActions({
         }
     },
     [setAccounts]: (state, action) => {
-        const { accounts } = action.payload;
+        const {accounts} = action.payload;
         let newById = {};
         let newOrder = [];
 
@@ -37,7 +42,8 @@ const accounts = handleActions({
             ...state,
             selected: action.payload.id
         };
-    }
+    },
+    [resetAccounts]: () => initialState
 }, initialState);
 
 export default accounts;

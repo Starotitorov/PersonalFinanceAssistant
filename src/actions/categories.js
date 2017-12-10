@@ -13,6 +13,7 @@ export const selectCategory = createAction(
 );
 
 export const fetchCategoriesStart = createAction('CATEGORIES/FETCH_CATEGORIES_START');
+export const resetCategories = createAction('CATEGORIES/RESET_CATEGORIES');
 
 export const fetchCategories = () => dispatch => {
     dispatch(fetchCategoriesStart());
