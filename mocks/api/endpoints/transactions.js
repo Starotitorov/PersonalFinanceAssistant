@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { API_URL } from '../config';
 
 export default {
@@ -16,7 +17,7 @@ export default {
                 accountId: 1,
                 categoryId: 1,
                 value: 200,
-                date: Date.now(),
+                date: moment(Date.now()).subtract(1, 'year'),
                 note: 'Transaction'
             },
             {
@@ -24,7 +25,7 @@ export default {
                 accountId: 1,
                 categoryId: 1,
                 value: 200,
-                date: Date.now(),
+                date: moment(Date.now()).add(1, 'month'),
                 note: 'Transaction'
             },
             {

@@ -1,4 +1,4 @@
-import { flow, chain, values, find } from 'lodash';
+import { chain, values, find } from 'lodash';
 import moment from 'moment';
 import * as categoryTypes from 'src/constants/categoryTypes';
 import periodTypes from 'src/constants/transactionPeriodTypes';

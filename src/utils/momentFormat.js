@@ -1,1 +1,1 @@
-export const formatTransactionDate = momentDate => momentDate.format('ddd, MMM Do YYYY LT');
+export const formatTransactionDate = momentDate => momentDate.format('ddd, MMM Do YYYY');

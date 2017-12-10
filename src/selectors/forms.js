@@ -1,4 +1,6 @@
 import { INCOME_CATEGORY } from 'src/constants/categoryTypes';
+import { getSelectInputOptionsFromAllAccounts } from 'src/selectors/accounts';
+import { getSelectInputOptionsFromAllCategories } from 'src/selectors/categories';
 import icons from 'src/constants/icons';
 import { values } from 'lodash';
 
@@ -34,22 +36,13 @@ export const getEditAccountFormInitialValues = ({ accounts: { byId, selected } }
 
 export const getTransferFormOptions = state => {
     return {
-        accounts: values(state.accounts.byId).map(({ name, id }) => ({
-            value: id,
-            label: name
-        }))
+        accounts: getSelectInputOptionsFromAllAccounts(state)
     };
 };
 
 export const getTransactionFormOptions = state => {
     return {
-        accounts: values(state.accounts.byId).map(({ name, id }) => ({
-            value: id,
-            label: name
-        })),
-        categories: values(state.categories.byId).map(({ name, id }) => ({
-            value: id,
-            label: name
-        }))
+        accounts: getSelectInputOptionsFromAllAccounts(state),
+        categories: getSelectInputOptionsFromAllCategories(state)
     };
 };

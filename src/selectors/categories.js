@@ -27,3 +27,22 @@ export const getSelectedCategory = state => {
 
     return state.categories.byId[id];
 };
+
+export const getAllCategories = ({ categories: { byId, order }}) =>
+    order.map(id => byId[id]);
+
+export const getSelectInputOptionsFromAllCategories = state => {
+    const categories = getAllCategories(state);
+
+    const categoryOptions = [{
+        label: 'Select category...',
+        value: null
+    }];
+
+    return categoryOptions.concat(
+        categories.map(({name, id}) => ({
+            value: id,
+            label: name
+        }))
+    );
+};
