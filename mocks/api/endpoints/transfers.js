@@ -1,18 +1,18 @@
-export default function getTransactionsMocks(API_URL) {
-    return {
-        [`POST ${API_URL}/transfers`]: ({method, url, params, urlparams, headers}) => {
-            const { fromAccountId, toAccountId, value, date, note } = params.transfer;
+import { API_URL } from '../config';
 
-            return {
-                category: {
-                    id: 10001,
-                    fromAccountId,
-                    toAccountId,
-                    value,
-                    date,
-                    note
-                }
-            };
-        }
+export default {
+    [`POST ${API_URL}/transfers`]: ({method, url, params, urlparams, headers}) => {
+        const { fromAccountId, toAccountId, value, date, note } = params.transfer;
+
+        return {
+            transfer: {
+                id: 10001,
+                fromAccountId,
+                toAccountId,
+                value,
+                date,
+                note
+            }
+        };
     }
 }

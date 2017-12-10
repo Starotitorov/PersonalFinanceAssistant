@@ -1,15 +1,13 @@
-import getAccounstMocks from './endpoints/accounts';
-import getAuthorizationMocks from './endpoints/authorization';
-import getCategoriesMocks from './endpoints/categories';
-import getTransfersMocks from './endpoints/transfers';
-import getTransactionsMocks from './endpoints/transactions';
-
-const API_URL = 'http://dzianis.mooo.com:8090/api/v1';
+import accountsMocks from './endpoints/accounts';
+import authorizationMocks from './endpoints/authorization';
+import categoriesMocks from './endpoints/categories';
+import transfersMocks from './endpoints/transfers';
+import transactionsMocks from './endpoints/transactions';
 
 export default {
-    ...getAuthorizationMocks(API_URL),
-    ...getAccounstMocks(API_URL),
-    ...getCategoriesMocks(API_URL),
-    ...getTransfersMocks(API_URL),
-    ...getTransactionsMocks(API_URL)
+    ...accountsMocks,
+    ...authorizationMocks,
+    ...categoriesMocks,
+    ...transfersMocks,
+    ...transactionsMocks
 }
