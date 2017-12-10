@@ -1,4 +1,4 @@
-import { chain, values, find } from 'lodash';
+import { flow, chain, values, find } from 'lodash';
 import moment from 'moment';
 import * as categoryTypes from 'src/constants/categoryTypes';
 import periodTypes from 'src/constants/transactionPeriodTypes';
@@ -22,12 +22,22 @@ export const getFormattedCurrentDate = state => {
     }
 };
 
-export const getTransactionsGroupedByCategories = ({ transactions: { byId, currentDate, periodType }, categories: { byId: categoriesById } }) => {;
+const filterTransactionsByAccount = (transactions, selected) =>
+    transactions.filter(({ accountId }) => accountId === selected);
+
+const filterTransactionsByTimeRange = (
+    {
+        transactions,
+        categoriesById,
+        currentDate,
+        periodType
+    }
+) => {
     const delta = find(values(periodTypes), { value: periodType }).single;
     const lowerBound = moment(currentDate).startOf(delta);
     const higherBound = moment(currentDate).endOf(delta);
 
-    const transactions = values(byId)
+    return transactions
         .map(transaction => {
             const { categoryTypeId } = categoriesById[transaction.categoryId];
 
@@ -39,6 +49,22 @@ export const getTransactionsGroupedByCategories = ({ transactions: { byId, curre
             }
         })
         .filter(({ date }) => date >= lowerBound && date <= higherBound);
+};
+
+export const getTransactionsGroupedByCategories = (
+    {
+        transactions: { selectedAccount, byId, currentDate, periodType },
+        categories: { byId: categoriesById }
+    }
+) => {
+    const transactionsList = values(byId);
+    const filteredByAccount = filterTransactionsByAccount(transactionsList, selectedAccount);
+    const transactions = filterTransactionsByTimeRange({
+        transactions: filteredByAccount,
+        categoriesById,
+        currentDate,
+        periodType
+    });
 
     const grouped = chain(transactions)
         .groupBy('categoryId')
@@ -64,3 +90,5 @@ export const getAllTransactions = ({ transactions: { byId, order }}) =>
     order.map(id => byId[id]);
 
 export const isTransactionsFetching = state => state.transactions.fetching;
+
+export const getSelectedAccountId = state => state.transactions.selectedAccount;

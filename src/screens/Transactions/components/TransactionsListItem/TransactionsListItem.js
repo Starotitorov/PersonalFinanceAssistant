@@ -17,8 +17,8 @@ export default class TransactionsListItem extends Component {
     };
 
     renderSubItems(data) {
-        return data.map(({ date, value }) => (
-            <View style={styles.subItemContainer}>
+        return data.map(({ date, value, id }) => (
+            <View key={ id } style={styles.subItemContainer}>
                 <View style={styles.subItemDateContainer}>
                     <Text>{ formatDate(date) }</Text>
                 </View>
@@ -43,7 +43,7 @@ export default class TransactionsListItem extends Component {
                             <Text>{ category.name }</Text>
                         </View>
                         <Badge value={transactions.length} />
-                        <Text style={styles.transactionsSum}>{ category.value }</Text>
+                        <Text style={styles.transactionsSum}>{ category.sum }</Text>
                     </View>
                 </TouchableOpacity>
                 { isOpen && this.renderSubItems(transactions)}

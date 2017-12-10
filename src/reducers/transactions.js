@@ -5,7 +5,8 @@ import {
     changePeriodView,
     fetchTransactionsStart,
     setTransactions,
-    resetTransactions
+    resetTransactions,
+    setSelectedAccount
 } from 'src/actions/transactions';
 import periodTypes from 'src/constants/transactionPeriodTypes';
 
@@ -14,7 +15,8 @@ const initialState = {
     periodType: periodTypes.WEEK.value,
     byId: {},
     order: [],
-    fetching: false
+    fetching: false,
+    selectedAccount: null
 };
 
 const transactions = handleActions({
@@ -51,7 +53,13 @@ const transactions = handleActions({
             fetching: false
         };
     },
-    [resetTransactions]: () => initialState
+    [resetTransactions]: () => initialState,
+    [setSelectedAccount]: (state, action) => {
+        return {
+            ...state,
+            selectedAccount: action.payload.accountId
+        }
+    }
 }, initialState);
 
 export default transactions;

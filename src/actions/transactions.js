@@ -52,3 +52,8 @@ export const addTransaction = transactionData => dispatch => {
             }))
         });
 };
+
+export const setSelectedAccount = createAction(
+    'TRANSACTIONS/SET_SELECTED_ACCOUNT',
+    accountId => ({ accountId })
+);
