@@ -3,7 +3,7 @@ import { ListItem } from 'react-native-elements';
 
 export default function AccountListItem(
     {
-        account: { id, icon, balance, name },
+        account: { id, icon, balance, name, currency },
         onSelectAccount
     }
 ) {
@@ -14,7 +14,7 @@ export default function AccountListItem(
                 name: icon,
                 type: 'material-community'
             }}
-            rightTitle={String(balance)}
+            rightTitle={`${balance}, ${currency}`}
             onPress={() => onSelectAccount(id)}
         />
     );

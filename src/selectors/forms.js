@@ -40,3 +40,16 @@ export const getTransferFormOptions = state => {
         }))
     };
 };
+
+export const getTransactionFormOptions = state => {
+    return {
+        accounts: values(state.accounts.byId).map(({ name, id }) => ({
+            value: id,
+            label: name
+        })),
+        categories: values(state.categories.byId).map(({ name, id }) => ({
+            value: id,
+            label: name
+        }))
+    };
+};

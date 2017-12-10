@@ -20,84 +20,98 @@ export default function getAccountsMocks(API_URL) {
                         id: 1,
                         name: 'Credit card',
                         icon: 'credit-card',
-                        balance: 12000
+                        balance: 12000,
+                        currency: 'BYN'
                     },
                     {
                         id: 2,
                         name: 'Credit card',
                         icon: 'credit-card',
-                        balance: 10000
+                        balance: 10000,
+                        currency: 'BYN'
                     },
                     {
                         id: 3,
                         name: 'Credit card',
                         icon: 'credit-card',
-                        balance: 8000
+                        balance: 8000,
+                        currency: 'BYN'
                     },
                     {
                         id: 4,
                         name: 'Credit card',
                         icon: 'credit-card',
-                        balance: 2000
+                        balance: 2000,
+                        currency: 'BYN'
                     },
                     {
                         id: 5,
                         name: 'Credit card',
                         icon: 'credit-card',
-                        balance: 5000
+                        balance: 5000,
+                        currency: 'BYN'
                     },
                     {
                         id: 6,
                         name: 'Credit card',
                         icon: 'credit-card',
-                        balance: 15000
+                        balance: 15000,
+                        currency: 'BYN'
                     },
                     {
                         id: 7,
                         name: 'Credit card',
                         icon: 'credit-card',
-                        balance: 2000
+                        balance: 2000,
+                        currency: 'BYN'
                     },
                     {
                         id: 8,
                         name: 'Credit card',
                         icon: 'credit-card',
-                        balance: 15000
+                        balance: 15000,
+                        currency: 'BYN'
                     }, {
                         id: 9,
                         name: 'Credit card',
                         icon: 'credit-card',
-                        balance: 1000
+                        balance: 1000,
+                        currency: 'BYN'
                     },
                     {
                         id: 10,
                         name: 'Credit card',
                         icon: 'credit-card',
-                        balance: 15000
+                        balance: 15000,
+                        currency: 'BYN'
                     },
                     {
                         id: 11,
                         name: 'Credit card',
                         icon: 'credit-card',
-                        balance: 10000
+                        balance: 10000,
+                        currency: 'BYN'
                     },
                     {
                         id: 12,
                         name: 'Credit card',
                         icon: 'credit-card',
-                        balance: 14000
+                        balance: 14000,
+                        currency: 'BYN'
                     },
                     {
                         id: 13,
                         name: 'Credit card',
                         icon: 'credit-card',
-                        balance: 15000
+                        balance: 15000,
+                        currency: 'BYN'
                     },
                     {
                         id: 14,
                         name: 'Credit card',
                         icon: 'credit-card',
-                        balance: 11000
+                        balance: 11000,
+                        currency: 'BYN'
                     }
                 ],
             };
@@ -133,7 +147,8 @@ export default function getAccountsMocks(API_URL) {
                     id: 10001,
                     name,
                     balance,
-                    initialDate
+                    initialDate,
+                    currency: 'BYN'
                 }
             };
         },
@@ -167,7 +182,8 @@ export default function getAccountsMocks(API_URL) {
                 account: {
                     id,
                     name,
-                    initialDate
+                    initialDate,
+                    currency: 'BYN'
                 }
             };
         },

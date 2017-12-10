@@ -5,12 +5,12 @@ import { colors } from 'src/styles'
 import AccountsNavigator from '../AccountsNavigator';
 import CategoriesNavigator from '../CategoriesNavigator';
 import SettingsNavigator from '../SettingsNavigator'
-import Settings from '../Settings'
-import Transactions from '../Transactions';
+import Transactions from '../TransactionsNavigator';
+import TransactionsNavigator from "../TransactionsNavigator/TransactionsNavigator";
 
 export default DrawerNavigator({
     Transactions: {
-        screen: Transactions,
+        screen: TransactionsNavigator,
         navigationOptions: {
             drawerLabel: 'Transactions',
             drawerIcon: ({ tintColor }) =>

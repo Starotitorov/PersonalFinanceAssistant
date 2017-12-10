@@ -1,12 +1,13 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { View, StyleSheet, Button } from 'react-native';
-import { EDIT_ACCOUNT_FORM } from 'src/constants/forms';
+import { ACCOUNT_FORM } from 'src/constants/forms';
 import moment from 'moment';
-import { TextInputField, DatePickerField, IconField } from 'src/components';
+import { TextInputField, DatePickerField } from 'src/components';
+import { IconField } from 'src/components';
 import validate from './validate';
 
-function EditAccountForm({ handleSubmit, submitting, invalid }) {
+function AccountForm({ handleSubmit, submitting, invalid, createAccount }) {
     return (
         <View style={styles.container}>
             <View style={styles.row}>
@@ -18,13 +19,23 @@ function EditAccountForm({ handleSubmit, submitting, invalid }) {
                     <Field
                         name="name"
                         props={{
-                            label: 'Name',
+                            label: 'Account name',
                             placeholder: 'Enter account name...'
                         }}
                         component={TextInputField}
                     />
                 </View>
             </View>
+            {createAccount &&
+                <Field
+                    name="balance"
+                    props={{
+                        label: 'Initial balance, BYN',
+                        placeholder: 'Enter initial balance...'
+                    }}
+                    component={TextInputField}
+                />
+            }
             <Field
                 name="initialDate"
                 props={{
@@ -35,7 +46,7 @@ function EditAccountForm({ handleSubmit, submitting, invalid }) {
                 component={DatePickerField}
             />
             <Button
-                title="Edit account"
+                title="Add account"
                 disabled={submitting || invalid}
                 onPress={handleSubmit}
             />
@@ -44,9 +55,13 @@ function EditAccountForm({ handleSubmit, submitting, invalid }) {
 }
 
 export default reduxForm({
-    form: EDIT_ACCOUNT_FORM,
+    form: ACCOUNT_FORM,
+    initialValues: {
+        icon: 'cash',
+        initialDate: moment.now()
+    },
     validate
-})(EditAccountForm);
+})(AccountForm);
 
 const styles = StyleSheet.create({
     container: {

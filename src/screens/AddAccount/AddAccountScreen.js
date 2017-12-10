@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import AddAccountForm from './components/AddAccountForm';
+import { AccountForm } from 'src/components';
 
 export default function AddAccountScreen({ onAddAccount }) {
     return (
         <View style={styles.container}>
-            <AddAccountForm onSubmit={onAddAccount} />
+            <AccountForm onSubmit={onAddAccount} createAccount />
         </View>
     );
 }

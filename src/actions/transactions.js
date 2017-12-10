@@ -1,6 +1,6 @@
-import moment from 'moment';
 import { createAction } from 'redux-actions';
-import periodTypes from 'src/constants/transactionPeriodTypes';
+import { NavigationActions } from 'react-navigation';
+import * as api from 'src/api'
 
 export const changePeriodView = createAction(
     'TRANSACTIONS/CHANGE_PERIOD_VIEW',
@@ -21,3 +21,21 @@ export const changeCurrentDate = createAction(
     'TRANSACTIONS/CHANGE_CURRENT_DATE',
     currentDate => ({ currentDate })
 );
+
+export const fetchTransactions = () => dispatch => {
+
+};
+
+export const addTransaction = transactionData => dispatch => {
+    return api.addTransaction(transactionData)
+        .then(async () => {
+            await dispatch(fetchTransactions());
+
+            dispatch(NavigationActions.reset({
+                index: 0,
+                actions: [
+                    NavigationActions.navigate({ routeName: 'Transactions' })
+                ]
+            }))
+        });
+};

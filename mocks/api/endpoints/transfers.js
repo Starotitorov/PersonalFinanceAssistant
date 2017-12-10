@@ -1,7 +1,7 @@
-export default function getCategoriesMocks(API_URL) {
+export default function getTransactionsMocks(API_URL) {
     return {
         [`POST ${API_URL}/transfers`]: ({method, url, params, urlparams, headers}) => {
-            const { fromAccountId, toAccountId, value, date, notes } = params.transfer;
+            const { fromAccountId, toAccountId, value, date, note } = params.transfer;
 
             return {
                 category: {
@@ -10,7 +10,7 @@ export default function getCategoriesMocks(API_URL) {
                     toAccountId,
                     value,
                     date,
-                    notes
+                    note
                 }
             };
         }

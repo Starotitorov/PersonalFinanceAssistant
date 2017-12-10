@@ -1,23 +1,27 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import TransactionsHeader from '../TransactionsHeader';
+import { ActionButton } from 'src/components';
 import TransactionsPeriodCarousel from './components/TransactionsPeriodCarousel';
 import TransactionsList from './components/TransactionsList';
 
 export default function TransactionsScreen({
     currentDate,
     onChangeCurrentDateForward,
-    onChangeCurrentDateBack
+    onChangeCurrentDateBack,
+    onAddTransaction
 }) {
     return (
         <View style={styles.container}>
-            <TransactionsHeader />
             <TransactionsPeriodCarousel
                 currentDate={currentDate}
                 onPressBack={onChangeCurrentDateBack}
                 onPressForward={onChangeCurrentDateForward}
             />
             <TransactionsList />
+            <ActionButton.Button
+                type={ActionButton.types.ADD}
+                onPress={onAddTransaction}
+            />
         </View>
     );
 }

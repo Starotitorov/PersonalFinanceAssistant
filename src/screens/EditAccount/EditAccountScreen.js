@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import EditAccountForm from './components/EditAccountForm';
+import { AccountForm } from 'src/components';
 
 export default function EditAccountScreen({ initialValues, onUpdateAccount }) {
     return (
         <View style={styles.container}>
-            <EditAccountForm onSubmit={onUpdateAccount} initialValues={initialValues} />
+            <AccountForm onSubmit={onUpdateAccount} initialValues={initialValues} />
         </View>
     );
 }
