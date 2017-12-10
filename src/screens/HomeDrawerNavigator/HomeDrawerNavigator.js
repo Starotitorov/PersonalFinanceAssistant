@@ -5,6 +5,8 @@ import { colors } from 'src/styles'
 import AccountsNavigator from '../AccountsNavigator';
 import CategoriesNavigator from '../CategoriesNavigator';
 import SettingsNavigator from '../SettingsNavigator'
+import Settings from '../Settings'
+import Transactions from '../Transactions';
 
 export default DrawerNavigator({
     Accounts: {
@@ -31,6 +33,14 @@ export default DrawerNavigator({
             drawerLabel: 'Settings',
             drawerIcon: ({ tintColor }) =>
                 <DrawerIcon name="settings" tintColor={tintColor} />
+        }
+    },
+    Transactions: {
+        screen: Transactions,
+        navigationOptions: {
+            drawerLabel: 'Transactions',
+            drawerIcon: ({ tintColor }) =>
+                <DrawerIcon name="swap-horiz" tintColor={tintColor} />
         }
     }
 }, {

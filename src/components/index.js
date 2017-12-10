@@ -11,3 +11,4 @@ export { default as withLoadingIndicator } from './HOC/withLoadingIndicator';
 export { default as withNetwork } from './HOC/withNetwork';
 export { default as CategoryForm } from './CategoryForm';
 export { default as IconField } from './IconField';
+export { default as IconButton } from './IconButton';
