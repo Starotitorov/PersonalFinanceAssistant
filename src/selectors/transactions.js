@@ -53,10 +53,23 @@ const filterTransactionsByTimeRange = (
 
 export const getTransactionsGroupedByCategories = (
     {
-        transactions: { selectedAccount, byId, currentDate, periodType },
-        categories: { byId: categoriesById }
+        transactions: {
+            selectedAccount,
+            byId,
+            currentDate,
+            periodType,
+            fetching: transactionsFethcing
+        },
+        categories: {
+            byId: categoriesById,
+            fetching: categoriesFetching
+        }
     }
 ) => {
+    if (transactionsFethcing || categoriesFetching) {
+        return [];
+    }
+
     const transactionsList = values(byId);
     const filteredByAccount = filterTransactionsByAccount(transactionsList, selectedAccount);
     const transactions = filterTransactionsByTimeRange({
@@ -69,7 +82,7 @@ export const getTransactionsGroupedByCategories = (
     const grouped = chain(transactions)
         .groupBy('categoryId')
         .transform((acc, transactions, key) => {
-            const { name, icon } = categoriesById[key];
+            const { name, icon } = categoriesById[key] || {};
             const sum = transactions.reduce((sum, { value }) => sum + value, 0);
 
             acc.push({

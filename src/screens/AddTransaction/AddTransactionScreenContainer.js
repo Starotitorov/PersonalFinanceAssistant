@@ -12,7 +12,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onAddTransaction(data) {
-            dispatch(addTransaction(data));
+            return dispatch(addTransaction(data));
         }
     }
 };

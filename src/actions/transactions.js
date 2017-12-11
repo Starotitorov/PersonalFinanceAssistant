@@ -1,6 +1,7 @@
 import { createAction } from 'redux-actions';
 import { NavigationActions } from 'react-navigation';
 import * as api from 'src/api'
+import { fetchAccounts } from 'src/actions/accounts';
 
 export const changePeriodView = createAction(
     'TRANSACTIONS/CHANGE_PERIOD_VIEW',
@@ -34,7 +35,7 @@ export const fetchTransactions = () => dispatch => {
 
     return api.fetchTransactions()
         .then(response => response.json())
-        .then(transactions => dispatch(setTransactions(transactions)));
+        .then(({ transactions }) => dispatch(setTransactions(transactions)));
 };
 
 export const resetTransactions = createAction('TRANSACTIONS/RESET_TRANSACTIONS');
@@ -43,6 +44,8 @@ export const addTransaction = transactionData => dispatch => {
     return api.addTransaction(transactionData)
         .then(async () => {
             await dispatch(fetchTransactions());
+
+            await dispatch(fetchAccounts());
 
             dispatch(NavigationActions.reset({
                 index: 0,

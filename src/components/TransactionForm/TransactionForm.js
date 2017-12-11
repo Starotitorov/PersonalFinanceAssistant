@@ -68,7 +68,10 @@ function TransactionForm(
 }
 
 export default reduxForm({
-    form: TRANSACTION_FORM
+    form: TRANSACTION_FORM,
+    initialValues: {
+        date: Date.now()
+    }
 })(TransactionForm);
 
 const styles = StyleSheet.create({
