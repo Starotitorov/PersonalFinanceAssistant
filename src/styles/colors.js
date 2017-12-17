@@ -2,4 +2,4 @@
  * colors
  */
 
-export const COLOR_PRIMARY = '#2196F3';
+export const COLOR_PRIMARY = '#2096F3';

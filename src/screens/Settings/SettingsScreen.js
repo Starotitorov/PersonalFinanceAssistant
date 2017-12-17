@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import { Button } from 'react-native-elements';
-import { margins, fontSizes, colors } from 'src/styles';
+import { PrimaryButton } from 'src/components';
+import { margins, fontSizes } from 'src/styles';
 import { Gravatar } from 'react-native-gravatar';
 
 export default function SettingsScreen({ user, onLogout, onChangePassword }) {
@@ -19,15 +19,13 @@ export default function SettingsScreen({ user, onLogout, onChangePassword }) {
                 style={styles.gravatar}
             />
             <Text style={styles.userName}>{userName}</Text>
-            <Button
-                containerViewStyle={styles.buttonContainer}
-                buttonStyle={styles.button}
+            <PrimaryButton
+                containerViewStyle={styles.button}
                 title="Change password"
                 onPress={onChangePassword}
             />
-            <Button
-                containerViewStyle={styles.buttonContainer}
-                buttonStyle={styles.button}
+            <PrimaryButton
+                containerViewStyle={styles.button}
                 title="Log out"
                 onPress={onLogout}
             />
@@ -40,17 +38,13 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
         alignItems: 'center'
     },
-    buttonContainer: {
-        width: 300
-    },
-    button: {
-        backgroundColor: colors.COLOR_PRIMARY,
-        marginBottom: margins.MARGIN_S
-    },
     userName: {
         fontWeight: 'bold',
         fontSize: fontSizes.FONT_SIZE_XL,
         marginBottom: margins.MARGIN_L
+    },
+    button: {
+        marginBottom: margins.MARGIN_M
     },
     gravatar: {
         width: 200,
