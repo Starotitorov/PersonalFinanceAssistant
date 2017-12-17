@@ -2,6 +2,7 @@ import { createAction } from 'redux-actions';
 import { NavigationActions } from 'react-navigation';
 import * as api from 'src/api'
 import { fetchAccounts } from 'src/actions/accounts';
+import { LIST, CHART } from 'src/constants/transactionsViewTypes';
 
 export const changePeriodView = createAction(
     'TRANSACTIONS/CHANGE_PERIOD_VIEW',
@@ -65,3 +66,9 @@ export const setViewType = createAction(
     'TRANSACTIONS/SET_VIEW_TYPE',
     viewType => ({ viewType })
 );
+
+export const switchViewType = () => (dispatch, getState) => {
+    const { transactions: { viewType } } = getState();
+
+    dispatch(setViewType(viewType === LIST ? CHART : LIST));
+};

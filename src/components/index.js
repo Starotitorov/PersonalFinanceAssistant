@@ -16,3 +16,4 @@ export { default as withEmptyListComponent } from './HOC/withEmptyListComponent'
 export { default as SelectInput } from './SelectInput';
 export { default as TransactionForm } from './TransactionForm';
 export { default as AccountForm } from './AccountForm';
+export { default as SwitchViewTypeIcon } from './SwitchViewTypeIcon'
