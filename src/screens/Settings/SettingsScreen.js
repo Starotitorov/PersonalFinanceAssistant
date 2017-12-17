@@ -13,7 +13,7 @@ export default function SettingsScreen({ user, onLogout }) {
             <Gravatar
                 options={{
                     email: userEmail,
-                    parameters: { size: '200', d: 'mm' },
+                    parameters: { size: '200' },
                     secure: true
                 }}
                 style={styles.gravatar}

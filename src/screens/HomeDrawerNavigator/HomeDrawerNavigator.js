@@ -4,9 +4,10 @@ import { DrawerIcon } from 'src/components';
 import { colors } from 'src/styles'
 import AccountsNavigator from '../AccountsNavigator';
 import CategoriesNavigator from '../CategoriesNavigator';
-import SettingsNavigator from '../SettingsNavigator'
+import SettingsNavigator from '../SettingsNavigator';
 import Transactions from '../TransactionsNavigator';
-import TransactionsNavigator from "../TransactionsNavigator/TransactionsNavigator";
+import AboutNavigator from '../AboutNavigator';
+import TransactionsNavigator from '../TransactionsNavigator/TransactionsNavigator';
 
 export default DrawerNavigator({
     Transactions: {
@@ -32,6 +33,15 @@ export default DrawerNavigator({
             drawerLabel: 'Categories',
             drawerIcon: ({ tintColor }) =>
                 <DrawerIcon name="sort" tintColor={tintColor} />
+        }
+    },
+    About: {
+        screen: AboutNavigator,
+        title: 'About',
+        navigationOptions: {
+            drawerLabel: 'About',
+            drawerIcon: ({ tintColor }) =>
+                <DrawerIcon name="info" tintColor={tintColor} />
         }
     },
     Settings: {

@@ -19,7 +19,7 @@ const initialState = {
     order: [],
     fetching: false,
     selectedAccount: null,
-    viewType: transactionsViewTypes.CHART
+    viewType: transactionsViewTypes.LIST
 };
 
 const transactions = handleActions({
