@@ -3,6 +3,7 @@ package com.personalfinanceassistant;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.github.wuxudong.rncharts.MPAndroidChartPackage;
 import com.github.wumke.RNExitApp.RNExitAppPackage;
 import com.masteratul.exceptionhandler.ReactNativeExceptionHandlerPackage;
 import com.react.rnspinkit.RNSpinkitPackage;
@@ -39,6 +40,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new MPAndroidChartPackage(),
             new RNExitAppPackage(),
             new ReactNativeExceptionHandlerPackage(),
             new RNSpinkitPackage(),

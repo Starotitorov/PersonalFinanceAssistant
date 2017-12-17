@@ -1,4 +1,4 @@
-import { chain, values, find } from 'lodash';
+import { chain, values, find, sumBy } from 'lodash';
 import moment from 'moment';
 import * as categoryTypes from 'src/constants/categoryTypes';
 import periodTypes from 'src/constants/transactionPeriodTypes';
@@ -44,6 +44,7 @@ const filterTransactionsByTimeRange = (
             return {
                 ...transaction,
                 date: moment(transaction.date),
+                categoryTypeId,
                 value: (categoryTypeId === categoryTypes.INCOME_CATEGORY
                     ? 1 : -1) * transaction.value
             }
@@ -57,19 +58,13 @@ export const getTransactionsGroupedByCategories = (
             selectedAccount,
             byId,
             currentDate,
-            periodType,
-            fetching: transactionsFethcing
+            periodType
         },
         categories: {
-            byId: categoriesById,
-            fetching: categoriesFetching
+            byId: categoriesById
         }
     }
 ) => {
-    if (transactionsFethcing || categoriesFetching) {
-        return [];
-    }
-
     const transactionsList = values(byId);
     const filteredByAccount = filterTransactionsByAccount(transactionsList, selectedAccount);
     const transactions = filterTransactionsByTimeRange({
@@ -105,3 +100,57 @@ export const getAllTransactions = ({ transactions: { byId, order }}) =>
 export const isTransactionsFetching = state => state.transactions.fetching;
 
 export const getSelectedAccountId = state => state.transactions.selectedAccount;
+
+export const getTransactionsChartData = (
+    {
+        transactions: {
+            selectedAccount,
+            byId,
+            currentDate,
+            periodType
+        },
+        categories: {
+            byId: categoriesById
+        }
+    }
+) => {
+    const transactionsList = values(byId);
+    const filteredByAccount = filterTransactionsByAccount(transactionsList, selectedAccount);
+    const transactions = filterTransactionsByTimeRange({
+        transactions: filteredByAccount,
+        categoriesById,
+        currentDate,
+        periodType
+    });
+
+    const incomeTransactions = transactions
+        .filter(transaction => transaction.categoryTypeId === categoryTypes.INCOME_CATEGORY);
+    const outcomeTransactions = transactions
+        .filter(transaction => transaction.categoryTypeId === categoryTypes.OUTCOME_CATEGORY);
+
+    const totalIncomeSum = sumBy(incomeTransactions, 'value');
+    const totalOutcomeSum = sumBy(outcomeTransactions, 'value');
+    const totalBalance = totalIncomeSum + totalOutcomeSum;
+
+    const grouped = chain(outcomeTransactions)
+        .groupBy('categoryId')
+        .transform((acc, transactions, key) => {
+            const { name: label } = categoriesById[key] || {};
+            const sum = sumBy(transactions, 'value');
+
+            acc.push({
+                label,
+                value: sum / totalOutcomeSum * 100
+            });
+        }, [])
+        .value();
+
+    return {
+        values: grouped,
+        totalOutcomeSum,
+        totalIncomeSum,
+        totalBalance
+    }
+};
+
+export const getViewType = state => state.transactions.viewType;

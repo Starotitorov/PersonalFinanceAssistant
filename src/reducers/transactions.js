@@ -6,8 +6,10 @@ import {
     fetchTransactionsStart,
     setTransactions,
     resetTransactions,
-    setSelectedAccount
+    setSelectedAccount,
+    setViewType
 } from 'src/actions/transactions';
+import * as transactionsViewTypes from 'src/constants/transactionsViewTypes';
 import periodTypes from 'src/constants/transactionPeriodTypes';
 
 const initialState = {
@@ -16,7 +18,8 @@ const initialState = {
     byId: {},
     order: [],
     fetching: false,
-    selectedAccount: null
+    selectedAccount: null,
+    viewType: transactionsViewTypes.CHART
 };
 
 const transactions = handleActions({
@@ -58,6 +61,12 @@ const transactions = handleActions({
         return {
             ...state,
             selectedAccount: action.payload.accountId
+        }
+    },
+    [setViewType]: (state, { payload: { viewType } }) => {
+        return {
+            ...state,
+            viewType
         }
     }
 }, initialState);

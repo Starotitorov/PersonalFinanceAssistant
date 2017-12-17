@@ -60,3 +60,8 @@ export const setSelectedAccount = createAction(
     'TRANSACTIONS/SET_SELECTED_ACCOUNT',
     accountId => ({ accountId })
 );
+
+export const setViewType = createAction(
+    'TRANSACTIONS/SET_VIEW_TYPE',
+    viewType => ({ viewType })
+);
