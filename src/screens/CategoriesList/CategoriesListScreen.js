@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { FlatList, RefreshControl } from 'react-native';
 import { List } from 'react-native-elements';
 import CategoriesListItem from './CategoriesListItem';
+import { withEmptyListComponent } from 'src/components';
 import { colors } from 'src/styles';
 
 const keyExtractor = item => item.id;
 
-export default class CategoriesList extends Component {
+class CategoriesList extends Component {
     renderItem = ({ item }) => {
         const { onSelectCategory } = this.props;
 
@@ -34,8 +35,11 @@ export default class CategoriesList extends Component {
                             onRefresh={onRefresh}
                         />
                     }
+                    ListEmptyComponent={this.props.EmptyListComponent}
                 />
             </List>
         );
     }
 }
+
+export default withEmptyListComponent(CategoriesList, 'No categories')
