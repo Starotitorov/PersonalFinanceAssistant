@@ -4,7 +4,7 @@ import { Button } from 'react-native-elements';
 import { margins, fontSizes, colors } from 'src/styles';
 import { Gravatar } from 'react-native-gravatar';
 
-export default function SettingsScreen({ user, onLogout }) {
+export default function SettingsScreen({ user, onLogout, onChangePassword }) {
     const userName = user ? user.name : '';
     const userEmail = user ? user.email : '';
 
@@ -19,6 +19,12 @@ export default function SettingsScreen({ user, onLogout }) {
                 style={styles.gravatar}
             />
             <Text style={styles.userName}>{userName}</Text>
+            <Button
+                containerViewStyle={styles.buttonContainer}
+                buttonStyle={styles.button}
+                title="Change password"
+                onPress={onChangePassword}
+            />
             <Button
                 containerViewStyle={styles.buttonContainer}
                 buttonStyle={styles.button}
@@ -38,7 +44,8 @@ const styles = StyleSheet.create({
         width: 300
     },
     button: {
-        backgroundColor: colors.COLOR_PRIMARY
+        backgroundColor: colors.COLOR_PRIMARY,
+        marginBottom: margins.MARGIN_S
     },
     userName: {
         fontWeight: 'bold',

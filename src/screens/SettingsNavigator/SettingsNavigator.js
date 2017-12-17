@@ -2,6 +2,7 @@ import React from 'react';
 import { StackNavigator } from 'react-navigation';
 import { DrawerButton } from 'src/components';
 import Settings from '../Settings';
+import ChangePassword from '../ChangePassword';
 
 export default StackNavigator({
     Settings: {
@@ -10,6 +11,14 @@ export default StackNavigator({
             return {
                 title: 'Settings',
                 headerLeft: <DrawerButton navigation={navigation} />
+            }
+        }
+    },
+    ChangePassword: {
+        screen: ChangePassword,
+        navigationOptions: () => {
+            return {
+                title: 'Change password'
             }
         }
     }
