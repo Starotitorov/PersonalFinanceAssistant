@@ -1,19 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import styles from './DrawerButtonStyles';
+import IconButton from '../IconButton'
 
 export default function DrawerButton({ navigation }) {
     return (
-        <TouchableOpacity
+        <IconButton
             onPress={() => navigation.navigate('DrawerOpen')}
-        >
-            <Icon
-                name="menu"
-                style={styles.icon}
-            />
-        </TouchableOpacity>
+            size={26}
+            name="md-menu"
+        />
     );
 }
 

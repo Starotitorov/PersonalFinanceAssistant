@@ -1,6 +1,6 @@
 import React from 'react'
-import Icon from 'react-native-vector-icons/Ionicons';
 import { connect } from 'react-redux';
+import { IconButton } from 'src/components';
 import { switchViewType } from 'src/actions/transactions';
 import { LIST } from 'src/constants/transactionsViewTypes';
 import { getViewType } from 'src/selectors/transactions';
@@ -13,8 +13,9 @@ const mapStateToProps = state => {
 
 function SwitchViewTypeIcon({ viewType, switchViewType }) {
     return (
-        <Icon.Button
+        <IconButton
             name={viewType === LIST? 'md-pie' : 'md-list'}
+            size={26}
             color="gray"
             backgroundColor="transparent"
             onPress={switchViewType}
