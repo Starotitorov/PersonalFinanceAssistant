@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Button, StyleSheet } from 'react-native';
+import { ScrollView, View, Button, StyleSheet } from 'react-native';
 import { Field, reduxForm } from 'redux-form';
 import { TRANSACTION_FORM } from 'src/constants/forms';
 import moment from 'moment';
@@ -18,7 +18,7 @@ function TransactionForm(
     }
 ) {
     return (
-        <View style={styles.container}>
+        <ScrollView contentContainerStyle={styles.container}>
             <Field
                 name="value"
                 props={{
@@ -64,7 +64,7 @@ function TransactionForm(
                 onPress={handleSubmit}
                 title={submitBtnText}
             />
-        </View>
+        </ScrollView>
     );
 }
 

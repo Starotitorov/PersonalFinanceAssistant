@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { View, StyleSheet, Button } from 'react-native';
+import { ScrollView, View, StyleSheet, Button } from 'react-native';
 import { ACCOUNT_FORM } from 'src/constants/forms';
 import moment from 'moment';
 import { TextInputField, DatePickerField, SelectInputField } from 'src/components';
@@ -10,7 +10,7 @@ import validate from './validate';
 
 function AccountForm({ handleSubmit, submitting, invalid, createAccount }) {
     return (
-        <View style={styles.container}>
+        <ScrollView contentContainerStyle={styles.container}>
             <View style={styles.row}>
                 <Field
                     name="icon"
@@ -64,7 +64,7 @@ function AccountForm({ handleSubmit, submitting, invalid, createAccount }) {
                 disabled={submitting || invalid}
                 onPress={handleSubmit}
             />
-        </View>
+        </ScrollView>
     );
 }
 

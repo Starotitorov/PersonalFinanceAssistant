@@ -1,12 +1,12 @@
 import React from 'react';
-import { View } from 'react-native';
+import { ScrollView } from 'react-native';
 import { Card, Text } from 'react-native-elements';
 import config from 'src/config';
 import TeamMember from './components/TeamMember';
 
 export default function AboutScreen() {
     return (
-        <View>
+        <ScrollView>
             <Card>
                 <Text h4>
                     Personal finance assistant
@@ -22,6 +22,6 @@ export default function AboutScreen() {
                     })
                 }
             </Card>
-        </View>
+        </ScrollView>
     );
 }

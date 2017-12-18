@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Button, StyleSheet } from 'react-native';
+import { ScrollView, View, Button, StyleSheet } from 'react-native';
 import { Field, reduxForm } from 'redux-form';
 import { CATEGORY_FORM } from 'src/constants/forms';
 import IconInput from '../IconField';
@@ -10,7 +10,7 @@ import validate from './validate';
 
 function CategoryForm({ handleSubmit, submitting, invalid, createCategory }) {
     return (
-        <View style={styles.container}>
+        <ScrollView contentContainerStyle={styles.container}>
             <View style={styles.row}>
                 <Field
                     name="icon"
@@ -40,7 +40,7 @@ function CategoryForm({ handleSubmit, submitting, invalid, createCategory }) {
                 onPress={handleSubmit}
                 title={createCategory ? 'Create category' : 'Edit category'}
             />
-        </View>
+        </ScrollView>
     );
 }
 

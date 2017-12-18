@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Button, StyleSheet } from 'react-native';
+import { ScrollView, View, Button, StyleSheet } from 'react-native';
 import { Field, reduxForm } from 'redux-form';
 import moment from 'moment';
 import { TRANSFER_FORM } from 'src/constants/forms';
@@ -13,7 +13,7 @@ import validate from './validate';
 
 function TransferForm({ isSameCurrency, handleSubmit, submitting, invalid, options }) {
     return (
-        <View style={styles.container}>
+        <ScrollView contentContainerStyle={styles.container}>
             <Field
                 name="value"
                 props={{
@@ -70,7 +70,7 @@ function TransferForm({ isSameCurrency, handleSubmit, submitting, invalid, optio
                 onPress={handleSubmit}
                 title="Transfer"
             />
-        </View>
+        </ScrollView>
     );
 }
 
