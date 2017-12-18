@@ -20,3 +20,13 @@ export const getSelectInputOptionsFromAllAccounts = state => {
         }))
     );
 };
+
+export const isSameCurrency = (state, fromAccountId, toAccountId) => {
+    if (!fromAccountId || !toAccountId) {
+        return true;
+    }
+
+    const { accounts } = state;
+
+    return accounts[fromAccountId].currency === accounts[toAccountId].currency;
+};

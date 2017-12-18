@@ -9,14 +9,15 @@ import {
     DatePickerField
 } from 'src/components';
 import styles from './TransferFormStyles';
+import validate from './validate';
 
-function TransferForm({ handleSubmit, submitting, invalid, options }) {
+function TransferForm({ isSameCurrency, handleSubmit, submitting, invalid, options }) {
     return (
         <View style={styles.container}>
             <Field
                 name="value"
                 props={{
-                    label: 'Sum, BYN',
+                    label: 'Sum',
                     placeholder: 'Enter sum to transfer...'
                 }}
                 component={TextInput}
@@ -37,6 +38,17 @@ function TransferForm({ handleSubmit, submitting, invalid, options }) {
                 }}
                 component={SelectInput}
             />
+            {
+                !isSameCurrency &&
+                    <Field
+                        name="exchangeRate"
+                        props={{
+                            label: 'Exchange rate',
+                            placeholder: 'Enter exchange rate'
+                        }}
+                        component={TextInput}
+                    />
+            }
             <Field
                 name="date"
                 props={{
@@ -65,6 +77,8 @@ function TransferForm({ handleSubmit, submitting, invalid, options }) {
 export default reduxForm({
     form: TRANSFER_FORM,
     initialValues: {
-        date: Date.now()
-    }
+        date: Date.now(),
+        exchangeRate: '1'
+    },
+    validate
 })(TransferForm);

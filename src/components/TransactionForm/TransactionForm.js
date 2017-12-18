@@ -6,6 +6,7 @@ import moment from 'moment';
 import SelectInput from '../SelectInputField';
 import TextInput from '../TextInputField';
 import DatePickerField from '../DatePickerField';
+import validate from './validate';
 
 function TransactionForm(
     {
@@ -21,7 +22,7 @@ function TransactionForm(
             <Field
                 name="value"
                 props={{
-                    label: 'Sum, BYN',
+                    label: 'Sum',
                     placeholder: 'Enter sum...'
                 }}
                 component={TextInput}
@@ -71,7 +72,8 @@ export default reduxForm({
     form: TRANSACTION_FORM,
     initialValues: {
         date: Date.now()
-    }
+    },
+    validate
 })(TransactionForm);
 
 const styles = StyleSheet.create({
