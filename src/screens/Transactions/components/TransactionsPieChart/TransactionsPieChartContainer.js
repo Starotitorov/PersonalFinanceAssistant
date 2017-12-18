@@ -1,10 +1,17 @@
 import { connect } from 'react-redux';
 import { getTransactionsChartData } from 'src/selectors/transactions';
-import TransactionsPieChart from './TransactionsPieChart'
+import TransactionsPieChart from './TransactionsPieChart';
+import { getPieChartConfig } from './helpers';
 
 const mapStateToProps = state => {
+    const dataObject = getTransactionsChartData(state);
+    const { description, data, legend, styledCenterText } = getPieChartConfig(dataObject);
+
     return {
-        ...getTransactionsChartData(state)
+        description,
+        data,
+        legend,
+        styledCenterText
     }
 };
 
