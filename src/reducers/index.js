@@ -7,6 +7,7 @@ import categories from './categories';
 import application from './application';
 import network from './network';
 import transactions from './transactions';
+import trends from './trends';
 
 export default combineReducers({
     navigation,
@@ -16,5 +17,6 @@ export default combineReducers({
     categories,
     network,
     form,
-    transactions
+    transactions,
+    trends
 });

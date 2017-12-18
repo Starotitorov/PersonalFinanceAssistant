@@ -2,6 +2,7 @@ import React from 'react';
 import { StackNavigator } from 'react-navigation';
 import { DrawerButton } from 'src/components';
 import Trends from '../Trends';
+import TrendsHeaderTitle from '../TrendsHeaderTitle';
 
 export default StackNavigator({
     Trends: {
@@ -9,7 +10,8 @@ export default StackNavigator({
         navigationOptions: ({ navigation }) => {
             return {
                 title: 'Trends',
-                headerLeft: <DrawerButton navigation={navigation} />
+                headerLeft: <DrawerButton navigation={navigation} />,
+                headerTitle: <TrendsHeaderTitle />
             }
         }
     }

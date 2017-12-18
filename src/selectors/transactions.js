@@ -202,7 +202,9 @@ const INTERVALS_COUNT = 5;
 
 export const getTrendsData = ({
     transactions: {
-        byId,
+        byId
+    },
+    trends: {
         selectedAccount
     },
     categories: {
