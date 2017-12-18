@@ -1,11 +1,15 @@
 import { connect } from 'react-redux';
-import { getTransactionsChartData } from 'src/selectors/transactions';
-import TrendsHistogram from './TrendsHistogram'
+import { getHistogramConfig } from './helpers';
+import TrendsHistogram from './TrendsHistogram';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+    const { legend, data, xAxis } = getHistogramConfig(ownProps);
+
     return {
-        ...getTransactionsChartData(state)
-    }
+        legend,
+        data,
+        xAxis
+    };
 };
 
 export default connect(mapStateToProps)(TrendsHistogram);

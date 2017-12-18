@@ -1,4 +1,4 @@
-import { chain, values, find, sumBy, findIndex } from 'lodash';
+import { chain, values, find, sumBy, findIndex, times, constant } from 'lodash';
 import moment from 'moment';
 import * as categoryTypes from 'src/constants/categoryTypes';
 import periodTypes from 'src/constants/transactionPeriodTypes';
@@ -194,7 +194,7 @@ const getTransactionsStatisticsByIntervals = (transactions, intervals) => {
             const totalSum = Math.abs(sumBy(transactions, 'value'));
 
             acc[key] = totalSum;
-        }, [])
+        }, times(intervals.length, constant(0)))
         .value();
 };
 
@@ -202,13 +202,15 @@ const INTERVALS_COUNT = 5;
 
 export const getTrendsData = ({
     transactions: {
-        byId
+        byId,
+        selectedAccount
     },
     categories: {
         byId: categoriesById
     }
 }) => {
-    const transactionList = getTransactionsList(byId, categoriesById);
+    let transactionList = getTransactionsList(byId, categoriesById);
+    transactionList = filterTransactionsByAccount(transactionList, selectedAccount);
 
     const incomeTransactions = filterTransactionsByCategoryType(
         transactionList,
@@ -230,15 +232,10 @@ export const getTrendsData = ({
         intervals
     );
 
-    const result = [];
-    intervals.forEach((i, index) => {
-        result.push({
-            totalIncomeSum: incomeTransactionsStatistics[index],
-            totalOutcomeSum: outcomeTransactionsStatistics[index]
-        });
-    });
-
-    return result;
+    return {
+        income: incomeTransactionsStatistics,
+        outcome: outcomeTransactionsStatistics
+    };
 };
 
 export const getViewType = state => state.transactions.viewType;

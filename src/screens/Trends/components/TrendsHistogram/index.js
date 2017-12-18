@@ -1,3 +1,3 @@
-import TrendsHistogram from './TrendsHistogramContainer'
+import TrendsHistogram from './TrendsHistogramContainer';
 
-export default TrendsHistogram
+export default TrendsHistogram;

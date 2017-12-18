@@ -1,3 +1,3 @@
-import TrendsScreen from './TrendsScreen';
+import TrendsScreen from './TrendsScreenContainer';
 
 export default TrendsScreen;

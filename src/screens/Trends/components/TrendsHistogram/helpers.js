@@ -1,52 +1,55 @@
 import { processColor } from 'react-native';
-import { fontSizes } from 'src/styles';
 
-const COLORS = [
-    processColor('#C0FF8C'),
-    processColor('#FFF78C'),
-    processColor('#FFD08C'),
-    processColor('#8CEAFF'),
-    processColor('#FF8C9D')
-];
-
-export const getPieChartConfig = (
+export const getHistogramConfig = (
     {
-        values,
-        totalIncomeSum,
-        totalOutcomeSum,
-        totalBalance
+        data: {
+            income,
+            outcome
+        } = {}
     }
 ) => {
     return {
         legend: {
             enabled: true,
-            textSize: fontSizes.FONT_SIZE_M,
-            form: 'CIRCLE',
-            position: 'RIGHT_OF_CHART',
+            textSize: 14,
+            form: "SQUARE",
+            formSize: 14,
+            xEntrySpace: 10,
+            yEntrySpace: 5,
             wordWrapEnabled: true
         },
         data: {
             dataSets: [{
-                values,
-                label: 'Categories',
+                values: income,
+                label: 'Income',
                 config: {
-                    colors: COLORS,
-                    valueTextSize: fontSizes.FONT_SIZE_M,
-                    valueTextColor: processColor('green'),
-                    sliceSpace: 4,
-                    selectionShift: 12
+                    drawValues: false,
+                    colors: [processColor('red')],
+                }
+            }, {
+                values: outcome,
+                label: 'Outcome',
+                config: {
+                    drawValues: false,
+                    colors: [processColor('blue')],
                 }
             }],
+            config: {
+                barWidth: 0.2,
+                group: {
+                    fromX: 0,
+                    groupSpace: 0.1,
+                    barSpace: 0.1,
+                },
+            }
         },
-        description: {
-            text: `Balance: ${totalBalance}`,
-            textSize: fontSizes.FONT_SIZE_L,
-            textColor: processColor('darkgray')
-        },
-        styledCenterText: {
-            text: `+ ${totalIncomeSum}\n - ${Math.abs(totalOutcomeSum)}`,
-            color: processColor('darkgray'),
-            size: fontSizes.FONT_SIZE_L
+        xAxis: {
+            valueFormatter: ['', '', '', '', ''],
+            granularityEnabled: true,
+            granularity: 1,
+            axisMaximum: 5,
+            axisMinimum: 0,
+            centerAxisLabels: true
         }
-    };
+    }
 };

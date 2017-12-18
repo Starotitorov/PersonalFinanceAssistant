@@ -7,7 +7,8 @@ import CategoriesNavigator from '../CategoriesNavigator';
 import SettingsNavigator from '../SettingsNavigator';
 import Transactions from '../TransactionsNavigator';
 import AboutNavigator from '../AboutNavigator';
-import TransactionsNavigator from '../TransactionsNavigator/TransactionsNavigator';
+import TransactionsNavigator from '../TransactionsNavigator';
+import TrendsNavigator from '../TrendsNavigator';
 
 export default DrawerNavigator({
     Transactions: {
@@ -33,6 +34,14 @@ export default DrawerNavigator({
             drawerLabel: 'Categories',
             drawerIcon: ({ tintColor }) =>
                 <DrawerIcon name="sort" tintColor={tintColor} />
+        }
+    },
+    Trends: {
+        screen: TrendsNavigator,
+        navigationOptions: {
+            drawerLabel: 'Trends',
+            drawerIcon: ({ tintColor }) =>
+                <DrawerIcon name="trending-up" tintColor={tintColor} />
         }
     },
     About: {
