@@ -3,8 +3,9 @@ import { Field, reduxForm } from 'redux-form';
 import { View, StyleSheet, Button } from 'react-native';
 import { ACCOUNT_FORM } from 'src/constants/forms';
 import moment from 'moment';
-import { TextInputField, DatePickerField } from 'src/components';
+import { TextInputField, DatePickerField, SelectInputField } from 'src/components';
 import { IconField } from 'src/components';
+import supportedCurrency, * as currency from 'src/constants/currency';
 import validate from './validate';
 
 function AccountForm({ handleSubmit, submitting, invalid, createAccount }) {
@@ -27,14 +28,27 @@ function AccountForm({ handleSubmit, submitting, invalid, createAccount }) {
                 </View>
             </View>
             {createAccount &&
-                <Field
-                    name="balance"
-                    props={{
-                        label: 'Initial balance, BYN',
-                        placeholder: 'Enter initial balance...'
-                    }}
-                    component={TextInputField}
-                />
+                [
+                    <Field
+                        key="balance"
+                        name="balance"
+                        props={{
+                            label: 'Initial balance',
+                            placeholder: 'Enter initial balance...'
+                        }}
+                        component={TextInputField}
+                    />,
+                    <Field
+                        key="currency"
+                        name="currency"
+                        props={{
+                            label: 'Currency',
+                            placeholder: 'Enter currency...',
+                            options: supportedCurrency
+                        }}
+                        component={SelectInputField}
+                    />
+                ]
             }
             <Field
                 name="initialDate"
@@ -58,7 +72,8 @@ export default reduxForm({
     form: ACCOUNT_FORM,
     initialValues: {
         icon: 'cash',
-        initialDate: moment.now()
+        initialDate: moment.now(),
+        currency: currency.BYN
     },
     validate
 })(AccountForm);
