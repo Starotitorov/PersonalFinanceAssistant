@@ -26,7 +26,7 @@ export const isSameCurrency = (state, fromAccountId, toAccountId) => {
         return true;
     }
 
-    const { accounts } = state;
+    const { accounts: { byId: accounts } } = state;
 
     return accounts[fromAccountId].currency === accounts[toAccountId].currency;
 };
