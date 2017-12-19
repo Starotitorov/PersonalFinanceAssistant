@@ -60,7 +60,7 @@ function AccountForm({ handleSubmit, submitting, invalid, createAccount }) {
                 component={DatePickerField}
             />
             <Button
-                title="Add account"
+                title={createAccount ? 'Add account' : 'Save changes'}
                 disabled={submitting || invalid}
                 onPress={handleSubmit}
             />

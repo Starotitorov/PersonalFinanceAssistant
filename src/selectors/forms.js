@@ -1,12 +1,10 @@
 import { INCOME_CATEGORY } from 'src/constants/categoryTypes';
 import { getSelectInputOptionsFromAllAccounts } from 'src/selectors/accounts';
 import { getSelectInputOptionsFromAllCategories } from 'src/selectors/categories';
-import icons from 'src/constants/icons';
-import { values } from 'lodash';
 
 export const getCategoryFormInitialValues = ({
     name = '',
-    icon = icons[0],
+    icon,
     categoryTypeId = INCOME_CATEGORY
 } = {}) => {
     return {
@@ -20,7 +18,7 @@ export const getEditAccountFormInitialValues = ({ accounts: { byId, selected } }
     if (!selected || !byId[selected]) {
         return {
             name: null,
-            icon: icons[0],
+            icon: null,
             initialDate: null
         };
     }

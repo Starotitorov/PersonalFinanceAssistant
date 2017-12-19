@@ -22,7 +22,7 @@ export default class IconField extends Component {
                     <View style={styles.container}>
                         <Icon
                             iconStyle={styles.icon}
-                            name={input.value}
+                            name={input.value || 'gesture-tap'}
                             type="material-community"
                         />
                     </View>
