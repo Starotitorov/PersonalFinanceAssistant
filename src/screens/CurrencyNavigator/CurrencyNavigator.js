@@ -8,7 +8,7 @@ export default StackNavigator({
         screen: Currency,
         navigationOptions: ({ navigation }) => {
             return {
-                title: 'Currency',
+                title: 'Exchange rates',
                 headerLeft: <DrawerButton navigation={navigation} />
             }
         }

@@ -1,33 +1,37 @@
-import React from 'react';
-import {View} from 'react-native';
-import {Card, Text} from 'react-native-elements';
-import config from 'src/config';
+import React, { Component } from 'react';
+import { entries } from 'lodash';
+import { ScrollView } from 'react-native';
+import { Card, Text } from 'react-native-elements';
 
-export default function CurrencyScreen() {
-    return (
-        <View>
-            <Card>
-                <Text h4>
-                    Exchange rates:
-                </Text>
-            </Card>
-            <Card>
-                <Text>
-                    1 USD -> 2.05 BYN
-                </Text>
-            </Card>
-            <Card>
-                <Text>
-                    1 EUR -> 2.3 BYN
-                </Text>
-            </Card>
-            <Card>
-                <Text>
-                    1 EUR -> 1.9 USD
-                </Text>
-            </Card>
+const BASE_CURRENCY = 'USD';
 
+export default class CurrencyScreen extends Component {
+    componentDidMount() {
+        this.props.fetchExchangeRates();
+    }
 
-        </View>
-    );
+    render() {
+        const { exchangeRates } = this.props;
+
+        return (
+            <ScrollView>
+                <Card>
+                    <Text h4>
+                        Exchange rates:
+                    </Text>
+                </Card>
+                {
+                    entries(exchangeRates).map(entry => {
+                        return (
+                            <Card key={entry[0]}>
+                                <Text>
+                                    1 {BASE_CURRENCY} -> {entry[1]} {entry[0]}
+                                </Text>
+                            </Card>
+                        )
+                    })
+                }
+            </ScrollView>
+        );
+    }
 }

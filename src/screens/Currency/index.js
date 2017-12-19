@@ -1,3 +1,3 @@
-import CurrencyScreen from './CurrencyScreen';
+import CurrencyScreen from './CurrencySreenContainer';
 
 export default CurrencyScreen;

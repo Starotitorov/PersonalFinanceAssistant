@@ -9,6 +9,7 @@ import Transactions from '../TransactionsNavigator';
 import AboutNavigator from '../AboutNavigator';
 import TransactionsNavigator from '../TransactionsNavigator';
 import TrendsNavigator from '../TrendsNavigator';
+import CurrencyNavigator from '../CurrencyNavigator';
 
 export default DrawerNavigator({
     Transactions: {
@@ -42,6 +43,14 @@ export default DrawerNavigator({
             drawerLabel: 'Trends',
             drawerIcon: ({ tintColor }) =>
                 <DrawerIcon name="trending-up" tintColor={tintColor} />
+        }
+    },
+    ExchangeRates: {
+        screen: CurrencyNavigator,
+        navigationOptions: {
+            drawerLabel: 'Exchange rates',
+            drawerIcon: ({ tintColor }) =>
+                <DrawerIcon name="attach-money" tintColor={tintColor} />
         }
     },
     About: {

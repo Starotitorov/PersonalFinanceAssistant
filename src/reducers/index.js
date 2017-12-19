@@ -8,6 +8,7 @@ import application from './application';
 import network from './network';
 import transactions from './transactions';
 import trends from './trends';
+import exchangeRates from './exchangeRates';
 
 export default combineReducers({
     navigation,
@@ -18,5 +19,6 @@ export default combineReducers({
     network,
     form,
     transactions,
-    trends
+    trends,
+    exchangeRates
 });
