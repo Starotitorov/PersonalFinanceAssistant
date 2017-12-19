@@ -1,22 +1,20 @@
 import React from 'react';
-import { Picker, View, Text } from 'react-native';
+import { View, Text } from 'react-native';
+import SelectInput from 'react-native-select-input-ios';
 import styles from './SelectInputStyles';
 
-export default function SelectInput({ label, options, ...rest }) {
+export default function SelectInputComponent({ label, options, ...rest }) {
     return (
         <View>
             {label &&
                 <Text style={styles.label}>{label}</Text>
             }
-            <Picker
+            <SelectInput
                 {...rest}
-                onValueChange={rest.onChange}
-                selectedValue={rest.value}
-            >
-                {options.map(option => (
-                    <Picker.Item key={option.value} label={option.label} value={option.value} />
-                ))}
-            </Picker>
+                value={rest.value}
+                options={options}
+                onSubmitEditing={rest.onChange}
+            />
         </View>
     );
 }

@@ -22,6 +22,7 @@
     "react-native-fetch-mock": "^0.3.1",
     "react-native-gravatar": "^1.0.2",
     "react-native-modal-datetime-picker": "^4.13.0",
+    "react-native-select-input-ios": "^1.1.4",
     "react-native-spinkit": "^1.1.1",
     "react-native-statusbar-alert": "^0.4.0",
     "react-native-vector-icons": "^4.4.2",
