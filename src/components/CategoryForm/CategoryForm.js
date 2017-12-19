@@ -7,6 +7,7 @@ import SelectInput from '../SelectInputField';
 import TextInput from '../TextInputField';
 import options from './CategoryFormOptions';
 import validate from './validate';
+import { PrimaryButton } from 'src/components';
 
 function CategoryForm({ handleSubmit, submitting, invalid, createCategory }) {
     return (
@@ -35,7 +36,7 @@ function CategoryForm({ handleSubmit, submitting, invalid, createCategory }) {
                         options={options.categoryType}
                     />
             }
-            <Button
+            <PrimaryButton
                 disabled={invalid || submitting}
                 onPress={handleSubmit}
                 title={createCategory ? 'Create category' : 'Edit category'}

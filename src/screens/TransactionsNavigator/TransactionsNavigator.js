@@ -4,6 +4,8 @@ import { DrawerButton, SwitchViewTypeIcon } from 'src/components';
 import TransactionsHeaderTitle from '../TransactionsHeaderTitle';
 import Transactions from '../Transactions';
 import AddTransaction from '../AddTransaction';
+import EditTransaction from '../EditTransaction';
+import EditTransactionHeaderRight from '../EditTransactionHeaderRight';
 
 export default StackNavigator({
     Transactions: {
@@ -15,6 +17,13 @@ export default StackNavigator({
                 headerLeft: <DrawerButton navigation={navigation} />,
                 headerRight: <SwitchViewTypeIcon />
             }
+        }
+    },
+    EditTransaction: {
+        screen: EditTransaction,
+        navigationOptions: {
+            title: 'Edit transaction',
+            headerRight: <EditTransactionHeaderRight />
         }
     },
     AddTransaction: {

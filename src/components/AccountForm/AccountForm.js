@@ -7,6 +7,7 @@ import { TextInputField, DatePickerField, SelectInputField } from 'src/component
 import { IconField } from 'src/components';
 import supportedCurrency, * as currency from 'src/constants/currency';
 import validate from './validate';
+import { PrimaryButton } from 'src/components';
 
 function AccountForm({ handleSubmit, submitting, invalid, createAccount }) {
     return (
@@ -59,7 +60,7 @@ function AccountForm({ handleSubmit, submitting, invalid, createAccount }) {
                 format={value => moment(value).format('MM/DD/YYYY')}
                 component={DatePickerField}
             />
-            <Button
+            <PrimaryButton
                 title={createAccount ? 'Add account' : 'Save changes'}
                 disabled={submitting || invalid}
                 onPress={handleSubmit}

@@ -8,12 +8,12 @@ import { LIST, CHART } from 'src/constants/transactionsViewTypes';
 
 export default class TransactionsScreen extends Component {
     renderViewInner() {
-        const { viewType, onRefresh, fetching } = this.props;
+        const { viewType, onRefresh, fetching, onSelectTransaction } = this.props;
 
         switch (viewType) {
             case LIST:
                 return (
-                    <TransactionsList fetching={fetching} onRefresh={onRefresh} />
+                    <TransactionsList fetching={fetching} onRefresh={onRefresh} onSelectTransaction={onSelectTransaction} />
                 );
             case CHART:
                 return (

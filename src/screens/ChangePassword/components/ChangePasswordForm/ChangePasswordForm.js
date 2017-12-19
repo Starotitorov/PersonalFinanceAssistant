@@ -3,6 +3,7 @@ import { View, Button, StyleSheet } from 'react-native';
 import { Field, reduxForm } from 'redux-form';
 import { TextInputField } from 'src/components';
 import { CHANGE_PASSWORD_FORM } from 'src/constants/forms';
+import { PrimaryButton } from 'src/components';
 
 function ChangePasswordForm({ handleSubmit, submitting, invalid }) {
     return (
@@ -34,7 +35,7 @@ function ChangePasswordForm({ handleSubmit, submitting, invalid }) {
                 }}
                 component={TextInputField}
             />
-            <Button
+            <PrimaryButton
                 title="Change"
                 disabled={submitting || invalid}
                 onPress={handleSubmit}

@@ -7,12 +7,12 @@ import TransactionsListItem from '../TransactionsListItem/index';
 const keyExtractor = (item, index) => index;
 
 class TransactionsList extends Component {
-    renderItem({ item }) {
-        return <TransactionsListItem data={item} />;
-    }
+    renderItem=({ item })=> {
+        return <TransactionsListItem data={item} onSelectTransaction={this.props.onSelectTransaction} />;
+    };
 
     render() {
-        const { fetching, onRefresh } = this.props;
+        const { fetching, onRefresh, onSelectTransaction } = this.props;
 
         return (
             <View style={styles.container}>

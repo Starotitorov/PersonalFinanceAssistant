@@ -2,6 +2,7 @@ import { INCOME_CATEGORY } from 'src/constants/categoryTypes';
 import { getSelectInputOptionsFromAllAccounts } from 'src/selectors/accounts';
 import { getSelectInputOptionsFromAllCategories } from 'src/selectors/categories';
 
+
 export const getCategoryFormInitialValues = ({
     name = '',
     icon,
@@ -14,7 +15,7 @@ export const getCategoryFormInitialValues = ({
     };
 };
 
-export const getEditAccountFormInitialValues = ({ accounts: { byId, selected } }) => {
+export const getEditAccountFormInitialValues = ({ accounts: {byId, selected} }) => {
     if (!selected || !byId[selected]) {
         return {
             name: null,
@@ -42,5 +43,22 @@ export const getTransactionFormOptions = state => {
     return {
         accounts: getSelectInputOptionsFromAllAccounts(state),
         categories: getSelectInputOptionsFromAllCategories(state)
+    };
+};
+
+export const getEditTransactionFormInitialValues = (
+    {
+        transactions: {byId, selected}
+    }
+) => {
+    const {value, note, date, userId, categoryId, accountId} = byId[selected];
+
+    return {
+        value,
+        note,
+        date,
+        userId,
+        categoryId,
+        accountId
     };
 };

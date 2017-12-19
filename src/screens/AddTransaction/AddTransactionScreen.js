@@ -8,7 +8,7 @@ export default function AddTransactionScreen({ onAddTransaction, options }) {
             <TransactionForm
                 onSubmit={onAddTransaction}
                 options={options}
-                submitBtnText="Create transaction"
+                createTransaction
             />
         </View>
     );

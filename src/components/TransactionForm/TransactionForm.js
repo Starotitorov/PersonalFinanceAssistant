@@ -7,6 +7,7 @@ import SelectInput from '../SelectInputField';
 import TextInput from '../TextInputField';
 import DatePickerField from '../DatePickerField';
 import validate from './validate';
+import { PrimaryButton } from 'src/components';
 
 function TransactionForm(
     {
@@ -14,7 +15,7 @@ function TransactionForm(
         submitting,
         invalid,
         options,
-        submitBtnText
+        createTransaction
     }
 ) {
     return (
@@ -27,22 +28,29 @@ function TransactionForm(
                 }}
                 component={TextInput}
             />
-            <Field
-                name="accountId"
-                component={SelectInput}
-                props={{
-                    label: 'Account',
-                    options:options.accounts
-                }}
-            />
-            <Field
-                name="categoryId"
-                component={SelectInput}
-                props={{
-                    label: 'Category',
-                    options: options.categories
-                }}
-            />
+            {
+                createTransaction &&
+                    [
+                        <Field
+                            key="accountId"
+                            name="accountId"
+                            component={SelectInput}
+                            props={{
+                                label: 'Account',
+                                options: options.accounts
+                            }}
+                        />,
+                        <Field
+                            key="categoryId"
+                            name="categoryId"
+                            component={SelectInput}
+                            props={{
+                                label: 'Category',
+                                options: options.categories
+                            }}
+                        />
+                    ]
+            }
             <Field
                 name="date"
                 props={{
@@ -59,10 +67,10 @@ function TransactionForm(
                 }}
                 component={TextInput}
             />
-            <Button
+            <PrimaryButton
                 disabled={invalid || submitting}
                 onPress={handleSubmit}
-                title={submitBtnText}
+                title={createTransaction ? 'Add transaction' : 'Save changes'}
             />
         </ScrollView>
     );

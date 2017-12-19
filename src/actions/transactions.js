@@ -8,6 +8,11 @@ export const changePeriodView = createAction(
     periodType => ({ periodType })
 );
 
+export const selectTransaction = createAction(
+    'TRANSACTIONS/SELECT_TRANSACTION',
+    (id) => ({ id })
+);
+
 export const changeDate = isChangeForward => (dispatch, getState) => {
     const { transactions: { currentDate, periodType } } = getState();
     let periodModificator = periodType;

@@ -13,17 +13,19 @@ export default class TransactionsListItem extends Component {
     };
 
     toggleOpen = () => {
-        this.setState({ isOpen: !this.state.isOpen });
+        this.setState({isOpen: !this.state.isOpen});
     };
 
     renderSubItems(data) {
-        return data.map(({ date, value, id }) => (
-            <View key={ id } style={styles.subItemContainer}>
-                <View style={styles.subItemDateContainer}>
-                    <Text>{ formatDate(date) }</Text>
+        return data.map(({date, value, id}) => (
+            <TouchableOpacity key={ id } onPress={() => this.props.onSelectTransaction(id)}>
+                <View style={styles.subItemContainer}>
+                    <View style={styles.subItemDateContainer}>
+                        <Text>{ formatDate(date) }</Text>
+                    </View>
+                    <Text>{ value }</Text>
                 </View>
-                <Text>{ value }</Text>
-            </View>
+            </TouchableOpacity>
         ));
     }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Button } from 'react-native';
+import { View } from 'react-native';
 import { Field, reduxForm } from 'redux-form';
 import { TextInputField, PrimaryButton } from 'src/components';
 import validate from './validate';

@@ -49,8 +49,8 @@ export default DrawerNavigator({
         screen: CurrencyNavigator,
         navigationOptions: {
             drawerLabel: 'Exchange rates',
-            drawerIcon: ({ tintColor }) =>
-                <DrawerIcon name="attach-money" tintColor={tintColor} />
+            drawerIcon: ({tintColor}) =>
+                <DrawerIcon name="attach-money" tintColor={tintColor}/>
         }
     },
     About: {
