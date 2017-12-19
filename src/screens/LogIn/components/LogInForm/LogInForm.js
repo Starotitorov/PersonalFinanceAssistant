@@ -1,14 +1,15 @@
 import React from 'react';
-import { View, Button } from 'react-native';
+import { View } from 'react-native';
 import { Field, reduxForm } from 'redux-form';
-import { TextInputField, PrimaryButton } from 'src/components';
+import { TextInputField, PrimaryButton, GlobalError } from 'src/components';
 import validate from './validate';
 import { LOG_IN_FORM } from 'src/constants/forms';
 import styles from './LogInFormStyles';
 
-function LogInForm({ handleSubmit, submitting, invalid }) {
+function LogInForm({ handleSubmit, submitting, error, invalid }) {
     return (
         <View style={styles.container}>
+            <GlobalError message={error} />
             <View style={styles.fields}>
                 <Field
                     name="email"

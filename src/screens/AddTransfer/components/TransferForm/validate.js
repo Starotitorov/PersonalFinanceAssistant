@@ -1,9 +1,24 @@
 import { Validator } from 'src/lib/index';
 
 export default Validator.combineValidators({
-    fromAccountId: Validator.required,
-    toAccountId: Validator.required,
-    value: [Validator.required, Validator.number],
-    exchangeRate: Validator.number,
-    date: Validator.required
+    fromAccountId: {
+        fieldName: 'from account',
+        validators: Validator.required
+    },
+    toAccountId: {
+        fieldName: 'to account',
+        validators: Validator.required
+    },
+    value: {
+        fieldName: 'sum',
+        validators: [Validator.required, Validator.number]
+    },
+    exchangeRate: {
+        fieldName: 'exchange rate',
+        validators: Validator.number
+    },
+    date: {
+        fieldName: 'date',
+        validators: Validator.required
+    }
 });

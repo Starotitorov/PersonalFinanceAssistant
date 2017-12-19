@@ -1,8 +1,20 @@
 import { Validator } from 'src/lib/index';
 
 export default Validator.combineValidators({
-    accountId: Validator.required,
-    categoryId: Validator.required,
-    value: [Validator.required, Validator.number],
-    date: Validator.required
+    accountId: {
+        fieldName: 'account',
+        validators: Validator.required
+    },
+    categoryId: {
+        fieldName: 'category',
+        validators: Validator.required
+    },
+    value: {
+        fieldName: 'sum',
+        validators: [Validator.required, Validator.number]
+    },
+    date: {
+        fieldName: 'date',
+        validators: Validator.required
+    }
 });

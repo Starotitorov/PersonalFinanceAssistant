@@ -1,6 +1,15 @@
 import _ from 'lodash';
 
 const EMAIL_REGEXP = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const PASSWORD_REGEXP = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*_-]).{8,}$/;
+
+export const password = (value, name) => {
+    if (value && value.trim()) {
+        return !PASSWORD_REGEXP.test(value)
+            ? `The ${name} should contain minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character`
+            : undefined;
+    }
+};
 
 export const email = (value, name) => {
     if (value && value.trim()) {
@@ -39,13 +48,13 @@ export const combineValidators = fields => (values) => {
 
     _.keys(fields).forEach((field) => {
         const value = values[field];
-        const validators = fields[field];
+        const { fieldName, validators } = fields[field];
 
         if (Array.isArray(validators)) {
             const fieldErrors = [];
 
             validators.forEach((validator) => {
-                const error = validator(value, field);
+                const error = validator(value, fieldName);
 
                 if (error) {
                     fieldErrors.push(error);
@@ -56,7 +65,7 @@ export const combineValidators = fields => (values) => {
                 errors[field] = fieldErrors.join(', ');
             }
         } else if (_.isFunction(validators)) {
-            errors[field] = validators(value, field);
+            errors[field] = validators(value, fieldName);
         }
     });
 

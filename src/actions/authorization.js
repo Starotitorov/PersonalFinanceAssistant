@@ -43,9 +43,14 @@ export const logIn = (email, password) => dispatch => {
                 ]
             }));
         })
-        .catch(({ error }) => Promise.reject(new SubmissionError({
-            _error: error
-        })));
+        .catch(response => {
+            return response.text()
+                .then(error =>
+                    Promise.reject(new SubmissionError({
+                        _error: error
+                    }))
+                )
+        });
 };
 
 export const singUp = (userData) => dispatch => {

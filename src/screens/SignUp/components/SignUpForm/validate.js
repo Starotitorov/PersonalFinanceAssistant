@@ -1,8 +1,20 @@
 import { Validator } from 'src/lib';
 
 export default Validator.combineValidators({
-    name: Validator.required,
-    email: [Validator.email, Validator.required],
-    password: Validator.required,
-    passwordConfirmation: Validator.required
+    name: {
+        fieldName: 'name',
+        validators: Validator.required
+    },
+    email: {
+        fieldName: 'email',
+        validators: [Validator.email, Validator.required]
+    },
+    password: {
+        fieldName: 'password',
+        validators: [Validator.required, Validator.password]
+    },
+    passwordConfirmation: {
+        fieldName: 'password confirmation',
+        validators: Validator.required
+    }
 });
