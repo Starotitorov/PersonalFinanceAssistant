@@ -2,11 +2,6 @@ import React from 'react';
 import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import LogInForm from './components/LogInForm';
 import FacebookLoginBtn from './components/FacebookLoginBtn';
-import {
-    LoginButton,
-    AccessToken
-} from 'react-native-fbsdk';
-import { alerts } from 'src/utils'
 
 export default function LogInScreen({ onLogInUser, onNewUser, onLoginFacebook }) {
     return (
