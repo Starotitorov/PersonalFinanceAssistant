@@ -129,3 +129,10 @@ export const getCurrentUser = () => async dispatch => {
         }));
     }
 };
+
+export const changePassword = data => dispatch => {
+    return api.changePassword(data)
+        .then(() => {
+            dispatch(logout());
+        });
+};

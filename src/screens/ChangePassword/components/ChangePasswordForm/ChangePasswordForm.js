@@ -4,6 +4,7 @@ import { Field, reduxForm } from 'redux-form';
 import { TextInputField } from 'src/components';
 import { CHANGE_PASSWORD_FORM } from 'src/constants/forms';
 import { PrimaryButton } from 'src/components';
+import validate from './validate';
 
 function ChangePasswordForm({ handleSubmit, submitting, invalid }) {
     return (
@@ -46,6 +47,7 @@ function ChangePasswordForm({ handleSubmit, submitting, invalid }) {
 
 export default reduxForm({
     form: CHANGE_PASSWORD_FORM,
+    validate
 })(ChangePasswordForm);
 
 const styles = StyleSheet.create({

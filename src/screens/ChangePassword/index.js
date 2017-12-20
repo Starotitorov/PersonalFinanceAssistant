@@ -1,3 +1,3 @@
-import ChangePasswordScreen from './ChangePasswordScreen';
+import ChangePasswordScreen from './ChangePasswordScreenContainer';
 
 export default ChangePasswordScreen;

@@ -140,3 +140,6 @@ export const addTransaction = async transactionData => fetch(`${API_URL}/transac
     },
     body: JSON.stringify({ transaction: transactionData })
 });
+
+// TODO: Add api call
+export const changePassword = data => Promise.resolve(data);

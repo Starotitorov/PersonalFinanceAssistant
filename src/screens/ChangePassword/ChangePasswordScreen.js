@@ -2,17 +2,13 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import ChangePasswordForm from './components/ChangePasswordForm';
 
-export default function ChangePasswordScreen({ onSubmit }) {
+export default function ChangePasswordScreen({ changePassword }) {
     return (
         <View style={styles.container}>
-            <ChangePasswordForm onSubmit={onSubmit} />
+            <ChangePasswordForm onSubmit={changePassword} />
         </View>
     );
 }
-
-ChangePasswordScreen.defaultProps = {
-    onSubmit: () => {}
-};
 
 const styles = StyleSheet.create({
     container: {
