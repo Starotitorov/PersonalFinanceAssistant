@@ -8,6 +8,7 @@ export default function PrimaryButton({ disabled, onPress, title, containerViewS
         <Button
             containerViewStyle={[styles.buttonContainer, containerViewStyle]}
             buttonStyle={styles.button}
+            disabledStyle={styles.disabledStyle}
             title={title}
             disabled={disabled}
             onPress={onPress}
@@ -23,5 +24,8 @@ const styles = StyleSheet.create({
     button: {
         backgroundColor: colors.COLOR_PRIMARY,
         borderRadius: 20
+    },
+    disabledStyle: {
+        backgroundColor: 'darkgrey'
     }
 });

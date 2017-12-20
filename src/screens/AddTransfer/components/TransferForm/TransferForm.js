@@ -1,12 +1,13 @@
 import React from 'react';
-import { ScrollView, View, Button, StyleSheet } from 'react-native';
+import { ScrollView, Button } from 'react-native';
 import { Field, reduxForm } from 'redux-form';
 import moment from 'moment';
 import { TRANSFER_FORM } from 'src/constants/forms';
 import {
     TextInputField as TextInput,
     SelectInputField as SelectInput,
-    DatePickerField
+    DatePickerField,
+    PrimaryButton
 } from 'src/components';
 import styles from './TransferFormStyles';
 import validate from './validate';
@@ -65,7 +66,7 @@ function TransferForm({ isSameCurrency, handleSubmit, submitting, invalid, optio
                 }}
                 component={TextInput}
             />
-            <Button
+            <PrimaryButton
                 disabled={invalid || submitting}
                 onPress={handleSubmit}
                 title="Transfer"

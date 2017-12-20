@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { entries } from 'lodash';
-import { ScrollView } from 'react-native';
+import { ScrollView, View, StyleSheet } from 'react-native';
 import { Card, Text } from 'react-native-elements';
 
 const BASE_CURRENCY = 'USD';
@@ -12,26 +12,30 @@ export default class CurrencyScreen extends Component {
 
     render() {
         const { exchangeRates } = this.props;
+        const pairs = entries(exchangeRates);
 
         return (
             <ScrollView>
                 <Card>
-                    <Text h4>
-                        Exchange rates:
-                    </Text>
+                    {
+                        pairs.map((entry, index) => {
+                            return (
+                                <View key={entry[0]} style={index !== pairs.length - 1 && styles.item}>
+                                    <Text>
+                                        1 {BASE_CURRENCY} -> {entry[1]} {entry[0]}
+                                    </Text>
+                                </View>
+                            )
+                        })
+                    }
                 </Card>
-                {
-                    entries(exchangeRates).map(entry => {
-                        return (
-                            <Card key={entry[0]}>
-                                <Text>
-                                    1 {BASE_CURRENCY} -> {entry[1]} {entry[0]}
-                                </Text>
-                            </Card>
-                        )
-                    })
-                }
             </ScrollView>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    item: {
+        marginBottom: 8
+    }
+});
