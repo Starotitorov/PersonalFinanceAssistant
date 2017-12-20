@@ -19,6 +19,15 @@ export const email = (value, name) => {
     }
 };
 
+export const range = (min = -Infinity, max=Infinity) => (value, name) => {
+    const number = Number(value);
+
+    if (number) {
+        return number < min || number > max ? `The ${name} is invalid` : undefined;
+    }
+
+};
+
 export const required = (value, name) => {
     if (!value) {
         return `The ${name} is required`;

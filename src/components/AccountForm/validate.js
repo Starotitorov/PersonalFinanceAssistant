@@ -7,7 +7,7 @@ export default Validator.combineValidators({
     },
     balance: {
         fieldName: 'balance',
-        validators: [Validator.required, Validator.number]
+        validators: [Validator.required, Validator.number, Validator.range(1)]
     },
     initialDate: {
         fieldName: 'initial balance',

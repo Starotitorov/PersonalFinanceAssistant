@@ -7,7 +7,7 @@ export default class EditCategoryScreen extends Component {
     handleSubmit = ({ name: nameValue, ...rest }) => {
         const name = nameValue.trim();
 
-        this.props.onUpdateCategory({ name, ...rest });
+        return this.props.onUpdateCategory({ name, ...rest });
     };
 
     render() {

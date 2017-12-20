@@ -7,7 +7,7 @@ export default class AddCategoryScreen extends Component {
     handleSubmit = ({ name: nameValue, ...rest }) => {
         const name = nameValue.trim();
 
-        this.props.onAddCategory({ name, ...rest });
+        return this.props.onAddCategory({ name, ...rest });
     };
 
     render() {

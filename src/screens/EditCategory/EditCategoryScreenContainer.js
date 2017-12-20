@@ -15,7 +15,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onUpdateCategory(data) {
-            dispatch(updateCategory(data))
+            return dispatch(updateCategory(data))
         }
     };
 };

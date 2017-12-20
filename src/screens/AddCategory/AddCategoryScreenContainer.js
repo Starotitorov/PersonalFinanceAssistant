@@ -12,7 +12,7 @@ const mapStateToProps = () => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onAddCategory(data) {
-            dispatch(addCategory(data))
+            return dispatch(addCategory(data))
         }
     };
 };
