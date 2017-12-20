@@ -7,7 +7,8 @@ import {
     setTransactions,
     resetTransactions,
     setSelectedAccount,
-    setViewType
+    setViewType,
+    setSelectedTransaction
 } from 'src/actions/transactions';
 import * as transactionsViewTypes from 'src/constants/transactionsViewTypes';
 import periodTypes from 'src/constants/transactionPeriodTypes';
@@ -16,6 +17,7 @@ const initialState = {
     currentDate: moment(),
     periodType: periodTypes.WEEK.value,
     byId: {},
+    selected: null,
     order: [],
     fetching: false,
     selectedAccount: null,
@@ -68,6 +70,12 @@ const transactions = handleActions({
             ...state,
             viewType
         }
+    },
+    [setSelectedTransaction]: (state, action) => {
+        return {
+            ...state,
+            selected: action.payload.id
+        };
     }
 }, initialState);
 

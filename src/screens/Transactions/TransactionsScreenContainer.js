@@ -7,7 +7,7 @@ import { isApplicationDataFetching } from 'src/selectors/application';
 import { getViewType, isTransactionsFetching } from 'src/selectors/transactions';
 import { withLoadingIndicator } from 'src/components';
 import TransactionsScreen from './TransactionsScreen';
-import { selectTransaction } from 'src/actions/transactions';
+import { setSelectedTransaction } from 'src/actions/transactions';
 
 const mapStateToProps = state => {
     return {
@@ -28,7 +28,7 @@ const mapDispatchToProps = dispatch => {
             dispatch(changeDate());
         },
         onSelectTransaction(id) {
-            dispatch(selectTransaction(id));
+            dispatch(setSelectedTransaction(id));
 
             dispatch(NavigationActions.navigate({
                 routeName: 'EditTransaction'

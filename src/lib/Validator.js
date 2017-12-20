@@ -26,8 +26,10 @@ export const required = (value, name) => {
 };
 
 export const number = (value, name) => {
-    if (value && value.trim()) {
-        if (isNaN(value) || isNaN(parseFloat(value))) {
+    if (value) {
+        const str = String(value);
+
+        if (isNaN(str) || isNaN(parseFloat(str))) {
             return `The ${name} is not a valid number`;
         }
     }

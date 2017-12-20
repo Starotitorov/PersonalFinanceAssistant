@@ -2,10 +2,15 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { TransactionForm } from 'src/components';
 
-export default function EditTransactionScreen({ onUpdateTransaction }) {
+export default function EditTransactionScreen({ initialValues, onUpdateTransaction }) {
+    debugger;
     return (
         <View style={styles.container}>
-            <TransactionForm onSubmit={onUpdateTransaction} />
+            <TransactionForm
+                enableReinitialize
+                initialValues={initialValues}
+                onSubmit={onUpdateTransaction}
+            />
         </View>
     );
 }

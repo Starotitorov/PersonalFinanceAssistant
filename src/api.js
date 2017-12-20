@@ -141,5 +141,7 @@ export const addTransaction = async transactionData => fetch(`${API_URL}/transac
     body: JSON.stringify({ transaction: transactionData })
 });
 
-// TODO: Add api call
+// TODO: Add api calls
 export const changePassword = data => Promise.resolve(data);
+export const updateTransaction = (id, data) => Promise.resolve(data);
+export const removeTransaction = id => Promise.resolve(id);

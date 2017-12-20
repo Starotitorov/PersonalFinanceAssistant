@@ -8,11 +8,6 @@ export const changePeriodView = createAction(
     periodType => ({ periodType })
 );
 
-export const selectTransaction = createAction(
-    'TRANSACTIONS/SELECT_TRANSACTION',
-    (id) => ({ id })
-);
-
 export const changeDate = isChangeForward => (dispatch, getState) => {
     const { transactions: { currentDate, periodType } } = getState();
     let periodModificator = periodType;
@@ -62,6 +57,41 @@ export const addTransaction = transactionData => dispatch => {
             }))
         });
 };
+export const updateTransaction = transactionData => (dispatch, getState) => {
+    const { transactions: { selected } } = getState();
+
+    return api.updateTransaction(selected, transactionData)
+        .then(async () => {
+            await dispatch(fetchTransactions());
+
+            dispatch(NavigationActions.reset({
+                index: 0,
+                actions: [
+                    NavigationActions.navigate({ routeName: 'Transactions' })
+                ]
+            }))
+        });
+};
+export const removeTransaction = () => (dispatch, getState) => {
+    const { transactions: { selected } } = getState();
+
+    return api.removeTransaction(selected)
+        .then(async () => {
+            await dispatch(fetchTransactions());
+
+            dispatch(NavigationActions.reset({
+                index: 0,
+                actions: [
+                    NavigationActions.navigate({ routeName: 'Transactions' })
+                ]
+            }))
+        });
+};
+
+export const setSelectedTransaction = createAction(
+    'TRANSACTIONS/SET_SELECTED_TRANSACTION',
+    id => ({ id })
+);
 
 export const setSelectedAccount = createAction(
     'TRANSACTIONS/SET_SELECTED_ACCOUNT',
