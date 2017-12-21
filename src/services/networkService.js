@@ -1,5 +1,11 @@
-const CONNECTION_INFO_TYPE_NONE = 'none';
 import { alerts } from 'src/utils';
+import { fetch } from 'src/lib';
+// import FetchMock from 'react-native-fetch-mock';
+
+const CONNECTION_INFO_TYPE_NONE = 'none';
+
+// Mock api
+// global.fetch = new FetchMock(require('../../mocks/api')).fetch;
 
 let connectionInfo;
 

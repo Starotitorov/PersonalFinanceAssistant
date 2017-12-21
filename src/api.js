@@ -1,14 +1,9 @@
 import config from './config';
-// import FetchMock from 'react-native-fetch-mock';
-import { fetch } from 'src/lib';
 import { JWTStorage } from 'src/utils';
 import { networkService } from 'src/services';
 
 const API_URL = config.apiUrl;
 const AUTH_API_URL = `${API_URL}/auth`;
-
-// Mock api
-// global.fetch = new FetchMock(require('../mocks/api')).fetch;
 
 export const signIn = (email, password) => networkService.sendRequest(`${AUTH_API_URL}/signin`, {
     method: 'POST',
@@ -141,6 +136,8 @@ export const addTransaction = async transactionData => networkService.sendReques
     },
     body: JSON.stringify({ transaction: transactionData })
 });
+
+export const fetchExchangeRates = () => networkService.sendRequest(config.exchangeRatesUrl);
 
 // TODO: Add api calls
 export const changePassword = data => Promise.resolve(data);

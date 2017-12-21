@@ -1,34 +1,29 @@
 import { Platform } from 'react-native';
+import { BASE_CURRENCY } from 'src/constants/currency';
 
 const facebookLoginBehaviour = Platform.OS === 'android' ? 'web_only' : 'web';
 
-// TODO: fill the information
 const DEVELOPERS = [
     {
         email: 'starotitorov1997@gmail.com',
         name: 'Artem Starotitorov'
     },
-
-    // TODO: uncomment this lines
-    // {
-    //     name: 'Andrey Gayduk'
-    // },
-
+    {
+        name: 'Andrey Gayduk'
+    },
     {
         name: 'Denis Gridiushko'
     },
     {
         name: 'Valera Yalovchuk'
-    },
-
-    //TODO: remove this lines
-    {
-        name: 'Alexander Evdakov'
     }
 ];
+
+const EXCHANGE_RATES_URL = `https://api.fixer.io/latest?base=${BASE_CURRENCY}`;
 
 export default {
     apiUrl: 'http://dzianis.mooo.com:8090/api/v1',
     developers: DEVELOPERS,
-    facebookLoginBehaviour
+    facebookLoginBehaviour,
+    exchangeRatesUrl: EXCHANGE_RATES_URL
 }

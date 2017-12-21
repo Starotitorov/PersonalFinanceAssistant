@@ -16,3 +16,5 @@ export default [
         value: EUR
     }
 ];
+
+export const BASE_CURRENCY = 'USD';

@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { entries } from 'lodash';
 import { ScrollView, View, StyleSheet } from 'react-native';
 import { Card, Text } from 'react-native-elements';
-
-const BASE_CURRENCY = 'USD';
+import { BASE_CURRENCY } from 'src/constants/currency';
 
 export default class CurrencyScreen extends Component {
     componentDidMount() {
