@@ -34,3 +34,15 @@ export const showFatalErrorAlert = () => {
         { cancelable: false }
     );
 };
+
+export const showNetworkErrorAlert = () => {
+    Alert.alert(
+        'Network error',
+        'You are not connected to the internet, try again later.',
+        [
+            {
+                text: 'OK'
+            }
+        ]
+    );
+};

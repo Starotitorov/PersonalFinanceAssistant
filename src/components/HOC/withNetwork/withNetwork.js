@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NetInfo } from 'react-native';
 import { setConnectionInfo } from 'src/actions/network';
+import { networkService } from 'src/services';
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -16,7 +17,9 @@ export default function withNetwork(WrappedComponent) {
         handleConnectionChange = (connectionInfo) => {
             const { onConnectionInfoChange } = this.props;
 
-            onConnectionInfoChange(connectionInfo)
+            onConnectionInfoChange(connectionInfo);
+
+            networkService.setConnectionInfo(connectionInfo);
         };
 
         componentDidMount() {

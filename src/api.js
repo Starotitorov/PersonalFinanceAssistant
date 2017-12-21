@@ -2,6 +2,7 @@ import config from './config';
 // import FetchMock from 'react-native-fetch-mock';
 import { fetch } from 'src/lib';
 import { JWTStorage } from 'src/utils';
+import { networkService } from 'src/services';
 
 const API_URL = config.apiUrl;
 const AUTH_API_URL = `${API_URL}/auth`;
@@ -9,7 +10,7 @@ const AUTH_API_URL = `${API_URL}/auth`;
 // Mock api
 // global.fetch = new FetchMock(require('../mocks/api')).fetch;
 
-export const signIn = (email, password) => fetch(`${AUTH_API_URL}/signin`, {
+export const signIn = (email, password) => networkService.sendRequest(`${AUTH_API_URL}/signin`, {
     method: 'POST',
     headers: {
         'Accept': 'application/json',
@@ -18,7 +19,7 @@ export const signIn = (email, password) => fetch(`${AUTH_API_URL}/signin`, {
     body: JSON.stringify({ email, password })
 });
 
-export const signUp = (userData) => fetch(`${AUTH_API_URL}/signup`, {
+export const signUp = (userData) => networkService.sendRequest(`${AUTH_API_URL}/signup`, {
     method: 'POST',
     headers: {
         'Accept': 'application/json',
@@ -27,7 +28,7 @@ export const signUp = (userData) => fetch(`${AUTH_API_URL}/signup`, {
     body: JSON.stringify({ user: userData })
 });
 
-export const logInFacebook = accessToken => fetch(`${AUTH_API_URL}/signin/facebook`, {
+export const logInFacebook = accessToken => networkService.sendRequest(`${AUTH_API_URL}/signin/facebook`, {
     method: 'POST',
     headers: {
         'Accept': 'application/json',
@@ -36,7 +37,7 @@ export const logInFacebook = accessToken => fetch(`${AUTH_API_URL}/signin/facebo
     body: JSON.stringify({ token: accessToken })
 });
 
-export const fetchAccounts = async () => fetch(`${API_URL}/accounts`, {
+export const fetchAccounts = async () => networkService.sendRequest(`${API_URL}/accounts`, {
     method: 'GET',
     headers: {
         'Accept': 'application/json',
@@ -45,7 +46,7 @@ export const fetchAccounts = async () => fetch(`${API_URL}/accounts`, {
     }
 });
 
-export const addAccount = async accountData => fetch(`${API_URL}/accounts`, {
+export const addAccount = async accountData => networkService.sendRequest(`${API_URL}/accounts`, {
     method: 'POST',
     headers: {
         'Accept': 'application/json',
@@ -55,7 +56,7 @@ export const addAccount = async accountData => fetch(`${API_URL}/accounts`, {
     body: JSON.stringify({ account: accountData })
 });
 
-export const updateAccount = async (id, accountData) => fetch(`${API_URL}/accounts/${id}`, {
+export const updateAccount = async (id, accountData) => networkService.sendRequest(`${API_URL}/accounts/${id}`, {
     method: 'PUT',
     headers: {
         'Accept': 'application/json',
@@ -65,7 +66,7 @@ export const updateAccount = async (id, accountData) => fetch(`${API_URL}/accoun
     body: JSON.stringify({ account: accountData })
 });
 
-export const removeAccount = async id => fetch(`${API_URL}/accounts/${id}`, {
+export const removeAccount = async id => networkService.sendRequest(`${API_URL}/accounts/${id}`, {
     method: 'DELETE',
     headers: {
         'Accept': 'application/json',
@@ -74,7 +75,7 @@ export const removeAccount = async id => fetch(`${API_URL}/accounts/${id}`, {
     }
 });
 
-export const fetchCategories = async () => fetch(`${API_URL}/categories`, {
+export const fetchCategories = async () => networkService.sendRequest(`${API_URL}/categories`, {
     method: 'GET',
     headers: {
         'Accept': 'application/json',
@@ -83,7 +84,7 @@ export const fetchCategories = async () => fetch(`${API_URL}/categories`, {
     }
 });
 
-export const addCategory = async categoryData => fetch(`${API_URL}/categories`, {
+export const addCategory = async categoryData => networkService.sendRequest(`${API_URL}/categories`, {
     method: 'POST',
     headers: {
         'Accept': 'application/json',
@@ -93,7 +94,7 @@ export const addCategory = async categoryData => fetch(`${API_URL}/categories`, 
     body: JSON.stringify({ category: categoryData })
 });
 
-export const updateCategory = async (id, categoryData) => fetch(`${API_URL}/categories/${id}`, {
+export const updateCategory = async (id, categoryData) => networkService.sendRequest(`${API_URL}/categories/${id}`, {
     method: 'PUT',
     headers: {
         'Accept': 'application/json',
@@ -103,7 +104,7 @@ export const updateCategory = async (id, categoryData) => fetch(`${API_URL}/cate
     body: JSON.stringify({ category: categoryData })
 });
 
-export const removeCategory = async id => fetch(`${API_URL}/categories/${id}`, {
+export const removeCategory = async id => networkService.sendRequest(`${API_URL}/categories/${id}`, {
     method: 'DELETE',
     headers: {
         'Accept': 'application/json',
@@ -112,7 +113,7 @@ export const removeCategory = async id => fetch(`${API_URL}/categories/${id}`, {
     }
 });
 
-export const addTransfer = async transferData => fetch(`${API_URL}/transfers`, {
+export const addTransfer = async transferData => networkService.sendRequest(`${API_URL}/transfers`, {
     method: 'POST',
     headers: {
         'Accept': 'application/json',
@@ -122,7 +123,7 @@ export const addTransfer = async transferData => fetch(`${API_URL}/transfers`, {
     body: JSON.stringify({ transfer: transferData })
 });
 
-export const fetchTransactions = async () => fetch(`${API_URL}/transactions`, {
+export const fetchTransactions = async () => networkService.sendRequest(`${API_URL}/transactions`, {
     method: 'GET',
     headers: {
         'Accept': 'application/json',
@@ -131,7 +132,7 @@ export const fetchTransactions = async () => fetch(`${API_URL}/transactions`, {
     }
 });
 
-export const addTransaction = async transactionData => fetch(`${API_URL}/transactions`, {
+export const addTransaction = async transactionData => networkService.sendRequest(`${API_URL}/transactions`, {
     method: 'POST',
     headers: {
         'Accept': 'application/json',
