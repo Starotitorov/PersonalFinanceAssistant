@@ -12,14 +12,14 @@ class TransactionsList extends Component {
     };
 
     render() {
-        const { fetching, onRefresh, onSelectTransaction } = this.props;
+        const { onRefresh, refreshing } = this.props;
 
         return (
             <View style={styles.container}>
                 <FlatList
                     refreshControl={
                         <RefreshControl
-                            refreshing={fetching}
+                            refreshing={refreshing}
                             colors={[colors.COLOR_PRIMARY]}
                             onRefresh={onRefresh}
                         />

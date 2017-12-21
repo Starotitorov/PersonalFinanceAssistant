@@ -6,7 +6,7 @@ import { colors } from 'src/styles';
 
 function TransactionsPieChart(
     {
-        fetching, onRefresh,
+        refreshing, onRefresh,
         description, data,
         legend, styledCenterText
     }
@@ -16,7 +16,7 @@ function TransactionsPieChart(
             contentContainerStyle={styles.container}
             refreshControl={
                 <RefreshControl
-                    refreshing={fetching}
+                    refreshing={refreshing}
                     colors={[colors.COLOR_PRIMARY]}
                     onRefresh={onRefresh}
                 />

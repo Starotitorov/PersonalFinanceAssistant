@@ -1,10 +1,14 @@
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { NavigationActions } from 'react-navigation';
-import { changeDate, fetchTransactions } from 'src/actions/transactions'
-import { getFormattedCurrentDate } from 'src/selectors/transactions';
+import { changeDate, refreshTransactions } from 'src/actions/transactions'
 import { isApplicationDataFetching } from 'src/selectors/application';
-import { getViewType, isTransactionsFetching } from 'src/selectors/transactions';
+import {
+    getViewType,
+    isTransactionsRefreshing,
+    getFormattedCurrentDate,
+    isTransactionsFetching
+} from 'src/selectors/transactions';
 import { withLoadingIndicator } from 'src/components';
 import TransactionsScreen from './TransactionsScreen';
 import { setSelectedTransaction } from 'src/actions/transactions';
@@ -12,8 +16,8 @@ import { setSelectedTransaction } from 'src/actions/transactions';
 const mapStateToProps = state => {
     return {
         currentDate: getFormattedCurrentDate(state),
-        isLoading: isApplicationDataFetching(state),
-        fetching: isTransactionsFetching(state),
+        isLoading: isApplicationDataFetching(state) || isTransactionsFetching(state),
+        refreshing: isTransactionsRefreshing(state),
         viewType: getViewType(state)
     };
 };
@@ -42,7 +46,7 @@ const mapDispatchToProps = dispatch => {
         },
 
         onRefresh() {
-            dispatch(fetchTransactions());
+            dispatch(refreshTransactions());
         }
     };
 };

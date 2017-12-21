@@ -241,3 +241,5 @@ export const getTrendsData = ({
 };
 
 export const getViewType = state => state.transactions.viewType;
+
+export const isTransactionsRefreshing = state => state.transactions.refreshing;

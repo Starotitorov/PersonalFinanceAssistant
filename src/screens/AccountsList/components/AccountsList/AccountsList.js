@@ -20,14 +20,14 @@ class AccountsList extends Component {
     };
 
     render() {
-        const { isLoading, onRefresh, accounts } = this.props;
+        const { isLoading, onRefresh, accounts, refreshing } = this.props;
 
         return (
             <List>
                 <FlatList
                     refreshControl={
                         <RefreshControl
-                            refreshing={isLoading}
+                            refreshing={refreshing}
                             colors={[colors.COLOR_PRIMARY]}
                             onRefresh={onRefresh}
                         />

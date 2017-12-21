@@ -5,6 +5,8 @@ export const getSelectedAccount = ({ accounts: { selected, byId } }) => byId[sel
 
 export const isAccountsFetching = ({ accounts: { fetching } }) => fetching;
 
+export const isAccountsRefreshing = ({ accounts: { refreshing } }) => refreshing;
+
 export const getSelectInputOptionsFromAllAccounts = state => {
     const accounts = getAllAccounts(state);
 

@@ -22,6 +22,8 @@ export const getOutcomeCategoriesList = state =>
 
 export const isCategoriesFetching = state => state.categories.fetching;
 
+export const isCategoreisRefreshing = state => state.categories.refreshing;
+
 export const getSelectedCategory = state => {
     const id = state.categories.selected;
 

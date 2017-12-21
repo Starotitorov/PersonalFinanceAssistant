@@ -8,16 +8,16 @@ import { LIST, CHART } from 'src/constants/transactionsViewTypes';
 
 export default class TransactionsScreen extends Component {
     renderViewInner() {
-        const { viewType, onRefresh, fetching, onSelectTransaction } = this.props;
+        const { viewType, onRefresh, refreshing, onSelectTransaction } = this.props;
 
         switch (viewType) {
             case LIST:
                 return (
-                    <TransactionsList fetching={fetching} onRefresh={onRefresh} onSelectTransaction={onSelectTransaction} />
+                    <TransactionsList refreshing={refreshing} onRefresh={onRefresh} onSelectTransaction={onSelectTransaction} />
                 );
             case CHART:
                 return (
-                    <TransactionsPieChart fetching={fetching} onRefresh={onRefresh} />
+                    <TransactionsPieChart refreshing={refreshing} onRefresh={onRefresh} />
                 );
             default:
                 console.log('Not implemented transactions view type');

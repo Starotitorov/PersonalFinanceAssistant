@@ -29,10 +29,12 @@ export const setTransactions = createAction(
 );
 
 export const fetchTransactionsStart = createAction('TRANSACTIONS/FETCH_TRANSACTIONS_START');
+export const fetchTransactionsFailure = createAction('TRANSACTIONS/FETCH_TRANSACTIONS_FAILURE');
 
-export const fetchTransactions = () => dispatch => {
-    dispatch(fetchTransactionsStart());
+export const refreshTransactionsStart = createAction('TRANSACTIONS/REFRESH_TRANSACTIONS_START');
+export const refreshTransactionsFailure = createAction('TRANSACTIONS/REFRESH_TRANSACTIONS_FAILURE');
 
+const fetchTransactionsRequest = () => dispatch => {
     return api.fetchTransactions()
         .then(response => response.json())
         .then(({ transactions }) => transactions.map(t => ({
@@ -42,12 +44,32 @@ export const fetchTransactions = () => dispatch => {
         .then(transactions => dispatch(setTransactions(transactions)));
 };
 
+export const refreshTransactions = () => async dispatch => {
+    dispatch(refreshTransactionsStart());
+
+    try {
+        await dispatch(fetchTransactionsRequest())
+    } catch(e) {
+        dispatch(refreshTransactionsFailure(e));
+    }
+};
+
+export const fetchTransactions = () => async dispatch => {
+    dispatch(fetchTransactionsStart());
+
+    try {
+        await dispatch(fetchTransactionsRequest());
+    } catch(e) {
+        dispatch(fetchTransactionsFailure(e));
+    }
+};
+
 export const resetTransactions = createAction('TRANSACTIONS/RESET_TRANSACTIONS');
 
 export const addTransaction = transactionData => dispatch => {
     return api.addTransaction(transactionData)
-        .then(async () => {
-            await dispatch(fetchTransactions());
+        .then(() => {
+            dispatch(fetchTransactions());
 
             dispatch(NavigationActions.reset({
                 index: 0,
@@ -61,8 +83,8 @@ export const updateTransaction = transactionData => (dispatch, getState) => {
     const { transactions: { selected } } = getState();
 
     return api.updateTransaction(selected, transactionData)
-        .then(async () => {
-            await dispatch(fetchTransactions());
+        .then(() => {
+            dispatch(fetchTransactions());
 
             dispatch(NavigationActions.reset({
                 index: 0,
@@ -76,8 +98,8 @@ export const removeTransaction = () => (dispatch, getState) => {
     const { transactions: { selected } } = getState();
 
     return api.removeTransaction(selected)
-        .then(async () => {
-            await dispatch(fetchTransactions());
+        .then(() => {
+            dispatch(fetchTransactions());
 
             dispatch(NavigationActions.reset({
                 index: 0,

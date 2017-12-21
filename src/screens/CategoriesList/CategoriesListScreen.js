@@ -20,7 +20,7 @@ class CategoriesList extends Component {
     };
 
     render() {
-        const { data, onRefresh, fetching } = this.props;
+        const { data, onRefresh, refreshing } = this.props;
 
         return (
             <List>
@@ -31,7 +31,7 @@ class CategoriesList extends Component {
                     refreshControl={
                         <RefreshControl
                             colors={[colors.COLOR_PRIMARY]}
-                            refreshing={fetching}
+                            refreshing={refreshing}
                             onRefresh={onRefresh}
                         />
                     }

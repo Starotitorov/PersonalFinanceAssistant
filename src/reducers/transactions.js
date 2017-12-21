@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { handleActions } from 'redux-actions';
+import { handleActions, combineActions } from 'redux-actions';
 import {
     changeCurrentDate,
     changePeriodView,
@@ -8,7 +8,10 @@ import {
     resetTransactions,
     setSelectedAccount,
     setViewType,
-    setSelectedTransaction
+    setSelectedTransaction,
+    refreshTransactionsFailure,
+    refreshTransactionsStart,
+    fetchTransactionsFailure
 } from 'src/actions/transactions';
 import * as transactionsViewTypes from 'src/constants/transactionsViewTypes';
 import periodTypes from 'src/constants/transactionPeriodTypes';
@@ -20,6 +23,7 @@ const initialState = {
     selected: null,
     order: [],
     fetching: false,
+    refreshing: false,
     selectedAccount: null,
     viewType: transactionsViewTypes.LIST
 };
@@ -41,6 +45,17 @@ const transactions = handleActions({
         ...state,
         fetching: true
     }),
+    [refreshTransactionsStart]: (state) => ({
+        ...state,
+        refreshing: true
+    }),
+    [combineActions(fetchTransactionsFailure, refreshTransactionsFailure)](state) {
+        return {
+            ...state,
+            fetching: false,
+            refreshing: false
+        }
+    },
     [setTransactions]: (state, action) => {
         const { transactions } = action.payload;
         let newById = {};
@@ -55,6 +70,7 @@ const transactions = handleActions({
             ...state,
             byId: newById,
             order: newOrder,
+            refreshing: false,
             fetching: false
         };
     },

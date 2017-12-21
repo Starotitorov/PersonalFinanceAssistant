@@ -3,14 +3,14 @@ import { NavigationActions } from 'react-navigation';
 import { selectCategory } from 'src/actions/categories';
 import { compose } from 'redux';
 import { withLoadingIndicator } from 'src/components';
-import { fetchCategories } from 'src/actions/categories';
+import { refreshCategories } from 'src/actions/categories';
 import { isApplicationDataFetching } from 'src/selectors/application';
-import { isCategoriesFetching } from 'src/selectors/categories';
+import { isCategoreisRefreshing, isCategoriesFetching } from 'src/selectors/categories';
 
 const mapStateToProps = state => {
     return {
-        isLoading: isApplicationDataFetching(state),
-        fetching: isCategoriesFetching(state)
+        isLoading: isApplicationDataFetching(state) || isCategoriesFetching(state),
+        refreshing: isCategoreisRefreshing(state)
     }
 };
 
@@ -25,7 +25,7 @@ const mapDispatchToProps = dispatch => {
         },
 
         onRefresh() {
-            dispatch(fetchCategories());
+            dispatch(refreshCategories());
         }
     };
 };

@@ -13,11 +13,14 @@ export const selectCategory = createAction(
 );
 
 export const fetchCategoriesStart = createAction('CATEGORIES/FETCH_CATEGORIES_START');
+export const fetchCategoriesFailure = createAction('CATEGORIES/FETCH_CATEGORIES_FAILURE');
+
+export const refreshCategoriesStart = createAction('CATEGORIES/REFRESH_CATEGORIES_START');
+export const refreshCategoriesFailure = createAction('CATEGORIES/REFRESH_CATEGORIES_FAILURE');
+
 export const resetCategories = createAction('CATEGORIES/RESET_CATEGORIES');
 
-export const fetchCategories = () => dispatch => {
-    dispatch(fetchCategoriesStart());
-
+const fetchCategoriesRequest = () => dispatch => {
     return api.fetchCategories()
         .then(response => response.json())
         .then(({ categories }) => {
@@ -25,10 +28,30 @@ export const fetchCategories = () => dispatch => {
         });
 };
 
+export const fetchCategories = () => async dispatch => {
+    dispatch(fetchCategoriesStart());
+
+    try {
+        await dispatch(fetchCategoriesRequest())
+    } catch(e) {
+        dispatch(fetchCategoriesFailure(e));
+    }
+};
+
+export const refreshCategories = () => async dispatch => {
+    dispatch(refreshCategoriesStart());
+
+    try {
+        await dispatch(fetchCategoriesRequest())
+    } catch(e) {
+        dispatch(refreshCategoriesFailure(e))
+    }
+};
+
 export const addCategory = categoryData => dispatch => {
     return api.addCategory(categoryData)
-        .then(async () => {
-            await dispatch(fetchCategories());
+        .then(() => {
+            dispatch(fetchCategories());
 
             dispatch(NavigationActions.reset({
                 index: 0,
@@ -43,8 +66,8 @@ export const updateCategory = categoryData => (dispatch, getState) => {
     const { categories: { selected } } = getState();
 
     return api.updateCategory(selected, categoryData)
-        .then(async () => {
-            await dispatch(fetchCategories());
+        .then(() => {
+            dispatch(fetchCategories());
 
             dispatch(NavigationActions.back());
         });
@@ -54,8 +77,8 @@ export const removeCategory = categoryData => (dispatch, getState) => {
     const { categories: { selected } } = getState();
 
     return api.removeCategory(selected)
-        .then(async () => {
-            await dispatch(fetchCategories());
+        .then(() => {
+            dispatch(fetchCategories());
 
             dispatch(NavigationActions.back());
         });

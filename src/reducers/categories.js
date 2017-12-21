@@ -1,9 +1,12 @@
-import { handleActions } from 'redux-actions';
+import { handleActions, combineActions } from 'redux-actions';
 import {
     fetchCategoriesStart,
     setCategories,
     selectCategory,
-    resetCategories
+    resetCategories,
+    fetchCategoriesFailure,
+    refreshCategoriesStart,
+    refreshCategoriesFailure
 } from 'src/actions/categories';
 
 const initialState = {
@@ -20,6 +23,19 @@ const categories = handleActions({
             fetching: true
         }
     },
+    [refreshCategoriesStart]: state => {
+        return {
+            ...state,
+            refreshing: true
+        }
+    },
+    [combineActions(fetchCategoriesFailure, refreshCategoriesFailure)](state) {
+        return {
+            ...state,
+            refreshing: false,
+            fetching: false
+        }
+    },
     [setCategories]: (state, action) => {
         const { categories } = action.payload;
         let newById = {};
@@ -34,7 +50,8 @@ const categories = handleActions({
             byId: newById,
             order: newOrder,
             selected: null,
-            fetching: false
+            fetching: false,
+            refreshing: false
         };
     },
     [selectCategory]: (state, action) => {

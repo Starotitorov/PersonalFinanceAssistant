@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { getAllAccounts, isAccountsFetching } from 'src/selectors/accounts';
+import { getAllAccounts, isAccountsRefreshing, isAccountsFetching} from 'src/selectors/accounts';
 import { isApplicationDataFetching } from 'src/selectors/application';
-import { selectAccount, fetchAccounts } from 'src/actions/accounts';
+import { selectAccount, refreshAccounts } from 'src/actions/accounts';
 import { withLoadingIndicator } from 'src/components';
 import { NavigationActions } from 'react-navigation';
 import AccountsListScreen from './AccountsListScreen';
@@ -10,8 +10,8 @@ import AccountsListScreen from './AccountsListScreen';
 const mapStateToProps = state => {
     return {
         accounts: getAllAccounts(state),
-        isLoading: isApplicationDataFetching(state),
-        fetching: isAccountsFetching(state)
+        isLoading: isApplicationDataFetching(state) || isAccountsFetching(state),
+        refreshing: isAccountsRefreshing(state)
     };
 };
 
@@ -28,7 +28,7 @@ const mapDispatchToProps = dispatch => {
         },
 
         onRefresh() {
-            dispatch(fetchAccounts());
+            dispatch(refreshAccounts());
         }
     }
 };

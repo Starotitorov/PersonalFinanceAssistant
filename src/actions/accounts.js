@@ -10,20 +10,42 @@ export const setAccounts = createAction(
 export const resetAccounts = createAction('ACCOUNTS/RESET_ACCOUNTS');
 
 export const fetchAccountsStart = createAction('ACCOUNTS/FETCH_ACCOUNTS_START');
+export const fetchAccountsFailure = createAction('ACCOUNTS/FETCH_ACCOUNTS_FAILURE');
+
+export const refreshAccountsStart = createAction('ACCOUNTS/REFRESH_ACCOUNTS_START');
+export const refreshAccountsFailure = createAction('ACCOUNTS/REFRESH_ACCOUNTS_FAILURE');
 
 export const selectAccount = createAction(
     'ACCOUNTS/SELECT_ACCOUNT',
     (id) => ({ id })
 );
 
-export const fetchAccounts = () => dispatch => {
-    dispatch(fetchAccountsStart());
-
+const fetchAccountsRequest = () => dispatch => {
     return api.fetchAccounts()
         .then(response => response.json())
         .then(({ accounts }) => {
             dispatch(setAccounts(accounts))
         });
+};
+
+export const fetchAccounts = () => async dispatch => {
+    dispatch(fetchAccountsStart());
+
+    try {
+        await dispatch(fetchAccountsRequest());
+    } catch(e) {
+        dispatch(fetchAccountsFailure(e));
+    }
+};
+
+export const refreshAccounts = () => async dispatch => {
+    dispatch(refreshAccountsStart());
+
+    try {
+        await dispatch(fetchAccountsRequest());
+    } catch(e) {
+        dispatch(fetchAccountsFailure(e));
+    }
 };
 
 export const addAccount = accountData => dispatch => {
@@ -33,8 +55,8 @@ export const addAccount = accountData => dispatch => {
     };
 
     return api.addAccount(data)
-        .then(async () => {
-            await dispatch(fetchAccounts());
+        .then(() => {
+            dispatch(fetchAccounts());
 
             dispatch(NavigationActions.reset({
                 index: 0,
@@ -49,8 +71,8 @@ export const updateAccount = accountData => (dispatch, getState) => {
     const { accounts: { selected } } = getState();
 
     return api.updateAccount(selected, accountData)
-        .then(async () => {
-            await dispatch(fetchAccounts());
+        .then(() => {
+            dispatch(fetchAccounts());
 
             dispatch(NavigationActions.reset({
                 index: 0,
@@ -65,8 +87,8 @@ export const removeAccount = () => (dispatch, getState) => {
     const { accounts: { selected } } = getState();
 
     return api.removeAccount(selected)
-        .then(async () => {
-            await dispatch(fetchAccounts());
+        .then(() => {
+            dispatch(fetchAccounts());
 
             dispatch(NavigationActions.reset({
                 index: 0,
