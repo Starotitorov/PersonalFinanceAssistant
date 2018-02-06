@@ -37,11 +37,7 @@ export const refreshTransactionsFailure = createAction('TRANSACTIONS/REFRESH_TRA
 const fetchTransactionsRequest = () => dispatch => {
     return api.fetchTransactions()
         .then(response => response.json())
-        .then(({ transactions }) => transactions.map(t => ({
-            ...t,
-            categoryId: t.category.id
-        })))
-        .then(transactions => dispatch(setTransactions(transactions)));
+        .then(({ transactions }) => dispatch(setTransactions(transactions)));
 };
 
 export const refreshTransactions = () => async dispatch => {
