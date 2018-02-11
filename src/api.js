@@ -88,6 +88,15 @@ export const fetchCategories = async () => networkService.sendRequest(`${API_URL
     }
 });
 
+export const getCategory = async id => networkService.sendRequest(`${API_URL}/categories/${id}`, {
+    method: 'GET',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'token': await JWTStorage.getToken()
+    }
+});
+
 export const addCategory = async categoryData => networkService.sendRequest(`${API_URL}/categories`, {
     method: 'POST',
     headers: {
@@ -128,6 +137,15 @@ export const addTransfer = async transferData => networkService.sendRequest(`${A
 });
 
 export const fetchTransactions = async () => networkService.sendRequest(`${API_URL}/transactions`, {
+    method: 'GET',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'token': await JWTStorage.getToken()
+    }
+});
+
+export const getTransaction = async id => networkService.sendRequest(`${API_URL}/transactions/${id}`, {
     method: 'GET',
     headers: {
         'Accept': 'application/json',

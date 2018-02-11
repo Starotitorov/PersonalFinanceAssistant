@@ -2,12 +2,12 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import TransferForm from './components/TransferForm';
 
-export default function AddTransferScreen({ onAddTransfer, options }) {
+export default function AddTransferScreen({ addTransfer, options }) {
     return (
         <View style={styles.container}>
             <TransferForm
                 enableReinitialize
-                onSubmit={onAddTransfer}
+                onSubmit={addTransfer}
                 options={options}
             />
         </View>

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getTransactionsChartData } from 'src/selectors/transactions';
+import { getTransactionsChartData } from '../../selectors';
 import TransactionsPieChart from './TransactionsPieChart';
 import { getPieChartConfig } from './helpers';
 

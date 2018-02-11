@@ -1,20 +1,24 @@
 import { connect } from 'react-redux';
-import { addTransaction } from 'src/actions/transactions';
-import { getTransactionFormOptions } from 'src/selectors/forms';
+import { lifecycle, compose } from 'recompose'
+import { addTransaction, setAddTransactionData } from './actions';
+import { getAddTransactionFormOptions } from './selectors';
 import AddTransactionScreen from './AddTransactionScreen';
+
+const withAddTransactionData = lifecycle({
+    componentDidMount() {
+        const { navigation: { state: { params }}, setAddTransactionData } = this.props;
+
+        setAddTransactionData(params)
+    }
+});
 
 const mapStateToProps = state => {
     return {
-        options: getTransactionFormOptions(state)
+        options: getAddTransactionFormOptions(state)
     };
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onAddTransaction(data) {
-            return dispatch(addTransaction(data));
-        }
-    }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(AddTransactionScreen);
+export default compose(
+    connect(mapStateToProps, { addTransaction, setAddTransactionData }),
+    withAddTransactionData
+)(AddTransactionScreen);

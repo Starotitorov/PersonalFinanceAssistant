@@ -16,7 +16,6 @@ export { default as withEmptyListComponent } from './HOC/withEmptyListComponent'
 export { default as SelectInput } from './SelectInput';
 export { default as TransactionForm } from './TransactionForm';
 export { default as AccountForm } from './AccountForm';
-export { default as SwitchViewTypeIcon } from './SwitchViewTypeIcon';
 export { default as PrimaryButton } from './PrimaryButton';
 export { default as GlobalError } from './GlobalError';
 export { default as withFetchScreenDataOnFocus } from './HOC/withFetchScreenDataOnFocus';

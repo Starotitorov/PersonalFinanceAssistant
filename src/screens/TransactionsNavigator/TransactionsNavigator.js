@@ -1,8 +1,9 @@
 import React from 'react';
 import { StackNavigator } from 'react-navigation';
-import { DrawerButton, SwitchViewTypeIcon } from 'src/components';
+import { DrawerButton } from 'src/components';
 import TransactionsHeaderTitle from '../TransactionsHeaderTitle';
 import Transactions from '../Transactions';
+import SwitchViewTypeIcon from '../Transactions/components/SwitchViewTypeIcon';
 import AddTransaction from '../AddTransaction';
 import EditTransaction from '../EditTransaction';
 import EditTransactionHeaderRight from '../EditTransactionHeaderRight';
@@ -21,9 +22,11 @@ export default StackNavigator({
     },
     EditTransaction: {
         screen: EditTransaction,
-        navigationOptions: {
-            title: 'Edit transaction',
-            headerRight: <EditTransactionHeaderRight />
+        navigationOptions: ({ navigation }) => {
+            return {
+                title: 'Edit transaction',
+                headerRight: <EditTransactionHeaderRight navigation={ navigation } />
+            };
         }
     },
     AddTransaction: {

@@ -8,16 +8,27 @@ import { LIST, CHART } from 'src/constants/transactionsViewTypes';
 
 export default class TransactionsScreen extends Component {
     renderViewInner() {
-        const { viewType, onRefresh, refreshing, onSelectTransaction } = this.props;
+        const {
+            viewType,
+            refreshTransactionsListData,
+            refreshing,
+            selectTransaction
+        } = this.props;
 
         switch (viewType) {
             case LIST:
                 return (
-                    <TransactionsList refreshing={refreshing} onRefresh={onRefresh} onSelectTransaction={onSelectTransaction} />
+                    <TransactionsList
+                        refreshing={refreshing}
+                        onRefresh={refreshTransactionsListData}
+                        onSelectTransaction={selectTransaction} />
                 );
             case CHART:
                 return (
-                    <TransactionsPieChart refreshing={refreshing} onRefresh={onRefresh} />
+                    <TransactionsPieChart
+                        refreshing={refreshing}
+                        onRefresh={refreshTransactionsListData}
+                    />
                 );
             default:
                 console.log('Not implemented transactions view type');
@@ -28,22 +39,22 @@ export default class TransactionsScreen extends Component {
     render() {
         const {
             currentDate,
-            onChangeCurrentDateForward,
-            onChangeCurrentDateBack,
-            onAddTransaction,
+            changeDateForward,
+            changeDateBack,
+            addTransaction,
         } = this.props;
 
         return (
             <View style={styles.container}>
                 <TransactionsPeriodCarousel
                     currentDate={currentDate}
-                    onPressBack={onChangeCurrentDateBack}
-                    onPressForward={onChangeCurrentDateForward}
+                    onPressBack={changeDateBack}
+                    onPressForward={changeDateForward}
                 />
                 { this.renderViewInner() }
                 <ActionButton.Button
                     type={ActionButton.types.ADD}
-                    onPress={onAddTransaction}
+                    onPress={addTransaction}
                 />
             </View>
         );

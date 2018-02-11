@@ -1,20 +1,27 @@
 import { connect } from 'react-redux';
-import { updateTransaction } from 'src/actions/transactions';
+import { compose, lifecycle } from 'recompose';
+import { withLoadingIndicator } from 'src/components'
 import EditTransactionScreen from './EditTransactionScreen';
-import { getEditTransactionFormInitialValues } from 'src/selectors/forms';
+import { updateTransaction, fetchTransaction } from './actions'
+import { getEditTransactionFormInitialValues, isTransactionFetching } from './selectors';
+
+const withEditTransactionData = lifecycle({
+    componentDidMount() {
+        const { navigation: { state: { params: { id }}}, fetchTransaction } = this.props;
+
+        fetchTransaction(id);
+    }
+});
 
 const mapStateToProps = state => {
     return {
+        isLoading: isTransactionFetching(state),
         initialValues: getEditTransactionFormInitialValues(state)
     }
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onUpdateTransaction(transactionData) {
-            return dispatch(updateTransaction(transactionData))
-        }
-    }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(EditTransactionScreen);
+export default compose(
+    connect(mapStateToProps, { updateTransaction, fetchTransaction }),
+    withEditTransactionData,
+    withLoadingIndicator
+)(EditTransactionScreen);

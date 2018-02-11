@@ -3,27 +3,25 @@ import { View, StyleSheet } from 'react-native';
 import { SelectInput } from 'src/components';
 import options from './options';
 
-export default function TransactionsHeaderTitle(
-    {
-        onValueChange,
-        selectedValue,
-        accountOptions,
-        selectedAccountId,
-        onChangeAccount
-    }
-) {
+export default function TransactionsHeaderTitle({
+    changePeriodView,
+    selectedValue,
+    accountOptions,
+    selectedAccountId,
+    setSelectedAccount
+}) {
     return (
         <View style={styles.container}>
             <View style={styles.flexGrow}>
                 <SelectInput
-                    onChange={onChangeAccount}
+                    onChange={setSelectedAccount}
                     value={selectedAccountId}
                     options={accountOptions}
                 />
             </View>
             <View style={styles.flexGrow}>
                 <SelectInput
-                    onChange={onValueChange}
+                    onChange={changePeriodView}
                     value={selectedValue}
                     options={options}
                 />

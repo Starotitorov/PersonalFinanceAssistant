@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux';
 import { reducer as form } from 'redux-form';
-import navigation from './navigation';
 import authorization from './authorization';
 import accounts from './accounts';
 import categories from './categories';
@@ -9,11 +8,16 @@ import transactions from './transactions';
 import trends from './trends';
 import exchangeRates from './exchangeRates';
 
+import navigation from 'src/screens/AppNavigator/reducer'
 import accountsList from 'src/screens/AccountsList/reducer';
 import editAccount from 'src/screens/EditAccount/reducer';
 import network from 'src/components/HOC/withNetwork/reducer';
 import categoriesList from 'src/screens/CategoriesList/reducer';
-import editCategory from 'src/screens/EditCategory/reducer'
+import editCategory from 'src/screens/EditCategory/reducer';
+import addTransfer from 'src/screens/AddTransfer/reducer';
+import transactionsList from 'src/screens/Transactions/reducer';
+import addTransaction from 'src/screens/AddTransaction/reducer';
+import editTransaction from 'src/screens/EditTransaction/reducer';
 
 export default combineReducers({
     navigation,
@@ -30,5 +34,9 @@ export default combineReducers({
     accountsList,
     categoriesList,
     editAccount,
-    editCategory
+    editCategory,
+    addTransfer,
+    transactionsList,
+    addTransaction,
+    editTransaction
 });

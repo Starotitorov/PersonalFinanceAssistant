@@ -1,8 +1,7 @@
 import { connect } from 'react-redux';
-import { changePeriodView } from 'src/actions/transactions';
-import { getCurrentPeriodType, getSelectedAccountId } from 'src/selectors/transactions';
-import { setSelectedAccount } from 'src/actions/transactions';
-import { getSelectInputOptionsFromAllAccounts } from 'src/selectors/accounts';
+import { getCurrentPeriodType, getSelectedAccountId } from '../Transactions/selectors';
+import { getSelectInputOptionsFromAllAccounts } from './selectors';
+import { setSelectedAccount, changePeriodView } from '../Transactions/actions'
 import TransactionsHeaderTitle from './TransactionsHeaderTitle';
 
 const mapStateToProps = state => {
@@ -13,16 +12,6 @@ const mapStateToProps = state => {
     };
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onValueChange(value) {
-            dispatch(changePeriodView(value))
-        },
-
-        onChangeAccount(id) {
-            dispatch(setSelectedAccount(id));
-        }
-    }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(TransactionsHeaderTitle);
+export default connect(
+    mapStateToProps, { setSelectedAccount, changePeriodView }
+)(TransactionsHeaderTitle);

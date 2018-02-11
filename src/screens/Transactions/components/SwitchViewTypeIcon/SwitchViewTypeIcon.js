@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { IconButton } from 'src/components';
-import { switchViewType } from 'src/actions/transactions';
+import { IconButton } from 'src/components/index';
+import { switchViewType } from '../../actions';
 import { LIST } from 'src/constants/transactionsViewTypes';
-import { getViewType } from 'src/selectors/transactions';
+import { getViewType } from '../../selectors';
 
 const mapStateToProps = state => {
     return {

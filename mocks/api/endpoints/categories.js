@@ -28,6 +28,17 @@ export default {
             ]
         };
     },
+    [`GET ${API_URL}/categories/{id}`]: ({method, url, params, urlparams, headers}) => {
+        return {
+            category: {
+                categoryTypeId: 0,
+                icon: 'cat',
+                id: 2,
+                name: 'C.A.T.',
+                userId: 0
+            }
+        };
+    },
     [`POST ${API_URL}/categories`]: ({method, url, params, urlparams, headers}) => {
         const { icon, name, categoryTypeId } = params.category;
 

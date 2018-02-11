@@ -45,20 +45,3 @@ export const getTransactionFormOptions = state => {
         categories: getSelectInputOptionsFromAllCategories(state)
     };
 };
-
-export const getEditTransactionFormInitialValues = (
-    {
-        transactions: {byId, selected}
-    }
-) => {
-    const {value, note, date, userId, categoryId, accountId} = byId[selected];
-
-    return {
-        value,
-        note,
-        date,
-        userId,
-        categoryId,
-        accountId
-    };
-};

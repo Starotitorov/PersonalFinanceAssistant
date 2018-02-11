@@ -1,6 +1,5 @@
 import React from 'react';
 import { StackNavigator } from 'react-navigation';
-import { LogOutIcon } from 'src/components';
 import LogIn from '../LogIn';
 import SignUp from '../SignUp';
 import HomeDrawerNavigator from '../HomeDrawerNavigator';

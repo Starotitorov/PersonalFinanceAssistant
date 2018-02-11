@@ -40,6 +40,18 @@ export default {
             ]
         };
     },
+    [`GET ${API_URL}/transactions/{id}`]: ({method, url, params, urlparams, headers}) => {
+        return {
+            transaction: {
+                id: 10004,
+                accountId: 1,
+                categoryId: 2,
+                value: 200,
+                date: Date.now(),
+                note: 'Transaction'
+            }
+        };
+    },
     [`POST ${API_URL}/transactions`]: ({method, url, params, urlparams, headers}) => {
         const { accountId, categoryId, value, date, note } = params.transaction;
 

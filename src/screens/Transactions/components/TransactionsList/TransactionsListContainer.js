@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import {
     getTransactionsGroupedByCategories
-} from 'src/selectors/transactions';
+} from '../../selectors';
 import TransactionsList from './TransactionsList';
 
 const mapStateToProps = state => {

@@ -1,14 +1,16 @@
 import { connect } from 'react-redux';
+import { compose, withHandlers } from 'recompose'
 import { RemoveHeaderIcon } from 'src/components';
-import { removeTransaction } from 'src/actions/transactions';
+import { removeTransaction } from './actions';
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onPress() {
-            dispatch(removeTransaction());
-        }
+const withHandleRemove = withHandlers({
+    onPress: ({ navigation: { state: { params: { id }}}, removeTransaction }) => () => {
+        removeTransaction(id);
     }
-};
+});
 
-export default connect(null, mapDispatchToProps)(RemoveHeaderIcon);
+export default compose(
+    connect(null, { removeTransaction }),
+    withHandleRemove
+)(RemoveHeaderIcon);
 

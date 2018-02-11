@@ -13,9 +13,9 @@ export const fetchCategoryFailure = createAction('EDIT_ACCOUNT/FETCH_CATEGORY_FA
 export const fetchCategory = id => dispatch => {
     dispatch(fetchCategoryStart());
 
-    return api.getAccount(id)
+    return api.getCategory(id)
         .then(response => response.json())
-        .then(({ account }) => dispatch(setCategory(account)))
+        .then(({ category }) => dispatch(setCategory(category)))
         .catch(e => dispatch(fetchCategoryFailure(e)));
 };
 

@@ -7,3 +7,4 @@ export {
     JWTStorage,
     momentFormat
 }
+export { default as arrayToObjectById } from './arrayToObjectById'

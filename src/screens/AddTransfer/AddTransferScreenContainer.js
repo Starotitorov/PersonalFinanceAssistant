@@ -1,23 +1,25 @@
 import { connect } from 'react-redux';
-import { getTransferFormOptions } from 'src/selectors/forms';
-import { addTransfer } from 'src/actions/transfers';
+import { compose, lifecycle } from 'recompose'
+import { withLoadingIndicator } from 'src/components'
+import { addTransfer, fetchAddTransferData } from './actions';
+import { getAddTransferFormOptions, isAddTransferDataFetching } from './selectors'
 import AddTransferScreen from './AddTransferScreen';
+
+const withFetchAddTransferData = lifecycle({
+    componentDidMount() {
+        this.props.fetchAddTransferData();
+    }
+});
 
 const mapStateToProps = state => {
     return {
-        options: getTransferFormOptions(state)
+        isLoading: isAddTransferDataFetching(state),
+        options: getAddTransferFormOptions(state)
     };
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onAddTransfer(transferData) {
-            return dispatch(addTransfer({
-                ...transferData,
-                value: Number(transferData.value)
-            }));
-        }
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(AddTransferScreen);
+export default compose(
+    connect(mapStateToProps, { addTransfer, fetchAddTransferData }),
+    withFetchAddTransferData,
+    withLoadingIndicator
+)(AddTransferScreen);
