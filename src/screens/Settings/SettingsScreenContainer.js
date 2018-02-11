@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { logout, handleChangePassword } from './actions';
-import { getCurrentUser } from '../SignUp/selectors'
+import { getCurrentUser } from '../LogIn/selectors'
 import SettingsScreen from './SettingsScreen';
 
 const mapStateToProps = state => {

@@ -1,9 +1,9 @@
 import { AsyncStorage } from 'react-native';
 import { setCurrentUser, setToken, resetCurrentUser } from './actions';
 import { USER_KEY } from 'src/constants/asyncStorage';
-import { JWTStorage } from 'src/utils/index';
+import { JWTStorage } from 'src/utils';
 
-export const cacheAuthorizationDataToAsyncStorage = ({ dispatch, getState }) => {
+export const cacheAuthorizationDataToAsyncStorage = () => {
     return next => (action) => {
         next(action);
 
