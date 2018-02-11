@@ -7,13 +7,14 @@ export default class EditCategoryScreen extends Component {
     handleSubmit = ({ name: nameValue, ...rest }) => {
         const name = nameValue.trim();
 
-        return this.props.onUpdateCategory({ name, ...rest });
+        return this.props.updateCategory({ name, ...rest });
     };
 
     render() {
         return (
             <View style={styles.container}>
                 <CategoryForm
+                    enableReinitialize
                     initialValues={this.props.initialValues}
                     onSubmit={this.handleSubmit}
                 />

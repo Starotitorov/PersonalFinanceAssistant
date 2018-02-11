@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import App from './App';
 import { isUserFetching } from 'src/selectors/authorization';
-import { isConnected } from 'src/selectors/network';
+import { isConnected } from 'src/components/HOC/withNetwork/selectors';
 
 const mapStateToProps = state => {
     return {

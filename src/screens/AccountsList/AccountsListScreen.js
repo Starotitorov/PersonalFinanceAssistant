@@ -5,11 +5,11 @@ import AccountsList from './components/AccountsList';
 
 export default function AccountsListScreen(
     {
-        onRefresh,
+        refreshAccounts,
         refreshing,
         accounts,
-        onAddAccount,
-        onSelectAccount
+        addAccount,
+        editAccount
     }
 ) {
     return (
@@ -17,12 +17,12 @@ export default function AccountsListScreen(
             <AccountsList
                 refreshing={refreshing}
                 accounts={accounts}
-                onSelectAccount={onSelectAccount}
-                onRefresh={onRefresh}
+                onSelectAccount={ editAccount }
+                onRefresh={ refreshAccounts }
             />
             <ActionButton.Button
                 type={ActionButton.types.ADD}
-                onPress={onAddAccount}
+                onPress={ addAccount }
             />
         </View>
     )

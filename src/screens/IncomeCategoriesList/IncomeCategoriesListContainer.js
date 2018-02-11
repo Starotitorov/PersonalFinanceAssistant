@@ -1,11 +1,11 @@
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import CategoriesList, { CategoriesListContainer } from '../CategoriesList';
-import { getIcomeCategoriesList } from 'src/selectors/categories';
+import { getIncomeCategoriesList } from '../CategoriesList/selectors';
 
 const mapStateToProps = (state) => {
     return {
-        data: getIcomeCategoriesList(state)
+        data: getIncomeCategoriesList(state)
     };
 };
 

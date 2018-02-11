@@ -24,9 +24,11 @@ export default StackNavigator({
     },
     EditCategory: {
         screen: EditCategory,
-        navigationOptions: {
-            title: 'Edit category',
-            headerRight: <EditCategoryHeaderRight />
+        navigationOptions: ({ navigation }) => {
+            return {
+                title: 'Edit category',
+                headerRight: <EditCategoryHeaderRight navigation={ navigation } />
+            }
         }
     }
 }, {

@@ -1,13 +1,15 @@
 import { connect } from 'react-redux';
-import { removeCategory } from 'src/actions/categories';
+import { withHandlers, compose } from 'recompose'
+import { removeCategory } from './actions';
 import { RemoveHeaderIcon } from 'src/components';
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onPress() {
-            dispatch(removeCategory());
-        }
+const withHandleRemove = withHandlers({
+    onPress: ({ navigation: { state: { params: { id }}}, removeCategory }) => () => {
+        removeCategory(id);
     }
-};
+});
 
-export default connect(null, mapDispatchToProps)(RemoveHeaderIcon);
+export default compose(
+    connect(null, { removeCategory }),
+    withHandleRemove
+)(RemoveHeaderIcon);

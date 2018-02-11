@@ -9,18 +9,18 @@ const keyExtractor = item => item.id;
 
 class CategoriesList extends Component {
     renderItem = ({ item }) => {
-        const { onSelectCategory } = this.props;
+        const { selectCategory } = this.props;
 
         return (
             <CategoriesListItem
                 category={item}
-                onSelectCategory={onSelectCategory}
+                onSelectCategory={selectCategory}
             />
         );
     };
 
     render() {
-        const { data, onRefresh, refreshing } = this.props;
+        const { data, refreshCategoriesListData, refreshing } = this.props;
 
         return (
             <List>
@@ -32,7 +32,7 @@ class CategoriesList extends Component {
                         <RefreshControl
                             colors={[colors.COLOR_PRIMARY]}
                             refreshing={refreshing}
-                            onRefresh={onRefresh}
+                            onRefresh={refreshCategoriesListData}
                         />
                     }
                     ListEmptyComponent={this.props.EmptyListComponent}

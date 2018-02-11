@@ -1,20 +1,30 @@
 import { connect } from 'react-redux';
-import { getEditAccountFormInitialValues } from 'src/selectors/forms';
-import { updateAccount } from 'src/actions/accounts';
+import { lifecycle, compose } from 'recompose';
+import { withLoadingIndicator } from 'src/components'
+import { getEditAccountFormInitialValues, isAccountFetching } from './selectors';
+import { updateAccount, fetchAccount } from './actions';
 import EditAccountScreen from './EditAccountScreen';
+
+const withSelectedAccount = lifecycle({
+    componentDidMount() {
+        const { id } = this.props.navigation.state.params;
+
+        this.props.fetchAccount(id);
+    }
+});
 
 const mapStateToProps = state => {
     return {
+        isLoading: isAccountFetching(state),
         initialValues: getEditAccountFormInitialValues(state)
     }
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onUpdateAccount(accountData) {
-            return dispatch(updateAccount(accountData))
-        }
-    }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(EditAccountScreen);
+export default compose(
+    connect(
+        mapStateToProps,
+        { updateAccount, fetchAccount }
+    ),
+    withSelectedAccount,
+    withLoadingIndicator
+)(EditAccountScreen);

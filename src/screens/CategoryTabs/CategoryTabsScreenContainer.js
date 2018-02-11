@@ -1,16 +1,13 @@
 import { connect } from 'react-redux';
-import { NavigationActions } from 'react-navigation';
+import { compose } from 'recompose'
+import { withFetchScreenDataOnFocus } from 'src/components'
 import CategoryTabsScreen from './CategoryTabsScreen';
 import CategoryTabsScreenView from './CategoryTabsScreenView';
+import { addCategory } from './actions';
+import { fetchCategoriesListData } from '../CategoriesList/actions'
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onAddCategory() {
-            dispatch(NavigationActions.navigate({
-                routeName: 'AddCategory'
-            }));
-        }
-    }
-};
-
-export default connect(null, mapDispatchToProps)(CategoryTabsScreenView(CategoryTabsScreen));
+export default compose(
+    connect(null, { addCategory, fetchScreenData: fetchCategoriesListData }),
+    withFetchScreenDataOnFocus('CategoryTabs'),
+    CategoryTabsScreenView
+)(CategoryTabsScreen)

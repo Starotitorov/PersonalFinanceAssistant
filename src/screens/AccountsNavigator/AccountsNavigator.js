@@ -27,9 +27,11 @@ export default StackNavigator({
     },
     EditAccount: {
         screen: EditAccount,
-        navigationOptions: {
-            title: 'Edit account',
-            headerRight: <EditAccountHeaderRight />
+        navigationOptions: ({ navigation }) => {
+            return {
+                title: 'Edit account',
+                headerRight: <EditAccountHeaderRight navigation={ navigation } />
+            }
         }
     },
     AddTransfer: {

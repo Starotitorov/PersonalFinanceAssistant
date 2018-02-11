@@ -1,36 +1,26 @@
 import { connect } from 'react-redux';
-import { NavigationActions } from 'react-navigation';
-import { selectCategory } from 'src/actions/categories';
-import { compose } from 'redux';
+import { compose } from 'recompose';
 import { withLoadingIndicator } from 'src/components';
-import { refreshCategories } from 'src/actions/categories';
-import { isApplicationDataFetching } from 'src/selectors/application';
-import { isCategoreisRefreshing, isCategoriesFetching } from 'src/selectors/categories';
+import {
+    refreshCategoriesListData,
+    selectCategory
+} from './actions';
+import { isCategoriesListDataFetching, isCategoriesListDataRefreshing } from './selectors';
 
 const mapStateToProps = state => {
     return {
-        isLoading: isApplicationDataFetching(state) || isCategoriesFetching(state),
-        refreshing: isCategoreisRefreshing(state)
+        isLoading: isCategoriesListDataFetching(state),
+        refreshing: isCategoriesListDataRefreshing(state)
     }
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onSelectCategory(id) {
-            dispatch(selectCategory(id));
-
-            dispatch(NavigationActions.navigate({
-                routeName: 'EditCategory'
-            }));
-        },
-
-        onRefresh() {
-            dispatch(refreshCategories());
-        }
-    };
-};
-
 export default compose(
-    connect(mapStateToProps, mapDispatchToProps),
+    connect(
+        mapStateToProps,
+        {
+            refreshCategoriesListData,
+            selectCategory
+        }
+    ),
     withLoadingIndicator
 );

@@ -117,6 +117,17 @@ export default {
             ],
         };
     },
+    [`GET ${API_URL}/accounts/{id}`]: ({method, url, params, urlparams, headers}) => {
+        return {
+            account: {
+                id: 14,
+                name: 'Credit card',
+                icon: 'credit-card',
+                balance: 11000,
+                currency: 'BYN'
+            }
+        };
+    },
     /**
      * POST /api/v1/accounts
      * Request

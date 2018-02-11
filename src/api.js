@@ -51,6 +51,15 @@ export const addAccount = async accountData => networkService.sendRequest(`${API
     body: JSON.stringify({ account: accountData })
 });
 
+export const getAccount = async id => networkService.sendRequest(`${API_URL}/accounts/${id}`, {
+    method: 'GET',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'token': await JWTStorage.getToken()
+    }
+});
+
 export const updateAccount = async (id, accountData) => networkService.sendRequest(`${API_URL}/accounts/${id}`, {
     method: 'PUT',
     headers: {

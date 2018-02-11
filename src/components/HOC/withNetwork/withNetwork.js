@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NetInfo } from 'react-native';
-import { setConnectionInfo } from 'src/actions/network';
+import { setConnectionInfo } from 'src/components/HOC/withNetwork/actions';
 import { networkService } from 'src/services';
 
 const mapDispatchToProps = dispatch => {

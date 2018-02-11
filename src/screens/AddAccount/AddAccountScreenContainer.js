@@ -1,13 +1,5 @@
 import { connect } from 'react-redux';
-import { addAccount } from 'src/actions/accounts';
+import { addAccount } from './actions';
 import AddAccountScreen from './AddAccountScreen';
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onAddAccount(accountData) {
-            return dispatch(addAccount(accountData));
-        }
-    }
-};
-
-export default connect(null, mapDispatchToProps)(AddAccountScreen);
+export default connect(null, { addAccount })(AddAccountScreen);

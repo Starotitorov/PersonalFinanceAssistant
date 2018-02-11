@@ -1,5 +1,5 @@
 import { handleActions } from 'redux-actions';
-import { setConnectionInfo } from 'src/actions/network';
+import { setConnectionInfo } from './actions';
 
 const initialState = {
     connectionInfo: null

@@ -2,10 +2,13 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { AccountForm } from 'src/components';
 
-export default function EditAccountScreen({ initialValues, onUpdateAccount }) {
+export default function EditAccountScreen({ initialValues, updateAccount }) {
     return (
         <View style={styles.container}>
-            <AccountForm onSubmit={onUpdateAccount} initialValues={initialValues} />
+            <AccountForm
+                enableReinitialize
+                onSubmit={updateAccount}
+                initialValues={initialValues} />
         </View>
     );
 }
