@@ -1,7 +1,7 @@
 import moment from 'moment';
-import { chain, values, find, sumBy, findIndex, times, constant } from 'lodash';
+import { chain, values, find, sumBy } from 'lodash';
 import * as categoryTypes from 'src/constants/categoryTypes';
-import periodTypes from 'src/constants/transactionPeriodTypes';
+import { periodTypes } from './constants';
 import filterTransactionsByAccount from 'src/helpers/filterTransactionsByAccount';
 import filterTransactionsByCategoryType from 'src/helpers/filterTransactionsByCategoryType';
 import getTransactionsList from 'src/helpers/getTransactionsList';
@@ -43,9 +43,9 @@ export const getAllCategories = ({ transactionsList: { categories: { byId, order
     return order.map(id => byId[id]);
 };
 
-export const getCurrentPeriodType = state => state.transactions.periodType;
+export const getCurrentPeriodType = ({ transactionsList: { periodType }}) => periodType;
 
-export const getSelectedAccountId = state => state.transactions.selectedAccount;
+export const getSelectedAccountId = ({ transactionsList: { selectedAccount }}) => selectedAccount;
 
 export const filterTransactionsByTimeRange = (
     {

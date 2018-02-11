@@ -14,7 +14,7 @@ import {
     getFormattedCurrentDate,
     isTransactionsListDataFetching
 } from './selectors';
-import { withLoadingIndicator, withFetchScreenDataOnFocus } from 'src/components';
+import { withLoadingIndicator, withScreenFocus } from 'src/components';
 import TransactionsScreen from './TransactionsScreen';
 
 const mapStateToProps = state => {
@@ -31,10 +31,10 @@ export default compose(
         changeDateForward,
         changeDateBack,
         refreshTransactionsListData,
-        fetchScreenData: fetchTransactionsListData,
+        onFocus: fetchTransactionsListData,
         selectTransaction,
         addTransaction
     }),
-    withFetchScreenDataOnFocus('Transactions'),
+    withScreenFocus('Transactions'),
     withLoadingIndicator
 )(TransactionsScreen);

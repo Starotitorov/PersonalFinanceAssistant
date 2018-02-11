@@ -8,6 +8,7 @@ import {
     refreshCategoriesListDataSuccess,
     refreshCategoriesListDataFailure
 } from './actions';
+import { arrayToObjectById } from 'src/utils'
 
 const initialState = {
     categories: {
@@ -45,20 +46,10 @@ const categoriesList = handleActions({
     },
     [setCategories]: (state, action) => {
         const { categories } = action.payload;
-        let newById = {};
-        let newOrder = [];
-
-        categories.forEach(category => {
-            newById[category.id] = category;
-            newOrder.push(category.id);
-        });
 
         return {
             ...state,
-            categories: {
-                byId: newById,
-                order: newOrder
-            }
+            categories: arrayToObjectById(categories)
         };
     }
 }, initialState);

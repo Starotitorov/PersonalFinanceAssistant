@@ -1,5 +1,5 @@
-import { alerts } from 'src/utils';
-import { fetch } from 'src/lib';
+import { fetch } from 'src/utils';
+import logNetworkRequest from './logNetworkRequest';
 import FetchMock from 'react-native-fetch-mock';
 
 const CONNECTION_INFO_TYPE_NONE = 'none';
@@ -17,9 +17,11 @@ export const isConnected = () => !connectionInfo || connectionInfo.type !== CONN
 
 export const sendRequest = (...args) => {
     if (!isConnected()) {
-        alerts.showNetworkErrorAlert();
+        return Promise.reject(new Error('Not connected'));
+    }
 
-        throw new Error('Not connected');
+    if (process.env.NODE_ENV === 'development') {
+        logNetworkRequest(...args);
     }
 
     return fetch(...args)

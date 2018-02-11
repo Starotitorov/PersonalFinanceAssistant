@@ -1,17 +1,9 @@
 import { INCOME_CATEGORY, OUTCOME_CATEGORY } from 'src/constants/categoryTypes'
 
-const getCategoriesListByType = (state, type) => {
-    const data = [];
-
-    state.categoriesList.categories.order.forEach((id) => {
-        const item = state.categories.byId[id];
-
-        if (item.categoryTypeId === type) {
-            data.push(item);
-        }
-    });
-
-    return data;
+const getCategoriesListByType = ({ categoriesList: { categories: { byId, order }}}, type) => {
+    return order
+        .filter(id => byId[id].categoryTypeId === type)
+        .map(id => byId[id]);
 };
 
 export const getIncomeCategoriesList = state =>

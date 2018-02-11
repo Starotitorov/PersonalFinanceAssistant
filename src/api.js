@@ -164,9 +164,33 @@ export const addTransaction = async transactionData => networkService.sendReques
     body: JSON.stringify({ transaction: transactionData })
 });
 
+export const updateTransaction = async (id, transactionData) => networkService.sendRequest(`${API_URL}/transactions/${id}`, {
+    method: 'PUT',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'token': await JWTStorage.getToken()
+    },
+    body: JSON.stringify({ transaction: transactionData })
+});
+
+export const removeTransaction = async id => networkService.sendRequest(`${API_URL}/transactions/${id}`, {
+    method: 'DELETE',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'token': await JWTStorage.getToken()
+    }
+});
+
 export const fetchExchangeRates = () => networkService.sendRequest(config.exchangeRatesUrl);
 
-// TODO: Add api calls
-export const changePassword = data => Promise.resolve(data);
-export const updateTransaction = (id, data) => Promise.resolve(data);
-export const removeTransaction = id => Promise.resolve(id);
+export const changePassword = async data => networkService.sendRequest(`${API_URL}/auth/changePassword`, {
+    method: 'PUT',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'token': await JWTStorage.getToken()
+    },
+    body: JSON.stringify(data)
+});

@@ -1,4 +1,4 @@
-import periodTypes from 'src/constants/transactionPeriodTypes';
+import { periodTypes } from '../Transactions/constants';
 
 export default [
     periodTypes.DAY,

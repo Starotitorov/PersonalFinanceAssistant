@@ -3,15 +3,15 @@ import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import LogInForm from './components/LogInForm';
 import FacebookLoginBtn from './components/FacebookLoginBtn';
 
-export default function LogInScreen({ onLogInUser, onNewUser, onLoginFacebook }) {
+export default function LogInScreen({ logIn, logInFacebook, handleNewUser }) {
     return (
         <View style={styles.container}>
-            <LogInForm onSubmit={onLogInUser}/>
-            <TouchableOpacity style={styles.newUserBtn} onPress={onNewUser}>
+            <LogInForm onSubmit={logIn}/>
+            <TouchableOpacity style={styles.newUserBtn} onPress={handleNewUser}>
                 <Text style={styles.newUserLabel}>I am a new user</Text>
             </TouchableOpacity>
             <Text style={styles.or}>or</Text>
-            <FacebookLoginBtn onLoginSuccess={onLoginFacebook}/>
+            <FacebookLoginBtn onLoginSuccess={logInFacebook}/>
         </View>
     );
 }

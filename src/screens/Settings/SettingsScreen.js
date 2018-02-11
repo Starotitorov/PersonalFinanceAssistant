@@ -4,7 +4,7 @@ import { PrimaryButton } from 'src/components';
 import { margins, fontSizes } from 'src/styles';
 import { Gravatar } from 'react-native-gravatar';
 
-export default function SettingsScreen({ user, onLogout, onChangePassword }) {
+export default function SettingsScreen({ user, logout, handleChangePassword }) {
     const userName = user ? user.name : '';
     const userEmail = user ? user.email : '';
 
@@ -22,12 +22,12 @@ export default function SettingsScreen({ user, onLogout, onChangePassword }) {
             <PrimaryButton
                 containerViewStyle={styles.button}
                 title="Change password"
-                onPress={onChangePassword}
+                onPress={handleChangePassword}
             />
             <PrimaryButton
                 containerViewStyle={styles.button}
                 title="Log out"
-                onPress={onLogout}
+                onPress={logout}
             />
         </View>
     );

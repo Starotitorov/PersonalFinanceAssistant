@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { IconButton } from 'src/components/index';
 import { switchViewType } from '../../actions';
-import { LIST } from 'src/constants/transactionsViewTypes';
+import { LIST } from 'src/screens/Transactions/constants';
 import { getViewType } from '../../selectors';
 
 const mapStateToProps = state => {

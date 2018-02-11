@@ -3,9 +3,7 @@ import { SubmissionError } from 'redux-form';
 import { AsyncStorage } from 'react-native';
 import * as asyncStorageKeys from 'src/constants/asyncStorage';
 import { NavigationActions } from 'react-navigation';
-import { LoginManager } from 'react-native-fbsdk';
-import { fetchApplicationDataRequest } from 'src/actions/application';
-import * as api from '../api';
+import * as api from 'src/api';
 
 export const setCurrentUser = createAction(
     'AUTHORIZATION/SET_CURRENT_USER',
@@ -21,15 +19,13 @@ export const resetCurrentUser = createAction('AUTHORIZATION/RESET_CURRENT_USER')
 export const fetchCurrentUserStart = createAction('AUTHORIZATION/FETCH_CURRENT_USER_START');
 export const fetchCurrentUserFinish = createAction('AUTHORIZATION/FETCH_CURRENT_USER_FINISH');
 
-const setAuthorizationData = (user, token) => dispatch => {
+export const setAuthorizationData = (user, token) => dispatch => {
     dispatch(setCurrentUser(user));
 
     dispatch(setToken(token));
-
-    dispatch(fetchApplicationDataRequest());
 };
 
-export const logIn = (email, password) => dispatch => {
+export const logIn = ({ email, password }) => dispatch => {
     return api.signIn(email, password)
         .then(response => response.json())
         .then(async ({ user, token}) => {
@@ -88,20 +84,6 @@ export const logInFacebook = ({ accessToken }) => dispatch => {
         });
 };
 
-export const logout = () => async dispatch => {
-    dispatch(resetCurrentUser());
-
-    LoginManager.logOut();
-
-    dispatch(NavigationActions.reset({
-        index: 0,
-        key: null,
-        actions: [
-            NavigationActions.navigate({ routeName: 'LogIn' })
-        ]
-    }));
-};
-
 export const getCurrentUser = () => async dispatch => {
     dispatch(fetchCurrentUserStart());
 
@@ -130,9 +112,6 @@ export const getCurrentUser = () => async dispatch => {
     }
 };
 
-export const changePassword = data => dispatch => {
-    return api.changePassword(data)
-        .then(() => {
-            dispatch(logout());
-        });
+export const handleNewUser = () => dispatch => {
+    dispatch(NavigationActions.navigate({ routeName: 'SignUp' }));
 };

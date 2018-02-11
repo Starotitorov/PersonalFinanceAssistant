@@ -6,7 +6,7 @@ import {
     resetCurrentUser,
     fetchCurrentUserStart,
     fetchCurrentUserFinish
-} from 'src/actions/authorization';
+} from './actions';
 
 const initialUserState = null;
 const initialTokenState = null;

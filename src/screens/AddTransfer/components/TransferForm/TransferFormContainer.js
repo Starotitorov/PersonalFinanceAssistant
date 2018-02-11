@@ -1,11 +1,9 @@
 import { connect } from 'react-redux';
-import { getFormValues } from 'redux-form';
-import { isSameCurrency } from 'src/selectors/accounts';
-import { TRANSFER_FORM } from 'src/constants/forms';
+import { isSameCurrency, getTransferFormValues } from './selectors';
 import TransferForm from './TransferForm';
 
 const mapStateToProps = state => {
-    const { fromAccountId, toAccountId } = getFormValues(TRANSFER_FORM)(state) || {};
+    const { fromAccountId, toAccountId } = getTransferFormValues(state) || {};
 
     return {
         isSameCurrency: isSameCurrency(state, fromAccountId, toAccountId)

@@ -1,4 +1,4 @@
-import { Validator } from 'src/lib';
+import { Validator } from 'src/utils';
 
 export default Validator.combineValidators({
     name: {

@@ -1,21 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { NavigationActions } from 'react-navigation';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import { margins, fontSizes } from 'src/styles'
+import { handleAddTransfer } from './actions';
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onPress() {
-            dispatch(NavigationActions.navigate({ routeName: 'AddTransfer' }));
-        }
-    }
-};
-
-function AccountsListHeaderRight({ onPress }) {
+function AccountsListHeaderRight({ handleAddTransfer }) {
     return (
-        <TouchableOpacity onPress={onPress}>
+        <TouchableOpacity onPress={handleAddTransfer}>
             <Icon
                 style={styles.icon}
                 name="compare-arrows"
@@ -31,4 +23,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect(null, mapDispatchToProps)(AccountsListHeaderRight);
+export default connect(null, { handleAddTransfer })(AccountsListHeaderRight);

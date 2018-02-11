@@ -11,7 +11,7 @@ import {
     addAccount,
     editAccount
 } from './actions';
-import { withLoadingIndicator, withFetchScreenDataOnFocus } from 'src/components';
+import { withLoadingIndicator, withScreenFocus } from 'src/components';
 import AccountsListScreen from './AccountsListScreen';
 
 const mapStateToProps = state => {
@@ -24,11 +24,11 @@ const mapStateToProps = state => {
 
 export default compose(
     connect(mapStateToProps, {
-        fetchScreenData: fetchAccountsListData,
+        onFocus: fetchAccountsListData,
         refreshAccountsListData,
         addAccount,
         editAccount
     }),
-    withFetchScreenDataOnFocus('AccountsList'),
+    withScreenFocus('AccountsList'),
     withLoadingIndicator
 )(AccountsListScreen);

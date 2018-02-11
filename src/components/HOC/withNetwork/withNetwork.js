@@ -4,20 +4,12 @@ import { NetInfo } from 'react-native';
 import { setConnectionInfo } from 'src/components/HOC/withNetwork/actions';
 import { networkService } from 'src/services';
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onConnectionInfoChange(connectionInfo) {
-            dispatch(setConnectionInfo(connectionInfo));
-        }
-    }
-};
-
 export default function withNetwork(WrappedComponent) {
     class Wrapper extends Component {
         handleConnectionChange = (connectionInfo) => {
-            const { onConnectionInfoChange } = this.props;
+            const { setConnectionInfo } = this.props;
 
-            onConnectionInfoChange(connectionInfo);
+            setConnectionInfo(connectionInfo);
 
             networkService.setConnectionInfo(connectionInfo);
         };
@@ -46,5 +38,5 @@ export default function withNetwork(WrappedComponent) {
         }
     }
 
-    return connect(null, mapDispatchToProps)(Wrapper);
+    return connect(null, { setConnectionInfo })(Wrapper);
 }

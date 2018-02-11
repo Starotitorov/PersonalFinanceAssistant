@@ -2,14 +2,14 @@ import { lifecycle } from 'recompose'
 
 export default screen => lifecycle({
     componentDidMount() {
-        this.props.fetchScreenData();
+        this.props.onFocus();
     },
 
     componentWillReceiveProps({ navigation: { state: { routeName: nextRouteName }}}) {
-        const { navigation: { state: { routeName }}, fetchScreenData} = this.props;
+        const { navigation: { state: { routeName }}, onFocus} = this.props;
 
         if (routeName !== screen && nextRouteName === screen) {
-            fetchScreenData();
+            onFocus();
         }
     }
 });

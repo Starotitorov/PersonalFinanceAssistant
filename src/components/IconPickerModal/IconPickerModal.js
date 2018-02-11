@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, ScrollView, Modal, TouchableWithoutFeedback } from 'react-native';
 import { Icon } from 'react-native-elements';
-import icons from 'src/constants/icons';
+import icons from './icons';
 import styles from './IconPickerModalStyles';
 
 export default class IconPickerModal extends Component {

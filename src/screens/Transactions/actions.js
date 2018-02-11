@@ -1,7 +1,7 @@
 import { createAction } from 'redux-actions';
 import { NavigationActions } from 'react-navigation';
 import * as api from 'src/api';
-import { LIST, CHART } from 'src/constants/transactionsViewTypes';
+import { LIST, CHART } from './constants';
 import { getAllAccounts, getAllCategories } from './selectors'
 
 export const changePeriodView = createAction(

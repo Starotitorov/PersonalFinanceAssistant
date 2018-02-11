@@ -4,7 +4,7 @@ import { ActionButton } from 'src/components';
 import TransactionsPeriodCarousel from './components/TransactionsPeriodCarousel';
 import TransactionsList from './components/TransactionsList';
 import TransactionsPieChart from './components/TransactionsPieChart';
-import { LIST, CHART } from 'src/constants/transactionsViewTypes';
+import { LIST, CHART } from './constants';
 
 export default class TransactionsScreen extends Component {
     renderViewInner() {

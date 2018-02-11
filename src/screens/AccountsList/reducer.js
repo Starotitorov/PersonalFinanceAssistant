@@ -8,6 +8,7 @@ import {
     refreshAccountListDataSuccess,
     refreshAccountsListDataFailure
 } from './actions';
+import { arrayToObjectById } from 'src/utils'
 
 const initialState = {
     accounts: {
@@ -44,21 +45,11 @@ const accountsList = handleActions({
         };
     },
     [setAccounts]: (state, action) => {
-        const {accounts} = action.payload;
-        let newById = {};
-        let newOrder = [];
-
-        accounts.forEach(account => {
-            newById[account.id] = account;
-            newOrder.push(account.id);
-        });
+        const { accounts } = action.payload;
 
         return {
             ...state,
-            accounts: {
-                byId: newById,
-                order: newOrder
-            }
+            accounts: arrayToObjectById(accounts)
         };
     }
 }, initialState);

@@ -2,11 +2,11 @@ import React from 'react';
 import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import SignUpForm from './components/SignUpForm';
 
-export default function LogInScreen({ onSignUpUser, onHaveAccount }) {
+export default function LogInScreen({ signUp, handleHaveAccount }) {
     return (
         <View style={styles.container}>
-            <SignUpForm onSubmit={onSignUpUser}/>
-            <TouchableOpacity style={styles.haveAccountBtn} onPress={onHaveAccount}>
+            <SignUpForm onSubmit={signUp}/>
+            <TouchableOpacity style={styles.haveAccountBtn} onPress={handleHaveAccount}>
                 <Text style={styles.haveAccountLabel}>Already have an account</Text>
             </TouchableOpacity>
         </View>

@@ -55,7 +55,7 @@ export const editAccount = id => dispatch => {
     dispatch(NavigationActions.navigate({
         routeName: 'EditAccount',
         params: {
-            account: id
+            id
         }
     }));
 };

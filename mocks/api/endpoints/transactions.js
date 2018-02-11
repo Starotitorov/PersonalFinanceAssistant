@@ -26,7 +26,7 @@ export default {
                     accountId: 1,
                     categoryId: 1,
                     value: 200,
-                    date: moment(Date.now()).add(1, 'month'),
+                    date: Date.now(),
                     note: 'Transaction'
                 },
                 {
@@ -64,6 +64,26 @@ export default {
                 date,
                 note
             }
+        };
+    },
+    [`PUT ${API_URL}/transactions/{id}`]: ({method, url, params, urlparams, headers}) => {
+        const { accountId, categoryId, value, date, note } = params.transaction;
+        const { id } = urlparams;
+
+        return {
+            transaction: {
+                id,
+                accountId,
+                categoryId,
+                value,
+                date,
+                note
+            }
+        };
+    },
+    [`DELETE ${API_URL}/transactions/{id}`]: ({method, url, params, urlparams, headers}) => {
+        return {
+            status: 200
         };
     }
 };

@@ -1,10 +1,7 @@
 import { AsyncStorage } from 'react-native';
-import { setCurrentUser, setToken, resetCurrentUser } from 'src/actions/authorization';
-import { resetAccounts } from 'src/actions/accounts';
-import { resetCategories } from 'src/actions/categories';
-import { resetTransactions } from 'src/actions/transactions';
+import { setCurrentUser, setToken, resetCurrentUser } from './actions';
 import { USER_KEY } from 'src/constants/asyncStorage';
-import { JWTStorage } from 'src/utils';
+import { JWTStorage } from 'src/utils/index';
 
 export const cacheAuthorizationDataToAsyncStorage = ({ dispatch, getState }) => {
     return next => (action) => {
@@ -27,11 +24,6 @@ export const cacheAuthorizationDataToAsyncStorage = ({ dispatch, getState }) => 
                 );
                 JWTStorage.removeToken();
 
-                dispatch(resetTransactions());
-
-                dispatch(resetAccounts());
-
-                dispatch(resetCategories());
                 break;
             default:
                 break;

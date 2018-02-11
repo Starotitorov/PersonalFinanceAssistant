@@ -3,22 +3,20 @@ import { View, StyleSheet } from 'react-native';
 import { ActionButton } from 'src/components';
 import AccountsList from './components/AccountsList';
 
-export default function AccountsListScreen(
-    {
-        refreshAccounts,
-        refreshing,
-        accounts,
-        addAccount,
-        editAccount
-    }
-) {
+export default function AccountsListScreen({
+    refreshAccountsListData,
+    refreshing,
+    accounts,
+    addAccount,
+    editAccount
+}) {
     return (
         <View style={styles.container}>
             <AccountsList
                 refreshing={refreshing}
                 accounts={accounts}
                 onSelectAccount={ editAccount }
-                onRefresh={ refreshAccounts }
+                onRefresh={ refreshAccountsListData }
             />
             <ActionButton.Button
                 type={ActionButton.types.ADD}

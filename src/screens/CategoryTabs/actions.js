@@ -4,4 +4,4 @@ export const addCategory = () => dispatch => {
     dispatch(NavigationActions.navigate({
         routeName: 'AddCategory'
     }));
-}
+};

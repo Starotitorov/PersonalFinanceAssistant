@@ -15,8 +15,8 @@ import {
     setSelectedAccount,
     setViewType
 } from './actions';
-import * as transactionsViewTypes from 'src/constants/transactionsViewTypes';
-import periodTypes from 'src/constants/transactionPeriodTypes';
+import * as transactionsViewTypes from './constants';
+import { periodTypes } from './constants';
 import { arrayToObjectById } from 'src/utils';
 
 const initialState = {

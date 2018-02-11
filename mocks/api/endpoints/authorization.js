@@ -36,5 +36,10 @@ export default {
             },
             token: 'token'
         };
+    },
+    [`PUT ${API_URL}/auth/changePassword`]: ({method, url, params, urlparams, headers}) => {
+        return {
+            status: 200
+        };
     }
 }

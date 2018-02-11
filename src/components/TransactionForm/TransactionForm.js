@@ -9,15 +9,13 @@ import DatePickerField from '../DatePickerField';
 import validate from './validate';
 import { PrimaryButton } from 'src/components';
 
-function TransactionForm(
-    {
-        handleSubmit,
-        submitting,
-        invalid,
-        options,
-        createTransaction
-    }
-) {
+function TransactionForm({
+    handleSubmit,
+    submitting,
+    invalid,
+    options,
+    createTransaction
+}) {
     return (
         <ScrollView contentContainerStyle={styles.container}>
             <Field

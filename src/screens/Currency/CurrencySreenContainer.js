@@ -1,11 +1,19 @@
 import { connect } from 'react-redux';
-import { fetchExchangeRates } from 'src/actions/exchangeRates';
+import { compose } from 'recompose'
+import { withScreenFocus, withLoadingIndicator } from 'src/components'
+import { fetchExchangeRates } from './actions';
+import { getExchangeRates, isExchangeRatesFetching } from './selectors'
 import CurrencyScreen from './CurrencyScreen';
 
 const mapStateToProps = state => {
     return {
-        exchangeRates: state.exchangeRates.rates
+        isLoading: isExchangeRatesFetching(state),
+        exchangeRates: getExchangeRates(state)
     };
 };
 
-export default connect(mapStateToProps, { fetchExchangeRates })(CurrencyScreen)
+export default compose(
+    connect(mapStateToProps, { onFocus: fetchExchangeRates }),
+    withScreenFocus('Currency'),
+    withLoadingIndicator
+)(CurrencyScreen)

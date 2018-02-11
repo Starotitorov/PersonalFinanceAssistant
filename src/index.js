@@ -4,7 +4,7 @@ import { configureStore } from 'src/store';
 import { setJSExceptionHandler } from 'react-native-exception-handler';
 import JSExceptionHandler from './JSExceptionHandler';
 import App from './screens/App';
-import { getCurrentUser } from 'src/actions/authorization';
+import { getCurrentUser } from 'src/screens/LogIn/actions';
 
 setJSExceptionHandler(JSExceptionHandler);
 

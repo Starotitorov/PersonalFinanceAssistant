@@ -1,4 +1,5 @@
 import { AppRegistry } from 'react-native';
+import 'es6-symbol/implement';
 import Application from './src';
 
 // Disable warnings

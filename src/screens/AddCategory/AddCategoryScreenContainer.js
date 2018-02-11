@@ -1,20 +1,12 @@
 import { connect } from 'react-redux';
-import { getCategoryFormInitialValues } from 'src/selectors/forms';
-import { addCategory } from 'src/actions/categories';
+import { getAddCategoryFormInitialValues } from './selectors';
+import { addCategory } from './actions';
 import AddCategoryScreen from './AddCategoryScreen';
 
 const mapStateToProps = () => {
     return {
-        initialValues: getCategoryFormInitialValues()
+        initialValues: getAddCategoryFormInitialValues()
     };
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onAddCategory(data) {
-            return dispatch(addCategory(data))
-        }
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(AddCategoryScreen);
+export default connect(mapStateToProps, { addCategory })(AddCategoryScreen);

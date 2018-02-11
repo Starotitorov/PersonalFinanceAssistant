@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
-import { NavigationActions } from 'react-navigation';
-import { logout } from 'src/actions/authorization';
-import { getCurrentUser } from 'src/selectors/authorization'
+import { logout, handleChangePassword } from './actions';
+import { getCurrentUser } from '../SignUp/selectors'
 import SettingsScreen from './SettingsScreen';
 
 const mapStateToProps = state => {
@@ -10,16 +9,4 @@ const mapStateToProps = state => {
     }
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onLogout() {
-            dispatch(logout())
-        },
-
-        onChangePassword() {
-            dispatch(NavigationActions.navigate({ routeName: 'ChangePassword' }))
-        }
-    }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(SettingsScreen)
+export default connect(mapStateToProps, { logout, handleChangePassword })(SettingsScreen)

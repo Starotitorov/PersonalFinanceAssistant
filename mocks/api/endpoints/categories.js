@@ -19,7 +19,7 @@ export default {
                     userId: 0
                 },
                 {
-                    categoryTypeId: 0,
+                    categoryTypeId: 1,
                     icon: 'cat',
                     id: 2,
                     name: 'C.A.T.',
