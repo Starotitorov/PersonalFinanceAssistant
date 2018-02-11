@@ -1,21 +1,14 @@
 import { connect } from 'react-redux';
-import { setSelectedAccount } from 'src/actions/trends';
-import { getSelectInputOptionsFromAllAccounts } from 'src/selectors/accounts';
+import { getSelectInputOptionsFromAllAccounts } from './selectors';
 import TrendsHeaderTitle from './TrendsHeaderTitle';
+import { getSelectedAccountId } from '../Trends/selectors';
+import { setSelectedAccount } from '../Trends/actions'
 
 const mapStateToProps = state => {
     return {
         accountOptions: getSelectInputOptionsFromAllAccounts(state),
-        selectedAccountId: state.trends.selectedAccount
+        selectedAccountId: getSelectedAccountId(state)
     };
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onChangeAccount(id) {
-            dispatch(setSelectedAccount(id));
-        }
-    }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(TrendsHeaderTitle);
+export default connect(mapStateToProps, { setSelectedAccount })(TrendsHeaderTitle);

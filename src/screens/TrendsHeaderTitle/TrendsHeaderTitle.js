@@ -2,22 +2,20 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { SelectInput } from 'src/components';
 
-export default function TrendsHeaderTitle(
-    {
-        accountOptions,
-        selectedAccountId,
-        onChangeAccount
-    }
-) {
+export default function TrendsHeaderTitle({
+    accountOptions,
+    selectedAccountId,
+    setSelectedAccount
+}) {
     return (
         <View style={styles.container}>
             <SelectInput
-                onChange={onChangeAccount}
+                onChange={setSelectedAccount}
                 value={selectedAccountId}
                 options={accountOptions}
             />
         </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({

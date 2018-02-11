@@ -5,7 +5,6 @@ import accounts from './accounts';
 import categories from './categories';
 import application from './application';
 import transactions from './transactions';
-import trends from './trends';
 import exchangeRates from './exchangeRates';
 
 import navigation from 'src/screens/AppNavigator/reducer'
@@ -18,6 +17,7 @@ import addTransfer from 'src/screens/AddTransfer/reducer';
 import transactionsList from 'src/screens/Transactions/reducer';
 import addTransaction from 'src/screens/AddTransaction/reducer';
 import editTransaction from 'src/screens/EditTransaction/reducer';
+import trends from 'src/screens/Trends/reducer';
 
 export default combineReducers({
     navigation,
@@ -28,7 +28,6 @@ export default combineReducers({
     network,
     form,
     transactions,
-    trends,
     exchangeRates,
 
     accountsList,
@@ -38,5 +37,6 @@ export default combineReducers({
     addTransfer,
     transactionsList,
     addTransaction,
-    editTransaction
+    editTransaction,
+    trends
 });

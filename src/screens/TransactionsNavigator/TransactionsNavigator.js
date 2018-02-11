@@ -31,10 +31,8 @@ export default StackNavigator({
     },
     AddTransaction: {
         screen: AddTransaction,
-        navigationOptions: () => {
-            return {
-                title: 'Add transaction',
-            }
+        navigationOptions: {
+            title: 'Add transaction'
         }
     }
 }, {

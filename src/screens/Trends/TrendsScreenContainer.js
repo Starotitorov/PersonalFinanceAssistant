@@ -1,14 +1,19 @@
 import { connect } from 'react-redux';
-import { getTrendsData } from 'src/selectors/transactions';
-import { isApplicationDataFetching } from 'src/selectors/application';
-import { withLoadingIndicator } from 'src/components';
+import { compose } from 'recompose';
+import { getTrendsData, isTrendsDataFetching } from './selectors';
+import { withLoadingIndicator, withFetchScreenDataOnFocus } from 'src/components';
+import { fetchTrendsData } from './actions'
 import TrendsScreen from './TrendsScreen';
 
 const mapStateToProps = state => {
     return {
-        isLoading: isApplicationDataFetching(state),
+        isLoading: isTrendsDataFetching(state),
         data: getTrendsData(state)
     };
 };
 
-export default connect(mapStateToProps)(withLoadingIndicator(TrendsScreen));
+export default compose(
+    connect(mapStateToProps, { fetchScreenData: fetchTrendsData }),
+    withFetchScreenDataOnFocus('Trends'),
+    withLoadingIndicator
+)(TrendsScreen);

@@ -2,6 +2,9 @@ import moment from 'moment';
 import { chain, values, find, sumBy, findIndex, times, constant } from 'lodash';
 import * as categoryTypes from 'src/constants/categoryTypes';
 import periodTypes from 'src/constants/transactionPeriodTypes';
+import filterTransactionsByAccount from 'src/helpers/filterTransactionsByAccount';
+import filterTransactionsByCategoryType from 'src/helpers/filterTransactionsByCategoryType';
+import getTransactionsList from 'src/helpers/getTransactionsList';
 
 export const getFormattedCurrentDate = ({ transactionsList: { currentDate, periodType }}) => {
     if (periodType === periodTypes.YEAR.value) {
@@ -44,9 +47,6 @@ export const getCurrentPeriodType = state => state.transactions.periodType;
 
 export const getSelectedAccountId = state => state.transactions.selectedAccount;
 
-export const filterTransactionsByAccount = (transactions, selected) =>
-    transactions.filter(({ accountId }) => accountId === selected);
-
 export const filterTransactionsByTimeRange = (
     {
         transactions,
@@ -60,34 +60,6 @@ export const filterTransactionsByTimeRange = (
 
     return transactions
         .filter(({ date }) => date >= lowerBound && date <= higherBound);
-};
-
-export const getTransactionsList = (transactionsById, categoriesById) => {
-    return chain(values(transactionsById))
-        .map(transaction => {
-            const category = categoriesById[transaction.categoryId];
-
-            if (!category) {
-                return null;
-            }
-
-            const { categoryTypeId } = category;
-
-            return {
-                ...transaction,
-                date: moment(transaction.date),
-                categoryTypeId,
-                value: (categoryTypeId === categoryTypes.INCOME_CATEGORY
-                    ? 1 : -1) * transaction.value
-            }
-        })
-        .compact()
-        .value();
-};
-
-const filterTransactionsByCategoryType = (transactions, categoryType) => {
-    return transactions
-        .filter(transaction => transaction.categoryTypeId === categoryType);
 };
 
 export const getTransactionsGroupedByCategories = ({
@@ -178,35 +150,4 @@ export const getTransactionsChartData = ({
         totalIncomeSum,
         totalBalance
     }
-};
-
-const getTimeIntervals = (count) => {
-    const currentDate = Date.now();
-    let leftBorder = moment(currentDate).startOf('month');
-    let rightBorder = moment(currentDate).endOf('month');
-
-    const intervals = [];
-    for (let i = 0; i < count; ++i) {
-        intervals.push([leftBorder, rightBorder]);
-
-        rightBorder = moment(leftBorder);
-        leftBorder = moment(leftBorder).subtract(1, 'month');
-    }
-
-    return intervals.reverse();
-};
-
-const getTransactionsStatisticsByIntervals = (transactions, intervals) => {
-    return chain(transactions)
-        .groupBy(({ date }) => {
-            return findIndex(intervals, i => date >= i[0] && date < i[1])
-        })
-        .transform((acc, transactions, key) => {
-            if (key == -1) {
-                return;
-            }
-
-            acc[key] = Math.abs(sumBy(transactions, 'value'));;
-        }, times(intervals.length, constant(0)))
-        .value();
 };
