@@ -14,7 +14,6 @@ export const fetchAccount = id => dispatch => {
     dispatch(fetchAccountStart());
 
     return api.getAccount(id)
-        .then(response => response.json())
         .then(({ account }) => dispatch(setAccount(account)))
         .catch(e => dispatch(fetchAccountFailure(e)));
 };

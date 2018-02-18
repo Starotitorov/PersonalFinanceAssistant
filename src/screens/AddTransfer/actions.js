@@ -32,7 +32,6 @@ export const fetchAddTransferData = () => async dispatch => {
     dispatch(fetchAddTransferDataStart());
 
     return api.fetchAccounts()
-        .then(response => response.json())
         .then(({ accounts }) => {
             dispatch(setAccounts(accounts));
 

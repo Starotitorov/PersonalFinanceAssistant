@@ -9,7 +9,6 @@ export const fetchExchangeRates = () => dispatch => {
     dispatch(fetchExchangeRatesStart());
 
     return api.fetchExchangeRates()
-        .then(response => response.json())
         .then(data => dispatch(setExchangeRates(data)))
         .catch(e => dispatch(fetchExchangeRatesFailure(e)));
 };

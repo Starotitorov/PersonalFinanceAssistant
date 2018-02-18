@@ -2,194 +2,195 @@ import config from './config';
 import { JWTStorage } from 'src/utils';
 import { networkService } from 'src/services';
 
+const { get, post, put, del, cache } = networkService;
 const API_URL = config.apiUrl;
 
-export const signIn = (email, password) => networkService.sendRequest(`${API_URL}/signin`, {
-    method: 'POST',
-    headers: {
+export const signIn = (email, password) => post(
+    `${API_URL}/signin`,
+    {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ email, password })
-});
+    JSON.stringify({ email, password })
+);
 
-export const signUp = (userData) => networkService.sendRequest(`${API_URL}/signup`, {
-    method: 'POST',
-    headers: {
+export const signUp = (userData) => post(
+    `${API_URL}/signup`,
+    {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ user: userData })
-});
+    JSON.stringify({ user: userData })
+);
 
-export const logInFacebook = data => networkService.sendRequest(`${API_URL}/auth/facebook/callback`, {
-    method: 'POST',
-    headers: {
+export const logInFacebook = data => post(
+    `${API_URL}/auth/facebook/callback`,
+    {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
     },
-    body: JSON.stringify(data)
-});
+    JSON.stringify(data)
+);
 
-export const fetchAccounts = async () => networkService.sendRequest(`${API_URL}/accounts`, {
-    method: 'GET',
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': await JWTStorage.getToken()
-    }
-});
-
-export const addAccount = async accountData => networkService.sendRequest(`${API_URL}/accounts`, {
-    method: 'POST',
-    headers: {
+export const fetchAccounts = async () => cache(get(
+    `${API_URL}/accounts`,
+    {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': await JWTStorage.getToken()
     },
-    body: JSON.stringify({ account: accountData })
-});
+));
 
-export const getAccount = async id => networkService.sendRequest(`${API_URL}/accounts/${id}`, {
-    method: 'GET',
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': await JWTStorage.getToken()
-    }
-});
-
-export const updateAccount = async (id, accountData) => networkService.sendRequest(`${API_URL}/accounts/${id}`, {
-    method: 'PUT',
-    headers: {
+export const addAccount = async accountData => post(
+    `${API_URL}/accounts`,
+    {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': await JWTStorage.getToken()
     },
-    body: JSON.stringify({ account: accountData })
-});
+    JSON.stringify({ account: accountData })
+);
 
-export const removeAccount = async id => networkService.sendRequest(`${API_URL}/accounts/${id}`, {
-    method: 'DELETE',
-    headers: {
+export const getAccount = async id => get(
+    `${API_URL}/accounts/${id}`,
+    {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': await JWTStorage.getToken()
     }
-});
+);
 
-export const fetchCategories = async () => networkService.sendRequest(`${API_URL}/categories`, {
-    method: 'GET',
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': await JWTStorage.getToken()
-    }
-});
-
-export const getCategory = async id => networkService.sendRequest(`${API_URL}/categories/${id}`, {
-    method: 'GET',
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': await JWTStorage.getToken()
-    }
-});
-
-export const addCategory = async categoryData => networkService.sendRequest(`${API_URL}/categories`, {
-    method: 'POST',
-    headers: {
+export const updateAccount = async (id, accountData) => put(
+    `${API_URL}/accounts/${id}`,
+    {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': await JWTStorage.getToken()
     },
-    body: JSON.stringify({ category: categoryData })
-});
+    JSON.stringify({ account: accountData })
+);
 
-export const updateCategory = async (id, categoryData) => networkService.sendRequest(`${API_URL}/categories/${id}`, {
-    method: 'PUT',
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': await JWTStorage.getToken()
-    },
-    body: JSON.stringify({ category: categoryData })
-});
-
-export const removeCategory = async id => networkService.sendRequest(`${API_URL}/categories/${id}`, {
-    method: 'DELETE',
-    headers: {
+export const removeAccount = async id => del(
+    `${API_URL}/accounts/${id}`,
+    {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': await JWTStorage.getToken()
     }
-});
+);
 
-export const addTransfer = async transferData => networkService.sendRequest(`${API_URL}/transfers`, {
-    method: 'POST',
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        'Authorization': await JWTStorage.getToken()
-    },
-    body: JSON.stringify({ transfer: transferData })
-});
-
-export const fetchTransactions = async () => networkService.sendRequest(`${API_URL}/transactions`, {
-    method: 'GET',
-    headers: {
+export const fetchCategories = async () => cache(get(
+    `${API_URL}/categories`,
+    {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': await JWTStorage.getToken()
     }
-});
+));
 
-export const getTransaction = async id => networkService.sendRequest(`${API_URL}/transactions/${id}`, {
-    method: 'GET',
-    headers: {
+export const getCategory = async id => get(
+    `${API_URL}/categories/${id}`,
+    {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': await JWTStorage.getToken()
     }
-});
+);
 
-export const addTransaction = async transactionData => networkService.sendRequest(`${API_URL}/transactions`, {
-    method: 'POST',
-    headers: {
+export const addCategory = async categoryData => post(
+    `${API_URL}/categories`,
+    {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': await JWTStorage.getToken()
     },
-    body: JSON.stringify({ transaction: transactionData })
-});
+    JSON.stringify({ category: categoryData })
+);
 
-export const updateTransaction = async (id, transactionData) => networkService.sendRequest(`${API_URL}/transactions/${id}`, {
-    method: 'PUT',
-    headers: {
+export const updateCategory = async (id, categoryData) => put(
+    `${API_URL}/categories/${id}`,
+    {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': await JWTStorage.getToken()
     },
-    body: JSON.stringify({ transaction: transactionData })
-});
+    JSON.stringify({ category: categoryData })
+);
 
-export const removeTransaction = async id => networkService.sendRequest(`${API_URL}/transactions/${id}`, {
-    method: 'DELETE',
-    headers: {
+export const removeCategory = async id => del(
+    `${API_URL}/categories/${id}`,
+    {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': await JWTStorage.getToken()
     }
-});
+);
 
-export const fetchExchangeRates = () => networkService.sendRequest(config.exchangeRatesUrl);
-
-export const changePassword = async data => networkService.sendRequest(`${API_URL}/changePassword`, {
-    method: 'PUT',
-    headers: {
+export const addTransfer = async transferData => post(
+    `${API_URL}/transfers`,
+    {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': await JWTStorage.getToken()
     },
-    body: JSON.stringify(data)
-});
+    JSON.stringify({ transfer: transferData })
+);
+
+export const fetchTransactions = async () => cache(get(
+    `${API_URL}/transactions`,
+    {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': await JWTStorage.getToken()
+    }
+));
+
+export const getTransaction = async id => get(
+    `${API_URL}/transactions/${id}`,
+    {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': await JWTStorage.getToken()
+    }
+);
+
+export const addTransaction = async transactionData => post(
+    `${API_URL}/transactions`,
+    {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': await JWTStorage.getToken()
+    },
+    JSON.stringify({ transaction: transactionData })
+);
+
+export const updateTransaction = async (id, transactionData) => put(
+    `${API_URL}/transactions/${id}`,
+    {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': await JWTStorage.getToken()
+    },
+    JSON.stringify({ transaction: transactionData })
+);
+
+export const removeTransaction = async id => del(
+    `${API_URL}/transactions/${id}`,
+    {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': await JWTStorage.getToken()
+    }
+);
+
+export const fetchExchangeRates = () => cache(get(config.exchangeRatesUrl));
+
+export const changePassword = async data => put(
+    `${API_URL}/changePassword`,
+    {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': await JWTStorage.getToken()
+    },
+    JSON.stringify(data)
+);

@@ -17,7 +17,6 @@ export const refreshCategoriesListDataSuccess = createAction('CATEGORIES_LIST/RE
 
 const fetchCategoriesListDataRequest = () => dispatch => {
     return api.fetchCategories()
-        .then(response => response.json())
         .then(({ categories }) => {
             dispatch(setCategories(categories));
         });

@@ -17,7 +17,6 @@ export const refreshAccountListDataSuccess = createAction('ACCOUNTS_LIST/REFRESH
 
 const fetchAccountsListDataRequest = () => dispatch => {
     return api.fetchAccounts()
-        .then(response => response.json())
         .then(({ accounts }) => {
             dispatch(setAccounts(accounts))
         });

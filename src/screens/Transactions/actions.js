@@ -58,12 +58,9 @@ export const refreshTransactionsListDataSuccess = createAction('TRANSACTIONS_LIS
 
 const fetchTransactionsListDataRequest = () => dispatch => {
     return Promise.all([
-        api.fetchAccounts()
-            .then(response => response.json()),
-        api.fetchCategories()
-            .then(response => response.json()),
+        api.fetchAccounts(),
+        api.fetchCategories(),
         api.fetchTransactions()
-            .then(response => response.json())
     ])
         .then(results => {
             const {accounts} = results[0];

@@ -14,7 +14,6 @@ export const fetchTransaction = id => dispatch => {
     dispatch(fetchTransactionStart());
 
     return api.getTransaction(id)
-        .then(response => response.json())
         .then(({ transaction }) => dispatch(setTransaction(transaction)))
         .catch(e => dispatch(fetchTransactionFailure(e)));
 };

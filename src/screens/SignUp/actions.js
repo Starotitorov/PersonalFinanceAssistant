@@ -5,7 +5,6 @@ import { setAuthorizationData } from '../LogIn/actions'
 
 export const signUp = (userData) => dispatch => {
     return api.signUp(userData)
-        .then(response => response.json())
         .then(async ({ user, token }) => {
             await dispatch(setAuthorizationData(user, token));
 
@@ -17,9 +16,9 @@ export const signUp = (userData) => dispatch => {
                 ]
             }));
         })
-        .catch(({ errors }) => Promise.reject(new SubmissionError({
-            ...errors
-        })));
+        .catch(({ errors }) => {
+            throw new SubmissionError(errors);
+        });
 };
 
 export const handleHaveAccount = () => dispatch => {

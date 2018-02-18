@@ -14,7 +14,6 @@ export const fetchCategory = id => dispatch => {
     dispatch(fetchCategoryStart());
 
     return api.getCategory(id)
-        .then(response => response.json())
         .then(({ category }) => dispatch(setCategory(category)))
         .catch(e => dispatch(fetchCategoryFailure(e)));
 };

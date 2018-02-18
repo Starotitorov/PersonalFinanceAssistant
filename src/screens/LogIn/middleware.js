@@ -2,6 +2,7 @@ import { AsyncStorage } from 'react-native';
 import { setCurrentUser, setToken, resetCurrentUser } from './actions';
 import { USER_KEY } from 'src/constants/asyncStorage';
 import { JWTStorage } from 'src/utils';
+import { cacheService } from 'src/services'
 
 export const cacheAuthorizationDataToAsyncStorage = () => {
     return next => (action) => {
@@ -23,6 +24,8 @@ export const cacheAuthorizationDataToAsyncStorage = () => {
                     JSON.stringify(null)
                 );
                 JWTStorage.removeToken();
+
+                cacheService.clear();
 
                 break;
             default:
