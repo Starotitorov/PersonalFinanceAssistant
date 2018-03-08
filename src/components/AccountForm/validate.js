@@ -10,7 +10,7 @@ export default Validator.combineValidators({
         validators: [Validator.required, Validator.number, Validator.range(1)]
     },
     initialDate: {
-        fieldName: 'initial balance',
+        fieldName: 'initial date',
         validators: Validator.required
     }
 });

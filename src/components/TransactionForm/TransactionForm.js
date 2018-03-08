@@ -8,6 +8,7 @@ import TextInput from '../TextInputField';
 import DatePickerField from '../DatePickerField';
 import validate from './validate';
 import { PrimaryButton } from 'src/components';
+import { normalizeDate } from 'src/utils'
 
 function TransactionForm({
     handleSubmit,
@@ -55,6 +56,7 @@ function TransactionForm({
                     label: 'Date'
                 }}
                 format={value => moment(value).format('MM/DD/YYYY')}
+                normalize={normalizeDate}
                 component={DatePickerField}
             />
             <Field
@@ -77,7 +79,7 @@ function TransactionForm({
 export default reduxForm({
     form: TRANSACTION_FORM,
     initialValues: {
-        date: Date.now()
+        date: new Date().toUTCString()
     },
     validate
 })(TransactionForm);

@@ -3,9 +3,8 @@ import { JWTStorage } from 'src/utils';
 import { networkService } from 'src/services';
 
 const API_URL = config.apiUrl;
-const AUTH_API_URL = `${API_URL}/auth`;
 
-export const signIn = (email, password) => networkService.sendRequest(`${AUTH_API_URL}/signin`, {
+export const signIn = (email, password) => networkService.sendRequest(`${API_URL}/signin`, {
     method: 'POST',
     headers: {
         'Accept': 'application/json',
@@ -14,7 +13,7 @@ export const signIn = (email, password) => networkService.sendRequest(`${AUTH_AP
     body: JSON.stringify({ email, password })
 });
 
-export const signUp = (userData) => networkService.sendRequest(`${AUTH_API_URL}/signup`, {
+export const signUp = (userData) => networkService.sendRequest(`${API_URL}/signup`, {
     method: 'POST',
     headers: {
         'Accept': 'application/json',
@@ -23,13 +22,13 @@ export const signUp = (userData) => networkService.sendRequest(`${AUTH_API_URL}/
     body: JSON.stringify({ user: userData })
 });
 
-export const logInFacebook = accessToken => networkService.sendRequest(`${AUTH_API_URL}/signin/facebook`, {
+export const logInFacebook = data => networkService.sendRequest(`${API_URL}/auth/facebook/callback`, {
     method: 'POST',
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ token: accessToken })
+    body: JSON.stringify(data)
 });
 
 export const fetchAccounts = async () => networkService.sendRequest(`${API_URL}/accounts`, {
@@ -37,7 +36,7 @@ export const fetchAccounts = async () => networkService.sendRequest(`${API_URL}/
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'token': await JWTStorage.getToken()
+        'Authorization': await JWTStorage.getToken()
     }
 });
 
@@ -46,7 +45,7 @@ export const addAccount = async accountData => networkService.sendRequest(`${API
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'token': await JWTStorage.getToken()
+        'Authorization': await JWTStorage.getToken()
     },
     body: JSON.stringify({ account: accountData })
 });
@@ -56,7 +55,7 @@ export const getAccount = async id => networkService.sendRequest(`${API_URL}/acc
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'token': await JWTStorage.getToken()
+        'Authorization': await JWTStorage.getToken()
     }
 });
 
@@ -65,7 +64,7 @@ export const updateAccount = async (id, accountData) => networkService.sendReque
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'token': await JWTStorage.getToken()
+        'Authorization': await JWTStorage.getToken()
     },
     body: JSON.stringify({ account: accountData })
 });
@@ -75,7 +74,7 @@ export const removeAccount = async id => networkService.sendRequest(`${API_URL}/
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'token': await JWTStorage.getToken()
+        'Authorization': await JWTStorage.getToken()
     }
 });
 
@@ -84,7 +83,7 @@ export const fetchCategories = async () => networkService.sendRequest(`${API_URL
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'token': await JWTStorage.getToken()
+        'Authorization': await JWTStorage.getToken()
     }
 });
 
@@ -93,7 +92,7 @@ export const getCategory = async id => networkService.sendRequest(`${API_URL}/ca
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'token': await JWTStorage.getToken()
+        'Authorization': await JWTStorage.getToken()
     }
 });
 
@@ -102,7 +101,7 @@ export const addCategory = async categoryData => networkService.sendRequest(`${A
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'token': await JWTStorage.getToken()
+        'Authorization': await JWTStorage.getToken()
     },
     body: JSON.stringify({ category: categoryData })
 });
@@ -112,7 +111,7 @@ export const updateCategory = async (id, categoryData) => networkService.sendReq
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'token': await JWTStorage.getToken()
+        'Authorization': await JWTStorage.getToken()
     },
     body: JSON.stringify({ category: categoryData })
 });
@@ -122,7 +121,7 @@ export const removeCategory = async id => networkService.sendRequest(`${API_URL}
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'token': await JWTStorage.getToken()
+        'Authorization': await JWTStorage.getToken()
     }
 });
 
@@ -131,7 +130,7 @@ export const addTransfer = async transferData => networkService.sendRequest(`${A
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'token': await JWTStorage.getToken()
+        'Authorization': await JWTStorage.getToken()
     },
     body: JSON.stringify({ transfer: transferData })
 });
@@ -141,7 +140,7 @@ export const fetchTransactions = async () => networkService.sendRequest(`${API_U
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'token': await JWTStorage.getToken()
+        'Authorization': await JWTStorage.getToken()
     }
 });
 
@@ -150,7 +149,7 @@ export const getTransaction = async id => networkService.sendRequest(`${API_URL}
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'token': await JWTStorage.getToken()
+        'Authorization': await JWTStorage.getToken()
     }
 });
 
@@ -159,7 +158,7 @@ export const addTransaction = async transactionData => networkService.sendReques
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'token': await JWTStorage.getToken()
+        'Authorization': await JWTStorage.getToken()
     },
     body: JSON.stringify({ transaction: transactionData })
 });
@@ -169,7 +168,7 @@ export const updateTransaction = async (id, transactionData) => networkService.s
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'token': await JWTStorage.getToken()
+        'Authorization': await JWTStorage.getToken()
     },
     body: JSON.stringify({ transaction: transactionData })
 });
@@ -179,18 +178,18 @@ export const removeTransaction = async id => networkService.sendRequest(`${API_U
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'token': await JWTStorage.getToken()
+        'Authorization': await JWTStorage.getToken()
     }
 });
 
 export const fetchExchangeRates = () => networkService.sendRequest(config.exchangeRatesUrl);
 
-export const changePassword = async data => networkService.sendRequest(`${API_URL}/auth/changePassword`, {
+export const changePassword = async data => networkService.sendRequest(`${API_URL}/changePassword`, {
     method: 'PUT',
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'token': await JWTStorage.getToken()
+        'Authorization': await JWTStorage.getToken()
     },
     body: JSON.stringify(data)
 });

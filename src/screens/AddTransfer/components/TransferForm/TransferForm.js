@@ -11,6 +11,7 @@ import {
 } from 'src/components';
 import styles from './TransferFormStyles';
 import validate from './validate';
+import { normalizeDate } from 'src/utils'
 
 function TransferForm({ isSameCurrency, handleSubmit, submitting, invalid, options }) {
     return (
@@ -47,6 +48,7 @@ function TransferForm({ isSameCurrency, handleSubmit, submitting, invalid, optio
                             label: 'Exchange rate',
                             placeholder: 'Enter exchange rate'
                         }}
+                        normalize={value => value && Number(value)}
                         component={TextInput}
                     />
             }
@@ -56,6 +58,7 @@ function TransferForm({ isSameCurrency, handleSubmit, submitting, invalid, optio
                     label: 'Date'
                 }}
                 format={value => moment(value).format('MM/DD/YYYY')}
+                normalize={normalizeDate}
                 component={DatePickerField}
             />
             <Field
@@ -78,7 +81,7 @@ function TransferForm({ isSameCurrency, handleSubmit, submitting, invalid, optio
 export default reduxForm({
     form: TRANSFER_FORM,
     initialValues: {
-        date: Date.now(),
+        date: new Date().toUTCString(),
         exchangeRate: '1'
     },
     validate

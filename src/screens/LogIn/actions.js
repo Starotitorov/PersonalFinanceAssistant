@@ -40,8 +40,8 @@ export const logIn = ({ email, password }) => dispatch => {
             }));
         })
         .catch(response => {
-            return response.text()
-                .then(error =>
+            return response.json()
+                .then(({ error })=>
                     Promise.reject(new SubmissionError({
                         _error: error
                     }))
@@ -49,27 +49,8 @@ export const logIn = ({ email, password }) => dispatch => {
         });
 };
 
-export const singUp = (userData) => dispatch => {
-    return api.signUp(userData)
-        .then(response => response.json())
-        .then(async ({ user, token }) => {
-            await dispatch(setAuthorizationData(user, token));
-
-            dispatch(NavigationActions.reset({
-                index: 0,
-                key: null,
-                actions: [
-                    NavigationActions.navigate({ routeName: 'Home' })
-                ]
-            }));
-        })
-        .catch(({ errors }) => Promise.reject(new SubmissionError({
-            ...errors
-        })));
-};
-
-export const logInFacebook = ({ accessToken }) => dispatch => {
-    return api.logInFacebook(accessToken)
+export const logInFacebook = data => dispatch => {
+    return api.logInFacebook(data)
         .then(response => response.json())
         .then(async ({ user, token }) => {
             await dispatch(setAuthorizationData(user, token));

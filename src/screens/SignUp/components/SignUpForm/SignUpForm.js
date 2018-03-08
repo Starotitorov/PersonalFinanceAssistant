@@ -36,7 +36,7 @@ function SignUpForm({ handleSubmit, submitting, invalid }) {
                     component={TextInputField}
                 />
                 <Field
-                    name="passwordConfirmation"
+                    name="password_confirmation"
                     props={{
                         secureTextEntry: true,
                         label: 'Password confirmation',

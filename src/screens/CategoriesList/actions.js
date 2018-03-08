@@ -51,7 +51,7 @@ export const selectCategory = id => dispatch => {
     dispatch(NavigationActions.navigate({
         routeName: 'EditCategory',
         params: {
-            category: id
+            id
         }
     }));
 };

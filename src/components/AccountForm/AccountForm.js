@@ -8,6 +8,7 @@ import { IconField } from 'src/components';
 import supportedCurrency, * as currency from 'src/constants/currency';
 import validate from './validate';
 import { PrimaryButton } from 'src/components';
+import { normalizeDate } from 'src/utils'
 
 function AccountForm({ handleSubmit, submitting, invalid, createAccount }) {
     return (
@@ -58,6 +59,7 @@ function AccountForm({ handleSubmit, submitting, invalid, createAccount }) {
                     placeholder: 'Enter initial date...'
                 }}
                 format={value => moment(value).format('MM/DD/YYYY')}
+                normalize={normalizeDate}
                 component={DatePickerField}
             />
             <PrimaryButton
@@ -73,7 +75,7 @@ export default reduxForm({
     form: ACCOUNT_FORM,
     initialValues: {
         icon: 'cash',
-        initialDate: moment.now(),
+        initialDate: new Date().toUTCString(),
         currency: currency.BYN
     },
     validate
