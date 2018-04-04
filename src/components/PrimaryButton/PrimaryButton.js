@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Button } from 'react-native-elements';
-import { colors, margins } from 'src/styles';
+import { colors } from 'src/styles';
 
 export default function PrimaryButton({ disabled, onPress, title, containerViewStyle }) {
     return (
@@ -18,7 +18,8 @@ export default function PrimaryButton({ disabled, onPress, title, containerViewS
 
 const styles = StyleSheet.create({
     buttonContainer: {
-        minWidth: 300,
+        margin: 0,
+        minWidth: 200,
         borderRadius: 20
     },
     button: {

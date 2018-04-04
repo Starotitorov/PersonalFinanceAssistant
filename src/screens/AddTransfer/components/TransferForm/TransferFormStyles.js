@@ -5,12 +5,15 @@ export default StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'stretch',
-        minWidth: 300
+        width: 300
     },
-    row :{
+    row: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center'
+    },
+    fields: {
+        marginBottom: 50
     },
     flexGrow: {
         flexGrow: 1

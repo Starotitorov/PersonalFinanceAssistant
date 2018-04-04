@@ -14,10 +14,10 @@ export default class IconField extends Component {
     };
 
     render() {
-        const { input } = this.props;
+        const { input, style } = this.props;
 
         return (
-            <View>
+            <View style={style}>
                 <TouchableOpacity onPress={this.toggleModal}>
                     <View style={styles.container}>
                         <Icon

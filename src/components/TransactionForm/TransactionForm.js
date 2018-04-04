@@ -19,54 +19,56 @@ function TransactionForm({
 }) {
     return (
         <ScrollView contentContainerStyle={styles.container}>
-            <Field
-                name="value"
-                props={{
-                    label: 'Sum',
-                    placeholder: 'Enter sum...'
-                }}
-                component={TextInput}
-            />
-            {
-                createTransaction &&
-                    [
-                        <Field
-                            key="accountId"
-                            name="accountId"
-                            component={SelectInput}
-                            props={{
-                                label: 'Account',
-                                options: options.accounts
-                            }}
-                        />,
-                        <Field
-                            key="categoryId"
-                            name="categoryId"
-                            component={SelectInput}
-                            props={{
-                                label: 'Category',
-                                options: options.categories
-                            }}
-                        />
-                    ]
-            }
-            <Field
-                name="date"
-                props={{
-                    label: 'Date'
-                }}
-                format={value => moment(value).format('MM/DD/YYYY')}
-                normalize={normalizeDate}
-                component={DatePickerField}
-            />
-            <Field
-                name="note"
-                props={{
-                    label: 'Note',
-                    placeholder: 'Enter note...'
-                }}
-                component={TextInput}
-            />
+            <View style={styles.fields}>
+                <Field
+                    name="value"
+                    props={{
+                        label: 'Sum',
+                        placeholder: 'Enter sum...'
+                    }}
+                    component={TextInput}
+                />
+                {
+                    createTransaction &&
+                        [
+                            <Field
+                                key="accountId"
+                                name="accountId"
+                                component={SelectInput}
+                                props={{
+                                    label: 'Account',
+                                    options: options.accounts
+                                }}
+                            />,
+                            <Field
+                                key="categoryId"
+                                name="categoryId"
+                                component={SelectInput}
+                                props={{
+                                    label: 'Category',
+                                    options: options.categories
+                                }}
+                            />
+                        ]
+                }
+                <Field
+                    name="date"
+                    props={{
+                        label: 'Date'
+                    }}
+                    format={value => moment(value).format('MM/DD/YYYY')}
+                    normalize={normalizeDate}
+                    component={DatePickerField}
+                />
+                <Field
+                    name="note"
+                    props={{
+                        label: 'Note',
+                        placeholder: 'Enter note...'
+                    }}
+                    component={TextInput}
+                />
+            </View>
             <PrimaryButton
                 disabled={invalid || submitting}
                 onPress={handleSubmit}
@@ -89,6 +91,9 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'stretch',
-        minWidth: 300
+        width: 300
+    },
+    fields: {
+        marginBottom: 50
     }
 });

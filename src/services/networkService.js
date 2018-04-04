@@ -1,6 +1,6 @@
+import FetchMock from 'react-native-fetch-mock';
 import { fetch } from 'src/utils';
 import logNetworkRequest from './logNetworkRequest';
-import FetchMock from 'react-native-fetch-mock';
 
 const CONNECTION_INFO_TYPE_NONE = 'none';
 

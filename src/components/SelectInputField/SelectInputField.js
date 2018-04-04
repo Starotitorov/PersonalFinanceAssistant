@@ -1,8 +1,8 @@
 import React from 'react';
 import SelectInput from '../SelectInput';
 
-export default function SelectInputField({ input, label, options }) {
+export default function SelectInputField({ input, label, options, ...props }) {
     return (
-        <SelectInput {...input} label={label} options={options} />
+        <SelectInput {...input} {...props} label={label} options={options} />
     );
 }

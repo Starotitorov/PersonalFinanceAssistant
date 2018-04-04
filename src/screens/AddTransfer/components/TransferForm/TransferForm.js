@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, Button } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { Field, reduxForm } from 'redux-form';
 import moment from 'moment';
 import { TRANSFER_FORM } from 'src/constants/forms';
@@ -16,59 +16,61 @@ import { normalizeDate } from 'src/utils'
 function TransferForm({ isSameCurrency, handleSubmit, submitting, invalid, options }) {
     return (
         <ScrollView contentContainerStyle={styles.container}>
-            <Field
-                name="value"
-                props={{
-                    label: 'Sum',
-                    placeholder: 'Enter sum to transfer...'
-                }}
-                component={TextInput}
-            />
-            <Field
-                name="fromAccountId"
-                props={{
-                    label: 'From account',
-                    options: options.accounts
-                }}
-                component={SelectInput}
-            />
-            <Field
-                name="toAccountId"
-                props={{
-                    label: 'To account',
-                    options: options.accounts
-                }}
-                component={SelectInput}
-            />
-            {
-                !isSameCurrency &&
-                    <Field
-                        name="exchangeRate"
-                        props={{
-                            label: 'Exchange rate',
-                            placeholder: 'Enter exchange rate'
-                        }}
-                        normalize={value => value && Number(value)}
-                        component={TextInput}
-                    />
-            }
-            <Field
-                name="date"
-                props={{
-                    label: 'Date'
-                }}
-                format={value => moment(value).format('MM/DD/YYYY')}
-                normalize={normalizeDate}
-                component={DatePickerField}
-            />
-            <Field
-                name="notes"
-                props={{
-                    label: 'Notes',
-                    placeholder: 'Enter notes...'
-                }}
-                component={TextInput}
-            />
+            <View style={styles.fields}>
+                <Field
+                    name="value"
+                    props={{
+                        label: 'Sum',
+                        placeholder: 'Enter sum to transfer...'
+                    }}
+                    component={TextInput}
+                />
+                <Field
+                    name="fromAccountId"
+                    props={{
+                        label: 'From account',
+                        options: options.accounts
+                    }}
+                    component={SelectInput}
+                />
+                <Field
+                    name="toAccountId"
+                    props={{
+                        label: 'To account',
+                        options: options.accounts
+                    }}
+                    component={SelectInput}
+                />
+                {
+                    !isSameCurrency &&
+                        <Field
+                            name="exchangeRate"
+                            props={{
+                                label: 'Exchange rate',
+                                placeholder: 'Enter exchange rate'
+                            }}
+                            normalize={value => value && Number(value)}
+                            component={TextInput}
+                        />
+                }
+                <Field
+                    name="date"
+                    props={{
+                        label: 'Date'
+                    }}
+                    format={value => moment(value).format('MM/DD/YYYY')}
+                    normalize={normalizeDate}
+                    component={DatePickerField}
+                />
+                <Field
+                    name="notes"
+                    props={{
+                        label: 'Notes',
+                        placeholder: 'Enter notes...'
+                    }}
+                    component={TextInput}
+                />
+            </View>
             <PrimaryButton
                 disabled={invalid || submitting}
                 onPress={handleSubmit}

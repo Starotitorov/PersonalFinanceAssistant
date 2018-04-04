@@ -8,34 +8,38 @@ import TextInput from '../TextInputField';
 import options from './CategoryFormOptions';
 import validate from './validate';
 import { PrimaryButton } from 'src/components';
+import { margins } from 'src/styles'
 
 function CategoryForm({ handleSubmit, submitting, invalid, createCategory }) {
     return (
         <ScrollView contentContainerStyle={styles.container}>
-            <View style={styles.row}>
-                <Field
-                    name="icon"
-                    component={IconInput}
-                />
-                <View style={styles.flexGrow}>
+            <View style={styles.fields}>
+                <View style={styles.row}>
                     <Field
-                        name="name"
-                        props={{
-                            label: 'Category name',
-                            placeholder: 'Enter category name...'
-                        }}
-                        component={TextInput}
+                        name="icon"
+                        style={styles.icon}
+                        component={IconInput}
                     />
+                    <View style={styles.flexGrow}>
+                        <Field
+                            name="name"
+                            props={{
+                                label: 'Category name',
+                                placeholder: 'Enter category name...'
+                            }}
+                            component={TextInput}
+                        />
+                    </View>
                 </View>
+                {
+                    createCategory &&
+                        <Field
+                            name="categoryTypeId"
+                            component={SelectInput}
+                            options={options.categoryType}
+                        />
+                }
             </View>
-            {
-                createCategory &&
-                    <Field
-                        name="categoryTypeId"
-                        component={SelectInput}
-                        options={options.categoryType}
-                    />
-            }
             <PrimaryButton
                 disabled={invalid || submitting}
                 onPress={handleSubmit}
@@ -55,7 +59,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'stretch',
-        minWidth: 300
+        width: 300
     },
     row :{
         flexDirection: 'row',
@@ -64,5 +68,11 @@ const styles = StyleSheet.create({
     },
     flexGrow: {
         flexGrow: 1
+    },
+    fields: {
+        marginBottom: 50
+    },
+    icon: {
+        marginRight: margins.MARGIN_M
     }
 });
