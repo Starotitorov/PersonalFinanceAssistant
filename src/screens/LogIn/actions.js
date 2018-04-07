@@ -1,6 +1,5 @@
 import { createAction } from 'redux-actions';
-import { SubmissionError } from 'redux-form';
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage, Alert } from 'react-native';
 import * as asyncStorageKeys from 'src/constants/asyncStorage';
 import { NavigationActions } from 'react-navigation';
 import * as api from 'src/api';
@@ -27,7 +26,6 @@ export const setAuthorizationData = (user, token) => dispatch => {
 
 export const logIn = ({ email, password }) => dispatch => {
     return api.signIn(email, password)
-        .then(response => response.json())
         .then(async ({ user, token}) => {
             await dispatch(setAuthorizationData(user, token));
 
@@ -39,19 +37,11 @@ export const logIn = ({ email, password }) => dispatch => {
                 ]
             }));
         })
-        .catch(response => {
-            return response.json()
-                .then(({ error })=>
-                    Promise.reject(new SubmissionError({
-                        _error: error
-                    }))
-                )
-        });
+        .catch(({ error }) => Alert.alert(null, error));
 };
 
 export const logInFacebook = data => dispatch => {
     return api.logInFacebook(data)
-        .then(response => response.json())
         .then(async ({ user, token }) => {
             await dispatch(setAuthorizationData(user, token));
 
