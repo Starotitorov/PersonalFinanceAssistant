@@ -10,7 +10,7 @@ const AddTransactionScreen = ({ addTransaction, viewModel }) =>
             submitButtonText="Add transaction"
             onSubmit={addTransaction}
             viewModel={viewModel} />
-    </View>;
+    </View>
 
 AddTransactionScreen.propTypes = {
     addTransaction: PropTypes.func,

@@ -42,7 +42,7 @@ const TransactionForm = ({
             onPress={handleSubmit}
             title={submitButtonText}
         />
-    </ScrollView>;
+    </ScrollView>
 
 TransactionForm.propTypes = {
     handleSubmit: PropTypes.func,

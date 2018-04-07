@@ -13,7 +13,7 @@ const EditCategoryScreen = ({ initialValues, viewModel, handleUpdateCategory }) 
             initialValues={initialValues}
             onSubmit={handleUpdateCategory}
         />
-    </View>;
+    </View>
 
 EditCategoryScreen.propTypes = {
     initialValues: PropTypes.shape({}),

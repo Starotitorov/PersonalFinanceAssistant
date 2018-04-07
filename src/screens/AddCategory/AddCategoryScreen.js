@@ -10,9 +10,8 @@ const AddCategoryScreen = ({ handleAddCategory, viewModel, initialValues }) =>
             submitButtonText="Add category"
             viewModel={viewModel}
             initialValues={initialValues}
-            onSubmit={handleAddCategory}
-        />
-    </View>;
+            onSubmit={handleAddCategory} />
+    </View>
 
 AddCategoryScreen.propTypes = {
     handleAddCategory: PropTypes.func,

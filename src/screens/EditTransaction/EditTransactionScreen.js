@@ -12,7 +12,7 @@ const EditTransactionScreen = ({ initialValues, updateTransaction, viewModel }) 
             viewModel={viewModel}
             initialValues={initialValues}
             onSubmit={updateTransaction} />
-    </View>;
+    </View>
 
 EditTransactionScreen.propTypes = {
     initialValues: PropTypes.shape({}),

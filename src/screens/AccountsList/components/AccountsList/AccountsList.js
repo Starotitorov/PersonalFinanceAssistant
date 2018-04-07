@@ -3,7 +3,7 @@ import { List } from 'react-native-elements';
 import { RefreshControl, FlatList } from 'react-native';
 import { colors } from 'src/styles';
 import { withEmptyListComponent } from 'src/components';
-import AccountListItem from './AccountListItem'
+import AccountListItem from '../AccountListItem'
 
 class AccountsList extends Component {
     keyExtractor = ({ id }) => id;

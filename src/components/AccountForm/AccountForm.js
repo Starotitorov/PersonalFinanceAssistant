@@ -48,7 +48,7 @@ const AccountForm = ({
             title={submitButtonText}
             disabled={submitting || invalid}
             onPress={handleSubmit}/>
-    </ScrollView>;
+    </ScrollView>
 
 AccountForm.propTypes = {
     handleSubmit: PropTypes.func,

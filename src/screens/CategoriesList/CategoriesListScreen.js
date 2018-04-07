@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FlatList, RefreshControl } from 'react-native';
 import { List } from 'react-native-elements';
-import CategoriesListItem from './CategoriesListItem';
+import CategoriesListItem from './components/CategoriesListItem';
 import { withEmptyListComponent } from 'src/components';
 import { colors } from 'src/styles';
 

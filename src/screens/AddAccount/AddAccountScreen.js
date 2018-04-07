@@ -7,7 +7,7 @@ import styles from './AddAccountStyles'
 const AddAccountScreen = ({ addAccount, viewModel }) =>
     <View style={ styles.container }>
         <AccountForm onSubmit={ addAccount } viewModel={ viewModel } submitButtonText="Add account" />
-    </View>;
+    </View>
 
 AddAccountScreen.propTypes = {
     addAccount: PropTypes.func,

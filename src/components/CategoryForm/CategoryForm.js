@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import { ScrollView, View } from 'react-native';
-import { PrimaryButton, IconField, SelectInput, TextInputField, Field } from 'src/components';
+import { PrimaryButton, IconField, SelectInputField, TextInputField, Field } from 'src/components';
 import styles from './CategoryFormStyles'
 
 const CategoryForm = ({ handleSubmit, submitting, invalid, viewModel = {}, submitButtonText }) =>
@@ -22,7 +22,7 @@ const CategoryForm = ({ handleSubmit, submitting, invalid, viewModel = {}, submi
             </View>
             <Field
                 {...viewModel.categoryTypeId}
-                component={SelectInput}
+                component={SelectInputField}
             />
         </View>
         <PrimaryButton
@@ -30,7 +30,7 @@ const CategoryForm = ({ handleSubmit, submitting, invalid, viewModel = {}, submi
             onPress={handleSubmit}
             title={submitButtonText}
         />
-    </ScrollView>;
+    </ScrollView>
 
 CategoryForm.propTypes = {
     handleSubmit: PropTypes.func,

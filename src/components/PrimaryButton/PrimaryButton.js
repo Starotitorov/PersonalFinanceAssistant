@@ -10,7 +10,7 @@ const PrimaryButton = ({ disabled, onPress, title, containerViewStyle }) =>
         disabledStyle={styles.disabledStyle}
         title={title}
         disabled={disabled}
-        onPress={onPress} />;
+        onPress={onPress} />
 
 PrimaryButton.propTypes = {
     disabled: PropTypes.bool,
