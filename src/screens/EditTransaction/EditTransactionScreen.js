@@ -1,23 +1,23 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import PropTypes from 'prop-types'
+import { View } from 'react-native';
 import { TransactionForm } from 'src/components';
+import styles from './EditTransactionScreenStyles'
 
-export default function EditTransactionScreen({ initialValues, updateTransaction }) {
-    return (
-        <View style={styles.container}>
-            <TransactionForm
-                enableReinitialize
-                initialValues={initialValues}
-                onSubmit={updateTransaction}
-            />
-        </View>
-    );
-}
+const EditTransactionScreen = ({ initialValues, updateTransaction, viewModel }) =>
+    <View style={styles.container}>
+        <TransactionForm
+            submitButtonText="Save changes"
+            enableReinitialize
+            viewModel={viewModel}
+            initialValues={initialValues}
+            onSubmit={updateTransaction} />
+    </View>;
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    }
-});
+EditTransactionScreen.propTypes = {
+    initialValues: PropTypes.shape({}),
+    updateTransaction: PropTypes.func,
+    viewModel: PropTypes.shape({})
+};
+
+export default EditTransactionScreen;

@@ -5,6 +5,7 @@ import * as api from 'src/api';
 export const addTransfer = transferData => dispatch => {
     const transfer = {
         ...transferData,
+        exchangeRate: Number(transferData.exchangeRate),
         value: Number(transferData.value)
     };
 

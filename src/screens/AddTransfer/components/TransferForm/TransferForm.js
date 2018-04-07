@@ -1,90 +1,63 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import { ScrollView, View } from 'react-native';
-import { Field, reduxForm } from 'redux-form';
-import moment from 'moment';
-import { TRANSFER_FORM } from 'src/constants/forms';
 import {
     TextInputField as TextInput,
     SelectInputField as SelectInput,
     DatePickerField,
-    PrimaryButton
+    PrimaryButton,
+    Field
 } from 'src/components';
 import styles from './TransferFormStyles';
-import validate from './validate';
-import { normalizeDate } from 'src/utils'
+import { normalizeDate, formatDate } from 'src/utils'
 
-function TransferForm({ isSameCurrency, handleSubmit, submitting, invalid, options }) {
-    return (
-        <ScrollView contentContainerStyle={styles.container}>
-            <View style={styles.fields}>
-                <Field
-                    name="value"
-                    props={{
-                        label: 'Sum',
-                        placeholder: 'Enter sum to transfer...'
-                    }}
-                    component={TextInput}
-                />
-                <Field
-                    name="fromAccountId"
-                    props={{
-                        label: 'From account',
-                        options: options.accounts
-                    }}
-                    component={SelectInput}
-                />
-                <Field
-                    name="toAccountId"
-                    props={{
-                        label: 'To account',
-                        options: options.accounts
-                    }}
-                    component={SelectInput}
-                />
-                {
-                    !isSameCurrency &&
-                        <Field
-                            name="exchangeRate"
-                            props={{
-                                label: 'Exchange rate',
-                                placeholder: 'Enter exchange rate'
-                            }}
-                            normalize={value => value && Number(value)}
-                            component={TextInput}
-                        />
-                }
-                <Field
-                    name="date"
-                    props={{
-                        label: 'Date'
-                    }}
-                    format={value => moment(value).format('MM/DD/YYYY')}
-                    normalize={normalizeDate}
-                    component={DatePickerField}
-                />
-                <Field
-                    name="notes"
-                    props={{
-                        label: 'Notes',
-                        placeholder: 'Enter notes...'
-                    }}
-                    component={TextInput}
-                />
-            </View>
-            <PrimaryButton
-                disabled={invalid || submitting}
-                onPress={handleSubmit}
-                title="Transfer"
-            />
-        </ScrollView>
-    );
-}
+const TransferForm = ({
+    isSameCurrency,
+    handleSubmit,
+    submitting,
+    invalid,
+    viewModel
+}) =>
+    <ScrollView contentContainerStyle={styles.container}>
+        <View style={styles.fields}>
+            <Field
+                {...viewModel.value}
+                component={TextInput} />
+            <Field
+                {...viewModel.fromAccountId}
+                component={SelectInput} />
+            <Field
+                {...viewModel.toAccountId}
+                component={SelectInput} />
+            {
+                !isSameCurrency &&
+                    <Field
+                        {...viewModel.exchangeRate}
+                        component={TextInput}/>
+            }
+            <Field
+                {...viewModel.date}
+                format={formatDate}
+                normalize={normalizeDate}
+                component={DatePickerField} />
+            <Field
+                {...viewModel.note}
+                component={TextInput} />
+        </View>
+        <PrimaryButton
+            disabled={invalid || submitting}
+            onPress={handleSubmit}
+            title="Transfer"
+        />
+    </ScrollView>;
 
-export default reduxForm({
-    form: TRANSFER_FORM,
-    initialValues: {
-        date: new Date().toUTCString(),
-        exchangeRate: '1'
-    },
-    validate
-})(TransferForm);
+TransferForm.propTypes = {
+    isSameCurrency: PropTypes.bool,
+    handleSubmit: PropTypes.func,
+    submitting: PropTypes.bool,
+    invalid: PropTypes.bool,
+    viewModel: PropTypes.shape({})
+};
+
+export default TransferForm;
+

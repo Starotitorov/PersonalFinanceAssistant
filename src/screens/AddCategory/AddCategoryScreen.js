@@ -1,24 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types'
 import { View } from 'react-native';
 import { CategoryForm } from 'src/components';
 import styles from './AddCategoryScreenStyles';
 
-export default class AddCategoryScreen extends Component {
-    handleSubmit = ({ name: nameValue, ...rest }) => {
-        const name = nameValue.trim();
+const AddCategoryScreen = ({ handleAddCategory, viewModel, initialValues }) =>
+    <View style={styles.container}>
+        <CategoryForm
+            submitButtonText="Add category"
+            viewModel={viewModel}
+            initialValues={initialValues}
+            onSubmit={handleAddCategory}
+        />
+    </View>;
 
-        return this.props.addCategory({ name, ...rest });
-    };
+AddCategoryScreen.propTypes = {
+    handleAddCategory: PropTypes.func,
+    viewModel: PropTypes.shape({}),
+    initialValues: PropTypes.shape({})
+};
 
-    render() {
-        return (
-            <View style={styles.container}>
-                <CategoryForm
-                    createCategory
-                    initialValues={this.props.initialValues}
-                    onSubmit={this.handleSubmit}
-                />
-            </View>
-        );
-    }
-}
+export default AddCategoryScreen;

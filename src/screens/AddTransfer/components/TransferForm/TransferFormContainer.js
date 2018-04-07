@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { isSameCurrency, getTransferFormValues } from './selectors';
-import TransferForm from './TransferForm';
+import TransferFormView from './TransferFormView';
 
 const mapStateToProps = state => {
     const { fromAccountId, toAccountId } = getTransferFormValues(state) || {};
@@ -10,4 +10,4 @@ const mapStateToProps = state => {
     }
 };
 
-export default connect(mapStateToProps)(TransferForm);
+export default connect(mapStateToProps)(TransferFormView);

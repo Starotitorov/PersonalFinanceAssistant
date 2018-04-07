@@ -1,24 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import { TransactionForm } from 'src/components';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
+import styles from './AddTransactionScreenStyles';
 
-export default function AddTransactionScreen({ addTransaction, options }) {
-    return (
-        <View style={styles.container}>
-            <TransactionForm
-                onSubmit={addTransaction}
-                options={options}
-                createTransaction
-            />
-        </View>
-    );
-}
+const AddTransactionScreen = ({ addTransaction, viewModel }) =>
+    <View style={styles.container}>
+        <TransactionForm
+            submitButtonText="Add transaction"
+            onSubmit={addTransaction}
+            viewModel={viewModel} />
+    </View>;
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        minWidth: 300
-    }
-});
+AddTransactionScreen.propTypes = {
+    addTransaction: PropTypes.func,
+    viewModel: PropTypes.shape({})
+};
+
+export default AddTransactionScreen;

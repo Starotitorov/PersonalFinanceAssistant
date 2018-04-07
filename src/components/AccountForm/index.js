@@ -1,3 +1,3 @@
-import AccountForm from './AccountForm';
+import AccountForm from './AccountFormView';
 
 export default AccountForm;

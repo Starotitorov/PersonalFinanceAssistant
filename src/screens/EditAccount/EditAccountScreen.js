@@ -1,22 +1,16 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import { AccountForm } from 'src/components';
+import styles from './EditAccountScreenStyles'
 
-export default function EditAccountScreen({ initialValues, updateAccount }) {
-    return (
-        <View style={styles.container}>
-            <AccountForm
-                enableReinitialize
-                onSubmit={updateAccount}
-                initialValues={initialValues} />
-        </View>
-    );
-}
+const EditAccountScreen = ({ initialValues, updateAccount, viewModel }) =>
+    <View style={ styles.container }>
+        <AccountForm
+            enableReinitialize
+            viewModel={ viewModel }
+            onSubmit={ updateAccount }
+            initialValues={ initialValues }
+            submitButtonText="Save changes" />
+    </View>
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    }
-});
+export default EditAccountScreen;

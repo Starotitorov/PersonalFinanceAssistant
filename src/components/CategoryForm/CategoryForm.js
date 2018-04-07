@@ -1,78 +1,43 @@
 import React from 'react';
-import { ScrollView, View, Button, StyleSheet } from 'react-native';
-import { Field, reduxForm } from 'redux-form';
-import { CATEGORY_FORM } from 'src/constants/forms';
-import IconInput from '../IconField';
-import SelectInput from '../SelectInputField';
-import TextInput from '../TextInputField';
-import options from './CategoryFormOptions';
-import validate from './validate';
-import { PrimaryButton } from 'src/components';
-import { margins } from 'src/styles'
+import PropTypes from 'prop-types'
+import { ScrollView, View } from 'react-native';
+import { PrimaryButton, IconField, SelectInput, TextInputField, Field } from 'src/components';
+import styles from './CategoryFormStyles'
 
-function CategoryForm({ handleSubmit, submitting, invalid, createCategory }) {
-    return (
-        <ScrollView contentContainerStyle={styles.container}>
-            <View style={styles.fields}>
-                <View style={styles.row}>
+const CategoryForm = ({ handleSubmit, submitting, invalid, viewModel = {}, submitButtonText }) =>
+    <ScrollView contentContainerStyle={styles.container}>
+        <View style={styles.fields}>
+            <View style={styles.row}>
+                <Field
+                    {...viewModel.icon}
+                    style={styles.icon}
+                    component={IconField}
+                />
+                <View style={styles.flexGrow}>
                     <Field
-                        name="icon"
-                        style={styles.icon}
-                        component={IconInput}
+                        {...viewModel.name}
+                        component={TextInputField}
                     />
-                    <View style={styles.flexGrow}>
-                        <Field
-                            name="name"
-                            props={{
-                                label: 'Category name',
-                                placeholder: 'Enter category name...'
-                            }}
-                            component={TextInput}
-                        />
-                    </View>
                 </View>
-                {
-                    createCategory &&
-                        <Field
-                            name="categoryTypeId"
-                            component={SelectInput}
-                            options={options.categoryType}
-                        />
-                }
             </View>
-            <PrimaryButton
-                disabled={invalid || submitting}
-                onPress={handleSubmit}
-                title={createCategory ? 'Create category' : 'Edit category'}
+            <Field
+                {...viewModel.categoryTypeId}
+                component={SelectInput}
             />
-        </ScrollView>
-    );
-}
+        </View>
+        <PrimaryButton
+            disabled={invalid || submitting}
+            onPress={handleSubmit}
+            title={submitButtonText}
+        />
+    </ScrollView>;
 
-export default reduxForm({
-    form: CATEGORY_FORM,
-    validate
-})(CategoryForm);
+CategoryForm.propTypes = {
+    handleSubmit: PropTypes.func,
+    submitting: PropTypes.bool,
+    invalid: PropTypes.bool,
+    viewModel: PropTypes.shape({}),
+    submitButtonText: PropTypes.string
+};
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'stretch',
-        width: 300
-    },
-    row :{
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center'
-    },
-    flexGrow: {
-        flexGrow: 1
-    },
-    fields: {
-        marginBottom: 50
-    },
-    icon: {
-        marginRight: margins.MARGIN_M
-    }
-});
+export default CategoryForm

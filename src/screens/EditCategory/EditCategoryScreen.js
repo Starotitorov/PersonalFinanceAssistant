@@ -1,24 +1,24 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types'
 import { View } from 'react-native';
 import { CategoryForm } from 'src/components';
 import styles from './EditCategoryScreenStyles';
 
-export default class EditCategoryScreen extends Component {
-    handleSubmit = ({ name: nameValue, ...rest }) => {
-        const name = nameValue.trim();
+const EditCategoryScreen = ({ initialValues, viewModel, handleUpdateCategory }) =>
+    <View style={styles.container}>
+        <CategoryForm
+            submitButtonText="Save changes"
+            enableReinitialize
+            viewModel={viewModel}
+            initialValues={initialValues}
+            onSubmit={handleUpdateCategory}
+        />
+    </View>;
 
-        return this.props.updateCategory({ name, ...rest });
-    };
+EditCategoryScreen.propTypes = {
+    initialValues: PropTypes.shape({}),
+    viewModel: PropTypes.shape({}),
+    handleUpdateCategory: PropTypes.func
+};
 
-    render() {
-        return (
-            <View style={styles.container}>
-                <CategoryForm
-                    enableReinitialize
-                    initialValues={this.props.initialValues}
-                    onSubmit={this.handleSubmit}
-                />
-            </View>
-        );
-    }
-}
+export default EditCategoryScreen;

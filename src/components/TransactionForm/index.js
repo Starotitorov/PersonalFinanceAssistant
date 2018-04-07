@@ -1,3 +1,3 @@
-import TransactionForm from './TransactionForm';
+import TransactionForm from './TransactionFormView';
 
 export default TransactionForm;

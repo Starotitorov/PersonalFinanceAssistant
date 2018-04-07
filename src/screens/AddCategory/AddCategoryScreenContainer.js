@@ -1,12 +1,10 @@
 import { connect } from 'react-redux';
 import { getAddCategoryFormInitialValues } from './selectors';
 import { addCategory } from './actions';
-import AddCategoryScreen from './AddCategoryScreen';
+import AddCategoryScreenView from './AddCategoryScreenView';
 
-const mapStateToProps = () => {
-    return {
-        initialValues: getAddCategoryFormInitialValues()
-    };
-};
+const mapStateToProps = () => ({
+    initialValues: getAddCategoryFormInitialValues()
+});
 
-export default connect(mapStateToProps, { addCategory })(AddCategoryScreen);
+export default connect(mapStateToProps, { addCategory })(AddCategoryScreenView);

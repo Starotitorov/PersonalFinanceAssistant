@@ -1,24 +1,20 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types'
+import { View } from 'react-native';
 import TransferForm from './components/TransferForm';
+import styles from './AddTransferScreenStyles';
 
-export default function AddTransferScreen({ addTransfer, options }) {
-    return (
-        <View style={styles.container}>
-            <TransferForm
-                enableReinitialize
-                onSubmit={addTransfer}
-                options={options}
-            />
-        </View>
-    );
-}
+const AddTransferScreen = ({ addTransfer, options }) =>
+    <View style={styles.container}>
+        <TransferForm
+            enableReinitialize
+            onSubmit={addTransfer}
+            options={options} />
+    </View>;
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        minWidth: 300
-    }
-});
+AddTransferScreen.propTypes = {
+    addTransfer: PropTypes.func,
+    options: PropTypes.shape({})
+};
+
+export default AddTransferScreen;

@@ -1,6 +1,6 @@
 import { find } from 'lodash'
 import { getFormValues } from 'redux-form';
-import { TRANSFER_FORM } from 'src/constants/forms';
+import { TRANSFER_FORM } from './constants'
 
 export const getTransferFormValues = getFormValues(TRANSFER_FORM);
 

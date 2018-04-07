@@ -1,19 +1,17 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
+import { View } from 'react-native';
 import { AccountForm } from 'src/components';
+import styles from './AddAccountStyles'
 
-export default function AddAccountScreen({ addAccount }) {
-    return (
-        <View style={styles.container}>
-            <AccountForm onSubmit={ addAccount } createAccount />
-        </View>
-    );
-}
+const AddAccountScreen = ({ addAccount, viewModel }) =>
+    <View style={ styles.container }>
+        <AccountForm onSubmit={ addAccount } viewModel={ viewModel } submitButtonText="Add account" />
+    </View>;
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    }
-});
+AddAccountScreen.propTypes = {
+    addAccount: PropTypes.func,
+    viewModel: PropTypes.shape({})
+};
+
+export default AddAccountScreen;

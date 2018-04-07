@@ -1,32 +1,22 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 import { Button } from 'react-native-elements';
-import { colors } from 'src/styles';
+import styles from './PrimaryButtonStyles';
 
-export default function PrimaryButton({ disabled, onPress, title, containerViewStyle }) {
-    return (
-        <Button
-            containerViewStyle={[styles.buttonContainer, containerViewStyle]}
-            buttonStyle={styles.button}
-            disabledStyle={styles.disabledStyle}
-            title={title}
-            disabled={disabled}
-            onPress={onPress}
-        />
-    );
-}
+const PrimaryButton = ({ disabled, onPress, title, containerViewStyle }) =>
+    <Button
+        containerViewStyle={[styles.buttonContainer, containerViewStyle]}
+        buttonStyle={styles.button}
+        disabledStyle={styles.disabledStyle}
+        title={title}
+        disabled={disabled}
+        onPress={onPress} />;
 
-const styles = StyleSheet.create({
-    buttonContainer: {
-        margin: 0,
-        minWidth: 200,
-        borderRadius: 20
-    },
-    button: {
-        backgroundColor: colors.COLOR_PRIMARY,
-        borderRadius: 20
-    },
-    disabledStyle: {
-        backgroundColor: 'darkgrey'
-    }
-});
+PrimaryButton.propTypes = {
+    disabled: PropTypes.bool,
+    onPress: PropTypes.func,
+    title: PropTypes.string,
+    containerViewStyle: PropTypes.any
+};
+
+export default PrimaryButton;
