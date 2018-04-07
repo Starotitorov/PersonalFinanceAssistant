@@ -1,42 +1,37 @@
-import React, { Component } from 'react';
+import { withHandlers, lifecycle, compose } from 'recompose'
 import { connect } from 'react-redux';
 import { NetInfo } from 'react-native';
-import { setConnectionInfo } from 'src/components/HOC/withNetwork/actions';
+import { setConnectionInfo } from './actions';
 import { networkService } from 'src/services';
 
-export default function withNetwork(WrappedComponent) {
-    class Wrapper extends Component {
-        handleConnectionChange = (connectionInfo) => {
-            const { setConnectionInfo } = this.props;
+const withHandleConnectionChange = withHandlers({
+    handleConnectionChange: ({ setConnectionInfo }) => connectionInfo => {
+        setConnectionInfo(connectionInfo);
 
-            setConnectionInfo(connectionInfo);
-
-            networkService.setConnectionInfo(connectionInfo);
-        };
-
-        componentDidMount() {
-            NetInfo.getConnectionInfo()
-                .then(this.handleConnectionChange);
-
-            NetInfo.addEventListener(
-                'connectionChange',
-                this.handleConnectionChange
-            );
-        }
-
-        componentWillUnmount() {
-            NetInfo.removeEventListener(
-                'connectionChange',
-                this.handleConnectionChange
-            );
-        }
-
-        render() {
-            return (
-                <WrappedComponent {...this.props} />
-            );
-        }
+        networkService.setConnectionInfo(connectionInfo);
     }
+});
 
-    return connect(null, { setConnectionInfo })(Wrapper);
-}
+const withLifecycle = lifecycle({
+    componentDidMount() {
+        NetInfo.getConnectionInfo()
+            .then(this.props.handleConnectionChange);
+
+        NetInfo.addEventListener(
+            'connectionChange',
+            this.props.handleConnectionChange
+        );
+    },
+    componentWillUnmount() {
+        NetInfo.removeEventListener(
+            'connectionChange',
+            this.props.handleConnectionChange
+        );
+    }
+});
+
+export default compose(
+    connect(null, { setConnectionInfo }),
+    withHandleConnectionChange,
+    withLifecycle
+);

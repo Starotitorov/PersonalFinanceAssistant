@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import { isFunction } from 'lodash';
 
 const EMAIL_REGEXP = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const PASSWORD_REGEXP = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*_-]).{8,}$/;
@@ -57,7 +57,7 @@ export const length = (max = Infinity, min = -Infinity) => (value, name) => {
 export const combineValidators = fields => (values) => {
     const errors = {};
 
-    _.keys(fields).forEach((field) => {
+    Object.keys(fields).forEach((field) => {
         const value = values[field];
         const { fieldName, validators } = fields[field];
 
@@ -75,7 +75,7 @@ export const combineValidators = fields => (values) => {
             if (fieldErrors.length !== 0) {
                 errors[field] = fieldErrors.join(', ');
             }
-        } else if (_.isFunction(validators)) {
+        } else if (isFunction(validators)) {
             errors[field] = validators(value, fieldName);
         }
     });
