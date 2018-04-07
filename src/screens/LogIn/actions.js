@@ -1,6 +1,5 @@
 import { createAction } from 'redux-actions';
-import { SubmissionError } from 'redux-form';
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage, Alert } from 'react-native';
 import * as asyncStorageKeys from 'src/constants/asyncStorage';
 import { NavigationActions } from 'react-navigation';
 import * as api from 'src/api';
@@ -38,9 +37,7 @@ export const logIn = ({ email, password }) => dispatch => {
                 ]
             }));
         })
-        .catch(({ error }) => {
-            throw new SubmissionError({ _error: error });
-        });
+        .catch(({ error }) => Alert.alert(null, error));
 };
 
 export const logInFacebook = data => dispatch => {
