@@ -1,3 +1,3 @@
-import FacebookLoginBtn from './FacebookLoginBtn';
+import FacebookLoginBtn from './FacebookLoginBtnView';
 
 export default FacebookLoginBtn;

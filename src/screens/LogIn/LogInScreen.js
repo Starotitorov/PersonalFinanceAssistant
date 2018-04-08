@@ -1,35 +1,26 @@
 import React from 'react';
-import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
+import PropTypes from 'prop-types';
+import { View, TouchableOpacity, Text } from 'react-native';
 import LogInForm from './components/LogInForm';
 import FacebookLoginBtn from './components/FacebookLoginBtn';
+import Logo from './components/Logo';
+import styles from './LogInScreenStyles';
 
-export default function LogInScreen({ logIn, logInFacebook, handleNewUser }) {
-    return (
-        <View style={styles.container}>
-            <LogInForm onSubmit={logIn}/>
-            <TouchableOpacity style={styles.newUserBtn} onPress={handleNewUser}>
-                <Text style={styles.newUserLabel}>I am a new user</Text>
-            </TouchableOpacity>
-            <Text style={styles.or}>or</Text>
-            <FacebookLoginBtn onLoginSuccess={logInFacebook}/>
-        </View>
-    );
-}
+const LogInScreen = ({ logIn, logInFacebook, handleNewUser }) =>
+    <View style={styles.container}>
+        <Logo style={styles.logo} />
+        <LogInForm onSubmit={logIn}/>
+        <TouchableOpacity style={styles.newUserBtn} onPress={handleNewUser}>
+            <Text style={styles.newUserLabel}>I am a new user</Text>
+        </TouchableOpacity>
+        <Text style={styles.or}>or</Text>
+        <FacebookLoginBtn onLoginSuccess={logInFacebook}/>
+    </View>
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    newUserBtn: {
-        marginVertical: 12
-    },
-    newUserLabel: {
-        textDecorationLine: 'underline',
-        fontStyle: 'italic'
-    },
-    or: {
-        marginBottom: 12
-    }
-});
+LogInScreen.propTypes = {
+    logIn: PropTypes.func,
+    logInFacebook: PropTypes.func,
+    handleNewUser: PropTypes.func
+};
+
+export default LogInScreen;
