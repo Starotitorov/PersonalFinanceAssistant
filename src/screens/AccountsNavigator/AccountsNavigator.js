@@ -7,6 +7,7 @@ import EditAccount from '../EditAccount';
 import AddTransfer from '../AddTransfer';
 import EditAccountHeaderRight from '../EditAccountHeaderRight';
 import AccountsListHeaderRight from '../AccountsListHeaderRight';
+import getDefaultNavigationOptions from 'src/helpers/getDefaultNavigationOptions';
 
 export default StackNavigator({
     AccountsList: {
@@ -41,5 +42,6 @@ export default StackNavigator({
         }
     }
 }, {
-    initialRouteName: 'AccountsList'
+    initialRouteName: 'AccountsList',
+    navigationOptions: getDefaultNavigationOptions()
 });

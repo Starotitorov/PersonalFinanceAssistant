@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
+import { View, TouchableOpacity, Text } from 'react-native';
 import SignUpForm from './components/SignUpForm';
+import styles from './SignUpScreenStyles';
 
 export default function LogInScreen({ signUp, handleHaveAccount }) {
     return (
@@ -12,18 +13,3 @@ export default function LogInScreen({ signUp, handleHaveAccount }) {
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    haveAccountBtn: {
-        marginVertical: 12
-    },
-    haveAccountLabel: {
-        textDecorationLine: 'underline',
-        fontStyle: 'italic'
-    }
-});

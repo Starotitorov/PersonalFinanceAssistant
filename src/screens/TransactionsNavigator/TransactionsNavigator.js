@@ -1,6 +1,7 @@
 import React from 'react';
 import { StackNavigator } from 'react-navigation';
 import { DrawerButton } from 'src/components';
+import getDefaultNavigationOptions from 'src/helpers/getDefaultNavigationOptions';
 import TransactionsHeaderTitle from '../TransactionsHeaderTitle';
 import Transactions from '../Transactions';
 import SwitchViewTypeIcon from '../Transactions/components/SwitchViewTypeIcon';
@@ -36,5 +37,6 @@ export default StackNavigator({
         }
     }
 }, {
-    initialRouteName: 'Transactions'
+    initialRouteName: 'Transactions',
+    navigationOptions: getDefaultNavigationOptions()
 });

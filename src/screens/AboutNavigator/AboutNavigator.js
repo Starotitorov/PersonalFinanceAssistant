@@ -2,6 +2,7 @@ import React from 'react';
 import { StackNavigator } from 'react-navigation';
 import { DrawerButton } from 'src/components';
 import About from '../About';
+import getDefaultNavigationOptions from 'src/helpers/getDefaultNavigationOptions';
 
 export default StackNavigator({
     About: {
@@ -14,5 +15,6 @@ export default StackNavigator({
         }
     }
 }, {
-    initialRouteName: 'About'
+    initialRouteName: 'About',
+    navigationOptions: getDefaultNavigationOptions()
 });

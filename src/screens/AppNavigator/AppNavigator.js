@@ -3,7 +3,7 @@ import { StackNavigator } from 'react-navigation';
 import LogIn from '../LogIn';
 import SignUp from '../SignUp';
 import HomeDrawerNavigator from '../HomeDrawerNavigator';
-
+import getDefaultNavigationOptions from 'src/helpers/getDefaultNavigationOptions';
 const AppNavigator = StackNavigator({
     LogIn: {
         screen: LogIn,
@@ -24,7 +24,8 @@ const AppNavigator = StackNavigator({
         }
     },
 }, {
-    initialRouteName: 'Home'
+    initialRouteName: 'Home',
+    navigationOptions: getDefaultNavigationOptions()
 });
 
 export const AppRouter = AppNavigator.router;

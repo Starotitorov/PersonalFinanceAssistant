@@ -8,7 +8,11 @@ export default StyleSheet.create({
         backgroundColor: colors.COLOR_PRIMARY
     },
     button: {
-        fontSize: 16
+        fontSize: 16,
+        color: colors.COLOR_WHITE
+    },
+    currentDate: {
+        color: colors.COLOR_WHITE
     },
     periodContainer: {
         flex: 1,

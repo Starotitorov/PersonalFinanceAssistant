@@ -2,6 +2,7 @@ import React from 'react';
 import { StackNavigator } from 'react-navigation';
 import { DrawerButton } from 'src/components';
 import Currency from '../Currency';
+import getDefaultNavigationOptions from 'src/helpers/getDefaultNavigationOptions';
 
 export default StackNavigator({
     Currency: {
@@ -14,5 +15,6 @@ export default StackNavigator({
         }
     }
 }, {
-    initialRouteName: 'Currency'
+    initialRouteName: 'Currency',
+    navigationOptions: getDefaultNavigationOptions()
 });

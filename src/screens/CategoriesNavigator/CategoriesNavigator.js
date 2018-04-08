@@ -4,7 +4,8 @@ import { DrawerButton } from 'src/components'
 import CategoryTabs from '../CategoryTabs';
 import AddCategory from '../AddCategory';
 import EditCategory from '../EditCategory';
-import EditCategoryHeaderRight from '../EditCategoryHeaderRight'
+import EditCategoryHeaderRight from '../EditCategoryHeaderRight';
+import getDefaultNavigationOptions from 'src/helpers/getDefaultNavigationOptions';
 
 export default StackNavigator({
     CategoryTabs: {
@@ -32,5 +33,6 @@ export default StackNavigator({
         }
     }
 }, {
-    initialRouteName: 'CategoryTabs'
+    initialRouteName: 'CategoryTabs',
+    navigationOptions: getDefaultNavigationOptions()
 });

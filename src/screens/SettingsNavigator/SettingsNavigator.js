@@ -3,6 +3,7 @@ import { StackNavigator } from 'react-navigation';
 import { DrawerButton } from 'src/components';
 import Settings from '../Settings';
 import ChangePassword from '../ChangePassword';
+import getDefaultNavigationOptions from 'src/helpers/getDefaultNavigationOptions';
 
 export default StackNavigator({
     Settings: {
@@ -23,5 +24,6 @@ export default StackNavigator({
         }
     }
 }, {
-    initialRouteName: 'Settings'
+    initialRouteName: 'Settings',
+    navigationOptions: getDefaultNavigationOptions()
 });

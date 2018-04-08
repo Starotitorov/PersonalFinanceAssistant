@@ -8,7 +8,7 @@ export default StyleSheet.create({
         borderRadius: 20
     },
     button: {
-        backgroundColor: colors.COLOR_PRIMARY,
+        backgroundColor: colors.COLOR_SECONDARY,
         borderRadius: 20
     },
     disabledStyle: {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { StackNavigator } from 'react-navigation';
 import { DrawerButton } from 'src/components';
+import getDefaultNavigationOptions from 'src/helpers/getDefaultNavigationOptions';
 import Trends from '../Trends';
 import TrendsHeaderTitle from '../TrendsHeaderTitle';
 
@@ -16,5 +17,6 @@ export default StackNavigator({
         }
     }
 }, {
-    initialRouteName: 'Trends'
+    initialRouteName: 'Trends',
+    navigationOptions: getDefaultNavigationOptions()
 });

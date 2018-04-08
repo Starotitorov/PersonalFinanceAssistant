@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { margins, fontSizes } from 'src/styles';
+import { margins, fontSizes, colors } from 'src/styles';
 
 export default function RemoveIcon({ onPress }) {
     return (
@@ -10,6 +10,7 @@ export default function RemoveIcon({ onPress }) {
         >
             <Icon
                 name="delete"
+                color={colors.COLOR_WHITE}
                 style={styles.icon}
             />
         </TouchableOpacity>

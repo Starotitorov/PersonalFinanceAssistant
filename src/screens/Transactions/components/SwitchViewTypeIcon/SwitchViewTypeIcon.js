@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import { IconButton } from 'src/components/index';
+import { IconButton } from 'src/components';
+import { colors } from 'src/styles';
+import { LIST } from '../../constants';
 import { switchViewType } from '../../actions';
-import { LIST } from 'src/screens/Transactions/constants';
 import { getViewType } from '../../selectors';
 
 const mapStateToProps = state => {
@@ -16,7 +17,7 @@ function SwitchViewTypeIcon({ viewType, switchViewType }) {
         <IconButton
             name={viewType === LIST? 'md-pie' : 'md-list'}
             size={26}
-            color="gray"
+            color={colors.COLOR_WHITE}
             backgroundColor="transparent"
             onPress={switchViewType}
         />

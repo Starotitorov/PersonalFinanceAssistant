@@ -10,6 +10,7 @@ import AboutNavigator from '../AboutNavigator';
 import TransactionsNavigator from '../TransactionsNavigator';
 import TrendsNavigator from '../TrendsNavigator';
 import CurrencyNavigator from '../CurrencyNavigator';
+import getDefaultNavigationOptions from 'src/helpers/getDefaultNavigationOptions';
 
 export default DrawerNavigator({
     Transactions: {
@@ -75,5 +76,6 @@ export default DrawerNavigator({
     initialRouteName: 'Transactions',
     contentOptions: {
         activeTintColor: colors.COLOR_PRIMARY,
-    }
+    },
+    navigationOptions: getDefaultNavigationOptions()
 });

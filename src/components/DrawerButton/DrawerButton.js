@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import IconButton from '../IconButton'
+import IconButton from '../IconButton';
+import { colors } from 'src/styles';
 
 export default function DrawerButton({ navigation }) {
     return (
         <IconButton
             onPress={() => navigation.navigate('DrawerOpen')}
             size={26}
-            name="md-menu"
-        />
+            color={colors.COLOR_WHITE}
+            name="md-menu" />
     );
 }
 

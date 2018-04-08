@@ -1,6 +1,7 @@
 import { TabNavigator } from 'react-navigation';
 import OutcomeCategoriesList from '../OutcomeCategoriesList';
 import IncomeCategoriesList from '../IncomeCategoriesList';
+import { colors } from 'src/styles'
 
 export default TabNavigator({
     IncomeCategoriesList: {
@@ -19,5 +20,10 @@ export default TabNavigator({
     initialRouteName: 'IncomeCategoriesList',
     swipeEnabled: true,
     lazy: false,
-    animationEnabled: true
+    animationEnabled: true,
+    tabBarOptions : {
+        style: {
+            backgroundColor: colors.COLOR_PRIMARY,
+        }
+    }
 });

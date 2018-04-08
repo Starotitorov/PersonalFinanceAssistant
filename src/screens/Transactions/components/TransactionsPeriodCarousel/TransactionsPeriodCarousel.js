@@ -16,7 +16,7 @@ export default function TransactionsPeriodCarousel({
                 onPress={onPressBack}
             />
             <View style={styles.periodContainer}>
-                <Text>{ currentDate }</Text>
+                <Text style={styles.currentDate}>{ currentDate }</Text>
             </View>
             <IconButton
                 iconStyle={styles.button}

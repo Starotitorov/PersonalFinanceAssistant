@@ -4,12 +4,14 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import { margins, fontSizes } from 'src/styles'
 import { handleAddTransfer } from './actions';
+import { colors } from 'src/styles';
 
 function AccountsListHeaderRight({ handleAddTransfer }) {
     return (
         <TouchableOpacity onPress={handleAddTransfer}>
             <Icon
                 style={styles.icon}
+                color={colors.COLOR_WHITE}
                 name="compare-arrows"
             />
         </TouchableOpacity>
