@@ -1,9 +1,7 @@
-import { Validator } from 'src/utils';
+import { combineValidators } from 'revalidate';
+import { required } from '../../utils/validators'
 import { CATEGORY_FORM_NAME_FIELD } from './constants'
 
-export default Validator.combineValidators({
-    [CATEGORY_FORM_NAME_FIELD]: {
-        fieldName: 'name',
-        validators: Validator.required
-    }
+export default combineValidators({
+    [CATEGORY_FORM_NAME_FIELD]: required('name')
 });

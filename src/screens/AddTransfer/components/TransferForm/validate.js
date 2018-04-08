@@ -1,4 +1,5 @@
-import { Validator } from 'src/utils';
+import { composeValidators, combineValidators } from 'revalidate';
+import { required, number } from '../../../../utils/validators';
 import {
     TRANSFER_FORM_FROM_ACCOUNT_ID_FIELD,
     TRANSFER_FORM_TO_ACCOUNT_ID_FIELD,
@@ -7,25 +8,10 @@ import {
     TRANSFER_FORM_DATE_FIELD
 } from './constants'
 
-export default Validator.combineValidators({
-    [TRANSFER_FORM_FROM_ACCOUNT_ID_FIELD]: {
-        fieldName: 'from account',
-        validators: Validator.required
-    },
-    [TRANSFER_FORM_TO_ACCOUNT_ID_FIELD]: {
-        fieldName: 'to account',
-        validators: Validator.required
-    },
-    [TRANSFER_FORM_VALUE_FIELD]: {
-        fieldName: 'sum',
-        validators: [Validator.required, Validator.number]
-    },
-    [TRANSFER_FORM_EXCHANGE_RATE_FIELD]: {
-        fieldName: 'exchange rate',
-        validators: Validator.number
-    },
-    [TRANSFER_FORM_DATE_FIELD]: {
-        fieldName: 'date',
-        validators: Validator.required
-    }
+export default combineValidators({
+    [TRANSFER_FORM_FROM_ACCOUNT_ID_FIELD]: required('from account'),
+    [TRANSFER_FORM_TO_ACCOUNT_ID_FIELD]: required('to account'),
+    [TRANSFER_FORM_VALUE_FIELD]: composeValidators(required, number)('sum'),
+    [TRANSFER_FORM_EXCHANGE_RATE_FIELD]: number('exchange rate'),
+    [TRANSFER_FORM_DATE_FIELD]: required('date')
 });

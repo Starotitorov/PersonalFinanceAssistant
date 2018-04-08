@@ -1,21 +1,13 @@
-import { Validator } from 'src/utils';
+import { composeValidators, combineValidators } from 'revalidate';
+import { required, number, range } from '../../utils/validators';
 import {
     ACCOUNT_FORM_BALANCE_FIELD,
     ACCOUNT_FORM_NAME_FIELD,
     ACCOUNT_FORM_INITIAL_DATE_FIELD
 } from './constants'
 
-export default Validator.combineValidators({
-    [ACCOUNT_FORM_NAME_FIELD]: {
-        fieldName: 'name',
-        validators: Validator.required
-    },
-    [ACCOUNT_FORM_BALANCE_FIELD]: {
-        fieldName: 'balance',
-        validators: [Validator.required, Validator.number, Validator.range(1)]
-    },
-    [ACCOUNT_FORM_INITIAL_DATE_FIELD]: {
-        fieldName: 'initial date',
-        validators: Validator.required
-    }
+export default combineValidators({
+    [ACCOUNT_FORM_NAME_FIELD]: required('name'),
+    [ACCOUNT_FORM_BALANCE_FIELD]: composeValidators(required, number, range(0))('balance'),
+    [ACCOUNT_FORM_INITIAL_DATE_FIELD]: required('initial date')
 });

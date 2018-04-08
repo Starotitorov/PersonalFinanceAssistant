@@ -10,7 +10,7 @@
     "babel-plugin-module-resolver": "3.0.0",
     "es6-symbol": "3.1.1",
     "lodash": "4.17.4",
-    "md5": "^2.2.1",
+    "md5": "2.2.1",
     "moment": "2.19.3",
     "prop-types": "15.6.0",
     "react": "16.0.0",
@@ -36,7 +36,8 @@
     "redux-actions": "2.2.1",
     "redux-form": "7.1.2",
     "redux-logger": "3.0.6",
-    "redux-thunk": "2.2.0"
+    "redux-thunk": "2.2.0",
+    "revalidate": "1.2.0"
   },
   "devDependencies": {
     "babel-jest": "21.2.0",

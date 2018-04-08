@@ -1,12 +1,7 @@
-import { Validator } from 'src/utils';
+import { required } from '../../../../utils/validators'
+import { combineValidators } from 'revalidate';
 
-export default Validator.combineValidators({
-    email: {
-        fieldName: 'email',
-        validators: Validator.required
-    },
-    password: {
-        fieldName: 'password',
-        validators: Validator.required
-    }
+export default combineValidators({
+    email: required('email'),
+    password: required('password')
 });

@@ -1,20 +1,9 @@
-import { Validator } from 'src/utils';
+import { combineValidators, composeValidators } from 'revalidate';
+import { required, email, password, match } from '../../../../utils/validators';
 
-export default Validator.combineValidators({
-    name: {
-        fieldName: 'name',
-        validators: Validator.required
-    },
-    email: {
-        fieldName: 'email',
-        validators: [Validator.email, Validator.required]
-    },
-    password: {
-        fieldName: 'password',
-        validators: [Validator.required, Validator.password]
-    },
-    passwordConfirmation: {
-        fieldName: 'password confirmation',
-        validators: Validator.required
-    }
+export default combineValidators({
+    name: required('name'),
+    email: composeValidators(required, email)('email'),
+    password: composeValidators(required, password)('password'),
+    password_confirmation: composeValidators(required, match('password'))('password confirmation')
 });
