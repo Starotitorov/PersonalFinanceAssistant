@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FlatList, View, RefreshControl, StyleSheet } from 'react-native';
 import { withEmptyListComponent } from 'src/components';
 import { colors } from 'src/styles/index';
-import TransactionsListItem from '../TransactionsListItem/index';
+import TransactionsListItem from '../TransactionsListItem';
 
 const keyExtractor = (item, index) => index;
 

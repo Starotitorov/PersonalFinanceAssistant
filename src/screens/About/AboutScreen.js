@@ -17,9 +17,7 @@ export default function AboutScreen() {
             </Card>
             <Card title="TEAM">
                 {
-                    config.developers.map((u, i) => {
-                        return <TeamMember key={i} user={u} />
-                    })
+                    config.developers.map((u, i) => <TeamMember key={i} user={u} />)
                 }
             </Card>
         </ScrollView>
