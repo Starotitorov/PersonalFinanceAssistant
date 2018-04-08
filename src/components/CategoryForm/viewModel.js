@@ -16,6 +16,7 @@ export const createAddCategoryViewModel = () => ({
     },
     categoryTypeId: {
         name: CATEGORY_FORM_TYPE_ID,
+        label: 'Category type',
         options: options.categoryType
     }
 });

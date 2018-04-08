@@ -1,8 +1,7 @@
 import React from 'react';
-import SelectInput from '../SelectInput';
+import Dropdown from '../Dropdown'
 
-export default function SelectInputField({ input, label, options, ...props }) {
-    return (
-        <SelectInput {...input} {...props} label={label} options={options} />
-    );
-}
+const SelectInputField = ({ input, label, options, ...props }) =>
+    <Dropdown {...input} {...props} label={label} options={options} />
+
+export default SelectInputField;

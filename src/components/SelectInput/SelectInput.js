@@ -1,16 +1,16 @@
 import React from 'react';
-import { View } from 'react-native';
+import PropTypes from 'prop-types';
 import SelectInput from 'react-native-select-input-ios';
 
-export default function SelectInputComponent({ options, ...rest }) {
-    return (
-        <View>
-            <SelectInput
-                {...rest}
-                value={rest.value}
-                options={options}
-                onSubmitEditing={rest.onChange}
-            />
-        </View>
-    );
-}
+const SelectInputComponent = ({ options, ...rest }) =>
+    <SelectInput
+        {...rest}
+        value={rest.value}
+        options={options}
+        onSubmitEditing={rest.onChange} />
+
+SelectInputComponent.propTypes = {
+    options: PropTypes.shape({})
+};
+
+export default SelectInputComponent;
