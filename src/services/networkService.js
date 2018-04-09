@@ -1,11 +1,11 @@
-import FetchMock from 'react-native-fetch-mock';
+// import FetchMock from 'react-native-fetch-mock';
 import { fetch } from 'src/utils';
 import * as cacheService from './cacheService';
 
 const CONNECTION_INFO_TYPE_NONE = 'none';
 
 // Mock api
-global.fetch = new FetchMock(require('../../mocks')).fetch;
+// global.fetch = new FetchMock(require('../../mocks')).fetch;
 
 let connectionInfo;
 

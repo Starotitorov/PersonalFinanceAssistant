@@ -40,6 +40,9 @@ const getTransactionsStatisticsByIntervals = (transactions, intervals) => {
         .value();
 };
 
+const getIntervalNames = intervals =>
+    intervals.map(([leftBorder]) => moment(leftBorder).format('MMMM'));
+
 export const getTrendsData = ({
     trends: {
         transactions: {
@@ -76,7 +79,8 @@ export const getTrendsData = ({
 
     return {
         income: incomeTransactionsStatistics,
-        outcome: outcomeTransactionsStatistics
+        outcome: outcomeTransactionsStatistics,
+        intervals: getIntervalNames(intervals)
     };
 };
 

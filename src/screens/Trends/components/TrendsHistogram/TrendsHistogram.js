@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import { BarChart } from 'react-native-charts-wrapper';
 
-export default function TrendsHistogram({ legend, data, xAxis }) {
+export default function TrendsHistogram({ legend, data, xAxis, description }) {
     return (
         <View style={styles.container}>
             <BarChart
@@ -13,8 +13,8 @@ export default function TrendsHistogram({ legend, data, xAxis }) {
                 xAxis={xAxis}
                 data={data}
                 legend={legend}
-                drawValueAboveBar={false}
-            />
+                chartDescription={description}
+                drawValueAboveBar={false} />
         </View>
     );
 }

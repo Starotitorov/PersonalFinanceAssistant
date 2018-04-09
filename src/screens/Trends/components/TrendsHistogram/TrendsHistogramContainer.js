@@ -3,12 +3,13 @@ import { getHistogramConfig } from './helpers';
 import TrendsHistogram from './TrendsHistogram';
 
 const mapStateToProps = (state, ownProps) => {
-    const { legend, data, xAxis } = getHistogramConfig(ownProps);
+    const { legend, data, xAxis, description } = getHistogramConfig(ownProps);
 
     return {
         legend,
         data,
-        xAxis
+        xAxis,
+        description
     };
 };
 

@@ -13,7 +13,7 @@ const DEVELOPERS = [
 const EXCHANGE_RATES_URL = `https://api.fixer.io/latest?base=${BASE_CURRENCY}`;
 
 export default {
-    apiUrl: 'http://localhost:8080',
+    apiUrl: 'https://personalfinanceassistant.herokuapp.com',
     developers: DEVELOPERS,
     facebookLoginBehaviour,
     exchangeRatesUrl: EXCHANGE_RATES_URL
