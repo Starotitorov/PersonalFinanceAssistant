@@ -1,30 +1,25 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import PropTypes from 'prop-types';
+import { View } from 'react-native';
 import { Icon } from 'react-native-elements';
+import styles from './ActionButtonStyles';
 
-export default function ActionButton({ iconName, backgroundColor, color, ...props }) {
-    return (
-        <View style={styles.container}>
-            <Icon
-                raised
-                {...props}
-                color={color}
-                name={iconName}
-                containerStyle={{backgroundColor}}
-                iconStyle={styles.iconStyle}
-                underlayColor={backgroundColor}
-            />
-        </View>
-    );
-}
+const ActionButton = ({ iconName, backgroundColor, color, ...props }) =>
+    <View style={styles.container}>
+        <Icon
+            {...props}
+            raised
+            color={color}
+            name={iconName}
+            containerStyle={{backgroundColor}}
+            iconStyle={styles.iconStyle}
+            underlayColor={backgroundColor} />
+    </View>;
 
-const styles = StyleSheet.create({
-    container: {
-        position: 'absolute',
-        right: 16,
-        bottom: 16
-    },
-    iconStyle: {
-        fontSize: 32
-    },
-});
+ActionButton.propTypes = {
+    iconName: PropTypes.string,
+    backgroundColor: PropTypes.string,
+    color: PropTypes.string
+};
+
+export default ActionButton;
