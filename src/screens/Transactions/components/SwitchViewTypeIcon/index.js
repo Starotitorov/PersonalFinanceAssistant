@@ -1,3 +1,3 @@
-import SwitchViewTypeIcon from './SwitchViewTypeIcon';
+import SwitchViewTypeIcon from './SwitchViewTypeIconContainer';
 
 export default SwitchViewTypeIcon;

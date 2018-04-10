@@ -1,68 +1,45 @@
-import React, { Component } from 'react';
-import { View, StyleSheet } from 'react-native';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { View } from 'react-native';
 import { ActionButton } from 'src/components';
 import TransactionsPeriodCarousel from './components/TransactionsPeriodCarousel';
-import TransactionsList from './components/TransactionsList';
-import TransactionsPieChart from './components/TransactionsPieChart';
-import { LIST, CHART } from './constants';
+import TransactionsListRepresentation from './components/TransactionsListRepresentation';
+import styles from './TransactionsScreenStyles';
 
-export default class TransactionsScreen extends Component {
-    renderViewInner() {
-        const {
-            viewType,
-            refreshTransactionsListData,
-            refreshing,
-            selectTransaction
-        } = this.props;
+const TransactionsScreen = ({
+    currentDate,
+    changeDateForward,
+    changeDateBack,
+    addTransaction,
+    viewType,
+    refreshTransactionsListData,
+    refreshing,
+    selectTransaction
+}) =>
+    <View style={styles.container}>
+        <TransactionsPeriodCarousel
+            currentDate={currentDate}
+            onPressBack={changeDateBack}
+            onPressForward={changeDateForward} />
+        <TransactionsListRepresentation
+            viewType={viewType}
+            refreshing={refreshing}
+            onRefresh={refreshTransactionsListData}
+            onSelectTransaction={selectTransaction} />
+        <ActionButton.Button
+            type={ActionButton.types.ADD}
+            onPress={addTransaction} />
+    </View>;
 
-        switch (viewType) {
-            case LIST:
-                return (
-                    <TransactionsList
-                        refreshing={refreshing}
-                        onRefresh={refreshTransactionsListData}
-                        onSelectTransaction={selectTransaction} />
-                );
-            case CHART:
-                return (
-                    <TransactionsPieChart
-                        refreshing={refreshing}
-                        onRefresh={refreshTransactionsListData}
-                    />
-                );
-            default:
-                console.log('Not implemented transactions view type');
-                return;
-        }
-    }
+TransactionsScreen.propTypes = {
+    currentDate: PropTypes.shape({}),
+    changeDateForward: PropTypes.func,
+    changeDateBack: PropTypes.func,
+    addTransaction: PropTypes.func,
+    viewType: PropTypes.string,
+    refreshTransactionsListData: PropTypes.func,
+    refreshing: PropTypes.bool,
+    selectTransaction: PropTypes.func
+};
 
-    render() {
-        const {
-            currentDate,
-            changeDateForward,
-            changeDateBack,
-            addTransaction,
-        } = this.props;
-
-        return (
-            <View style={styles.container}>
-                <TransactionsPeriodCarousel
-                    currentDate={currentDate}
-                    onPressBack={changeDateBack}
-                    onPressForward={changeDateForward}
-                />
-                { this.renderViewInner() }
-                <ActionButton.Button
-                    type={ActionButton.types.ADD}
-                    onPress={addTransaction}
-                />
-            </View>
-        );
-    }
-}
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1
-    }
-});
+export default TransactionsScreen;

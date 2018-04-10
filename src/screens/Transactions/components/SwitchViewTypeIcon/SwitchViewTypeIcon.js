@@ -1,27 +1,20 @@
-import React from 'react'
-import { connect } from 'react-redux';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { IconButton } from 'src/components';
 import { colors } from 'src/styles';
 import { LIST } from '../../constants';
-import { switchViewType } from '../../actions';
-import { getViewType } from '../../selectors';
 
-const mapStateToProps = state => {
-    return {
-        viewType: getViewType(state)
-    }
+const SwitchViewTypeIcon = ({ viewType, switchViewType }) =>
+    <IconButton
+        name={viewType === LIST? 'md-pie' : 'md-list'}
+        size={26}
+        color={colors.COLOR_WHITE}
+        backgroundColor="transparent"
+        onPress={switchViewType} />;
+
+SwitchViewTypeIcon.propTypes = {
+    viewType: PropTypes.string,
+    switchViewType: PropTypes.func
 };
 
-function SwitchViewTypeIcon({ viewType, switchViewType }) {
-    return (
-        <IconButton
-            name={viewType === LIST? 'md-pie' : 'md-list'}
-            size={26}
-            color={colors.COLOR_WHITE}
-            backgroundColor="transparent"
-            onPress={switchViewType}
-        />
-    );
-}
-
-export default connect(mapStateToProps, { switchViewType })(SwitchViewTypeIcon);
+export default SwitchViewTypeIcon;

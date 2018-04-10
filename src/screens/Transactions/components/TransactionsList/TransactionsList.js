@@ -1,43 +1,34 @@
-import React, { Component } from 'react';
-import { FlatList, View, RefreshControl, StyleSheet } from 'react-native';
-import { withEmptyListComponent } from 'src/components';
-import { colors } from 'src/styles/index';
-import TransactionsListItem from '../TransactionsListItem';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { FlatList, ScrollView, RefreshControl } from 'react-native';
+import { colors } from 'src/styles';
+import styles from './TransactionsListStyles';
 
 const keyExtractor = (item, index) => index;
 
-class TransactionsList extends Component {
-    renderItem=({ item })=> {
-        return <TransactionsListItem data={item} onSelectTransaction={this.props.onSelectTransaction} />;
-    };
-
-    render() {
-        const { onRefresh, refreshing } = this.props;
-
-        return (
-            <View style={styles.container}>
-                <FlatList
-                    refreshControl={
-                        <RefreshControl
-                            refreshing={refreshing}
-                            colors={[colors.COLOR_PRIMARY]}
-                            onRefresh={onRefresh}
-                        />
-                    }
-                    data={this.props.data}
-                    keyExtractor={keyExtractor}
-                    renderItem={this.renderItem}
-                    ListEmptyComponent={this.props.EmptyListComponent}
+const TransactionsList = ({ onRefresh, refreshing, data, EmptyListComponent, renderItem }) =>
+    <ScrollView style={styles.container}>
+        <FlatList
+            refreshControl={
+                <RefreshControl
+                    refreshing={refreshing}
+                    colors={[colors.COLOR_PRIMARY]}
+                    onRefresh={onRefresh}
                 />
-            </View>
-        );
-    }
-}
+            }
+            data={data}
+            keyExtractor={keyExtractor}
+            renderItem={renderItem}
+            ListEmptyComponent={EmptyListComponent}
+        />
+    </ScrollView>;
 
-const styles = StyleSheet.create({
-    container: {
-        marginTop: 20
-    }
-});
+TransactionsList.propTypes = {
+    onRefresh: PropTypes.func,
+    refreshing: PropTypes.bool,
+    data: PropTypes.arrayOf(PropTypes.shape({})),
+    EmptyListComponent: PropTypes.func,
+    renderItem: PropTypes.func
+};
 
-export default withEmptyListComponent(TransactionsList, 'No transactions');
+export default TransactionsList;
