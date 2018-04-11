@@ -1,29 +1,13 @@
 import { handleActions, combineActions } from 'redux-actions';
 import {
-    setAccounts,
-    fetchAddTransferDataStart,
-    fetchAddTransferDataFailure,
-    fetchAddTransferDataSuccess
+    setAccounts
 } from './actions';
 
 const initialState = {
-    accounts: [],
-    fetching: false
+    accounts: []
 };
 
 const addTransfer = handleActions({
-    [fetchAddTransferDataStart]: state => {
-        return {
-            ...state,
-            fetching: true
-        };
-    },
-    [combineActions(fetchAddTransferDataFailure, fetchAddTransferDataSuccess)](state) {
-        return {
-            ...state,
-            fetching: false
-        }
-    },
     [setAccounts]: (state, action) => {
         const { accounts } = action.payload;
 

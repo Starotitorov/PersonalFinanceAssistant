@@ -1,25 +1,24 @@
 import { connect } from 'react-redux';
 import { compose, lifecycle } from 'recompose'
-import { withLoadingIndicator } from 'src/components'
-import { addTransfer, fetchAddTransferData } from './actions';
+import { addTransfer, setAccounts } from './actions';
 import { getAddTransferFormOptions, isAddTransferDataFetching } from './selectors'
 import AddTransferScreen from './AddTransferScreen';
 
-const withFetchAddTransferData = lifecycle({
+const withSetAddTransferData = lifecycle({
     componentDidMount() {
-        this.props.fetchAddTransferData();
+        const { navigation: { state: { params: { accounts }}}, setAccounts} = this.props;
+
+        setAccounts(accounts);
     }
 });
 
 const mapStateToProps = state => {
     return {
-        isLoading: isAddTransferDataFetching(state),
         options: getAddTransferFormOptions(state)
     };
 };
 
 export default compose(
-    connect(mapStateToProps, { addTransfer, fetchAddTransferData }),
-    withFetchAddTransferData,
-    withLoadingIndicator
+    connect(mapStateToProps, { addTransfer, setAccounts }),
+    withSetAddTransferData,
 )(AddTransferScreen);
