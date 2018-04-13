@@ -16,4 +16,4 @@ const withPieChartViewType = branch(
 export default compose(
     withListViewType,
     withPieChartViewType
-)(renderNothing);
+)(renderNothing());
