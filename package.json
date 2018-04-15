@@ -58,6 +58,12 @@
     "react-test-renderer": "16.0.0",
     "shortid": "2.2.8"
   },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
   "jest": {
     "preset": "react-native"
   }
