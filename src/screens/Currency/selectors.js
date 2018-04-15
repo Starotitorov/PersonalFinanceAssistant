@@ -1,13 +1,13 @@
-import { entries } from 'lodash'
+import { entries } from 'lodash';
 
 export const getExchangeRates = ({
-    currency: {
-        rates
-    }
+  currency: {
+    rates
+  }
 }) => entries(rates);
 
 export const isExchangeRatesFetching = ({
-    currency: {
-        fetching
-    }
+  currency: {
+    fetching
+  }
 }) => fetching;

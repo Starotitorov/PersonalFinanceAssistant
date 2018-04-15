@@ -7,39 +7,39 @@ import TransactionsListRepresentation from './components/TransactionsListReprese
 import styles from './TransactionsScreenStyles';
 
 const TransactionsScreen = ({
-    currentDate,
-    changeDateForward,
-    changeDateBack,
-    addTransaction,
-    viewType,
-    refreshTransactionsListData,
-    refreshing,
-    selectTransaction
+  currentDate,
+  changeDateForward,
+  changeDateBack,
+  addTransaction,
+  viewType,
+  refreshTransactionsListData,
+  refreshing,
+  selectTransaction
 }) =>
-    <View style={styles.container}>
-        <TransactionsPeriodCarousel
-            currentDate={currentDate}
-            onPressBack={changeDateBack}
-            onPressForward={changeDateForward} />
-        <TransactionsListRepresentation
-            viewType={viewType}
-            refreshing={refreshing}
-            onRefresh={refreshTransactionsListData}
-            onSelectTransaction={selectTransaction} />
-        <ActionButton.Button
-            type={ActionButton.types.ADD}
-            onPress={addTransaction} />
-    </View>;
+  <View style={ styles.container }>
+    <TransactionsPeriodCarousel
+      currentDate={ currentDate }
+      onPressBack={ changeDateBack }
+      onPressForward={ changeDateForward } />
+    <TransactionsListRepresentation
+      viewType={ viewType }
+      refreshing={ refreshing }
+      onRefresh={ refreshTransactionsListData }
+      onSelectTransaction={ selectTransaction } />
+    <ActionButton.Button
+      type={ ActionButton.types.ADD }
+      onPress={ addTransaction } />
+  </View>;
 
 TransactionsScreen.propTypes = {
-    currentDate: PropTypes.shape({}),
-    changeDateForward: PropTypes.func,
-    changeDateBack: PropTypes.func,
-    addTransaction: PropTypes.func,
-    viewType: PropTypes.string,
-    refreshTransactionsListData: PropTypes.func,
-    refreshing: PropTypes.bool,
-    selectTransaction: PropTypes.func
+  currentDate: PropTypes.shape({}),
+  changeDateForward: PropTypes.func,
+  changeDateBack: PropTypes.func,
+  addTransaction: PropTypes.func,
+  viewType: PropTypes.string,
+  refreshTransactionsListData: PropTypes.func,
+  refreshing: PropTypes.bool,
+  selectTransaction: PropTypes.func
 };
 
 export default TransactionsScreen;

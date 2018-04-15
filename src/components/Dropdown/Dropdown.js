@@ -4,17 +4,17 @@ import { Dropdown } from 'react-native-material-dropdown';
 import { colors } from 'src/styles';
 
 const DropdownComponent = ({ options, value, onChange, ...rest }) =>
-    <Dropdown
-        {...rest}
-        value={value}
-        data={options}
-        tintColor={colors.COLOR_SECONDARY}
-        onChangeText={onChange} />
+  <Dropdown
+    { ...rest }
+    value={ value }
+    data={ options }
+    tintColor={ colors.COLOR_SECONDARY }
+    onChangeText={ onChange } />;
 
 DropdownComponent.propTypes = {
-    options: PropTypes.shape({}),
-    value: PropTypes.string,
-    onChange: PropTypes.func
+  options: PropTypes.shape({}),
+  value: PropTypes.string,
+  onChange: PropTypes.func
 };
 
 export default DropdownComponent;

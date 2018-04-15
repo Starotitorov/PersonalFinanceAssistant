@@ -10,33 +10,29 @@ import EditTransaction from '../EditTransaction';
 import EditTransactionHeaderRight from '../EditTransactionHeaderRight';
 
 export default StackNavigator({
-    Transactions: {
-        screen: Transactions,
-        navigationOptions: ({ navigation }) => {
-            return {
-                title: 'Transactions',
-                headerTitle: <TransactionsHeaderTitle />,
-                headerLeft: <DrawerButton navigation={navigation} />,
-                headerRight: <SwitchViewTypeIcon />
-            }
-        }
-    },
-    EditTransaction: {
-        screen: EditTransaction,
-        navigationOptions: ({ navigation }) => {
-            return {
-                title: 'Edit transaction',
-                headerRight: <EditTransactionHeaderRight navigation={ navigation } />
-            };
-        }
-    },
-    AddTransaction: {
-        screen: AddTransaction,
-        navigationOptions: {
-            title: 'Add transaction'
-        }
+  Transactions: {
+    screen: Transactions,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Transactions',
+      headerTitle: <TransactionsHeaderTitle />,
+      headerLeft: <DrawerButton navigation={ navigation } />,
+      headerRight: <SwitchViewTypeIcon />
+    })
+  },
+  EditTransaction: {
+    screen: EditTransaction,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Edit transaction',
+      headerRight: <EditTransactionHeaderRight navigation={ navigation } />
+    })
+  },
+  AddTransaction: {
+    screen: AddTransaction,
+    navigationOptions: {
+      title: 'Add transaction'
     }
+  }
 }, {
-    initialRouteName: 'Transactions',
-    navigationOptions: getDefaultNavigationOptions()
+  initialRouteName: 'Transactions',
+  navigationOptions: getDefaultNavigationOptions()
 });

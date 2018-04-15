@@ -10,38 +10,34 @@ import AccountsListHeaderRight from '../AccountsListHeaderRight';
 import getDefaultNavigationOptions from 'src/helpers/getDefaultNavigationOptions';
 
 export default StackNavigator({
-    AccountsList: {
-        screen: AccountsList,
-        navigationOptions: ({ navigation }) => {
-            return {
-                title: 'Accounts',
-                headerLeft: <DrawerButton navigation={navigation} />,
-                headerRight: <AccountsListHeaderRight />
-            }
-        }
-    },
-    AddAccount: {
-        screen: AddAccount,
-        navigationOptions: {
-            title: 'New account'
-        }
-    },
-    EditAccount: {
-        screen: EditAccount,
-        navigationOptions: ({ navigation }) => {
-            return {
-                title: 'Edit account',
-                headerRight: <EditAccountHeaderRight navigation={ navigation } />
-            }
-        }
-    },
-    AddTransfer: {
-        screen: AddTransfer,
-        navigationOptions: {
-            title: 'Add transfer'
-        }
+  AccountsList: {
+    screen: AccountsList,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Accounts',
+      headerLeft: <DrawerButton navigation={ navigation } />,
+      headerRight: <AccountsListHeaderRight />
+    })
+  },
+  AddAccount: {
+    screen: AddAccount,
+    navigationOptions: {
+      title: 'New account'
     }
+  },
+  EditAccount: {
+    screen: EditAccount,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Edit account',
+      headerRight: <EditAccountHeaderRight navigation={ navigation } />
+    })
+  },
+  AddTransfer: {
+    screen: AddTransfer,
+    navigationOptions: {
+      title: 'Add transfer'
+    }
+  }
 }, {
-    initialRouteName: 'AccountsList',
-    navigationOptions: getDefaultNavigationOptions()
+  initialRouteName: 'AccountsList',
+  navigationOptions: getDefaultNavigationOptions()
 });

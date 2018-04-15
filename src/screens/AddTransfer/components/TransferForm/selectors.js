@@ -1,18 +1,18 @@
-import { find } from 'lodash'
+import { find } from 'lodash';
 import { getFormValues } from 'redux-form';
-import { TRANSFER_FORM } from './constants'
+import { TRANSFER_FORM } from './constants';
 
 export const getTransferFormValues = getFormValues(TRANSFER_FORM);
 
 export const isSameCurrency = (state, fromAccountId, toAccountId) => {
-    if (!fromAccountId || !toAccountId) {
-        return true;
-    }
+  if (!fromAccountId || !toAccountId) {
+    return true;
+  }
 
-    const { addTransfer: { accounts }} = state;
+  const { addTransfer: { accounts }} = state;
 
-    const { currency: fromAccountCurrency } = find(accounts, { id: fromAccountId });
-    const { currency: toAccountCurrency } = find(accounts, { id: toAccountId });
+  const { currency: fromAccountCurrency } = find(accounts, { id: fromAccountId });
+  const { currency: toAccountCurrency } = find(accounts, { id: toAccountId });
 
-    return fromAccountCurrency === toAccountCurrency;
+  return fromAccountCurrency === toAccountCurrency;
 };

@@ -7,20 +7,20 @@ import Logo from './components/Logo';
 import styles from './LogInScreenStyles';
 
 const LogInScreen = ({ logIn, logInFacebook, handleNewUser }) =>
-    <View style={styles.container}>
-        <Logo style={styles.logo} />
-        <LogInForm onSubmit={logIn}/>
-        <TouchableOpacity style={styles.newUserBtn} onPress={handleNewUser}>
-            <Text style={styles.newUserLabel}>I am a new user</Text>
-        </TouchableOpacity>
-        <Text style={styles.or}>or</Text>
-        <FacebookLoginBtn onLoginSuccess={logInFacebook}/>
-    </View>
+  <View style={ styles.container }>
+    <Logo style={ styles.logo } />
+    <LogInForm onSubmit={ logIn } />
+    <TouchableOpacity style={ styles.newUserBtn } onPress={ handleNewUser }>
+      <Text style={ styles.newUserLabel }>I am a new user</Text>
+    </TouchableOpacity>
+    <Text style={ styles.or }>or</Text>
+    <FacebookLoginBtn onLoginSuccess={ logInFacebook } />
+  </View>;
 
 LogInScreen.propTypes = {
-    logIn: PropTypes.func,
-    logInFacebook: PropTypes.func,
-    handleNewUser: PropTypes.func
+  logIn: PropTypes.func,
+  logInFacebook: PropTypes.func,
+  handleNewUser: PropTypes.func
 };
 
 export default LogInScreen;

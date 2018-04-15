@@ -5,14 +5,14 @@ import rootReducer from './rootReducer';
 import { cacheAuthorizationDataToAsyncStorage } from 'src/screens/LogIn/middleware';
 
 export default function configureStore(initialState = {}) {
-    const middleware = [
-        thunk,
-        cacheAuthorizationDataToAsyncStorage
-    ];
+  const middleware = [
+    thunk,
+    cacheAuthorizationDataToAsyncStorage
+  ];
 
-    if (process.env.NODE_ENV !== 'production') {
-        middleware.push(logger);
-    }
+  if (process.env.NODE_ENV !== 'production') {
+    middleware.push(logger);
+  }
 
-    return applyMiddleware(...middleware)(createStore)(rootReducer, initialState);
+  return applyMiddleware(...middleware)(createStore)(rootReducer, initialState);
 }

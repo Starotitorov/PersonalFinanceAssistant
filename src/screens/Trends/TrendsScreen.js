@@ -1,17 +1,16 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import PropTypes from 'prop-types';
+import { View } from 'react-native';
+import styles from './TrendsScreenStyles';
 import TrendsHistogram from './components/TrendsHistogram';
 
-export default function TransactionsScreen({ data }) {
-    return (
-        <View style={styles.container}>
-            <TrendsHistogram data={data} />
-        </View>
-    );
-}
+const TransactionsScreen = ({ data }) =>
+  <View style={ styles.container }>
+    <TrendsHistogram data={ data } />
+  </View>;
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1
-    }
-});
+TransactionsScreen.propTypes = {
+  data: PropTypes.shape({})
+};
+
+export default TransactionsScreen;

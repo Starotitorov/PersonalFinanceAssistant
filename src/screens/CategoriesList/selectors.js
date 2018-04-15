@@ -1,16 +1,14 @@
-import { INCOME_CATEGORY, OUTCOME_CATEGORY } from 'src/constants/categoryTypes'
+import { INCOME_CATEGORY, OUTCOME_CATEGORY } from 'src/constants/categoryTypes';
 
-const getCategoriesListByType = ({ categoriesList: { categories: { byId, order }}}, type) => {
-    return order
-        .filter(id => byId[id].categoryTypeId === type)
-        .map(id => byId[id]);
-};
+const getCategoriesListByType = ({ categoriesList: { categories: { byId, order }}}, type) => order
+  .filter(id => byId[id].categoryTypeId === type)
+  .map(id => byId[id]);
 
 export const getIncomeCategoriesList = state =>
-    getCategoriesListByType(state, INCOME_CATEGORY);
+  getCategoriesListByType(state, INCOME_CATEGORY);
 
 export const getOutcomeCategoriesList = state =>
-    getCategoriesListByType(state, OUTCOME_CATEGORY);
+  getCategoriesListByType(state, OUTCOME_CATEGORY);
 
 export const isCategoriesListDataFetching = state => state.categoriesList.fetching;
 

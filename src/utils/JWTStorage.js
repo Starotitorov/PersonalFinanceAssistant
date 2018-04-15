@@ -4,23 +4,23 @@ import { TOKEN_KEY } from 'src/constants/asyncStorage';
 let token = null;
 
 export const setToken = async value => {
-    await AsyncStorage.setItem(TOKEN_KEY, JSON.stringify(value));
+  await AsyncStorage.setItem(TOKEN_KEY, JSON.stringify(value));
 
-    token = value;
+  token = value;
 };
 
 export const getToken = async () => {
-    if (!token) {
-        const tokenObject = await AsyncStorage.getItem(TOKEN_KEY);
+  if (!token) {
+    const tokenObject = await AsyncStorage.getItem(TOKEN_KEY);
 
-        token = JSON.parse(tokenObject);
-    }
+    token = JSON.parse(tokenObject);
+  }
 
-    return token;
+  return token;
 };
 
 export const removeToken = async () => {
-    await AsyncStorage.removeItem(TOKEN_KEY);
+  await AsyncStorage.removeItem(TOKEN_KEY);
 
-    token = null;
+  token = null;
 };

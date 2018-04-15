@@ -5,16 +5,14 @@ import Currency from '../Currency';
 import getDefaultNavigationOptions from 'src/helpers/getDefaultNavigationOptions';
 
 export default StackNavigator({
-    Currency: {
-        screen: Currency,
-        navigationOptions: ({ navigation }) => {
-            return {
-                title: 'Exchange rates',
-                headerLeft: <DrawerButton navigation={navigation} />
-            }
-        }
-    }
+  Currency: {
+    screen: Currency,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Exchange rates',
+      headerLeft: <DrawerButton navigation={ navigation } />
+    })
+  }
 }, {
-    initialRouteName: 'Currency',
-    navigationOptions: getDefaultNavigationOptions()
+  initialRouteName: 'Currency',
+  navigationOptions: getDefaultNavigationOptions()
 });

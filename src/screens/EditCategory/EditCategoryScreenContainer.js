@@ -4,8 +4,8 @@ import { getEditCategoryFormInitialValues, isCategoryFetching } from './selector
 import EditCategoryScreenView from './EditCategoryScreenView';
 
 const mapStateToProps = state => ({
-    isLoading: isCategoryFetching(state),
-    initialValues: getEditCategoryFormInitialValues(state)
+  isLoading: isCategoryFetching(state),
+  initialValues: getEditCategoryFormInitialValues(state)
 });
 
 export default connect(mapStateToProps, { updateCategory, fetchCategory })(EditCategoryScreenView);

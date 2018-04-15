@@ -4,15 +4,15 @@ import IconButton from '../IconButton';
 import { colors } from 'src/styles';
 
 export default function DrawerButton({ navigation }) {
-    return (
-        <IconButton
-            onPress={() => navigation.navigate('DrawerOpen')}
-            size={26}
-            color={colors.COLOR_WHITE}
-            name="md-menu" />
-    );
+  return (
+    <IconButton
+      size={ 26 }
+      color={ colors.COLOR_WHITE }
+      name="md-menu"
+      onPress={ () => navigation.navigate('DrawerOpen') } />
+  );
 }
 
 DrawerButton.propTypes = {
-    navigation: PropTypes.object.isRequired
+  navigation: PropTypes.shape({})
 };

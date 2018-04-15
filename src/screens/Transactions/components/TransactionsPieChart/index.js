@@ -1,3 +1,3 @@
-import TransactionsPieChart from './TransactionsPieChartContainer'
+import TransactionsPieChart from './TransactionsPieChartContainer';
 
-export default TransactionsPieChart
+export default TransactionsPieChart;

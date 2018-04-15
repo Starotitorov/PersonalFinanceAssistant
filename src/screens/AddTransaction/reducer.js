@@ -1,27 +1,23 @@
 import { handleActions } from 'redux-actions';
 import {
-    setAccounts,
-    setCategories
+  setAccounts,
+  setCategories
 } from './actions';
 
 const initialState = {
-    accounts: [],
-    categories: []
+  accounts: [],
+  categories: []
 };
 
 const addTransaction = handleActions({
-    [setAccounts]: (state, { payload: { accounts } }) => {
-        return {
-            ...state,
-            accounts
-        };
-    },
-    [setCategories]: (state, { payload: { categories }}) => {
-        return {
-            ...state,
-            categories
-        };
-    }
+  [setAccounts]: (state, { payload: { accounts }}) => ({
+    ...state,
+    accounts
+  }),
+  [setCategories]: (state, { payload: { categories }}) => ({
+    ...state,
+    categories
+  })
 }, initialState);
 
 export default addTransaction;

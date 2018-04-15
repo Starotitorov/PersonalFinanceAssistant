@@ -6,33 +6,31 @@ import styles from './IconFieldStyles';
 
 export default class IconField extends Component {
     state = {
-        isVisible: false
+      isVisible: false
     };
 
     toggleModal = () => {
-        this.setState({ isVisible: !this.state.isVisible });
+      this.setState({ isVisible: !this.state.isVisible });
     };
 
     render() {
-        const { input, style } = this.props;
+      const { input, style } = this.props;
 
-        return (
-            <View style={style}>
-                <TouchableOpacity onPress={this.toggleModal}>
-                    <View style={styles.container}>
-                        <Icon
-                            iconStyle={styles.icon}
-                            name={input.value || 'gesture-tap'}
-                            type="material-community"
-                        />
-                    </View>
-                </TouchableOpacity>
-                <IconPickerModal
-                    handleHide={this.toggleModal}
-                    onIconPick={input.onChange}
-                    show={this.state.isVisible}
-                />
+      return (
+        <View style={ style }>
+          <TouchableOpacity onPress={ this.toggleModal }>
+            <View style={ styles.container }>
+              <Icon
+                iconStyle={ styles.icon }
+                name={ input.value || 'gesture-tap' }
+                type="material-community" />
             </View>
-        );
+          </TouchableOpacity>
+          <IconPickerModal
+            handleHide={ this.toggleModal }
+            show={ this.state.isVisible }
+            onIconPick={ input.onChange } />
+        </View>
+      );
     }
 }

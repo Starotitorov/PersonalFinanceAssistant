@@ -1,42 +1,29 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import { SelectInput } from 'src/components';
 import options from './options';
+import styles from './TransactionsHeaderTitleStyles';
 
-export default function TransactionsHeaderTitle({
-    changePeriodView,
-    selectedValue,
-    accountOptions,
-    selectedAccountId,
-    setSelectedAccount
-}) {
-    return (
-        <View style={styles.container}>
-            <View style={styles.flexGrow}>
-                <SelectInput
-                    onChange={setSelectedAccount}
-                    value={selectedAccountId}
-                    options={accountOptions}
-                />
-            </View>
-            <View style={styles.flexGrow}>
-                <SelectInput
-                    onChange={changePeriodView}
-                    value={selectedValue}
-                    options={options}
-                />
-            </View>
-        </View>
-    )
-}
+const TransactionsHeaderTitle = ({
+  changePeriodView,
+  selectedValue,
+  accountOptions,
+  selectedAccountId,
+  setSelectedAccount
+}) =>
+  <View style={ styles.container }>
+    <View style={ styles.flexGrow }>
+      <SelectInput
+        value={ selectedAccountId }
+        options={ accountOptions }
+        onChange={ setSelectedAccount } />
+    </View>
+    <View style={ styles.flexGrow }>
+      <SelectInput
+        value={ selectedValue }
+        options={ options }
+        onChange={ changePeriodView } />
+    </View>
+  </View>;
 
-const styles = StyleSheet.create({
-    container: {
-        width: '100%',
-        flexDirection: 'row',
-        justifyContent: 'space-between'
-    },
-    flexGrow: {
-        flexGrow: 1
-    }
-});
+export default TransactionsHeaderTitle;

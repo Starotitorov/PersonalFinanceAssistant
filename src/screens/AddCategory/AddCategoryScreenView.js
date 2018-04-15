@@ -1,20 +1,20 @@
 import { withProps, withHandlers, compose } from 'recompose';
 import { createAddCategoryViewModel } from '../../components/CategoryForm/viewModel';
-import AddCategoryScreen from './AddCategoryScreen'
+import AddCategoryScreen from './AddCategoryScreen';
 
 const withViewModel = withProps(() => ({
-    viewModel: createAddCategoryViewModel()
+  viewModel: createAddCategoryViewModel()
 }));
 
 const withHandleAddCategory = withHandlers({
-    handleAddCategory: ({ addCategory }) => ({ name: nameValue, ...rest }) => {
-        const name = nameValue.trim();
+  handleAddCategory: ({ addCategory }) => ({ name: nameValue, ...rest }) => {
+    const name = nameValue.trim();
 
-        return addCategory({ name, ...rest });
-    }
+    return addCategory({ name, ...rest });
+  }
 });
 
 export default compose(
-    withViewModel,
-    withHandleAddCategory
-)(AddCategoryScreen)
+  withViewModel,
+  withHandleAddCategory
+)(AddCategoryScreen);

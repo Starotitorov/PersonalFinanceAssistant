@@ -1,16 +1,16 @@
 import { connect } from 'react-redux';
-import { withHandlers, compose } from 'recompose'
+import { withHandlers, compose } from 'recompose';
 import { removeAccount } from './actions';
 import { RemoveHeaderIcon } from 'src/components';
 
 const withHandleRemove = withHandlers({
-    onPress: ({ navigation: { state: { params: { id }}}, removeAccount }) => () => {
-        removeAccount(id);
-    }
+  onPress: ({ navigation: { state: { params: { id }}}, removeAccount }) => () => {
+    removeAccount(id);
+  }
 });
 
 export default compose(
-    connect(null, { removeAccount  }),
-    withHandleRemove
+  connect(null, { removeAccount }),
+  withHandleRemove
 )(RemoveHeaderIcon);
 

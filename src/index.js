@@ -10,9 +10,9 @@ setJSExceptionHandler(JSExceptionHandler);
 const store = configureStore();
 
 export default function Application() {
-    return (
-        <Provider store={store}>
-            <App />
-        </Provider>
-    );
+  return (
+    <Provider store={ store }>
+      <App />
+    </Provider>
+  );
 }

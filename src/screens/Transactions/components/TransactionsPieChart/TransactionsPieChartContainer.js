@@ -4,15 +4,15 @@ import TransactionsPieChart from './TransactionsPieChart';
 import { getPieChartConfig } from './helpers';
 
 const mapStateToProps = state => {
-    const dataObject = getTransactionsChartData(state);
-    const { description, data, legend, styledCenterText } = getPieChartConfig(dataObject);
+  const dataObject = getTransactionsChartData(state);
+  const { description, data, legend, styledCenterText } = getPieChartConfig(dataObject);
 
-    return {
-        description,
-        data,
-        legend,
-        styledCenterText
-    }
+  return {
+    description,
+    data,
+    legend,
+    styledCenterText
+  };
 };
 
 export default connect(mapStateToProps)(TransactionsPieChart);

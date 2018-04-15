@@ -1,7 +1,7 @@
 import * as networkService from './networkService';
-import * as cacheService from './cacheService'
+import * as cacheService from './cacheService';
 
 export {
-    cacheService,
-    networkService
-}
+  cacheService,
+  networkService
+};

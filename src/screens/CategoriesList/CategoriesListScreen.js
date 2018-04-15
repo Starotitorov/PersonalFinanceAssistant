@@ -9,37 +9,34 @@ const keyExtractor = item => item.id;
 
 class CategoriesList extends Component {
     renderItem = ({ item }) => {
-        const { selectCategory } = this.props;
+      const { selectCategory } = this.props;
 
-        return (
-            <CategoriesListItem
-                category={item}
-                onSelectCategory={selectCategory}
-            />
-        );
+      return (
+        <CategoriesListItem
+          category={ item }
+          onSelectCategory={ selectCategory } />
+      );
     };
 
     render() {
-        const { data, refreshCategoriesListData, refreshing } = this.props;
+      const { data, refreshCategoriesListData, refreshing } = this.props;
 
-        return (
-            <List>
-                <FlatList
-                    data={data}
-                    renderItem={this.renderItem}
-                    keyExtractor={keyExtractor}
-                    refreshControl={
-                        <RefreshControl
-                            colors={[colors.COLOR_PRIMARY]}
-                            refreshing={refreshing}
-                            onRefresh={refreshCategoriesListData}
-                        />
-                    }
-                    ListEmptyComponent={this.props.EmptyListComponent}
-                />
-            </List>
-        );
+      return (
+        <List>
+          <FlatList
+            data={ data }
+            renderItem={ this.renderItem }
+            keyExtractor={ keyExtractor }
+            refreshControl={
+              <RefreshControl
+                colors={ [colors.COLOR_PRIMARY] }
+                refreshing={ refreshing }
+                onRefresh={ refreshCategoriesListData } />
+            }
+            ListEmptyComponent={ this.props.EmptyListComponent } />
+        </List>
+      );
     }
 }
 
-export default withEmptyListComponent(CategoriesList, 'No categories')
+export default withEmptyListComponent(CategoriesList, 'No categories');

@@ -1,6 +1,6 @@
 import AppNavigator, { AppRouter } from './AppNavigator';
 
 export {
-    AppRouter
+  AppRouter
 };
-export default AppNavigator
+export default AppNavigator;

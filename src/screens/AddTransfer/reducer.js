@@ -1,21 +1,21 @@
-import { handleActions, combineActions } from 'redux-actions';
+import { handleActions } from 'redux-actions';
 import {
-    setAccounts
+  setAccounts
 } from './actions';
 
 const initialState = {
-    accounts: []
+  accounts: []
 };
 
 const addTransfer = handleActions({
-    [setAccounts]: (state, action) => {
-        const { accounts } = action.payload;
+  [setAccounts]: (state, action) => {
+    const { accounts } = action.payload;
 
-        return {
-            ...state,
-            accounts
-        };
-    }
+    return {
+      ...state,
+      accounts
+    };
+  }
 }, initialState);
 
 export default addTransfer;

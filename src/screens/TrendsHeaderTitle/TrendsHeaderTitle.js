@@ -1,25 +1,25 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
+import { View } from 'react-native';
 import { SelectInput } from 'src/components';
+import styles from './TrendsHeaderTitleStyles';
 
-export default function TrendsHeaderTitle({
-    accountOptions,
-    selectedAccountId,
-    setSelectedAccount
-}) {
-    return (
-        <View style={styles.container}>
-            <SelectInput
-                onChange={setSelectedAccount}
-                value={selectedAccountId}
-                options={accountOptions}
-            />
-        </View>
-    );
-}
+const TrendsHeaderTitle = ({
+  accountOptions,
+  selectedAccountId,
+  setSelectedAccount
+}) =>
+  <View style={ styles.container }>
+    <SelectInput
+      value={ selectedAccountId }
+      options={ accountOptions }
+      onChange={ setSelectedAccount } />
+  </View>;
 
-const styles = StyleSheet.create({
-    container: {
-        width: '100%'
-    }
-});
+TrendsHeaderTitle.propTypes = {
+  accountOptions: PropTypes.arrayOf(PropTypes.shape({})),
+  selectedAccountId: PropTypes.number,
+  setSelectedAccount: PropTypes.func
+};
+
+export default TrendsHeaderTitle;

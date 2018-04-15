@@ -4,16 +4,16 @@ import TransactionsPieChart from '../TransactionsPieChart';
 import { LIST, CHART } from '../../constants';
 
 const withListViewType = branch(
-    ({ viewType }) => viewType === LIST,
-    renderComponent(TransactionsList)
+  ({ viewType }) => viewType === LIST,
+  renderComponent(TransactionsList)
 );
 
 const withPieChartViewType = branch(
-    ({ viewType }) => viewType === CHART,
-    renderComponent(TransactionsPieChart)
+  ({ viewType }) => viewType === CHART,
+  renderComponent(TransactionsPieChart)
 );
 
 export default compose(
-    withListViewType,
-    withPieChartViewType
+  withListViewType,
+  withPieChartViewType
 )(renderNothing());

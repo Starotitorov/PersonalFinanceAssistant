@@ -1,34 +1,25 @@
-import React from 'react'
-import { View, StyleSheet } from 'react-native';
+import React from 'react';
+import { View } from 'react-native';
 import { ActionButton } from 'src/components';
 import AccountsList from './components/AccountsList';
+import styles from './AccountsListStyles';
 
-export default function AccountsListScreen({
-    refreshAccountsListData,
-    refreshing,
-    accounts,
-    addAccount,
-    editAccount
-}) {
-    return (
-        <View style={styles.container}>
-            <AccountsList
-                refreshing={refreshing}
-                accounts={accounts}
-                onSelectAccount={ editAccount }
-                onRefresh={ refreshAccountsListData }
-            />
-            <ActionButton.Button
-                type={ActionButton.types.ADD}
-                onPress={ addAccount }
-            />
-        </View>
-    )
-}
+const AccountsListScreen = ({
+  refreshAccountsListData,
+  refreshing,
+  accounts,
+  addAccount,
+  editAccount
+}) =>
+  <View style={ styles.container }>
+    <AccountsList
+      refreshing={ refreshing }
+      accounts={ accounts }
+      onSelectAccount={ editAccount }
+      onRefresh={ refreshAccountsListData } />
+    <ActionButton.Button
+      type={ ActionButton.types.ADD }
+      onPress={ addAccount } />
+  </View>;
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'stretch'
-    }
-});
+export default AccountsListScreen;

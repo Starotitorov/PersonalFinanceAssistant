@@ -3,8 +3,10 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "precommit": "lint-staged",
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "jest"
+    "test": "jest",
+    "eslint": "./node_modules/.bin/eslint --fix ./src"
   },
   "dependencies": {
     "babel-plugin-module-resolver": "3.0.0",
@@ -41,8 +43,17 @@
     "revalidate": "1.2.0"
   },
   "devDependencies": {
+    "babel-eslint": "7.2.3",
     "babel-jest": "21.2.0",
     "babel-preset-react-native": "4.0.0",
+    "eslint": "4.4.1",
+    "eslint-config-airbnb": "15.1.0",
+    "eslint-import-resolver-babel-module": "2.2.1",
+    "eslint-plugin-import": "2.7.0",
+    "eslint-plugin-jsx-a11y": "5.1.0",
+    "eslint-plugin-lodash": "2.4.4",
+    "eslint-plugin-react": "7.2.1",
+    "eslint-plugin-react-native": "3.0.1",
     "jest": "21.2.1",
     "react-test-renderer": "16.0.0",
     "shortid": "2.2.8"

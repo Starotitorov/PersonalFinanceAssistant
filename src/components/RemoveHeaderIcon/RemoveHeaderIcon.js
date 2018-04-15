@@ -1,25 +1,16 @@
 import React from 'react';
-import { TouchableOpacity, StyleSheet } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { margins, fontSizes, colors } from 'src/styles';
+import { colors } from 'src/styles';
+import styles from './RemoveHeaderIconStyles';
 
-export default function RemoveIcon({ onPress }) {
-    return (
-        <TouchableOpacity
-            onPress={onPress}
-        >
-            <Icon
-                name="delete"
-                color={colors.COLOR_WHITE}
-                style={styles.icon}
-            />
-        </TouchableOpacity>
-    );
-}
+const RemoveIcon = ({ onPress }) =>
+  <TouchableOpacity
+    onPress={ onPress }>
+    <Icon
+      name="delete"
+      color={ colors.COLOR_WHITE }
+      style={ styles.icon } />
+  </TouchableOpacity>;
 
-const styles = StyleSheet.create({
-    icon: {
-        marginHorizontal: margins.MARGIN_M,
-        fontSize: fontSizes.FONT_SIZE_XL
-    }
-});
+export default RemoveIcon;

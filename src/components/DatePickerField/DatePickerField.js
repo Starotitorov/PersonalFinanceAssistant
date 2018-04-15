@@ -6,58 +6,56 @@ import DateTimePicker from 'react-native-modal-datetime-picker';
 
 export default class DatePickerInput extends Component {
     state = {
-        visible: false,
+      visible: false
     };
 
     showPicker = () => {
-        const { input: { onFocus } } = this.props;
+      const { input: { onFocus }} = this.props;
 
-        onFocus();
+      onFocus();
 
-        this.setState({
-            visible: true
-        });
+      this.setState({
+        visible: true
+      });
     };
 
     hidePicker = () => {
-        const { onBlur } = this.props.input;
+      const { onBlur } = this.props.input;
 
-        onBlur();
+      onBlur();
 
-        this.setState({ visible: false });
+      this.setState({ visible: false });
     };
 
     handlePicked = (date) => {
-        const { onChange } = this.props.input;
+      const { onChange } = this.props.input;
 
-        const value = moment(date).utc().valueOf();
+      const value = moment(date).utc().valueOf();
 
-        onChange(value);
+      onChange(value);
 
-        this.hidePicker();
+      this.hidePicker();
     };
 
     render() {
-        const { visible } = this.state;
-        const { label, placeholder, input } = this.props;
+      const { visible } = this.state;
+      const { label, placeholder } = this.props;
 
-        return (
-            <TouchableOpacity onPress={this.showPicker}>
-                <DateTimePicker
-                    isVisible={visible}
-                    onConfirm={this.handlePicked}
-                    onCancel={this.hidePicker}
-                    mode="date"
-                />
-                <TextInputField
-                    {...this.props}
-                    props={{
-                        label,
-                        placeholder
-                    }}
-                    editable={false}
-                />
-            </TouchableOpacity>
-        );
+      return (
+        <TouchableOpacity onPress={ this.showPicker }>
+          <DateTimePicker
+            isVisible={ visible }
+            mode="date"
+            onConfirm={ this.handlePicked }
+            onCancel={ this.hidePicker } />
+          <TextInputField
+            { ...this.props }
+            props={{
+              label,
+              placeholder
+            }}
+            editable={ false } />
+        </TouchableOpacity>
+      );
     }
 }

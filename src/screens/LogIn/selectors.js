@@ -1,11 +1,11 @@
 export const getCurrentUser = ({
-    authorization: {
-        user
-    }
+  authorization: {
+    user
+  }
 }) => user;
 
 export const isUserFetching = ({
-    authorization: {
-        fetching
-    }
+  authorization: {
+    fetching
+  }
 }) => fetching;

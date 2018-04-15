@@ -5,12 +5,12 @@ import { NavigationActions } from 'react-navigation';
 import * as api from 'src/api';
 
 export const setCurrentUser = createAction(
-    'AUTHORIZATION/SET_CURRENT_USER',
-    user => ({ user })
+  'AUTHORIZATION/SET_CURRENT_USER',
+  user => ({ user })
 );
 export const setToken = createAction(
-    'AUTHORIZATION/SET_TOKEN',
-    token => ({ token })
+  'AUTHORIZATION/SET_TOKEN',
+  token => ({ token })
 );
 
 export const resetCurrentUser = createAction('AUTHORIZATION/RESET_CURRENT_USER');
@@ -19,70 +19,67 @@ export const fetchCurrentUserStart = createAction('AUTHORIZATION/FETCH_CURRENT_U
 export const fetchCurrentUserFinish = createAction('AUTHORIZATION/FETCH_CURRENT_USER_FINISH');
 
 export const setAuthorizationData = (user, token) => dispatch => {
-    dispatch(setCurrentUser(user));
+  dispatch(setCurrentUser(user));
 
-    dispatch(setToken(token));
+  dispatch(setToken(token));
 };
 
-export const logIn = ({ email, password }) => dispatch => {
-    return api.signIn(email, password)
-        .then(async ({ user, token}) => {
-            await dispatch(setAuthorizationData(user, token));
+export const logIn = ({ email, password }) => dispatch => api.signIn(email, password)
+  .then(async ({ user, token }) => {
+    await dispatch(setAuthorizationData(user, token));
 
-            dispatch(NavigationActions.reset({
-                index: 0,
-                key: null,
-                actions: [
-                    NavigationActions.navigate({ routeName: 'Home' })
-                ]
-            }));
-        })
-        .catch(({ error }) => Alert.alert(null, error));
-};
+    dispatch(NavigationActions.reset({
+      index: 0,
+      key: null,
+      actions: [
+        NavigationActions.navigate({ routeName: 'Home' })
+      ]
+    }));
+  })
+  .catch(({ error }) => Alert.alert(null, error));
 
-export const logInFacebook = data => dispatch => {
-    return api.logInFacebook(data)
-        .then(async ({ user, token }) => {
-            await dispatch(setAuthorizationData(user, token));
+export const logInFacebook = data => dispatch => api.logInFacebook(data)
+  .then(async ({ user, token }) => {
+    await dispatch(setAuthorizationData(user, token));
 
-            dispatch(NavigationActions.reset({
-                index: 0,
-                key: null,
-                actions: [
-                    NavigationActions.navigate({ routeName: 'Home' })
-                ]
-            }));
-        });
-};
+    dispatch(NavigationActions.reset({
+      index: 0,
+      key: null,
+      actions: [
+        NavigationActions.navigate({ routeName: 'Home' })
+      ]
+    }));
+  });
 
 export const getCurrentUser = () => async dispatch => {
-    dispatch(fetchCurrentUserStart());
+  dispatch(fetchCurrentUserStart());
 
-    let user = null;
-    let token = null;
-    try {
-        const userObject = await AsyncStorage.getItem(asyncStorageKeys.USER_KEY);
-        const tokenObject = await AsyncStorage.getItem(asyncStorageKeys.TOKEN_KEY);
+  let user = null;
+  let token = null;
+  try {
+    const userObject = await AsyncStorage.getItem(asyncStorageKeys.USER_KEY);
+    const tokenObject = await AsyncStorage.getItem(asyncStorageKeys.TOKEN_KEY);
 
-        user = JSON.parse(userObject);
-        token = JSON.parse(tokenObject);
-    } catch(e) {}
+    user = JSON.parse(userObject);
+    token = JSON.parse(tokenObject);
+  } catch (e) {
+  }
 
-    dispatch(setAuthorizationData(user, token));
+  dispatch(setAuthorizationData(user, token));
 
-    dispatch(fetchCurrentUserFinish());
+  dispatch(fetchCurrentUserFinish());
 
-    if (!user || !token) {
-        dispatch(NavigationActions.reset({
-            index: 0,
-            key: null,
-            actions: [
-                NavigationActions.navigate({ routeName: 'LogIn' })
-            ]
-        }));
-    }
+  if (!user || !token) {
+    dispatch(NavigationActions.reset({
+      index: 0,
+      key: null,
+      actions: [
+        NavigationActions.navigate({ routeName: 'LogIn' })
+      ]
+    }));
+  }
 };
 
 export const handleNewUser = () => dispatch => {
-    dispatch(NavigationActions.navigate({ routeName: 'SignUp' }));
+  dispatch(NavigationActions.navigate({ routeName: 'SignUp' }));
 };

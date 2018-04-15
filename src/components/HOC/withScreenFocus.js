@@ -1,15 +1,15 @@
-import { lifecycle } from 'recompose'
+import { lifecycle } from 'recompose';
 
 export default screen => lifecycle({
-    componentDidMount() {
-        this.props.onFocus();
-    },
+  componentDidMount() {
+    this.props.onFocus();
+  },
 
-    componentWillReceiveProps({ navigation: { state: { routeName: nextRouteName }}}) {
-        const { navigation: { state: { routeName }}, onFocus} = this.props;
+  componentWillReceiveProps({ navigation: { state: { routeName: nextRouteName }}}) {
+    const { navigation: { state: { routeName }}, onFocus } = this.props;
 
-        if (routeName !== screen && nextRouteName === screen) {
-            onFocus();
-        }
+    if (routeName !== screen && nextRouteName === screen) {
+      onFocus();
     }
+  }
 });

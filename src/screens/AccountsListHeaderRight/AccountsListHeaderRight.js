@@ -1,28 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { StyleSheet, TouchableOpacity } from 'react-native';
-import { margins, fontSizes } from 'src/styles'
+import { TouchableOpacity } from 'react-native';
 import { handleAddTransfer } from './actions';
 import { colors } from 'src/styles';
+import styles from './AccountsListHeaderRightStyles';
 
-function AccountsListHeaderRight({ handleAddTransfer }) {
-    return (
-        <TouchableOpacity onPress={handleAddTransfer}>
-            <Icon
-                style={styles.icon}
-                color={colors.COLOR_WHITE}
-                name="compare-arrows"
-            />
-        </TouchableOpacity>
-    );
-}
-
-const styles = StyleSheet.create({
-    icon: {
-        marginHorizontal: margins.MARGIN_M,
-        fontSize: fontSizes.FONT_SIZE_XL
-    }
-});
+const AccountsListHeaderRight = ({ handleAddTransfer }) =>
+  <TouchableOpacity onPress={ handleAddTransfer }>
+    <Icon
+      style={ styles.icon }
+      color={ colors.COLOR_WHITE }
+      name="compare-arrows" />
+  </TouchableOpacity>;
 
 export default connect(null, { handleAddTransfer })(AccountsListHeaderRight);

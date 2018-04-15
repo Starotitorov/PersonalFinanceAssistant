@@ -6,17 +6,15 @@ import Trends from '../Trends';
 import TrendsHeaderTitle from '../TrendsHeaderTitle';
 
 export default StackNavigator({
-    Trends: {
-        screen: Trends,
-        navigationOptions: ({ navigation }) => {
-            return {
-                title: 'Trends',
-                headerLeft: <DrawerButton navigation={navigation} />,
-                headerTitle: <TrendsHeaderTitle />
-            }
-        }
-    }
+  Trends: {
+    screen: Trends,
+    navigationOptions: ({ navigation }) => ({
+      title: 'Trends',
+      headerLeft: <DrawerButton navigation={ navigation } />,
+      headerTitle: <TrendsHeaderTitle />
+    })
+  }
 }, {
-    initialRouteName: 'Trends',
-    navigationOptions: getDefaultNavigationOptions()
+  initialRouteName: 'Trends',
+  navigationOptions: getDefaultNavigationOptions()
 });

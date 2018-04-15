@@ -1,3 +1,3 @@
 export const getInitialValues = () => ({
-    date: new Date().toUTCString()
+  date: new Date().toUTCString()
 });

@@ -1,22 +1,22 @@
 import { lifecycle, withProps, compose } from 'recompose';
 import { withLoadingIndicator } from 'src/components';
 import { createEditTransactionViewModel } from '../../components/TransactionForm/viewModel';
-import EditTransactionScreen from './EditTransactionScreen'
+import EditTransactionScreen from './EditTransactionScreen';
 
 const withViewModel = withProps(() => ({
-    viewModel: createEditTransactionViewModel()
+  viewModel: createEditTransactionViewModel()
 }));
 
 const withEditTransactionData = lifecycle({
-    componentDidMount() {
-        const { navigation: { state: { params: { id }}}, fetchTransaction } = this.props;
+  componentDidMount() {
+    const { navigation: { state: { params: { id }}}, fetchTransaction } = this.props;
 
-        fetchTransaction(id);
-    }
+    fetchTransaction(id);
+  }
 });
 
 export default compose(
-    withEditTransactionData,
-    withLoadingIndicator,
-    withViewModel
+  withEditTransactionData,
+  withLoadingIndicator,
+  withViewModel
 )(EditTransactionScreen);

@@ -1,10 +1,10 @@
 import { createAction } from 'redux-actions';
-import { NavigationActions } from 'react-navigation'
+import { NavigationActions } from 'react-navigation';
 import * as api from 'src/api';
 
 export const setAccounts = createAction(
-    'ACCOUNTS_LIST/SET_ACCOUNTS',
-    accounts => ({ accounts })
+  'ACCOUNTS_LIST/SET_ACCOUNTS',
+  accounts => ({ accounts })
 );
 
 export const fetchAccountsListDataStart = createAction('ACCOUNTS_LIST/FETCH_ACCOUNTS_LIST_DATA_START');
@@ -15,46 +15,44 @@ export const refreshAccountsListDataStart = createAction('ACCOUNTS_LIST/REFRESH_
 export const refreshAccountsListDataFailure = createAction('ACCOUNTS_LIST/REFRESH_ACCOUNTS_LIST_DATA_FAILURE');
 export const refreshAccountListDataSuccess = createAction('ACCOUNTS_LIST/REFRESH_ACCOUNTS_LIST_DATA_SUCCESS');
 
-const fetchAccountsListDataRequest = () => dispatch => {
-    return api.fetchAccounts()
-        .then(({ accounts }) => {
-            dispatch(setAccounts(accounts))
-        });
-};
+const fetchAccountsListDataRequest = () => dispatch => api.fetchAccounts()
+  .then(({ accounts }) => {
+    dispatch(setAccounts(accounts));
+  });
 
 export const fetchAccountsListData = () => async dispatch => {
-    dispatch(fetchAccountsListDataStart());
+  dispatch(fetchAccountsListDataStart());
 
-    try {
-        await dispatch(fetchAccountsListDataRequest());
+  try {
+    await dispatch(fetchAccountsListDataRequest());
 
-        dispatch(fetchAccountListDataSuccess())
-    } catch(e) {
-        dispatch(fetchAccountsListDataFailure(e));
-    }
+    dispatch(fetchAccountListDataSuccess());
+  } catch (e) {
+    dispatch(fetchAccountsListDataFailure(e));
+  }
 };
 
 export const refreshAccountsListData = () => async dispatch => {
-    dispatch(refreshAccountsListDataStart());
+  dispatch(refreshAccountsListDataStart());
 
-    try {
-        await dispatch(fetchAccountsListDataRequest());
+  try {
+    await dispatch(fetchAccountsListDataRequest());
 
-        dispatch(refreshAccountListDataSuccess());
-    } catch(e) {
-        dispatch(refreshAccountsListDataFailure(e));
-    }
+    dispatch(refreshAccountListDataSuccess());
+  } catch (e) {
+    dispatch(refreshAccountsListDataFailure(e));
+  }
 };
 
 export const addAccount = id => dispatch => {
-    dispatch(NavigationActions.navigate({ routeName: 'AddAccount' }));
+  dispatch(NavigationActions.navigate({ routeName: 'AddAccount' }));
 };
 
 export const editAccount = id => dispatch => {
-    dispatch(NavigationActions.navigate({
-        routeName: 'EditAccount',
-        params: {
-            id
-        }
-    }));
+  dispatch(NavigationActions.navigate({
+    routeName: 'EditAccount',
+    params: {
+      id
+    }
+  }));
 };
