@@ -22,16 +22,6 @@ export default StyleSheet.create({
   transactionsSum: {
     marginLeft: 10
   },
-  subItemContainer: {
-    flexDirection: 'row',
-    padding: 10,
-    alignItems: 'center',
-    width: '100%',
-    backgroundColor: '#aaa'
-  },
-  subItemDateContainer: {
-    flex: 1
-  },
   rightText: {
     flexDirection: 'row',
     justifyContent: 'space-between',

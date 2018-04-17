@@ -1,3 +1,3 @@
-import TransactionsListItem from './TransactionsListItem';
+import TransactionsListItem from './TransactionsListItemView';
 
 export default TransactionsListItem;

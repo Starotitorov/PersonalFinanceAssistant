@@ -64,11 +64,16 @@ export const getTransactionsGroupedByCategories = ({
     categories: {
       byId: categoriesById
     },
+    accounts: {
+      byId: accountsById
+    },
     selectedAccount,
     currentDate,
     periodType
   }
 }) => {
+  const account = accountsById[selectedAccount];
+  const currency = account ? account.currency : null;
   const transactionsList = getTransactionsList(byId, categoriesById);
   const filteredByAccount = filterTransactionsByAccount(transactionsList, selectedAccount);
   const transactions = filterTransactionsByTimeRange({
@@ -87,9 +92,10 @@ export const getTransactionsGroupedByCategories = ({
         category: {
           name,
           icon,
-          sum
+          sum,
+          currency
         },
-        transactions
+        transactions: transactions.map(transaction => ({ ...transaction, currency }))
       });
     }, [])
     .value();
@@ -105,11 +111,16 @@ export const getTransactionsChartData = ({
     categories: {
       byId: categoriesById
     },
+    accounts: {
+      byId: accountsById
+    },
     selectedAccount,
     currentDate,
     periodType
   }
 }) => {
+  const account = accountsById[selectedAccount];
+  const currency = account ? account.currency : null;
   const transactionsList = getTransactionsList(byId, categoriesById);
   const filteredByAccount = filterTransactionsByAccount(transactionsList, selectedAccount);
   const transactions = filterTransactionsByTimeRange({
@@ -142,6 +153,7 @@ export const getTransactionsChartData = ({
     values: grouped,
     totalOutcomeSum,
     totalIncomeSum,
-    totalBalance
+    totalBalance,
+    currency
   };
 };

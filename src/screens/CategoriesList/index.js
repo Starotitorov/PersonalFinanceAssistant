@@ -1,4 +1,4 @@
-import CategoriesList from './CategoriesListScreen';
+import CategoriesList from './CategoriesListScreenView';
 
 export { default as CategoriesListContainer } from './CategoriesListScreenContainer';
 
