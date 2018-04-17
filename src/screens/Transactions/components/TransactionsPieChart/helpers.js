@@ -42,7 +42,7 @@ export const getPieChartConfig = ({
     description: {
       text: `Total balance for the period: ${totalBalance}${currencyText}`,
       textSize: fontSizes.FONT_SIZE_L,
-      textColor: processColor('darkgray')
+      textColor: processColor('black')
     },
     styledCenterText: {
       text: `+ ${totalIncomeSum}${currencyText}\n - ${Math.abs(totalOutcomeSum)}${currencyText}`,

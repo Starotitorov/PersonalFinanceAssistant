@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { Badge } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
+import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import styles from './TransactionsListItemStyles';
 
 const TransactionsListItem = ({
@@ -16,8 +17,11 @@ const TransactionsListItem = ({
         <Icon
           style={ styles.arrow }
           name={ isOpen ? 'ios-arrow-up' : 'ios-arrow-down' } />
+        <MaterialCommunityIcon
+          style={ styles.categoryIcon }
+          name={ category.icon ? category.icon : undefined } />
         <View style={ styles.textContainer }>
-          <Text>{category.name}</Text>
+          <Text style={ styles.categoryName }>{category.name}</Text>
         </View>
         <View style={ styles.rightText }>
           <Badge value={ transactions.length } />

@@ -6,7 +6,9 @@ export default StyleSheet.create({
     padding: 10,
     alignItems: 'center',
     width: '100%',
-    backgroundColor: '#aaa'
+    backgroundColor: '#F2F2F2',
+    borderBottomColor: 'darkgray',
+    borderBottomWidth: StyleSheet.hairlineWidth
   },
   subItemDateContainer: {
     flex: 1
