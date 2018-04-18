@@ -6,16 +6,15 @@ export default StyleSheet.create({
     marginRight: margins.MARGIN_M,
     fontSize: 18
   },
-  mainContainer: {
-    width: '100%',
+  groupContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     padding: 10,
+    width: '100%',
     backgroundColor: '#fff',
     borderTopWidth: StyleSheet.hairlineWidth,
     borderBottomWidth: StyleSheet.hairlineWidth
-  },
-  groupContainer: {
-    flexDirection: 'row',
-    alignItems: 'center'
   },
   textContainer: {
     flex: 1
@@ -31,6 +30,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    alignSelf: 'flex-end',
     width: 120
   },
   categoryIcon: {

@@ -4,7 +4,7 @@ export default StyleSheet.create({
   subItemContainer: {
     flexDirection: 'row',
     padding: 10,
-    alignItems: 'center',
+    alignItems: 'stretch',
     width: '100%',
     backgroundColor: '#F2F2F2',
     borderBottomColor: 'darkgray',

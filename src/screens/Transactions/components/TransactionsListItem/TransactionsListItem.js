@@ -12,7 +12,7 @@ const TransactionsListItem = ({
   toggleOpen
 }) =>
   <View>
-    <TouchableOpacity style={ styles.mainContainer } onPress={ toggleOpen }>
+    <TouchableOpacity onPress={ toggleOpen }>
       <View style={ styles.groupContainer }>
         <Icon
           style={ styles.arrow }
