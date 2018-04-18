@@ -21,11 +21,11 @@ const TransactionsListItem = ({
           style={ styles.categoryIcon }
           name={ category.icon ? category.icon : undefined } />
         <View style={ styles.textContainer }>
-          <Text style={ styles.categoryName }>{category.name}</Text>
+          <Text style={ styles.categoryName }>{ category.name }</Text>
         </View>
         <View style={ styles.rightText }>
           <Badge value={ transactions.length } />
-          <Text style={ styles.transactionsSum }>{category.sum}, {category.currency}</Text>
+          <Text style={ styles.transactionsSum }>{ category.sum.toFixed(2) } { category.currency }</Text>
         </View>
       </View>
     </TouchableOpacity>

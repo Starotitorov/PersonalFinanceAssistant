@@ -16,7 +16,7 @@ export const getPieChartConfig = ({
   totalBalance,
   currency
 }) => {
-  const currencyText = currency ? `, ${currency}` : '';
+  const currencyText = currency ? ` ${currency}` : '';
 
   return {
     legend: {
@@ -40,12 +40,12 @@ export const getPieChartConfig = ({
       }]
     },
     description: {
-      text: `Total balance for the period: ${totalBalance}${currencyText}`,
+      text: `Total balance for the period: ${totalBalance.toFixed(2)}${currencyText}`,
       textSize: fontSizes.FONT_SIZE_L,
       textColor: processColor('black')
     },
     styledCenterText: {
-      text: `+ ${totalIncomeSum}${currencyText}\n - ${Math.abs(totalOutcomeSum)}${currencyText}`,
+      text: `+ ${totalIncomeSum.toFixed(2)}${currencyText}\n - ${Math.abs(totalOutcomeSum).toFixed(2)}${currencyText}`,
       color: processColor('darkgray'),
       size: fontSizes.FONT_SIZE_L
     }

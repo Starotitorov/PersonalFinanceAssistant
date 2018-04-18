@@ -11,7 +11,7 @@ const TransactionsListSubItem = ({ item: { date, value, currency, id }, onSelect
       <View style={ styles.subItemDateContainer }>
         <Text>{ formatDate(date) }</Text>
       </View>
-      <Text>{ value }, { currency }</Text>
+      <Text>{ value.toFixed(2) } { currency }</Text>
     </View>
   </TouchableOpacity>;
 

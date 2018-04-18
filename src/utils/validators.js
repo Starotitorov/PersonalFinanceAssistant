@@ -3,6 +3,7 @@ import { createValidator } from 'revalidate';
 /*eslint-disable */
 const EMAIL_REGEXP = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const PASSWORD_REGEXP = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*_-]).{8,}$/;
+const CURRENCY_REGEXP = /^[0-9]\d*(((,\d{3}){1})?(\.\d{0,2})?)$/;
 /* eslint-enable */
 
 export const password = createValidator(
@@ -46,6 +47,15 @@ export const number = createValidator(
     }
   },
   field => `The ${field} is not a valid number`
+);
+
+export const currency = createValidator(
+  message => value => {
+    if (value) {
+      return !CURRENCY_REGEXP.test(value) ? message : undefined;
+    }
+  },
+  field => `The ${field} is not a valid sum of money`
 );
 
 export const match = otherField => createValidator(

@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { chain, values, find, sumBy } from 'lodash';
+import { chain, values, find, sumBy, get } from 'lodash';
 import * as categoryTypes from 'src/constants/categoryTypes';
 import { periodTypes } from './constants';
 import filterTransactionsByAccount from 'src/helpers/filterTransactionsByAccount';
@@ -56,6 +56,8 @@ export const filterTransactionsByTimeRange = ({
     .filter(({ date }) => date >= lowerBound && date <= higherBound);
 };
 
+export const getTransactionsSum = transactions => sumBy(transactions, 'value');
+
 export const getTransactionsGroupedByCategories = ({
   transactionsList: {
     transactions: {
@@ -82,11 +84,11 @@ export const getTransactionsGroupedByCategories = ({
     periodType
   });
 
-  const grouped = chain(transactions)
+  return chain(transactions)
     .groupBy('categoryId')
     .transform((acc, transactions, key) => {
       const { name, icon } = categoriesById[key] || {};
-      const sum = transactions.reduce((sum, { value }) => sum + value, 0);
+      const sum = getTransactionsSum(transactions);
 
       acc.push({
         category: {
@@ -99,8 +101,6 @@ export const getTransactionsGroupedByCategories = ({
       });
     }, [])
     .value();
-
-  return grouped;
 };
 
 export const getTransactionsChartData = ({
@@ -132,15 +132,16 @@ export const getTransactionsChartData = ({
   const incomeTransactions = filterTransactionsByCategoryType(transactions, categoryTypes.INCOME_CATEGORY);
   const outcomeTransactions = filterTransactionsByCategoryType(transactions, categoryTypes.OUTCOME_CATEGORY);
 
-  const totalIncomeSum = sumBy(incomeTransactions, 'value');
-  const totalOutcomeSum = sumBy(outcomeTransactions, 'value');
+  const totalIncomeSum = getTransactionsSum(incomeTransactions);
+  const totalOutcomeSum = getTransactionsSum(outcomeTransactions);
+
   const totalBalance = totalIncomeSum + totalOutcomeSum;
 
   const grouped = chain(outcomeTransactions)
     .groupBy('categoryId')
     .transform((acc, transactions, key) => {
-      const { name: label } = categoriesById[key] || {};
-      const sum = sumBy(transactions, 'value');
+      const { name: label } = get(categoriesById, key, {});
+      const sum = getTransactionsSum(transactions);
 
       acc.push({
         label,
