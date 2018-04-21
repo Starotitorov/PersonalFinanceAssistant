@@ -1,7 +1,7 @@
 import { TabNavigator } from 'react-navigation';
 import OutcomeCategoriesList from '../OutcomeCategoriesList';
 import IncomeCategoriesList from '../IncomeCategoriesList';
-import { colors } from 'src/styles';
+import { colors, fontSizes } from 'src/styles';
 
 export default TabNavigator({
   IncomeCategoriesList: {
@@ -21,7 +21,14 @@ export default TabNavigator({
   swipeEnabled: true,
   lazy: false,
   animationEnabled: true,
+  tabBarPosition: 'top',
   tabBarOptions: {
+    activeTintColor: colors.COLOR_WHITE,
+    inactiveTintColor: colors.COLOR_GRAY,
+    labelStyle: {
+      fontSize: fontSizes.FONT_SIZE_L,
+      marginBottom: 16
+    },
     style: {
       backgroundColor: colors.COLOR_PRIMARY
     }

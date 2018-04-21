@@ -1,0 +1,6 @@
+framework module Pods_PersonalFinanceAssistant {
+  umbrella header "Pods-PersonalFinanceAssistant-umbrella.h"
+
+  export *
+  module * { export * }
+}
