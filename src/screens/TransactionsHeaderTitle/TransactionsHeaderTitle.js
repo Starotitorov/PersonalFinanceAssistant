@@ -15,6 +15,7 @@ const TransactionsHeaderTitle = ({
     <View style={ styles.flexGrow }>
       <SelectInput
         value={ selectedAccountId }
+        style={ styles.selectInputStyle }
         options={ accountOptions }
         onChange={ setSelectedAccount } />
     </View>

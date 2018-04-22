@@ -11,7 +11,8 @@ export const createAddTransferViewModel = ({ accounts = []} = {}) => ({
   value: {
     name: TRANSFER_FORM_VALUE_FIELD,
     label: 'Sum',
-    placeholder: 'Enter sum to transfer...'
+    placeholder: 'Enter sum to transfer...',
+    keyboardType: 'numeric'
   },
   fromAccountId: {
     name: TRANSFER_FORM_FROM_ACCOUNT_ID_FIELD,
@@ -26,7 +27,8 @@ export const createAddTransferViewModel = ({ accounts = []} = {}) => ({
   exchangeRate: {
     name: TRANSFER_FORM_EXCHANGE_RATE_FIELD,
     label: 'Exchange rate',
-    placeholder: 'Enter exchange rate'
+    placeholder: 'Enter exchange rate',
+    keyboardType: 'numeric'
   },
   date: {
     name: TRANSFER_FORM_DATE_FIELD,

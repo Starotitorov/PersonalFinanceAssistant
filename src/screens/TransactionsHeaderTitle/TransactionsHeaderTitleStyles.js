@@ -6,6 +6,9 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between'
   },
+  selectInputStyle: {
+    marginRight: 18
+  },
   flexGrow: {
     flexGrow: 1
   }

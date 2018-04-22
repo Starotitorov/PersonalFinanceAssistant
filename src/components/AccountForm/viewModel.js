@@ -19,7 +19,8 @@ export const createAddAccountViewModel = () => ({
   balance: {
     name: ACCOUNT_FORM_BALANCE_FIELD,
     label: 'Initial balance',
-    placeholder: 'Enter initial balance...'
+    placeholder: 'Enter initial balance...',
+    keyboardType: 'numeric'
   },
   currency: {
     name: ACCOUNT_FORM_CURRENCY_FIELD,

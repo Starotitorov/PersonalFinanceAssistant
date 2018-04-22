@@ -4,7 +4,7 @@ import { FlatList, ScrollView, RefreshControl } from 'react-native';
 import { colors } from 'src/styles';
 import styles from './TransactionsListStyles';
 
-const keyExtractor = (item, index) => index;
+const keyExtractor = ({ id }) => id;
 
 const TransactionsList = ({ onRefresh, refreshing, data, EmptyListComponent, renderItem }) =>
   <ScrollView style={ styles.container }>

@@ -9,7 +9,8 @@ export const getSelectInputOptionsFromAllAccounts = state => {
   }];
 
   return accountOptions.concat(
-    accounts.map(({ name, id }) => ({
+    accounts.map(({ name, id, icon }) => ({
+      icon,
       label: name,
       value: id
     }))

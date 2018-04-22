@@ -5,6 +5,7 @@ import { periodTypes } from './constants';
 import filterTransactionsByAccount from 'src/helpers/filterTransactionsByAccount';
 import filterTransactionsByCategoryType from 'src/helpers/filterTransactionsByCategoryType';
 import getTransactionsList from 'src/helpers/getTransactionsList';
+import shortid from 'shortid';
 
 export const getFormattedCurrentDate = ({ transactionsList: { currentDate, periodType }}) => {
   if (periodType === periodTypes.YEAR.value) {
@@ -91,6 +92,7 @@ export const getTransactionsGroupedByCategories = ({
       const sum = getTransactionsSum(transactions);
 
       acc.push({
+        id: shortid(),
         category: {
           name,
           icon,
