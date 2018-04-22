@@ -1,4 +1,5 @@
 import { TabNavigator } from 'react-navigation';
+import { Platform } from 'react-native';
 import OutcomeCategoriesList from '../OutcomeCategoriesList';
 import IncomeCategoriesList from '../IncomeCategoriesList';
 import { colors, fontSizes } from 'src/styles';
@@ -23,12 +24,12 @@ export default TabNavigator({
   animationEnabled: true,
   tabBarPosition: 'top',
   tabBarOptions: {
-    activeTintColor: colors.COLOR_WHITE,
+    activeTintColor: Platform.OS === 'ios' ? colors.COLOR_WHITE : undefined,
     inactiveTintColor: colors.COLOR_GRAY,
-    labelStyle: {
+    labelStyle: Platform.OS === 'ios' ? {
       fontSize: fontSizes.FONT_SIZE_L,
       marginBottom: 16
-    },
+    } : {},
     style: {
       backgroundColor: colors.COLOR_PRIMARY
     }
