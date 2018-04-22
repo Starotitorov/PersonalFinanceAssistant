@@ -46,3 +46,15 @@ export const showNetworkErrorAlert = () => {
     ]
   );
 };
+
+export const showCanNotPerformOperationAlert = () => {
+  Alert.alert(
+    'Operation error',
+    'Cannot perform operation. Try again later.',
+    [
+      {
+        text: 'OK'
+      }
+    ]
+  );
+};

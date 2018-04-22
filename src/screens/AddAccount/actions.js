@@ -1,5 +1,6 @@
 import { NavigationActions } from 'react-navigation';
 import * as api from 'src/api';
+import { alerts } from 'src/utils';
 
 export const addAccount = accountData => dispatch => {
   const data = {
@@ -15,5 +16,6 @@ export const addAccount = accountData => dispatch => {
           NavigationActions.navigate({ routeName: 'AccountsList' })
         ]
       }));
-    });
+    })
+    .catch(() => alerts.showCanNotPerformOperationAlert());
 };

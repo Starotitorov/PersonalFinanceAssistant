@@ -1,5 +1,6 @@
 import { NavigationActions } from 'react-navigation';
 import * as api from 'src/api';
+import { alerts } from 'src/utils';
 
 export const removeCategory = id => dispatch => api.removeCategory(id)
   .then(() => {
@@ -9,4 +10,5 @@ export const removeCategory = id => dispatch => api.removeCategory(id)
         NavigationActions.navigate({ routeName: 'CategoryTabs' })
       ]
     }));
-  });
+  })
+  .catch(() => alerts.showCanNotPerformOperationAlert());

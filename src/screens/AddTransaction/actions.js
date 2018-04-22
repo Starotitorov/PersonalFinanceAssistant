@@ -1,6 +1,7 @@
 import { createAction } from 'redux-actions';
 import { NavigationActions } from 'react-navigation';
 import * as api from 'src/api';
+import { alerts } from 'src/utils';
 
 export const setAccounts = createAction(
   'ADD_TRANSACTION/SET_ACCOUNTS',
@@ -26,4 +27,5 @@ export const addTransaction = transactionData => dispatch => api.addTransaction(
         NavigationActions.navigate({ routeName: 'Transactions' })
       ]
     }));
-  });
+  })
+  .catch(() => alerts.showCanNotPerformOperationAlert());

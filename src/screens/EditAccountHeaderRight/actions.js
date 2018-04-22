@@ -1,5 +1,6 @@
 import { NavigationActions } from 'react-navigation';
 import * as api from 'src/api';
+import { alerts } from 'src/utils';
 
 export const removeAccount = id => dispatch => api.removeAccount(id)
   .then(() => {
@@ -9,4 +10,5 @@ export const removeAccount = id => dispatch => api.removeAccount(id)
         NavigationActions.navigate({ routeName: 'AccountsList' })
       ]
     }));
-  });
+  })
+  .catch(() => alerts.showCanNotPerformOperationAlert());

@@ -1,6 +1,7 @@
 import { createAction } from 'redux-actions';
 import { NavigationActions } from 'react-navigation';
 import * as api from 'src/api';
+import { alerts } from 'src/utils';
 
 export const addTransfer = transferData => dispatch => {
   const transfer = {
@@ -17,7 +18,8 @@ export const addTransfer = transferData => dispatch => {
           NavigationActions.navigate({ routeName: 'AccountsList' })
         ]
       }));
-    });
+    })
+    .catch(() => alerts.showCanNotPerformOperationAlert());
 };
 
 export const setAccounts = createAction(
