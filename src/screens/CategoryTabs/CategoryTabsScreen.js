@@ -25,7 +25,6 @@ export default TabNavigator({
   tabBarPosition: 'top',
   tabBarOptions: {
     activeTintColor: Platform.OS === 'ios' ? colors.COLOR_WHITE : undefined,
-    inactiveTintColor: colors.COLOR_GRAY,
     labelStyle: Platform.OS === 'ios' ? {
       fontSize: fontSizes.FONT_SIZE_L,
       marginBottom: 16
