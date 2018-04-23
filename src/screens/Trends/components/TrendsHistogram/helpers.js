@@ -1,5 +1,6 @@
 import { processColor } from 'react-native';
 import { fontSizes } from 'src/styles';
+import { DEFAULT_BASE_CURRENCY } from 'src/constants/currency';
 
 export const getHistogramConfig = ({
   data: {
@@ -43,14 +44,14 @@ export const getHistogramConfig = ({
     }
   },
   description: {
-    text: `Statistics for the last ${intervals.length} months`,
+    text: `Statistics for the last ${intervals.length} months in ${DEFAULT_BASE_CURRENCY}`,
     textSize: fontSizes.FONT_SIZE_S
   },
   xAxis: {
     valueFormatter: intervals,
     granularityEnabled: true,
     granularity: 1,
-    axisMaximum: 5,
+    axisMaximum: intervals.length,
     axisMinimum: 0,
     centerAxisLabels: true
   },

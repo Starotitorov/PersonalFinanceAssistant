@@ -13,9 +13,3 @@ export const getEditCategoryFormInitialValues = ({
   icon,
   categoryTypeId
 });
-
-export const isCategoryFetching = ({
-  editCategory: {
-    fetching
-  }
-}) => fetching;

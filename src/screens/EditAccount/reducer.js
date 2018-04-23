@@ -1,27 +1,15 @@
 import { handleActions } from 'redux-actions';
 import {
-  setAccount,
-  fetchAccountStart,
-  fetchAccountFailure
+  setAccount
 } from './actions';
 
 const initialState = {
-  account: {},
-  fetching: false
+  account: {}
 };
 
 const editAccount = handleActions({
   [setAccount]: (state, { payload: { account }}) => ({
-    account,
-    fetching: false
-  }),
-  [fetchAccountStart]: state => ({
-    ...state,
-    fetching: true
-  }),
-  [fetchAccountFailure]: state => ({
-    ...state,
-    fetching: false
+    account
   })
 }, initialState);
 

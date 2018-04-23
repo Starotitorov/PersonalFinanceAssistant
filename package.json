@@ -25,6 +25,7 @@
     "react-native-fbsdk": "0.6.3",
     "react-native-fetch-mock": "0.3.1",
     "react-native-gravatar": "1.0.2",
+    "react-native-material-dialog": "0.7.4",
     "react-native-material-dropdown": "0.11.1",
     "react-native-material-textfield": "0.12.0",
     "react-native-modal-datetime-picker": "4.13.0",
@@ -39,6 +40,7 @@
     "redux-actions": "2.2.1",
     "redux-form": "7.1.2",
     "redux-logger": "3.0.6",
+    "redux-modal": "^1.7.3",
     "redux-thunk": "2.2.0",
     "revalidate": "1.2.0"
   },

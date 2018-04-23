@@ -17,9 +17,9 @@ const withHandleUpdateCategory = withHandlers({
 
 const withSelectedCategory = lifecycle({
   componentDidMount() {
-    const { id } = this.props.navigation.state.params;
+    const { category } = this.props.navigation.state.params;
 
-    this.props.fetchCategory(id);
+    this.props.setCategory(category);
   }
 });
 

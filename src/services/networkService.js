@@ -25,8 +25,8 @@ const parseResponse = async (url, response = {}) => {
   };
 };
 
-const request = (method, url, headers = {}, body) =>
-  fetch(url, { method, headers, body })
+const request = (method, url, headers = {}, body, params) =>
+  fetch(url, { method, headers, body, params })
     .then(response => parseResponse(url, response))
     .catch(async response => {
       const responseObject = await parseResponse(url, response);
@@ -59,7 +59,7 @@ export const cache = promise =>
       }
     });
 
-export const get = (url, headers) => request('GET', url, headers);
+export const get = (url, headers, params) => request('GET', url, headers, undefined, params);
 
 export const post = (url, headers, body) => request('POST', url, headers, body);
 

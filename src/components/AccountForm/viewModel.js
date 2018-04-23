@@ -1,11 +1,9 @@
 import {
   ACCOUNT_FORM_ICON_FIELD,
   ACCOUNT_FORM_BALANCE_FIELD,
-  ACCOUNT_FORM_CURRENCY_FIELD,
   ACCOUNT_FORM_INITIAL_DATE_FIELD,
   ACCOUNT_FORM_NAME_FIELD
 } from './constants';
-import supportedCurrency from 'src/constants/currency';
 
 export const createAddAccountViewModel = () => ({
   icon: {
@@ -21,12 +19,6 @@ export const createAddAccountViewModel = () => ({
     label: 'Initial balance',
     placeholder: 'Enter initial balance...',
     keyboardType: 'numeric'
-  },
-  currency: {
-    name: ACCOUNT_FORM_CURRENCY_FIELD,
-    label: 'Currency',
-    placeholder: 'Enter currency...',
-    options: supportedCurrency
   },
   initialDate: {
     name: ACCOUNT_FORM_INITIAL_DATE_FIELD,

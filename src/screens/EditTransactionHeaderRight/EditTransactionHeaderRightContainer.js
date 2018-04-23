@@ -4,7 +4,7 @@ import { RemoveHeaderIcon } from 'src/components';
 import { removeTransaction } from './actions';
 
 const withHandleRemove = withHandlers({
-  onPress: ({ navigation: { state: { params: { id }}}, removeTransaction }) => () => {
+  onPress: ({ navigation: { state: { params: { transaction: { id }}}}, removeTransaction }) => () => {
     removeTransaction(id);
   }
 });

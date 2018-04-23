@@ -113,11 +113,13 @@ export const switchViewType = () => (dispatch, getState) => {
   dispatch(setViewType(viewType === LIST ? CHART : LIST));
 };
 
-export const selectTransaction = id => dispatch => {
+export const selectTransaction = id => (dispatch, getState) => {
+  const { transactionsList: { transactions: { byId }}} = getState();
+
   dispatch(NavigationActions.navigate({
     routeName: 'EditTransaction',
     params: {
-      id
+      transaction: byId[id]
     }
   }));
 };

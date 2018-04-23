@@ -8,17 +8,6 @@ export const setCategory = createAction(
   category => ({ category })
 );
 
-export const fetchCategoryStart = createAction('EDIT_CATEGORY/FETCH_CATEGORY_START');
-export const fetchCategoryFailure = createAction('EDIT_ACCOUNT/FETCH_CATEGORY_FAILURE');
-
-export const fetchCategory = id => dispatch => {
-  dispatch(fetchCategoryStart());
-
-  return api.getCategory(id)
-    .then(({ category }) => dispatch(setCategory(category)))
-    .catch(e => dispatch(fetchCategoryFailure(e)));
-};
-
 export const updateCategory = categoryData => (dispatch, getState) => {
   const { editCategory: { category: { id }}} = getState();
 

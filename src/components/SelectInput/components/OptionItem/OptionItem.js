@@ -12,12 +12,14 @@ const OptionItem = ({
   <View style={ styles.itemWrapperStyle }>
     {
       icon && <Icon
-        containerStyle={ styles.itemIconStyle }
+        iconStyle={ styles.itemIconStyle }
         color={ color }
         name={ icon }
         type="material-community" />
     }
-    <Text style={ [styles.itemTextStyle, { color }] } numberOfLines={ 1 }>{ label }</Text>
+    <View style={ styles.itemTextContainer }>
+      <Text style={ [styles.itemTextStyle, { color }] } numberOfLines={ 1 }>{ label }</Text>
+    </View>
   </View>;
 
 OptionItem.propTypes = {

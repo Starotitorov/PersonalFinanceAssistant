@@ -8,6 +8,7 @@ const withRenderSubItem = withHandlers({
   renderSubItems: ({ data: { transactions }, onSelectTransaction }) => () =>
     transactions.map(item =>
       <TransactionsListSubItem
+        key={ item.id }
         item={ item }
         onSelectTransaction={ onSelectTransaction } />)
 });

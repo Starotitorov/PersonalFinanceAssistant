@@ -1,24 +1,14 @@
 import { createAction } from 'redux-actions';
 import * as api from 'src/api';
 
-export const setSelectedAccount = createAction(
-  'TRENDS/SET_SELECTED_ACCOUNT',
-  id => ({ id })
-);
-
 export const setTransactions = createAction(
   'TRENDS/SET_TRANSACTIONS',
   transactions => ({ transactions })
 );
 
-export const setAccounts = createAction(
-  'TRENDS/SET_ACCOUNTS',
-  accounts => ({ accounts })
-);
-
-export const setCategories = createAction(
-  'TRENDS/SET_CATEGORIES',
-  categories => ({ categories })
+export const setDateRange = createAction(
+  'TRENDS/SET_DATE_RANGE',
+  dateRange => ({ dateRange })
 );
 
 export const fetchTrendsDataStart = createAction('TRENDS/FETCH_TRENDS_DATA_START');
@@ -28,20 +18,8 @@ export const fetchTrendsDataSuccess = createAction('TRENDS/FETCH_TRENDS_DATA_SUC
 export const fetchTrendsData = () => dispatch => {
   dispatch(fetchTrendsDataStart());
 
-  return Promise.all([
-    api.fetchAccounts(),
-    api.fetchCategories(),
-    api.fetchTransactions()
-  ])
-    .then(results => {
-      const { accounts } = results[0];
-      const { categories } = results[1];
-      const { transactions } = results[2];
-
-      dispatch(setAccounts(accounts));
-
-      dispatch(setCategories(categories));
-
+  api.fetchTransactions()
+    .then(({ transactions }) => {
       dispatch(setTransactions(transactions));
 
       dispatch(fetchTrendsDataSuccess());

@@ -1,11 +1,12 @@
 import { getAllAccounts } from '../Transactions/selectors';
+import { ALL_ACCOUNTS } from 'src/constants/accounts';
 
 export const getSelectInputOptionsFromAllAccounts = state => {
   const accounts = getAllAccounts(state);
 
   const accountOptions = [{
-    label: 'Select account...',
-    value: null
+    label: 'All accounts',
+    value: ALL_ACCOUNTS
   }];
 
   return accountOptions.concat(

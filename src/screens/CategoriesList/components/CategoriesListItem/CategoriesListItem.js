@@ -3,17 +3,17 @@ import PropTypes from 'prop-types';
 import { ListItem } from 'react-native-elements';
 
 const CategoriesListItem = ({
-  item: { name, icon, id },
-  onSelectCategory
+  handleSelectCategory,
+  item: { name, icon, id }
 }) =>
   <ListItem
     title={ name }
     leftIcon={ icon }
-    onPress={ () => onSelectCategory(id) } />;
+    onPress={ handleSelectCategory } />;
 
 CategoriesListItem.propTypes = {
   item: PropTypes.shape({}),
-  onSelectCategory: PropTypes.func
+  handleSelectCategory: PropTypes.func
 };
 
 export default CategoriesListItem;

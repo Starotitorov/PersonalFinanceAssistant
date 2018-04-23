@@ -5,13 +5,16 @@ import styles from './TransactionsListSubItemStyles';
 
 const formatDate = momentFormat.formatTransactionDate;
 
-const TransactionsListSubItem = ({ item: { date, value, currency, id }, onSelectTransaction }) =>
-  <TouchableOpacity onPress={ () => onSelectTransaction(id) }>
+const TransactionsListSubItem = ({ item: { date, value, currency, id, note }, handleSelectTransaction }) =>
+  <TouchableOpacity onPress={ handleSelectTransaction }>
     <View style={ styles.subItemContainer }>
-      <View style={ styles.subItemDateContainer }>
-        <Text>{ formatDate(date) }</Text>
+      <View style={ styles.subItemMain }>
+        <View style={ styles.subItemDateContainer }>
+          <Text>{ formatDate(date) }</Text>
+        </View>
+        <Text>{ value.toFixed(2) } { currency }</Text>
       </View>
-      <Text>{ value.toFixed(2) } { currency }</Text>
+      { note && <Text style={ styles.subItemNote }>{ note }</Text> }
     </View>
   </TouchableOpacity>;
 

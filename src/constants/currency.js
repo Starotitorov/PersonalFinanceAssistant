@@ -17,4 +17,4 @@ export default [
   }
 ];
 
-export const BASE_CURRENCY = 'USD';
+export const DEFAULT_BASE_CURRENCY = 'BYN';

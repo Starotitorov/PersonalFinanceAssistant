@@ -1,4 +1,8 @@
+import { ALL_ACCOUNTS } from '../constants/accounts';
+
 const filterTransactionsByAccount = (transactions, selected) =>
-  transactions.filter(({ accountId }) => accountId === selected);
+  selected !== ALL_ACCOUNTS ?
+    transactions.filter(({ accountId }) => accountId === selected) :
+    transactions;
 
 export default filterTransactionsByAccount;

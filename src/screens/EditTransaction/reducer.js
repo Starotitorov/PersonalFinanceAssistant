@@ -1,28 +1,14 @@
 import { handleActions } from 'redux-actions';
-import {
-  setTransaction,
-  fetchTransactionStart,
-  fetchTransactionFailure
-} from './actions';
+import { setTransaction } from './actions';
 
 const initialState = {
-  transaction: {},
-  fetching: false
+  transaction: {}
 };
 
-const addTransaction = handleActions({
-  [fetchTransactionStart]: state => ({
-    ...state,
-    fetching: true
-  }),
-  [fetchTransactionFailure]: state => ({
-    ...state,
-    fetching: false
-  }),
+const editTransaction = handleActions({
   [setTransaction]: (state, { payload: { transaction }}) => ({
-    transaction,
-    fetching: false
+    transaction
   })
 }, initialState);
 
-export default addTransaction;
+export default editTransaction;

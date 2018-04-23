@@ -1,40 +1,23 @@
 import { chain, sumBy, findIndex, times, constant } from 'lodash';
 import moment from 'moment';
 import * as categoryTypes from 'src/constants/categoryTypes';
-import filterTransactionsByAccount from 'src/helpers/filterTransactionsByAccount';
 import filterTransactionsByCategoryType from 'src/helpers/filterTransactionsByCategoryType';
 import getTransactionsList from 'src/helpers/getTransactionsList';
+import { getTimeIntervals } from './helpers';
 
-const INTERVALS_COUNT = 5;
+const getTransactionsStatisticsByIntervals = (transactions, intervals) =>
+  chain(transactions)
+    .groupBy(({ date }) => findIndex(intervals, i => date >= i[0] && date < i[1]))
+    .transform((acc, transactions, key) => {
+      if (key == -1) {
+        return;
+      }
 
-const getTimeIntervals = (count) => {
-  const currentDate = Date.now();
-  let leftBorder = moment(currentDate).startOf('month');
-  let rightBorder = moment(currentDate).endOf('month');
+      const totalSum = Math.abs(sumBy(transactions, 'value'));
 
-  const intervals = [];
-  for (let i = 0; i < count; ++i) {
-    intervals.push([leftBorder, rightBorder]);
-
-    rightBorder = moment(leftBorder);
-    leftBorder = moment(leftBorder).subtract(1, 'month');
-  }
-
-  return intervals.reverse();
-};
-
-const getTransactionsStatisticsByIntervals = (transactions, intervals) => chain(transactions)
-  .groupBy(({ date }) => findIndex(intervals, i => date >= i[0] && date < i[1]))
-  .transform((acc, transactions, key) => {
-    if (key == -1) {
-      return;
-    }
-
-    const totalSum = Math.abs(sumBy(transactions, 'value'));
-
-    acc[key] = totalSum;
-  }, times(intervals.length, constant(0)))
-  .value();
+      acc[key] = totalSum;
+    }, times(intervals.length, constant(0)))
+    .value();
 
 const getIntervalNames = intervals =>
   intervals.map(([leftBorder]) => moment(leftBorder).format('MMMM'));
@@ -44,14 +27,13 @@ export const getTrendsData = ({
     transactions: {
       byId
     },
-    categories: {
-      byId: categoriesById
-    },
-    selectedAccount
+    dateRange: {
+      from,
+      to
+    }
   }
 }) => {
-  let transactionList = getTransactionsList(byId, categoriesById);
-  transactionList = filterTransactionsByAccount(transactionList, selectedAccount);
+  const transactionList = getTransactionsList(byId);
 
   const incomeTransactions = filterTransactionsByCategoryType(
     transactionList,
@@ -62,7 +44,7 @@ export const getTrendsData = ({
     categoryTypes.OUTCOME_CATEGORY
   );
 
-  const intervals = getTimeIntervals(INTERVALS_COUNT);
+  const intervals = getTimeIntervals(from, to);
 
   const incomeTransactionsStatistics = getTransactionsStatisticsByIntervals(
     incomeTransactions,
@@ -86,13 +68,8 @@ export const isTrendsDataFetching = ({
   }
 }) => fetching;
 
-export const getAllAccounts = ({
+export const getDateRange = ({
   trends: {
-    accounts: {
-      byId,
-      order
-    }
+    dateRange
   }
-}) => order.map(id => byId[id]);
-
-export const getSelectedAccountId = ({ trends: { selectedAccount }}) => selectedAccount;
+}) => dateRange;

@@ -11,9 +11,3 @@ export const getEditAccountFormInitialValues = ({
   name,
   initialDate
 });
-
-export const isAccountFetching = ({
-  editAccount: {
-    fetching
-  }
-}) => fetching;

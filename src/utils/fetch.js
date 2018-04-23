@@ -1,15 +1,19 @@
 function getQueryString(params) {
   return params ?
     `?${Object.keys(params)
-      .map(k => {
-        if (Array.isArray(params[k])) {
-          return params[k]
-            .map(val => `${encodeURIComponent(k)}[]=${encodeURIComponent(val)}`)
-            .join('&');
+      .reduce((acc, k) => {
+        if (typeof params[k] === 'undefined') {
+          return acc;
         }
 
-        return `${encodeURIComponent(k)}=${encodeURIComponent(params[k])}`;
-      })
+        if (Array.isArray(params[k])) {
+          return [...acc, params[k]
+            .map(val => `${encodeURIComponent(k)}[]=${encodeURIComponent(val)}`)
+            .join('&')];
+        }
+
+        return [...acc, `${encodeURIComponent(k)}=${encodeURIComponent(params[k])}`];
+      }, [])
       .join('&')}` :
     '';
 }

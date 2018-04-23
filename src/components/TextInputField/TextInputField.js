@@ -8,7 +8,7 @@ export default function TextInputField({
   secureTextEntry,
   editable,
   placeholder,
-  meta: { error, touched },
+  meta: { error, touched } = {},
   keyboardType
 }) {
   return (

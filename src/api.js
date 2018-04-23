@@ -183,7 +183,11 @@ export const removeTransaction = async id => del(
   }
 );
 
-export const fetchExchangeRates = () => cache(get(config.exchangeRatesUrl));
+export const fetchExchangeRates = ({ from, to, date, endDate }) => cache(get(
+  `${API_URL}/exchangeRates`,
+  {},
+  { from, to, date, endDate }
+));
 
 export const changePassword = async data => put(
   `${API_URL}/changePassword`,

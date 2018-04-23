@@ -10,7 +10,7 @@ export default class DatePickerInput extends Component {
     };
 
     showPicker = () => {
-      const { input: { onFocus }} = this.props;
+      const { input: { onFocus = () => {} }} = this.props;
 
       onFocus();
 
@@ -20,7 +20,7 @@ export default class DatePickerInput extends Component {
     };
 
     hidePicker = () => {
-      const { onBlur } = this.props.input;
+      const { onBlur = () => {} } = this.props.input;
 
       onBlur();
 
@@ -39,10 +39,10 @@ export default class DatePickerInput extends Component {
 
     render() {
       const { visible } = this.state;
-      const { label, placeholder } = this.props;
+      const { label, placeholder, style } = this.props;
 
       return (
-        <TouchableOpacity onPress={ this.showPicker }>
+        <TouchableOpacity style={ style } onPress={ this.showPicker }>
           <DateTimePicker
             isVisible={ visible }
             mode="date"

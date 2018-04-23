@@ -19,9 +19,9 @@ const currency = handleActions({
     ...state,
     fetching: false
   }),
-  [setExchangeRates]: (state, { payload: { rates }}) => ({
+  [setExchangeRates]: (state, { payload: { exchangeRates }}) => ({
     ...state,
-    rates,
+    rates: exchangeRates,
     fetching: false
   })
 }, initialState);

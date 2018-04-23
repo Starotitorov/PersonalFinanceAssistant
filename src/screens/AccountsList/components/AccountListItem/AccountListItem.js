@@ -3,18 +3,18 @@ import PropTypes from 'prop-types';
 import { ListItem } from 'react-native-elements';
 
 const AccountListItem = ({
-  item: { id, name, balance, icon },
-  onSelectAccount
+  handleSelectAccount,
+  item: { id, name, balance, icon }
 }) =>
   <ListItem
     title={ name }
     leftIcon={ icon }
     rightTitle={ balance }
-    onPress={ () => onSelectAccount(id) } />;
+    onPress={ handleSelectAccount } />;
 
 AccountListItem.propTypes = {
   item: PropTypes.shape({}),
-  onSelectAccount: PropTypes.func
+  handleSelectAccount: PropTypes.func
 };
 
 export default AccountListItem;

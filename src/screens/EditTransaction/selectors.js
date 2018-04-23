@@ -17,9 +17,3 @@ export const getEditTransactionFormInitialValues = ({
   categoryId,
   accountId
 });
-
-export const isTransactionFetching = ({
-  editTransaction: {
-    fetching
-  }
-}) => fetching;

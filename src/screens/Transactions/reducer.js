@@ -1,5 +1,7 @@
 import moment from 'moment';
 import { handleActions, combineActions } from 'redux-actions';
+import { arrayToObjectById } from 'src/utils';
+import { ALL_ACCOUNTS } from 'src/constants/accounts';
 import {
   changeCurrentDate,
   changePeriodView,
@@ -16,7 +18,6 @@ import {
   setViewType
 } from './actions';
 import { periodTypes, LIST } from './constants';
-import { arrayToObjectById } from 'src/utils';
 
 const initialState = {
   transactions: {
@@ -35,7 +36,7 @@ const initialState = {
   periodType: periodTypes.WEEK.value,
   fetching: false,
   refreshing: false,
-  selectedAccount: null,
+  selectedAccount: ALL_ACCOUNTS,
   viewType: LIST
 };
 

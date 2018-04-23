@@ -1,27 +1,13 @@
 import { handleActions } from 'redux-actions';
-import {
-  setCategory,
-  fetchCategoryStart,
-  fetchCategoryFailure
-} from './actions';
+import { setCategory } from './actions';
 
 const initialState = {
-  category: {},
-  fetching: false
+  category: {}
 };
 
 const editCategory = handleActions({
-  [fetchCategoryStart]: state => ({
-    ...state,
-    fetching: true
-  }),
-  [fetchCategoryFailure]: state => ({
-    ...state,
-    fetching: false
-  }),
   [setCategory]: (state, { payload: { category }}) => ({
-    category,
-    fetching: false
+    category
   })
 }, initialState);
 

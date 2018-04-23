@@ -1,12 +1,11 @@
 import { handleActions, combineActions } from 'redux-actions';
+import moment from 'moment';
 import {
   fetchTrendsDataStart,
   fetchTrendsDataSuccess,
   fetchTrendsDataFailure,
-  setAccounts,
-  setCategories,
   setTransactions,
-  setSelectedAccount
+  setDateRange
 } from './actions';
 import { arrayToObjectById } from 'src/utils';
 
@@ -15,16 +14,12 @@ const initialState = {
     byId: {},
     order: []
   },
-  accounts: {
-    byId: {},
-    order: []
+  convertData: {},
+  dateRange: {
+    to: moment().utc().valueOf(),
+    from: moment().subtract(3, 'month').utc().valueOf()
   },
-  categories: {
-    byId: {},
-    order: []
-  },
-  fetching: false,
-  selectedAccount: null
+  fetching: false
 };
 
 const trends = handleActions({
@@ -44,26 +39,7 @@ const trends = handleActions({
       transactions: arrayToObjectById(transactions)
     };
   },
-  [setAccounts]: (state, action) => {
-    const { accounts } = action.payload;
-
-    return {
-      ...state,
-      accounts: arrayToObjectById(accounts)
-    };
-  },
-  [setCategories]: (state, action) => {
-    const { categories } = action.payload;
-
-    return {
-      ...state,
-      categories: arrayToObjectById(categories)
-    };
-  },
-  [setSelectedAccount]: (state, { payload: { id }}) => ({
-    ...state,
-    selectedAccount: id
-  })
+  [setDateRange]: (state, { payload: { dateRange }}) => ({ ...state, dateRange })
 }, initialState);
 
 export default trends;

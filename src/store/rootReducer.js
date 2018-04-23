@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 import { reducer as form } from 'redux-form';
+import { reducer as modal } from 'redux-modal';
 import navigation from 'src/screens/AppNavigator/reducer';
 import accountsList from 'src/screens/AccountsList/reducer';
 import editAccount from 'src/screens/EditAccount/reducer';
@@ -28,5 +29,6 @@ export default combineReducers({
   addTransaction,
   editTransaction,
   trends,
-  currency
+  currency,
+  modal
 });
