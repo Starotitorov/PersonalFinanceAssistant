@@ -14,7 +14,7 @@ const App = ({ navigation, isConnected }) =>
       <StatusBar backgroundColor={ colors.COLOR_PRIMARY } barStyle="light-content" />
       <StatusBarAlert
         visible={ !isConnected }
-        message="You are not connected to the internet!"
+        message="You are not connected to the Internet!"
         backgroundColor="#ff0000"
         color="white" />
       <AppNavigator navigation={ navigation } />
