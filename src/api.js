@@ -2,7 +2,7 @@ import config from './config';
 import { JWTStorage } from 'src/utils';
 import { networkService } from 'src/services';
 
-const { get, post, put, del, cache } = networkService;
+const { get, post, put, del } = networkService;
 const API_URL = config.apiUrl;
 
 export const signIn = (email, password) => post(
@@ -32,14 +32,14 @@ export const logInFacebook = data => post(
   JSON.stringify(data)
 );
 
-export const fetchAccounts = async () => cache(get(
+export const fetchAccounts = async () => get(
   `${API_URL}/accounts`,
   {
     Accept: 'application/json',
     'Content-Type': 'application/json',
     Authorization: await JWTStorage.getToken()
   }
-));
+);
 
 export const addAccount = async accountData => post(
   `${API_URL}/accounts`,
@@ -79,14 +79,14 @@ export const removeAccount = async id => del(
   }
 );
 
-export const fetchCategories = async () => cache(get(
+export const fetchCategories = async () => get(
   `${API_URL}/categories`,
   {
     Accept: 'application/json',
     'Content-Type': 'application/json',
     Authorization: await JWTStorage.getToken()
   }
-));
+);
 
 export const getCategory = async id => get(
   `${API_URL}/categories/${id}`,
@@ -136,14 +136,14 @@ export const addTransfer = async transferData => post(
   JSON.stringify({ transfer: transferData })
 );
 
-export const fetchTransactions = async () => cache(get(
+export const fetchTransactions = async () => get(
   `${API_URL}/transactions`,
   {
     Accept: 'application/json',
     'Content-Type': 'application/json',
     Authorization: await JWTStorage.getToken()
   }
-));
+);
 
 export const getTransaction = async id => get(
   `${API_URL}/transactions/${id}`,
@@ -183,11 +183,11 @@ export const removeTransaction = async id => del(
   }
 );
 
-export const fetchExchangeRates = ({ from, to, date, endDate }) => cache(get(
+export const fetchExchangeRates = ({ from, to, date, endDate }) => get(
   `${API_URL}/exchangeRates`,
   {},
   { from, to, date, endDate }
-));
+);
 
 export const changePassword = async data => put(
   `${API_URL}/changePassword`,

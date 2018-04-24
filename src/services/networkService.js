@@ -1,6 +1,5 @@
 // import FetchMock from 'react-native-fetch-mock';
 import { fetch } from 'src/utils';
-import * as cacheService from './cacheService';
 
 const CONNECTION_INFO_TYPE_NONE = 'none';
 
@@ -13,8 +12,7 @@ const parseResponse = async (url, response = {}) => {
   let data = {};
   try {
     data = await response.json();
-  } catch (e) {
-  }
+  } catch (e) {}
 
   return {
     _response: {
@@ -40,24 +38,6 @@ export const setConnectionInfo = info => {
 
 export const isConnected = () =>
   !connectionInfo || connectionInfo.type !== CONNECTION_INFO_TYPE_NONE;
-
-export const cache = promise =>
-  promise
-    .then(obj => {
-      const { _response: { url }, ...data } = obj;
-      cacheService.save(url, data);
-
-      return obj;
-    })
-    .catch(async obj => {
-      try {
-        const data = await cacheService.load(obj._response.url);
-
-        return { ...obj, ...data };
-      } catch (e) {
-        throw obj;
-      }
-    });
 
 export const get = (url, headers, params) => request('GET', url, headers, undefined, params);
 
