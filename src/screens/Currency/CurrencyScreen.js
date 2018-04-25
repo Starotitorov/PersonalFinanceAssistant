@@ -6,7 +6,7 @@ import { getCurrencyLine } from './helpers';
 
 const CurrencyScreen = ({ exchangeRates }) =>
   <ScrollView>
-    <Card title="Exchange rates">
+    <Card containerStyle={ styles.card } title="Exchange rates">
       {
         exchangeRates.map((entry, index) => (
           <View key={ entry[0] } style={ index !== exchangeRates.length - 1 && styles.item }>
