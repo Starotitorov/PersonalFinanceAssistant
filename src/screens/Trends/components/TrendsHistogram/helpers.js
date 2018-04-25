@@ -44,7 +44,7 @@ export const getHistogramConfig = ({
     }
   },
   description: {
-    text: `Statistics for the last ${intervals.length} months in ${DEFAULT_BASE_CURRENCY}`,
+    text: `Statistics for the period in ${DEFAULT_BASE_CURRENCY}`,
     textSize: fontSizes.FONT_SIZE_S
   },
   xAxis: {

@@ -14,7 +14,6 @@ const initialState = {
     byId: {},
     order: []
   },
-  convertData: {},
   dateRange: {
     to: moment().utc().valueOf(),
     from: moment().subtract(3, 'month').utc().valueOf()

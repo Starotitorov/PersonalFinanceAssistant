@@ -1,6 +1,7 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
-import { Card, Text } from 'react-native-elements';
+import { Text } from 'react-native-elements';
+import { Card } from 'src/components';
 import config from 'src/config';
 import TeamMember from './components/TeamMember';
 
@@ -9,10 +10,10 @@ export default function AboutScreen() {
     <ScrollView>
       <Card>
         <Text h4>
-                    Personal finance assistant
+          Personal finance assistant
         </Text>
         <Text>
-                    - application, which helps you in controlling your expenses and incomes.
+          - application, which helps you in controlling your expenses and incomes.
         </Text>
       </Card>
       <Card title="TEAM">

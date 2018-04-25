@@ -22,3 +22,4 @@ export { default as withScreenFocus } from './HOC/withScreenFocus';
 export { default as Field } from './FormField';
 export { default as withToggle } from './HOC/withToggle';
 export { default as CalculatorInputField } from './CalculatorInputField';
+export { default as Card } from './Card';
