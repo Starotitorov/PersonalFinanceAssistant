@@ -7,7 +7,7 @@ export default StyleSheet.create({
     backgroundColor: '#00000055'
   },
   iconsOuterContainer: {
-    width: 250,
+    width: 240,
     borderColor: '#888',
     borderWidth: 1,
     backgroundColor: '#ddd',

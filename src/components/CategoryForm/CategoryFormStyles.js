@@ -4,9 +4,13 @@ import { margins } from 'src/styles';
 export default StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'stretch',
-    width: 300
+    width: '100%',
+    justifyContent: 'flex-start',
+    alignItems: 'stretch'
+  },
+  fields: {
+    marginLeft: 0,
+    marginRight: 0
   },
   row: {
     flexDirection: 'row',
@@ -15,9 +19,6 @@ export default StyleSheet.create({
   },
   flexGrow: {
     flexGrow: 1
-  },
-  fields: {
-    marginBottom: 50
   },
   icon: {
     marginRight: margins.MARGIN_M

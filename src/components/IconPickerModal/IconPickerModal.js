@@ -4,6 +4,8 @@ import { Icon } from 'react-native-elements';
 import icons from './icons';
 import styles from './IconPickerModalStyles';
 
+const ICON_SIZE = 24;
+
 export default class IconPickerModal extends Component {
     handleIconPick = (iconName) => {
       this.props.onIconPick(iconName);
@@ -15,6 +17,7 @@ export default class IconPickerModal extends Component {
         containerStyle={ styles.iconContainer }
         key={ index }
         name={ icon }
+        fontSize={ ICON_SIZE }
         type="material-community"
         onPress={ () => onPress(icon) } />
     ));

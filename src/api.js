@@ -184,7 +184,7 @@ export const removeTransaction = async id => del(
 );
 
 export const fetchExchangeRates = ({ from, to, date, endDate }) => get(
-  `${API_URL}/exchangeRates`,
+  `${config.currencyConverterApiUrl}/exchangeRates`,
   {},
   { from, to, date, endDate }
 );

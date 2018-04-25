@@ -8,12 +8,14 @@ export default function TextInputField({
   secureTextEntry,
   editable,
   placeholder,
+  containerStyle,
   meta: { error, touched } = {},
   keyboardType
 }) {
   return (
     <TextField
       { ...input }
+      containerStyle={ containerStyle }
       keyboardType={ keyboardType }
       tintColor={ colors.COLOR_SECONDARY }
       label={ label }

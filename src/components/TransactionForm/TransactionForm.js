@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ScrollView, View } from 'react-native';
+import { View } from 'react-native';
+import { Card } from 'react-native-elements';
 import SelectInput from '../SelectInputField';
 import TextInput from '../TextInputField';
 import DatePickerField from '../DatePickerField';
-import PrimaryButton from '../PrimaryButton';
+import ActionButton from '../ActionButton';
 import CalculatorInputField from '../CalculatorInputField';
 import Field from '../FormField';
 import { normalizeDate, formatDate } from 'src/utils';
@@ -17,8 +18,8 @@ const TransactionForm = ({
   viewModel = {},
   submitButtonText
 }) =>
-  <ScrollView contentContainerStyle={ styles.container }>
-    <View style={ styles.fields }>
+  <View style={ styles.container }>
+    <Card containerStyle={ styles.fields }>
       <Field
         { ...viewModel.value }
         component={ CalculatorInputField } />
@@ -36,12 +37,12 @@ const TransactionForm = ({
       <Field
         { ...viewModel.note }
         component={ TextInput } />
-    </View>
-    <PrimaryButton
+    </Card>
+    <ActionButton.Button
       disabled={ invalid || submitting }
-      title={ submitButtonText }
+      type={ ActionButton.types.SAVE }
       onPress={ handleSubmit } />
-  </ScrollView>;
+  </View>;
 
 TransactionForm.propTypes = {
   handleSubmit: PropTypes.func,

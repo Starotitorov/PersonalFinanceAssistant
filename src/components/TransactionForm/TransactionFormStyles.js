@@ -3,11 +3,12 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'stretch',
-    width: 300
+    width: '100%',
+    justifyContent: 'flex-start',
+    alignItems: 'stretch'
   },
   fields: {
-    marginBottom: 50
+    marginLeft: 0,
+    marginRight: 0
   }
 });

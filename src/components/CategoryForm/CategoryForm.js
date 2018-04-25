@@ -1,12 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ScrollView, View } from 'react-native';
-import { PrimaryButton, IconField, SelectInputField, TextInputField, Field } from 'src/components';
+import { View } from 'react-native';
+import { Card } from 'react-native-elements';
+import IconField from '../IconField';
+import SelectInputField from '../SelectInputField';
+import TextInputField from '../TextInputField';
+import Field from '../FormField';
+import ActionButton from '../ActionButton';
 import styles from './CategoryFormStyles';
 
 const CategoryForm = ({ handleSubmit, submitting, invalid, viewModel = {}, submitButtonText }) =>
-  <ScrollView contentContainerStyle={ styles.container }>
-    <View style={ styles.fields }>
+  <View style={ styles.container }>
+    <Card containerStyle={ styles.fields }>
       <View style={ styles.row }>
         <Field
           { ...viewModel.icon }
@@ -21,12 +26,12 @@ const CategoryForm = ({ handleSubmit, submitting, invalid, viewModel = {}, submi
       <Field
         { ...viewModel.categoryTypeId }
         component={ SelectInputField } />
-    </View>
-    <PrimaryButton
+    </Card>
+    <ActionButton.Button
       disabled={ invalid || submitting }
-      title={ submitButtonText }
+      type={ ActionButton.types.SAVE }
       onPress={ handleSubmit } />
-  </ScrollView>;
+  </View>;
 
 CategoryForm.propTypes = {
   handleSubmit: PropTypes.func,

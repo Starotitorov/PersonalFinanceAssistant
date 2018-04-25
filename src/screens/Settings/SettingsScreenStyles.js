@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { margins, fontSizes } from 'src/styles';
+import { margins, fontSizes, colors } from 'src/styles';
 
 export default StyleSheet.create({
   userName: {
@@ -26,10 +26,11 @@ export default StyleSheet.create({
     marginRight: 0
   },
   changePassword: {
-    textAlign: 'center'
+    textAlign: 'center',
+    color: colors.COLOR_SECONDARY
   },
   logout: {
     textAlign: 'center',
-    color: 'red'
+    color: colors.COLOR_RED
   }
 });

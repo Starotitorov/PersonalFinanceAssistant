@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ScrollView, View } from 'react-native';
+import { View } from 'react-native';
+import { Card } from 'react-native-elements';
 import TextInputField from '../TextInputField';
 import DatePickerField from '../DatePickerField';
 import SelectInputField from '../SelectInputField';
 import IconField from '../IconField';
-import PrimaryButton from '../PrimaryButton';
 import Field from '../FormField';
+import ActionButton from '../ActionButton';
 import CalculatorInputField from '../CalculatorInputField';
 import { normalizeDate, formatDate } from 'src/utils';
 import styles from './AccountFormStyles';
@@ -18,8 +19,8 @@ const AccountForm = ({
   viewModel = {},
   submitButtonText
 }) =>
-  <ScrollView contentContainerStyle={ styles.container }>
-    <View style={ styles.fields }>
+  <View style={ styles.container }>
+    <Card containerStyle={ styles.fields }>
       <View style={ styles.row }>
         <Field
           { ...viewModel.icon }
@@ -42,12 +43,13 @@ const AccountForm = ({
         format={ formatDate }
         normalize={ normalizeDate }
         component={ DatePickerField } />
-    </View>
-    <PrimaryButton
-      title={ submitButtonText }
-      disabled={ submitting || invalid }
+    </Card>
+    <ActionButton.Button
+      disabled={ invalid || submitting }
+      type={ ActionButton.types.SAVE }
       onPress={ handleSubmit } />
-  </ScrollView>;
+  </View>
+;
 
 AccountForm.propTypes = {
   handleSubmit: PropTypes.func,

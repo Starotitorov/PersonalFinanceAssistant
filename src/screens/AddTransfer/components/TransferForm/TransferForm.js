@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ScrollView, View } from 'react-native';
+import { View } from 'react-native';
+import { Card } from 'react-native-elements';
 import {
   TextInputField as TextInput,
   SelectInputField as SelectInput,
   DatePickerField,
-  PrimaryButton,
+  ActionButton,
   Field,
   CalculatorInputField
 } from 'src/components';
@@ -15,12 +16,12 @@ import { normalizeDate, formatDate } from 'src/utils';
 const TransferForm = ({
   isSameCurrency,
   handleSubmit,
-  submitting,
+  viewModel,
   invalid,
-  viewModel
+  submitting
 }) =>
-  <ScrollView contentContainerStyle={ styles.container }>
-    <View style={ styles.fields }>
+  <View style={ styles.container }>
+    <Card containerStyle={ styles.fields }>
       <Field
         { ...viewModel.value }
         component={ CalculatorInputField } />
@@ -44,12 +45,12 @@ const TransferForm = ({
       <Field
         { ...viewModel.note }
         component={ TextInput } />
-    </View>
-    <PrimaryButton
+    </Card>
+    <ActionButton.Button
       disabled={ invalid || submitting }
-      title="Transfer"
+      type={ ActionButton.types.SAVE }
       onPress={ handleSubmit } />
-  </ScrollView>;
+  </View>;
 
 TransferForm.propTypes = {
   isSameCurrency: PropTypes.bool,
