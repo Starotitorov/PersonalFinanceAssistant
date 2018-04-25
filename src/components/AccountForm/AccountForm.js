@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ScrollView, View } from 'react-native';
-import {
-  TextInputField,
-  DatePickerField,
-  SelectInputField,
-  IconField,
-  PrimaryButton,
-  Field
-} from 'src/components';
+import TextInputField from '../TextInputField';
+import DatePickerField from '../DatePickerField';
+import SelectInputField from '../SelectInputField';
+import IconField from '../IconField';
+import PrimaryButton from '../PrimaryButton';
+import Field from '../FormField';
+import CalculatorInputField from '../CalculatorInputField';
 import { normalizeDate, formatDate } from 'src/utils';
 import styles from './AccountFormStyles';
 
@@ -34,7 +33,7 @@ const AccountForm = ({
       </View>
       <Field
         { ...viewModel.balance }
-        component={ TextInputField } />
+        component={ CalculatorInputField } />
       <Field
         { ...viewModel.currency }
         component={ SelectInputField } />

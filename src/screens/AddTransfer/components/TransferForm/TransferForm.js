@@ -6,7 +6,8 @@ import {
   SelectInputField as SelectInput,
   DatePickerField,
   PrimaryButton,
-  Field
+  Field,
+  CalculatorInputField
 } from 'src/components';
 import styles from './TransferFormStyles';
 import { normalizeDate, formatDate } from 'src/utils';
@@ -22,7 +23,7 @@ const TransferForm = ({
     <View style={ styles.fields }>
       <Field
         { ...viewModel.value }
-        component={ TextInput } />
+        component={ CalculatorInputField } />
       <Field
         { ...viewModel.fromAccountId }
         component={ SelectInput } />

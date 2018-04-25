@@ -5,6 +5,7 @@ import SelectInput from '../SelectInputField';
 import TextInput from '../TextInputField';
 import DatePickerField from '../DatePickerField';
 import PrimaryButton from '../PrimaryButton';
+import CalculatorInputField from '../CalculatorInputField';
 import Field from '../FormField';
 import { normalizeDate, formatDate } from 'src/utils';
 import styles from './TransactionFormStyles';
@@ -20,7 +21,7 @@ const TransactionForm = ({
     <View style={ styles.fields }>
       <Field
         { ...viewModel.value }
-        component={ TextInput } />
+        component={ CalculatorInputField } />
       <Field
         { ...viewModel.accountId }
         component={ SelectInput } />
