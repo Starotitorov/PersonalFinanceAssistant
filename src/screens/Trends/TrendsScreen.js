@@ -6,6 +6,7 @@ import styles from './TrendsScreenStyles';
 import TrendsHistogram from './components/TrendsHistogram';
 import TrendsList from './components/TrendsList';
 import TrendsDateRangePicker from './components/TrendsDateRangePicker';
+import InformationModal from './components/InformationModal';
 
 const TransactionsScreen = ({ data, setDateRange, dateRange }) =>
   <ScrollView style={ styles.container }>
@@ -18,6 +19,7 @@ const TransactionsScreen = ({ data, setDateRange, dateRange }) =>
     <Card containerStyle={ [styles.card, styles.trendsListCard] }>
       <TrendsList data={ data } />
     </Card>
+    <InformationModal />
   </ScrollView>;
 
 TransactionsScreen.propTypes = {

@@ -36,7 +36,7 @@ const initialState = {
   periodType: periodTypes.WEEK.value,
   fetching: false,
   refreshing: false,
-  selectedAccount: ALL_ACCOUNTS,
+  selectedAccount: null,
   viewType: LIST
 };
 

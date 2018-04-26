@@ -183,10 +183,10 @@ export const removeTransaction = async id => del(
   }
 );
 
-export const fetchExchangeRates = ({ from, to, date, endDate }) => get(
+export const fetchExchangeRates = ({ q, date, endDate }) => get(
   `${config.currencyConverterApiUrl}/exchangeRates`,
   {},
-  { from, to, date, endDate }
+  { q, date, endDate }
 );
 
 export const changePassword = async data => put(

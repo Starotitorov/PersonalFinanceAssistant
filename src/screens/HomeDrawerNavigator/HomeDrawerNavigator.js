@@ -72,7 +72,7 @@ export default DrawerNavigator({
     }
   }
 }, {
-  initialRouteName: 'Transactions',
+  initialRouteName: 'Accounts',
   contentOptions: {
     activeTintColor: colors.COLOR_PRIMARY
   },

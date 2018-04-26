@@ -5,7 +5,8 @@ import {
   fetchTrendsDataSuccess,
   fetchTrendsDataFailure,
   setTransactions,
-  setDateRange
+  setDateRange,
+  setExchangeRates
 } from './actions';
 import { arrayToObjectById } from 'src/utils';
 
@@ -14,6 +15,7 @@ const initialState = {
     byId: {},
     order: []
   },
+  exchangeRates: {},
   dateRange: {
     to: moment().utc().valueOf(),
     from: moment().subtract(3, 'month').utc().valueOf()
@@ -38,7 +40,8 @@ const trends = handleActions({
       transactions: arrayToObjectById(transactions)
     };
   },
-  [setDateRange]: (state, { payload: { dateRange }}) => ({ ...state, dateRange })
+  [setDateRange]: (state, { payload: { dateRange }}) => ({ ...state, dateRange }),
+  [setExchangeRates]: (state, { payload: { exchangeRates }}) => ({ ...state, exchangeRates })
 }, initialState);
 
 export default trends;

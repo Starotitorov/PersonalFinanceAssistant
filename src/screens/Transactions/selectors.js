@@ -5,7 +5,6 @@ import { periodTypes } from './constants';
 import filterTransactionsByAccount from 'src/helpers/filterTransactionsByAccount';
 import filterTransactionsByCategoryType from 'src/helpers/filterTransactionsByCategoryType';
 import getTransactionsList from 'src/helpers/getTransactionsList';
-import { DEFAULT_BASE_CURRENCY } from 'src/constants/currency';
 import shortid from 'shortid';
 
 export const getFormattedCurrentDate = ({ transactionsList: { currentDate, periodType }}) => {
@@ -68,11 +67,16 @@ export const getTransactionsGroupedByCategories = ({
     categories: {
       byId: categoriesById
     },
+    accounts: {
+      byId: accountsById
+    },
     selectedAccount,
     currentDate,
     periodType
   }
 }) => {
+  const account = accountsById[selectedAccount];
+  const currency = account ? account.currency : null;
   const transactionsList = getTransactionsList(byId);
   const filteredByAccount = filterTransactionsByAccount(transactionsList, selectedAccount);
   const transactions = filterTransactionsByTimeRange({
@@ -93,9 +97,9 @@ export const getTransactionsGroupedByCategories = ({
           name,
           icon,
           sum,
-          currency: DEFAULT_BASE_CURRENCY
+          currency
         },
-        transactions: transactions.map(transaction => ({ ...transaction, currency: DEFAULT_BASE_CURRENCY }))
+        transactions: transactions.map(transaction => ({ ...transaction, currency }))
       });
     }, [])
     .value();

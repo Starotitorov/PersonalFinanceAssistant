@@ -1,21 +1,21 @@
 import React from 'react';
-import { ScrollView, View } from 'react-native';
-import { Text } from 'react-native-elements';
+import { ScrollView, View, Text } from 'react-native';
 import { Card } from 'src/components';
 import styles from './CurrencyScreenStyles';
 import { getCurrencyLine } from './helpers';
 
-const CurrencyScreen = ({ exchangeRates }) =>
+const CurrencyScreen = ({ data }) =>
   <ScrollView>
     <Card title="Exchange rates">
       {
-        exchangeRates.map((entry, index) => (
-          <View key={ entry[0] } style={ index !== exchangeRates.length - 1 && styles.item }>
-            <Text>
-              { getCurrencyLine(entry) }
-            </Text>
+        data.map(({ title, lines }) =>
+          <View style={ styles.item }>
+            <Text style={ styles.base }>{ title }</Text>
+            {
+              lines.map(line => <Text>{ line }</Text>)
+            }
           </View>
-        ))
+        )
       }
     </Card>
   </ScrollView>;
