@@ -63,7 +63,7 @@ export const showTrendsInstructionsAlert = () => {
   Alert.alert(
     null,
     'The result is shown in BYN.' +
-    'Transactions values were converted to BYN using exchange rates received from free.currencyconverterapi.com.',
+    ' Transactions values were converted to BYN using exchange rates received from free.currencyconverterapi.com.',
     [
       {
         text: 'OK'
