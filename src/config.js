@@ -11,7 +11,7 @@ const DEVELOPERS = [
 
 export default {
   apiUrl: 'https://personalfinanceassistant.herokuapp.com',
-  currencyConverterApiUrl: 'https://converterapi.herokuapp.com',
+  currencyConverterApiUrl: 'https://financeassistantconverter.herokuapp.com',
   // apiUrl: 'http://localhost:8080',
   developers: DEVELOPERS,
   facebookLoginBehaviour

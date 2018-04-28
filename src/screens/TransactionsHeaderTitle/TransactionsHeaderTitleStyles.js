@@ -6,10 +6,11 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between'
   },
-  selectInputStyle: {
-    marginRight: 18
+  accountSelectInput: {
+    flexGrow: 2,
+    marginRight: 8
   },
-  flexGrow: {
-    flexGrow: 1
-  }
+  periodTypeSelectInput: {
+    width: 80
+  },
 });

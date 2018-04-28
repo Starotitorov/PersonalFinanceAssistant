@@ -4,14 +4,15 @@ import { View } from 'react-native';
 import { Icon } from 'react-native-elements';
 import styles from './ActionButtonStyles';
 
-const ActionButton = ({ iconName, backgroundColor, color, ...props }) =>
+const ActionButton = ({ iconName, backgroundColor, color, disabled, ...props }) =>
   <View style={ styles.container }>
     <Icon
       { ...props }
       raised
+      disabled={ disabled }
       color={ color }
       name={ iconName }
-      containerStyle={{ backgroundColor }}
+      containerStyle={ [{ backgroundColor }, disabled && styles.disabledStyle] }
       iconStyle={ styles.iconStyle }
       underlayColor={ backgroundColor } />
   </View>;

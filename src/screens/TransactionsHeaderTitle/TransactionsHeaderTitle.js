@@ -12,14 +12,13 @@ const TransactionsHeaderTitle = ({
   setSelectedAccount
 }) =>
   <View style={ styles.container }>
-    <View style={ styles.flexGrow }>
+    <View style={ styles.accountSelectInput }>
       <SelectInput
         value={ selectedAccountId }
-        style={ styles.selectInputStyle }
         options={ accountOptions }
         onChange={ setSelectedAccount } />
     </View>
-    <View style={ styles.flexGrow }>
+    <View style={ styles.periodTypeSelectInput }>
       <SelectInput
         value={ selectedValue }
         options={ options }

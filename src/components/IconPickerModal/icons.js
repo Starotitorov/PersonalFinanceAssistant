@@ -30,7 +30,7 @@ export default [
   'cat',
   'content-cut',
   'cow',
-  'duck',
+  'tshirt-crew',
   'dumbbell',
   'earth',
   'silverware-variant',

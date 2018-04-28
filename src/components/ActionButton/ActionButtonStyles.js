@@ -8,5 +8,8 @@ export default StyleSheet.create({
   },
   iconStyle: {
     fontSize: 32
+  },
+  disabledStyle: {
+  	backgroundColor: 'gray'
   }
 });

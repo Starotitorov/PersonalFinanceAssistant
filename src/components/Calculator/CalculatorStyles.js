@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   submitButtonStyle: {
-    height: 96,
+    height: 97,
     backgroundColor: colors.COLOR_PRIMARY,
     borderColor: colors.COLOR_PRIMARY
   }

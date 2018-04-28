@@ -6,10 +6,14 @@ import filterTransactionsByCategoryType from 'src/helpers/filterTransactionsByCa
 import getTransactionsList from 'src/helpers/getTransactionsList';
 import { getTimeIntervals } from './helpers';
 import { DEFAULT_BASE_CURRENCY } from 'src/constants/currency'
+import transactions from '../../../mocks/api/endpoints/transactions';
 
 const DATE_FORMAT = 'YYYY-MM-DD';
 const getConvertedTransactionValue = ({ value, date, account: { currency }} = {}, exchangeRates) =>
   value * get(exchangeRates, `[${currency}_${DEFAULT_BASE_CURRENCY}].val[${date.format(DATE_FORMAT)}]`, 1);
+
+const getIntervalNames = intervals =>
+  intervals.map(([leftBorder]) => moment(leftBorder).format('MMMM'));
 
 const getTransactionsStatisticsByIntervals = (transactions, intervals, exchangeRates) =>
   chain(transactions)
@@ -25,8 +29,23 @@ const getTransactionsStatisticsByIntervals = (transactions, intervals, exchangeR
     }, times(intervals.length, constant(0)))
     .value();
 
-const getIntervalNames = intervals =>
-  intervals.map(([leftBorder]) => moment(leftBorder).format('MMMM'));
+export const getTopPopularCategories = (transactions, exchangeRates, count) =>
+  chain(transactions)
+    .groupBy('categoryId')
+    .reduce((acc, transactions) => {
+      const totalSum = Math.abs(sumBy(transactions, transaction => getConvertedTransactionValue(transaction, exchangeRates)));
+      const { id, name, icon } = transactions[0].category;
+
+      return [...acc, { id, name, icon, sum: totalSum, currency: DEFAULT_BASE_CURRENCY }];
+    }, [])
+    .orderBy(['sum'], ['desc'])
+    .take(count)
+    .value();
+
+export const filterTransactionsByDateRange = (transactions, from, to) =>
+  transactions.filter(({ date }) => date >= moment(from) && date <= moment(to));
+
+const TOP_COUNT = 5;
 
 export const getTrendsData = ({
   trends: {
@@ -40,7 +59,8 @@ export const getTrendsData = ({
     exchangeRates
   }
 }) => {
-  const transactionList = getTransactionsList(byId);
+  const transactions = getTransactionsList(byId);
+  const transactionList = filterTransactionsByDateRange(transactions, from, to);
 
   const incomeTransactions = filterTransactionsByCategoryType(
     transactionList,
@@ -64,10 +84,15 @@ export const getTrendsData = ({
     exchangeRates
   );
 
+  const topIncomeCategories = getTopPopularCategories(incomeTransactions, exchangeRates, TOP_COUNT);
+  const topOutcomeCategories = getTopPopularCategories(outcomeTransactions, exchangeRates, TOP_COUNT);
+
   return {
     income: incomeTransactionsStatistics,
     outcome: outcomeTransactionsStatistics,
-    intervals: getIntervalNames(intervals)
+    intervals: getIntervalNames(intervals),
+    topOutcomeCategories,
+    topIncomeCategories
   };
 };
 
