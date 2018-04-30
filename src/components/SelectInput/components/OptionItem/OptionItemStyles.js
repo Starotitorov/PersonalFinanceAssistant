@@ -11,7 +11,9 @@ export default StyleSheet.create({
     marginLeft: 5
   },
   itemTextStyle: {
+    textAlign: 'center',
     fontSize: 16,
-    marginLeft: 5
+    marginLeft: 5,
+    paddingBottom: 4
   }
 });

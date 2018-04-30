@@ -17,9 +17,7 @@ const OptionItem = ({
         name={ icon }
         type="material-community" />
     }
-    <View style={ styles.itemTextContainer }>
-      <Text style={ [styles.itemTextStyle, { color }] } numberOfLines={ 1 }>{ label }</Text>
-    </View>
+    <Text style={ [styles.itemTextStyle, { color }] } numberOfLines={ 1 }>{ label }</Text>
   </View>;
 
 OptionItem.propTypes = {

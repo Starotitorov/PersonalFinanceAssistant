@@ -20,7 +20,9 @@ export default function SettingsScreen({ user, logout, handleChangePassword }) {
         <Text style={ styles.userName }>{ userEmail }</Text>
       </Card>
       <List>
-        <ListItem title="Change password" titleStyle={ styles.changePassword } hideChevron onPress={ handleChangePassword } />
+        <ListItem title="Change password" titleStyle={ styles.changePassword } onPress={ handleChangePassword } />
+      </List>
+      <List>
         <ListItem titleStyle={ styles.logout } title="Log out" hideChevron onPress={ logout } />
       </List>
     </View>

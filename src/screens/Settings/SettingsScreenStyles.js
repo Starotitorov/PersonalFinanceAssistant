@@ -23,13 +23,15 @@ export default StyleSheet.create({
   },
   profileCardContainer: {
     marginLeft: 0,
-    marginRight: 0
+    marginRight: 0,
+    marginBottom: margins.MARGIN_L
   },
   changePassword: {
     textAlign: 'center',
     color: colors.COLOR_SECONDARY
   },
   logout: {
+    padding: 4,
     textAlign: 'center',
     color: colors.COLOR_RED
   }
