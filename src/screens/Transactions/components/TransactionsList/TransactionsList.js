@@ -25,7 +25,7 @@ TransactionsList.propTypes = {
   onRefresh: PropTypes.func,
   refreshing: PropTypes.bool,
   data: PropTypes.arrayOf(PropTypes.shape({})),
-  EmptyListComponent: PropTypes.func,
+  EmptyListComponent: PropTypes.shape({}),
   renderItem: PropTypes.func
 };
 

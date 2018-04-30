@@ -2,14 +2,9 @@ import { withHandlers, lifecycle, compose } from 'recompose';
 import { connect } from 'react-redux';
 import { NetInfo } from 'react-native';
 import { setConnectionInfo } from './actions';
-import { networkService } from 'src/services';
 
 const withHandleConnectionChange = withHandlers({
-  handleConnectionChange: ({ setConnectionInfo }) => connectionInfo => {
-    setConnectionInfo(connectionInfo);
-
-    networkService.setConnectionInfo(connectionInfo);
-  }
+  handleConnectionChange: ({ setConnectionInfo }) => connectionInfo => setConnectionInfo(connectionInfo)
 });
 
 const withLifecycle = lifecycle({

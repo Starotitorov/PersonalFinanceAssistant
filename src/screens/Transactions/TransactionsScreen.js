@@ -32,7 +32,7 @@ const TransactionsScreen = ({
   </View>;
 
 TransactionsScreen.propTypes = {
-  currentDate: PropTypes.shape({}),
+  currentDate: PropTypes.string,
   changeDateForward: PropTypes.func,
   changeDateBack: PropTypes.func,
   addTransaction: PropTypes.func,

@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'remote-redux-devtools';
 import rootReducer from './rootReducer';
 import { cacheAuthorizationDataToAsyncStorage } from 'src/screens/LogIn/middleware';
 
@@ -14,5 +15,9 @@ export default function configureStore(initialState = {}) {
     middleware.push(logger);
   }
 
-  return applyMiddleware(...middleware)(createStore)(rootReducer, initialState);
+  return createStore(
+    rootReducer,
+    initialState,
+    composeWithDevTools(applyMiddleware(...middleware))
+  );
 }

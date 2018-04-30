@@ -88,7 +88,7 @@ export const getTransactionsGroupedByCategories = ({
   return chain(transactions)
     .groupBy('categoryId')
     .transform((acc, transactions, key) => {
-      const { name, icon } = categoriesById[key] || {};
+      const { name, icon } = get(categoriesById, key, {});
       const sum = getTransactionsSum(transactions);
 
       acc.push({
