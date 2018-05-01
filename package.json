@@ -44,6 +44,7 @@
     "redux-form": "7.1.2",
     "redux-logger": "3.0.6",
     "redux-modal": "1.7.3",
+    "redux-persist": "5.7.2",
     "redux-thunk": "2.2.0",
     "revalidate": "1.2.0"
   },

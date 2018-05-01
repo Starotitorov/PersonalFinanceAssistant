@@ -1,4 +1,4 @@
-const filterTransactionsByCategoryType = (transactions, categoryType) => transactions
-  .filter(transaction => transaction.categoryTypeId === categoryType);
+const filterTransactionsByCategoryType = (transactions, categoriesById, categoryType) => transactions
+  .filter(transaction => categoriesById[transaction.categoryId].categoryTypeId === categoryType);
 
 export default filterTransactionsByCategoryType;

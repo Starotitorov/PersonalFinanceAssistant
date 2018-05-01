@@ -10,8 +10,7 @@ export const createAddTransactionViewModel = ({ accounts = [], categories = []} 
   value: {
     name: TRANSACTION_FORM_VALUE_FIELD,
     label: 'Sum',
-    placeholder: 'Enter sum...',
-    keyboardType: 'numeric'
+    placeholder: 'Enter sum...'
   },
   accountId: {
     name: TRANSACTION_FORM_ACCOUNT_ID_FIELD,
@@ -38,8 +37,7 @@ export const createEditTransactionViewModel = () => ({
   value: {
     name: TRANSACTION_FORM_VALUE_FIELD,
     label: 'Sum',
-    placeholder: 'Enter sum...',
-    keyboardType: 'numeric'
+    placeholder: 'Enter sum...'
   },
   date: {
     name: TRANSACTION_FORM_DATE_FIELD,

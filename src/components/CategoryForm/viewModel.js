@@ -4,10 +4,12 @@ import {
   CATEGORY_FORM_TYPE_ID
 } from './constants';
 import options from './categoryFormOptions';
+import icons from 'src/constants/categoryIcons';
 
 export const createAddCategoryViewModel = () => ({
   icon: {
-    name: CATEGORY_FORM_ICON_FIELD
+    name: CATEGORY_FORM_ICON_FIELD,
+    icons
   },
   name: {
     name: CATEGORY_FORM_NAME_FIELD,
@@ -23,7 +25,8 @@ export const createAddCategoryViewModel = () => ({
 
 export const createEditCategoryViewModel = () => ({
   icon: {
-    name: CATEGORY_FORM_ICON_FIELD
+    name: CATEGORY_FORM_ICON_FIELD,
+    icons
   },
   name: {
     name: CATEGORY_FORM_NAME_FIELD,
