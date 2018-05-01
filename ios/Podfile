@@ -13,6 +13,8 @@ target 'PersonalFinanceAssistant' do
   target 'PersonalFinanceAssistant-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'react-native-sqlite-storage', :path => '../node_modules/react-native-sqlite-storage'
+
   end
 
   target 'PersonalFinanceAssistantTests' do

@@ -18,6 +18,7 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.facebook.appevents.AppEventsLogger;
+import org.pgsqlite.SQLitePluginPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -40,13 +41,14 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new MPAndroidChartPackage(),
-            new RNExitAppPackage(),
-            new ReactNativeExceptionHandlerPackage(),
-            new RNSpinkitPackage(),
-            new VectorIconsPackage(),
-            new RNSpinkitPackage(),
-          new FBSDKPackage(mCallbackManager)
+          new MPAndroidChartPackage(),
+          new RNExitAppPackage(),
+          new ReactNativeExceptionHandlerPackage(),
+          new RNSpinkitPackage(),
+          new VectorIconsPackage(),
+          new RNSpinkitPackage(),
+          new FBSDKPackage(mCallbackManager),
+          new SQLitePluginPackage()
       );
     }
 

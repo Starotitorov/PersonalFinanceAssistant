@@ -14,7 +14,7 @@ export default class IconField extends Component {
     };
 
     render() {
-      const { input, style } = this.props;
+      const { input, style, icons } = this.props;
 
       return (
         <View style={ style }>
@@ -27,6 +27,7 @@ export default class IconField extends Component {
             </View>
           </TouchableOpacity>
           <IconPickerModal
+            icons={ icons }
             handleHide={ this.toggleModal }
             show={ this.state.isVisible }
             onIconPick={ input.onChange } />

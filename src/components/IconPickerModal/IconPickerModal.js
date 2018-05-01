@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { View, ScrollView, Modal, TouchableWithoutFeedback } from 'react-native';
 import { Icon } from 'react-native-elements';
-import icons from './icons';
 import styles from './IconPickerModalStyles';
 
 const ICON_SIZE = 24;
@@ -23,7 +22,7 @@ export default class IconPickerModal extends Component {
     ));
 
     render() {
-      const { show, handleHide } = this.props;
+      const { show, handleHide, icons=[] } = this.props;
 
       return (
         <Modal

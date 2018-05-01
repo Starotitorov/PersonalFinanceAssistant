@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -57,6 +56,7 @@
 		AC088A22208B84FB0076D4E9 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC088A21208B84FB0076D4E9 /* FBSDKLoginKit.framework */; };
 		AC088A24208B85060076D4E9 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC088A23208B85060076D4E9 /* FBSDKShareKit.framework */; };
 		AC091B81208BF63000DE3EFD /* FacebookSDK in Resources */ = {isa = PBXBuildFile; fileRef = AC091B57208BF63000DE3EFD /* FacebookSDK */; };
+		AC427818209F3DF400FBF34A /* libSQLite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC427817209F3DE400FBF34A /* libSQLite.a */; };
 		AC52AE062092416F003B4310 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		AC52AE52209277C4003B4310 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB61A68108700A75B9A /* Info.plist */; };
 		ACFD2B48208BE59E009ECD7A /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFD2B0D208BE59D009ECD7A /* BalloonMarker.swift */; };
@@ -110,6 +110,7 @@
 		ACFD2C3C208BEF45009ECD7A /* RNYAxisChartManagerBridge.h in Sources */ = {isa = PBXBuildFile; fileRef = ACFD2B3D208BE59E009ECD7A /* RNYAxisChartManagerBridge.h */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		DDB0F0380DFE43B69B736056 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 69B3F852BBE54ED08CD59B67 /* Ionicons.ttf */; };
+		F7B77D647C594CC986B62C58 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 608288FDA4CE4ADDA5A56BA0 /* libsqlite3.0.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -407,6 +408,13 @@
 			remoteGlobalIDString = 5DBEB1501B18CEA900B34395;
 			remoteInfo = RNVectorIcons;
 		};
+		AC427816209F3DE400FBF34A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC4277E9209F3DE400FBF34A /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E23D7B471ACEFE2A00C59171;
+			remoteInfo = SQLite;
+		};
 		ACFD2AC9208BDE58009ECD7A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
@@ -457,6 +465,7 @@
 		55C2A26E346947C2B8E19DC5 /* RNExitApp.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNExitApp.xcodeproj; path = "../node_modules/react-native-exit-app/ios/RNExitApp.xcodeproj"; sourceTree = "<group>"; };
 		5D9457BF8D344C2FADE4D477 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
+		608288FDA4CE4ADDA5A56BA0 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		69B3F852BBE54ED08CD59B67 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		6B4F6B724AA14FFD84C9DA01 /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
 		6FB6FCDF14626954F26FE751 /* Pods-PersonalFinanceAssistant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalFinanceAssistant.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PersonalFinanceAssistant/Pods-PersonalFinanceAssistant.debug.xcconfig"; sourceTree = "<group>"; };
@@ -471,6 +480,7 @@
 		AC088A21208B84FB0076D4E9 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "../../../../Documents/FacebookSDKs-iOS-4/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
 		AC088A23208B85060076D4E9 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = "../../../../Documents/FacebookSDKs-iOS-4/FBSDKShareKit.framework"; sourceTree = "<group>"; };
 		AC091B57208BF63000DE3EFD /* FacebookSDK */ = {isa = PBXFileReference; lastKnownFileType = folder; name = FacebookSDK; path = ../../../Documents/FacebookSDK; sourceTree = "<group>"; };
+		AC4277E9209F3DE400FBF34A /* SQLite.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "../node_modules/react-native-sqlite-storage/src/ios/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		ACFD2B0D208BE59D009ECD7A /* BalloonMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
 		ACFD2B0F208BE59D009ECD7A /* BarDataExtract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarDataExtract.swift; sourceTree = "<group>"; };
 		ACFD2B10208BE59D009ECD7A /* RNBarChartManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RNBarChartManager.swift; sourceTree = "<group>"; };
@@ -549,6 +559,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC427818209F3DF400FBF34A /* libSQLite.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				AC088A1E208B84D30076D4E9 /* Bolts.framework in Frameworks */,
 				AC52AE062092416F003B4310 /* libRCTAnimation.a in Frameworks */,
@@ -571,6 +582,7 @@
 				25297384FDEB42BF8DE83B10 /* libReactNativeExceptionHandler.a in Frameworks */,
 				1829B6046D734F8AA71A7D4F /* libRNExitApp.a in Frameworks */,
 				663747E70682752933196E5B /* Pods_PersonalFinanceAssistant.framework in Frameworks */,
+				F7B77D647C594CC986B62C58 /* libsqlite3.0.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -734,6 +746,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				AC4277E9209F3DE400FBF34A /* SQLite.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -818,6 +831,7 @@
 				C74AA6F50C5C919AD8F24288 /* Pods_PersonalFinanceAssistant.framework */,
 				541D51F2DCD651E88BDC24FA /* Pods_PersonalFinanceAssistant_tvOSTests.framework */,
 				F1A967E6AC4D12444BB023A6 /* Pods_PersonalFinanceAssistantTests.framework */,
+				608288FDA4CE4ADDA5A56BA0 /* libsqlite3.0.tbd */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -872,6 +886,14 @@
 			isa = PBXGroup;
 			children = (
 				AC112E5D208B782700D6F0AD /* libRNExitApp.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AC4277EA209F3DE400FBF34A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AC427817209F3DE400FBF34A /* libSQLite.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1125,7 +1147,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 930;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -1225,6 +1247,10 @@
 				{
 					ProductGroup = AC112E4D208B782600D6F0AD /* Products */;
 					ProjectRef = E137E7F8C68744069CAAFFB5 /* RNVectorIcons.xcodeproj */;
+				},
+				{
+					ProductGroup = AC4277EA209F3DE400FBF34A /* Products */;
+					ProjectRef = AC4277E9209F3DE400FBF34A /* SQLite.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1516,6 +1542,13 @@
 			fileType = archive.ar;
 			path = libRNVectorIcons.a;
 			remoteRef = AC112E65208B782700D6F0AD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AC427817209F3DE400FBF34A /* libSQLite.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSQLite.a;
+			remoteRef = AC427816209F3DE400FBF34A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		ACFD2ACA208BDE58009ECD7A /* libReact.a */ = {
