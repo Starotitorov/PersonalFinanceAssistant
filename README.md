@@ -1,3 +1,3 @@
 # PersonalFinanceAssistant
 
-PersonalFinanceAssistant react-native client.
+PersonalFinanceAssistant react-native application.

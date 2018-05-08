@@ -6,7 +6,8 @@
     "precommit": "lint-staged",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "eslint": "./node_modules/.bin/eslint --fix ./src"
+    "eslint": "./node_modules/.bin/eslint --fix ./src",
+    "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/PersonalFinanceAssistant/main.jsbundle' --dev=false --platform='ios' --assets-dest='./ios'"
   },
   "dependencies": {
     "babel-plugin-module-resolver": "3.0.0",
