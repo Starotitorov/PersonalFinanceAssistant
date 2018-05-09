@@ -1,23 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StatusBar } from 'react-native';
-import StatusBarAlert from 'react-native-statusbar-alert';
+import Toast from 'react-native-easy-toast';
 import { MenuContext } from 'react-native-popup-menu';
 import { PlatformKeyboardAvoidingView } from 'src/components';
 import AppNavigator from '../AppNavigator';
 import styles from './AppStyles';
 import { colors } from 'src/styles';
 
-const App = ({ navigation, isConnected }) =>
+const App = ({ navigation, isConnected, setToastRef }) =>
   <PlatformKeyboardAvoidingView style={ styles.container }>
     <MenuContext>
       <StatusBar backgroundColor={ colors.COLOR_PRIMARY } barStyle="light-content" />
-      <StatusBarAlert
-        visible={ !isConnected }
-        message="You are not connected to the Internet!"
-        backgroundColor="#ff0000"
-        color="white" />
       <AppNavigator navigation={ navigation } />
+      <Toast ref={ element => setToastRef(element) } position="top" positionValue={ 10 } defaultCloseDelay={ 5000 } />
     </MenuContext>
   </PlatformKeyboardAvoidingView>;
 

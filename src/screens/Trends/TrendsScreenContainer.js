@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import { compose } from 'recompose';
+import { compose, lifecycle } from 'recompose';
 import { getTrendsData, isTrendsDataFetching, getDateRange } from './selectors';
-import { withLoadingIndicator, withScreenFocus } from 'src/components';
+import { withLoadingIndicator } from 'src/components';
 import { fetchTrendsData, setDateRange } from './actions';
 import TrendsScreen from './TrendsScreen';
 
@@ -11,8 +11,14 @@ const mapStateToProps = state => ({
   data: getTrendsData(state)
 });
 
+const withTrendsData = lifecycle({
+  componentDidMount() {
+    this.props.fetchTrendsData()
+  }
+});
+
 export default compose(
-  connect(mapStateToProps, { onFocus: fetchTrendsData, setDateRange }),
-  withScreenFocus('Trends'),
+  connect(mapStateToProps, { fetchTrendsData, setDateRange }),
+  withTrendsData,
   withLoadingIndicator
 )(TrendsScreen);

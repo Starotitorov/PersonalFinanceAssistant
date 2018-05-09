@@ -1,8 +1,9 @@
 import React from 'react';
-import { View } from 'react-native';
+import { ScrollView, RefreshControl } from 'react-native';
 import { ActionButton } from 'src/components';
 import AccountsList from './components/AccountsList';
 import styles from './AccountsListStyles';
+import { colors } from 'src/styles';
 
 const AccountsListScreen = ({
   refreshAccountsListData,
@@ -11,15 +12,20 @@ const AccountsListScreen = ({
   addAccount,
   editAccount
 }) =>
-  <View style={ styles.container }>
+  <ScrollView
+    refreshControl={
+      <RefreshControl
+        refreshing={ refreshing }
+        colors={ [colors.COLOR_PRIMARY] }
+        onRefresh={ refreshAccountsListData } />
+    }
+    contentContainerStyle={ styles.container }>
     <AccountsList
-      refreshing={ refreshing }
       accounts={ accounts }
-      onSelectAccount={ editAccount }
-      onRefresh={ refreshAccountsListData } />
+      onSelectAccount={ editAccount } />
     <ActionButton.Button
       type={ ActionButton.types.ADD }
       onPress={ addAccount } />
-  </View>;
+  </ScrollView>;
 
 export default AccountsListScreen;

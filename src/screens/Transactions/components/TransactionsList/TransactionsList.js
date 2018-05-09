@@ -7,14 +7,15 @@ import styles from './TransactionsListStyles';
 const keyExtractor = ({ id }) => id;
 
 const TransactionsList = ({ onRefresh, refreshing, data, EmptyListComponent, renderItem }) =>
-  <ScrollView style={ styles.container }>
+  <ScrollView
+    refreshControl={
+      <RefreshControl
+        refreshing={ refreshing }
+        colors={ [colors.COLOR_PRIMARY] }
+        onRefresh={ onRefresh } />
+    }
+    contentContainerStyle={ styles.container }>
     <FlatList
-      refreshControl={
-        <RefreshControl
-          refreshing={ refreshing }
-          colors={ [colors.COLOR_PRIMARY] }
-          onRefresh={ onRefresh } />
-      }
       data={ data }
       keyExtractor={ keyExtractor }
       renderItem={ renderItem }

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { compose } from 'redux';
+import { compose, lifecycle } from 'recompose';
 import {
   changeDateForward,
   changeDateBack,
@@ -14,7 +14,7 @@ import {
   getFormattedCurrentDate,
   isTransactionsListDataFetching
 } from './selectors';
-import { withLoadingIndicator, withScreenFocus } from 'src/components';
+import { withLoadingIndicator } from 'src/components';
 import TransactionsScreen from './TransactionsScreen';
 
 const mapStateToProps = state => ({
@@ -24,15 +24,21 @@ const mapStateToProps = state => ({
   viewType: getViewType(state)
 });
 
+const withTransactionsListData = lifecycle({
+  componentDidMount() {
+    this.props.fetchTransactionsListData();
+  }
+});
+
 export default compose(
   connect(mapStateToProps, {
     changeDateForward,
     changeDateBack,
     refreshTransactionsListData,
-    onFocus: fetchTransactionsListData,
+    fetchTransactionsListData,
     selectTransaction,
     addTransaction
   }),
-  withScreenFocus('Transactions'),
+  withTransactionsListData,
   withLoadingIndicator
 )(TransactionsScreen);
