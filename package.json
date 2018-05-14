@@ -35,6 +35,7 @@
     "react-native-modal-datetime-picker": "4.13.0",
     "react-native-popup-menu": "0.8.3",
     "react-native-spinkit": "1.1.1",
+    "react-native-splash-screen": "3.0.6",
     "react-native-vector-icons": "4.4.2",
     "react-navigation": "1.0.0-beta.19",
     "react-redux": "5.0.6",

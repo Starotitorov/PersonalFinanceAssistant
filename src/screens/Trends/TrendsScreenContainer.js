@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
-import { compose, withHandlers } from 'recompose';
+import { compose, withHandlers, lifecycle } from 'recompose';
 import { getTrendsData, isTrendsDataFetching, getDateRange } from './selectors';
-import { fetchTrendsData, setDateRange } from './actions';
+import { fetchTrendsData, setDateRange, resetTrendsData } from './actions';
 import TrendsScreen from './TrendsScreen';
 
 const mapStateToProps = state => ({
@@ -18,7 +18,14 @@ const withHandleGetData = withHandlers({
   }
 });
 
+const withLifecycle = lifecycle({
+  componentWillUnmount() {
+    this.props.resetTrendsData();
+  }
+});
+
 export default compose(
-  connect(mapStateToProps, { fetchTrendsData, setDateRange }),
+  connect(mapStateToProps, { fetchTrendsData, setDateRange, resetTrendsData }),
+  withLifecycle,
   withHandleGetData
 )(TrendsScreen);

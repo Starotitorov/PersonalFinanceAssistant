@@ -1,5 +1,6 @@
 import { lifecycle, compose, withProps, withHandlers } from 'recompose';
 import { addNavigationHelpers } from 'react-navigation';
+import SplashScreen from 'react-native-splash-screen';
 import {
   withLoadingIndicator,
   withNetwork
@@ -11,6 +12,12 @@ const withCurrentUser = lifecycle({
     this.props.getCurrentUser();
   }
 });
+
+const withHandleSplashScreen = lifecycle({
+  componentDidMount() {
+    SplashScreen.hide();
+  }
+})
 
 const withNavigation = withProps(({ dispatch, navigationState }) => ({
   navigation: addNavigationHelpers({
@@ -42,6 +49,7 @@ const withConnectionInfoMessage = lifecycle({
 });
 
 export default compose(
+  withHandleSplashScreen,
   withNetwork,
   withCurrentUser,
   withLoadingIndicator,

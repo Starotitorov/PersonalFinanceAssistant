@@ -52,6 +52,7 @@
 		94DCC5BB3D65410CA95EC7D1 /* libRNSpinkit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 761A2A353C46420D99A2E48F /* libRNSpinkit.a */; };
 		9EA6DC1EAF184CF08D45FCAE /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D9457BF8D344C2FADE4D477 /* EvilIcons.ttf */; };
 		A7BAA4FCB73E41D285CD9C2E /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1F83FEDF5D6340718F6E2A5B /* MaterialIcons.ttf */; };
+		AC0651A320AA2264008FB790 /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC0651A220AA2255008FB790 /* libSplashScreen.a */; };
 		AC088A1E208B84D30076D4E9 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC088A1D208B84D30076D4E9 /* Bolts.framework */; };
 		AC088A20208B84EB0076D4E9 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC088A1F208B84EB0076D4E9 /* FBSDKCoreKit.framework */; };
 		AC088A22208B84FB0076D4E9 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC088A21208B84FB0076D4E9 /* FBSDKLoginKit.framework */; };
@@ -302,6 +303,13 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
+		AC0651A120AA2255008FB790 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC06517420AA2255008FB790 /* SplashScreen.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D7682761D8E76B80014119E;
+			remoteInfo = SplashScreen;
+		};
 		AC088A0C208B83F30076D4E9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
@@ -466,6 +474,7 @@
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		9B7B2208644E17E690D29A3A /* Pods-PersonalFinanceAssistantTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalFinanceAssistantTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PersonalFinanceAssistantTests/Pods-PersonalFinanceAssistantTests.release.xcconfig"; sourceTree = "<group>"; };
 		A8E0B3BCA10644F99D6729A8 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
+		AC06517420AA2255008FB790 /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
 		AC088A1D208B84D30076D4E9 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../../../Documents/FacebookSDKs-iOS-4/Bolts.framework"; sourceTree = "<group>"; };
 		AC088A1F208B84EB0076D4E9 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = "../../../../Documents/FacebookSDKs-iOS-4/FBSDKCoreKit.framework"; sourceTree = "<group>"; };
 		AC088A21208B84FB0076D4E9 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = "../../../../Documents/FacebookSDKs-iOS-4/FBSDKLoginKit.framework"; sourceTree = "<group>"; };
@@ -549,6 +558,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC0651A320AA2264008FB790 /* libSplashScreen.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				AC088A1E208B84D30076D4E9 /* Bolts.framework in Frameworks */,
 				AC52AE062092416F003B4310 /* libRCTAnimation.a in Frameworks */,
@@ -734,6 +744,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				AC06517420AA2255008FB790 /* SplashScreen.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
 				00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */,
@@ -806,6 +817,14 @@
 				9B7B2208644E17E690D29A3A /* Pods-PersonalFinanceAssistantTests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		AC06517520AA2255008FB790 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AC0651A220AA2255008FB790 /* libSplashScreen.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		AC0889E7208B83F30076D4E9 /* Frameworks */ = {
@@ -1226,6 +1245,10 @@
 					ProductGroup = AC112E4D208B782600D6F0AD /* Products */;
 					ProjectRef = E137E7F8C68744069CAAFFB5 /* RNVectorIcons.xcodeproj */;
 				},
+				{
+					ProductGroup = AC06517520AA2255008FB790 /* Products */;
+					ProjectRef = AC06517420AA2255008FB790 /* SplashScreen.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -1411,6 +1434,13 @@
 			fileType = archive.ar;
 			path = libRCTText.a;
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AC0651A220AA2255008FB790 /* libSplashScreen.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSplashScreen.a;
+			remoteRef = AC0651A120AA2255008FB790 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		AC088A0D208B83F30076D4E9 /* libthird-party.a */ = {
@@ -1877,10 +1907,19 @@
 				DEVELOPMENT_TEAM = T63MFL9S37;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)..\node_modules\neact-native-fbsdkiosRCTFBSDK/**",
-					"$(SRCROOT)..\node_modules\neact-native-vector-iconsRNVectorIconsManager",
-					"$(SRCROOT)..\node_modules\neact-native-spinkitios/**",
-					"$(SRCROOT)..\node_modules\neact-native-exception-handlerios",
+					"$(SRCROOT)..",
+					ode_modules,
+					"eact-native-fbsdkiosRCTFBSDK/**",
+					"$(SRCROOT)..",
+					ode_modules,
+					"eact-native-vector-iconsRNVectorIconsManager",
+					"$(SRCROOT)..",
+					ode_modules,
+					"eact-native-spinkitios/**",
+					"$(SRCROOT)..",
+					ode_modules,
+					"eact-native-exception-handlerios",
+					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios/**",
 				);
 				INFOPLIST_FILE = PersonalFinanceAssistant/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1908,10 +1947,19 @@
 				DEVELOPMENT_TEAM = T63MFL9S37;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)..\node_modules\neact-native-fbsdkiosRCTFBSDK/**",
-					"$(SRCROOT)..\node_modules\neact-native-vector-iconsRNVectorIconsManager",
-					"$(SRCROOT)..\node_modules\neact-native-spinkitios/**",
-					"$(SRCROOT)..\node_modules\neact-native-exception-handlerios",
+					"$(SRCROOT)..",
+					ode_modules,
+					"eact-native-fbsdkiosRCTFBSDK/**",
+					"$(SRCROOT)..",
+					ode_modules,
+					"eact-native-vector-iconsRNVectorIconsManager",
+					"$(SRCROOT)..",
+					ode_modules,
+					"eact-native-spinkitios/**",
+					"$(SRCROOT)..",
+					ode_modules,
+					"eact-native-exception-handlerios",
+					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios/**",
 				);
 				INFOPLIST_FILE = PersonalFinanceAssistant/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

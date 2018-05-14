@@ -5,5 +5,5 @@ export const getInitialValues = ({ dateRange }) =>
     dateRange :
     {
       to: moment().endOf('day'),
-      from: moment().subtract(3, 'month').startOf('day')
+      from: moment().subtract(2, 'month').startOf('day')
     };

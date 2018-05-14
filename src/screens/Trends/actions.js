@@ -52,3 +52,5 @@ export const fetchTrendsData = () => (dispatch, getState) => {
     })
     .catch(e => dispatch(fetchTrendsDataFailure(e)));
 };
+
+export const resetTrendsData = createAction('TRENDS/RESET_TRENDS_DATA');

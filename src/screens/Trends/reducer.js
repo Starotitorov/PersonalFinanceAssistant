@@ -6,7 +6,8 @@ import {
   setTransactions,
   setExchangeRates,
   setDateRange,
-  resetTransactions
+  resetTransactions,
+  resetTrendsData
 } from './actions';
 import { arrayToObjectById } from 'src/utils';
 
@@ -39,7 +40,8 @@ const trends = handleActions({
   },
   [setDateRange]: (state, { payload: { dateRange }}) => ({ ...state, dateRange }),
   [setExchangeRates]: (state, { payload: { exchangeRates }}) => ({ ...state, exchangeRates }),
-  [resetTransactions]: state => ({ ...state, transactions: arrayToObjectById([]) })
+  [resetTransactions]: state => ({ ...state, transactions: arrayToObjectById([]) }),
+  [resetTrendsData]: () => initialState
 }, initialState);
 
 export default trends;
