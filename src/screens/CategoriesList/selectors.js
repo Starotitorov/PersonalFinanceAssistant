@@ -11,5 +11,3 @@ export const getOutcomeCategoriesList = state =>
   getCategoriesListByType(state, OUTCOME_CATEGORY);
 
 export const isCategoriesListDataFetching = state => state.categoriesList.fetching;
-
-export const isCategoriesListDataRefreshing = state => state.categoriesList.refreshing;

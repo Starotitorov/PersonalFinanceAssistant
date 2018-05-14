@@ -1,12 +1,12 @@
 import { handleActions, combineActions } from 'redux-actions';
-import moment from 'moment';
 import {
   fetchTrendsDataStart,
   fetchTrendsDataSuccess,
   fetchTrendsDataFailure,
   setTransactions,
+  setExchangeRates,
   setDateRange,
-  setExchangeRates
+  resetTransactions
 } from './actions';
 import { arrayToObjectById } from 'src/utils';
 
@@ -15,11 +15,8 @@ const initialState = {
     byId: {},
     order: []
   },
+  dateRange: {},
   exchangeRates: {},
-  dateRange: {
-    to: moment().utc().valueOf(),
-    from: moment().subtract(3, 'month').utc().valueOf()
-  },
   fetching: false
 };
 
@@ -41,7 +38,8 @@ const trends = handleActions({
     };
   },
   [setDateRange]: (state, { payload: { dateRange }}) => ({ ...state, dateRange }),
-  [setExchangeRates]: (state, { payload: { exchangeRates }}) => ({ ...state, exchangeRates })
+  [setExchangeRates]: (state, { payload: { exchangeRates }}) => ({ ...state, exchangeRates }),
+  [resetTransactions]: state => ({ ...state, transactions: arrayToObjectById([]) })
 }, initialState);
 
 export default trends;

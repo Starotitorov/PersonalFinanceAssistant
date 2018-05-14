@@ -31,7 +31,7 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     alignSelf: 'flex-end',
-    width: 120
+    width: 135
   },
   categoryIcon: {
     fontSize: 18,

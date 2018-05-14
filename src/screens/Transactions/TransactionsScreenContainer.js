@@ -3,24 +3,18 @@ import { compose, lifecycle } from 'recompose';
 import {
   changeDateForward,
   changeDateBack,
-  refreshTransactionsListData,
   fetchTransactionsListData,
   selectTransaction,
   addTransaction
 } from './actions';
 import {
   getViewType,
-  isTransactionsListDataRefreshing,
-  getFormattedCurrentDate,
-  isTransactionsListDataFetching
+  getFormattedCurrentDate
 } from './selectors';
-import { withLoadingIndicator } from 'src/components';
 import TransactionsScreen from './TransactionsScreen';
 
 const mapStateToProps = state => ({
   currentDate: getFormattedCurrentDate(state),
-  isLoading: isTransactionsListDataFetching(state),
-  refreshing: isTransactionsListDataRefreshing(state),
   viewType: getViewType(state)
 });
 
@@ -34,11 +28,9 @@ export default compose(
   connect(mapStateToProps, {
     changeDateForward,
     changeDateBack,
-    refreshTransactionsListData,
     fetchTransactionsListData,
     selectTransaction,
     addTransaction
   }),
-  withTransactionsListData,
-  withLoadingIndicator
+  withTransactionsListData
 )(TransactionsScreen);

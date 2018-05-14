@@ -11,10 +11,6 @@ export const fetchCategoriesListDataStart = createAction('CATEGORIES_LIST/FETCH_
 export const fetchCategoriesListDataFailure = createAction('CATEGORIES_LIST/FETCH_CATEGORIES_LIST_DATA_FAILURE');
 export const fetchCategoriesListDataSuccess = createAction('CATEGORIES_LIST/FETCH_CATEGORIES_LIST_DATA_SUCCESS');
 
-export const refreshCategoriesListDataStart = createAction('CATEGORIES_LIST/REFRESH_CATEGORIES_LIST_DATA_START');
-export const refreshCategoriesListDataFailure = createAction('CATEGORIES_LIST/REFRESH_CATEGORIES_LIST_DATA_FAILURE');
-export const refreshCategoriesListDataSuccess = createAction('CATEGORIES_LIST/REFRESH_CATEGORIES_LIST_DATA_SUCCESS');
-
 const fetchCategoriesListDataRequest = () => dispatch => api.fetchCategories()
   .then(({ categories }) => {
     dispatch(setCategories(categories));
@@ -29,18 +25,6 @@ export const fetchCategoriesListData = () => async dispatch => {
     dispatch(fetchCategoriesListDataSuccess());
   } catch (e) {
     dispatch(fetchCategoriesListDataFailure(e));
-  }
-};
-
-export const refreshCategoriesListData = () => async dispatch => {
-  dispatch(refreshCategoriesListDataStart());
-
-  try {
-    await dispatch(fetchCategoriesListDataRequest());
-
-    dispatch(refreshCategoriesListDataSuccess());
-  } catch (e) {
-    dispatch(refreshCategoriesListDataFailure(e));
   }
 };
 

@@ -9,14 +9,14 @@ const TransactionsHeaderTitle = ({
   selectedValue,
   accountOptions,
   selectedAccountId,
-  setSelectedAccount
+  changeAccount
 }) =>
   <View style={ styles.container }>
     <View style={ styles.accountSelectInput }>
       <SelectInput
         value={ selectedAccountId }
         options={ accountOptions }
-        onChange={ setSelectedAccount } />
+        onChange={ changeAccount } />
     </View>
     <View style={ styles.periodTypeSelectInput }>
       <SelectInput

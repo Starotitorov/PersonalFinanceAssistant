@@ -1,21 +1,20 @@
 import moment from 'moment';
 import { handleActions, combineActions } from 'redux-actions';
 import { arrayToObjectById } from 'src/utils';
-import { ALL_ACCOUNTS } from 'src/constants/accounts';
 import {
   changeCurrentDate,
-  changePeriodView,
+  setPeriodView,
   fetchTransactionsListDataStart,
   fetchTransactionsListDataFailure,
   fetchTransactionsListDataSuccess,
   setTransactions,
   setCategories,
   setAccounts,
-  refreshTransactionsListDataStart,
-  refreshTransactionsListDataFailure,
-  refreshTransactionsListDataSuccess,
   setSelectedAccount,
-  setViewType
+  setViewType,
+  fetchTransactionsStart,
+  fetchTransactionsFailure,
+  resetTransactions
 } from './actions';
 import { periodTypes, LIST } from './constants';
 
@@ -35,8 +34,9 @@ const initialState = {
   currentDate: moment(),
   periodType: periodTypes.WEEK.value,
   fetching: false,
-  refreshing: false,
   selectedAccount: null,
+  transactionsFetching: false,
+  fetchTransactionsRequestId: null,
   viewType: LIST
 };
 
@@ -45,7 +45,7 @@ const transactionsList = handleActions({
     ...state,
     currentDate: action.payload.currentDate
   }),
-  [changePeriodView]: (state, action) => ({
+  [setPeriodView]: (state, action) => ({
     ...state,
     periodType: action.payload.periodType
   }),
@@ -53,20 +53,22 @@ const transactionsList = handleActions({
     ...state,
     fetching: true
   }),
-  [refreshTransactionsListDataStart]: (state) => ({
+  [fetchTransactionsStart]: (state, { payload }) => ({
     ...state,
-    refreshing: true
+    fetchTransactionsRequestId: payload,
+    transactionsFetching: true
+  }),
+  [fetchTransactionsFailure]: state => ({
+    ...state,
+    transactionsFetching: false
   }),
   [combineActions(
     fetchTransactionsListDataSuccess,
-    fetchTransactionsListDataFailure,
-    refreshTransactionsListDataSuccess,
-    refreshTransactionsListDataFailure
+    fetchTransactionsListDataFailure
   )](state) {
     return {
       ...state,
-      fetching: false,
-      refreshing: false
+      fetching: false
     };
   },
   [setTransactions]: (state, action) => {
@@ -74,7 +76,8 @@ const transactionsList = handleActions({
 
     return {
       ...state,
-      transactions: arrayToObjectById(transactions)
+      transactions: arrayToObjectById(transactions),
+      transactionsFetching: false
     };
   },
   [setAccounts]: (state, action) => {
@@ -100,7 +103,8 @@ const transactionsList = handleActions({
   [setViewType]: (state, { payload: { viewType }}) => ({
     ...state,
     viewType
-  })
+  }),
+  [resetTransactions]: state => ({ ...state, transactions: arrayToObjectById([]) })
 }, initialState);
 
 export default transactionsList;

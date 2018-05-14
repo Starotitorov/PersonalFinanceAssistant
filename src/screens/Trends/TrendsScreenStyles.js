@@ -5,10 +5,8 @@ export default StyleSheet.create({
     flex: 1,
     marginBottom: 16
   },
-  incomeTitle: {
-    color: 'red'
-  },
-  outcomeTitle: {
-    color: 'blue'
+  innerContainer: {
+    flex: 1,
+    marginTop: 16
   }
 });

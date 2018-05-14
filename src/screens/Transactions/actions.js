@@ -1,11 +1,18 @@
 import { createAction } from 'redux-actions';
 import { NavigationActions } from 'react-navigation';
+import shortid from 'shortid';
 import * as api from 'src/api';
 import { LIST, CHART } from './constants';
-import { getAllAccounts, getAllCategories } from './selectors';
+import { getAllAccounts, getAllCategories, getTimeRange, getSelectedAccountId } from './selectors';
 
-export const changePeriodView = createAction(
-  'TRANSACTIONS_LIST/CHANGE_PERIOD_VIEW',
+export const changePeriodView = periodView => dispatch => {
+  dispatch(setPeriodView(periodView));
+
+  dispatch(fetchTransactions());
+};
+
+export const setPeriodView = createAction(
+  'TRANSACTIONS_LIST/SET_PERIOD_VIEW',
   periodType => ({ periodType })
 );
 
@@ -23,6 +30,8 @@ export const changeDate = isChangeForward => (dispatch, getState) => {
   const newDate = currentDate.clone().add(timeModificator, periodModificator);
 
   dispatch(changeCurrentDate(newDate));
+
+  dispatch(fetchTransactions());
 };
 
 export const changeDateForward = () => dispatch => {
@@ -52,38 +61,54 @@ export const fetchTransactionsListDataStart = createAction('TRANSACTIONS_LIST/FE
 export const fetchTransactionsListDataFailure = createAction('TRANSACTIONS_LIST/FETCH_TRANSACTIONS_LIST_DATA_FAILURE');
 export const fetchTransactionsListDataSuccess = createAction('TRANSACTIONS_LIST/FETCH_TRANSACTIONS_LIST_DATA_SUCCESS');
 
-export const refreshTransactionsListDataStart = createAction('TRANSACTIONS_LIST/REFRESH_TRANSACTIONS_LIST_DATA_START');
-export const refreshTransactionsListDataFailure = createAction('TRANSACTIONS_LIST/REFRESH_TRANSACTIONS_LIST_DATA_FAILURE');
-export const refreshTransactionsListDataSuccess = createAction('TRANSACTIONS_LIST/REFRESH_TRANSACTIONS_LIST_DATA_SUCCESS');
+export const fetchTransactionsStart = createAction('TRANSACTIONS_LIST/FETCH_TRANSACTIONS_START');
+export const fetchTransactionsFailure = createAction('TRANSACTIONS_LIST/FETCH_TRANSACTIONS_FAILURE');
 
-const fetchTransactionsListDataRequest = () => dispatch => Promise.all([
-  api.fetchAccounts(),
-  api.fetchCategories(),
-  api.fetchTransactions()
-])
-  .then(results => {
-    const { accounts } = results[0];
-    const { categories } = results[1];
-    const { transactions } = results[2];
+export const resetTransactions = createAction('TRANSACTIONS_LIST/RESET_TRANSACTIONS');
 
-    dispatch(setAccounts(accounts));
+export const fetchTransactions = () => async (dispatch, getState) => {
+  const requestId = shortid();
 
-    dispatch(setCategories(categories));
+  dispatch(resetTransactions());
 
-    dispatch(setTransactions(transactions));
-  });
+  dispatch(fetchTransactionsStart(requestId));
 
-export const refreshTransactionsListData = () => async dispatch => {
-  dispatch(refreshTransactionsListDataStart());
+  const state = getState();
+  const { fromDate, toDate } = getTimeRange(state);
+  const accountId = getSelectedAccountId(state);
 
   try {
-    await dispatch(fetchTransactionsListDataRequest());
+    const { transactions } = await api.fetchTransactions({ accountId, fromDate, toDate })
 
-    dispatch(refreshTransactionsListDataSuccess());
-  } catch (e) {
-    dispatch(refreshTransactionsListDataFailure(e));
+    const { transactionsList: { fetchTransactionsRequestId } } = getState();
+
+    if (fetchTransactionsRequestId === requestId) {
+      dispatch(setTransactions(transactions));
+    }
+  } catch(e) {
+    dispatch(fetchTransactionsFailure());
   }
 };
+
+const fetchMainData = () => dispatch =>
+  Promise.all([
+    api.fetchAccounts(),
+    api.fetchCategories()
+  ])
+    .then(results => {
+      const { accounts } = results[0];
+      const { categories } = results[1];
+
+      dispatch(setAccounts(accounts));
+
+      dispatch(setCategories(categories));
+    });
+
+const fetchTransactionsListDataRequest = () => dispatch =>
+  Promise.all([
+    dispatch(fetchMainData()),
+    dispatch(fetchTransactions())
+  ]);
 
 export const fetchTransactionsListData = () => async dispatch => {
   dispatch(fetchTransactionsListDataStart());
@@ -101,6 +126,12 @@ export const setSelectedAccount = createAction(
   'TRANSACTIONS_LIST/SET_SELECTED_ACCOUNT',
   accountId => ({ accountId })
 );
+
+export const changeAccount = accountId => dispatch => {
+  dispatch(setSelectedAccount(accountId));
+
+  dispatch(fetchTransactions());
+};
 
 export const setViewType = createAction(
   'TRANSACTIONS_LIST/SET_VIEW_TYPE',

@@ -1,10 +1,12 @@
 import React from 'react';
+import { Button } from 'react-native-elements';
 import { View, Text } from 'react-native';
 import { DatePickerField } from 'src/components';
 import styles from './TrendsDateRangePickerStyles';
 import { formatDate } from 'src/utils';
+import { colors } from 'src/styles';
 
-const TrendsDateRangePicker = ({ dateRange: { from, to }, setFromDate, setToDate }) =>
+const TrendsDateRangePicker = ({ dateRange: { from, to }, setFromDate, setToDate, fetchTrendsData, handleGet }) =>
   <View>
     <Text style={ styles.title }>Enter date range</Text>
     <View style={ styles.pickersContainer }>
@@ -25,6 +27,12 @@ const TrendsDateRangePicker = ({ dateRange: { from, to }, setFromDate, setToDate
           onChange: setToDate
         }} />
     </View>
+    <Button
+      backgroundColor={ colors.COLOR_SECONDARY }
+      containerViewStyle={ styles.button }
+      buttonStyle={ styles.buttonInner }
+      title="Fetch"
+      onPress={ handleGet }/>
   </View>;
 
 export default TrendsDateRangePicker;

@@ -1,25 +1,17 @@
 import React from 'react';
-import { View, processColor, ScrollView, RefreshControl } from 'react-native';
+import { View, processColor, ScrollView } from 'react-native';
 import { PieChart } from 'react-native-charts-wrapper';
 import styles from './TransactionsPieChartStyles';
-import { colors } from 'src/styles';
 
 function TransactionsPieChart({
-  refreshing, onRefresh,
-  description, data,
-  legend, styledCenterText
+  description,
+  data,
+  legend,
+  styledCenterText
 }) {
   return (
-    <ScrollView
-      contentContainerStyle={ styles.container }
-      refreshControl={
-        <RefreshControl
-          refreshing={ refreshing }
-          colors={ [colors.COLOR_PRIMARY] }
-          onRefresh={ onRefresh } />
-      }>
-      <View
-        style={ styles.view }>
+    <ScrollView contentContainerStyle={ styles.container }>
+      <View style={ styles.view }>
         <PieChart
           style={ styles.chart }
           logEnabled

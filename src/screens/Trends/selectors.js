@@ -6,7 +6,6 @@ import filterTransactionsByCategoryType from 'src/helpers/filterTransactionsByCa
 import getTransactionsList from 'src/helpers/getTransactionsList';
 import { getTimeIntervals } from './helpers';
 import { DEFAULT_BASE_CURRENCY } from 'src/constants/currency'
-import transactions from '../../../mocks/api/endpoints/transactions';
 
 const DATE_FORMAT = 'YYYY-MM-DD';
 const getConvertedTransactionValue = ({ value, date, account: { currency }} = {}, exchangeRates) =>
@@ -18,14 +17,18 @@ const getIntervalNames = intervals =>
 const getTransactionsStatisticsByIntervals = (transactions, intervals, exchangeRates) =>
   chain(transactions)
     .groupBy(({ date }) => findIndex(intervals, i => date >= i[0] && date < i[1]))
-    .transform((acc, transactions, key) => {
+    .reduce((acc, transactions, key) => {
       if (key == -1) {
-        return;
+        return acc;
       }
 
       const totalSum = Math.abs(sumBy(transactions, transaction => getConvertedTransactionValue(transaction, exchangeRates)));
 
-      acc[key] = totalSum;
+      const newArray = [...acc];
+
+      newArray[key] = totalSum;
+
+      return newArray;
     }, times(intervals.length, constant(0)))
     .value();
 
@@ -42,9 +45,6 @@ export const getTopPopularCategories = (transactions, exchangeRates, count) =>
     .take(count)
     .value();
 
-export const filterTransactionsByDateRange = (transactions, from, to) =>
-  transactions.filter(({ date }) => date >= moment(from) && date <= moment(to));
-
 const TOP_COUNT = 5;
 
 export const getTrendsData = ({
@@ -52,15 +52,18 @@ export const getTrendsData = ({
     transactions: {
       byId
     },
+    exchangeRates,
     dateRange: {
       from,
       to
-    },
-    exchangeRates
+    } = {}
   }
 }) => {
-  const transactions = getTransactionsList(byId);
-  const transactionList = filterTransactionsByDateRange(transactions, from, to);
+  if (!from || !to) {
+    return null;
+  }
+
+  const transactionList = getTransactionsList(byId);
 
   const incomeTransactions = filterTransactionsByCategoryType(
     transactionList,

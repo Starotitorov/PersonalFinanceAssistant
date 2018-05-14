@@ -2,7 +2,6 @@ import moment from 'moment';
 import { chain, values, find, sumBy, get } from 'lodash';
 import * as categoryTypes from 'src/constants/categoryTypes';
 import { periodTypes } from './constants';
-import filterTransactionsByAccount from 'src/helpers/filterTransactionsByAccount';
 import filterTransactionsByCategoryType from 'src/helpers/filterTransactionsByCategoryType';
 import getTransactionsList from 'src/helpers/getTransactionsList';
 import shortid from 'shortid';
@@ -30,12 +29,6 @@ export const isTransactionsListDataFetching = ({
 
 export const getViewType = ({ transactionsList: { viewType }}) => viewType;
 
-export const isTransactionsListDataRefreshing = ({
-  transactionsList: {
-    refreshing
-  }
-}) => refreshing;
-
 export const getAllAccounts = ({ transactionsList: { accounts: { byId, order }}}) => order.map(id => byId[id]);
 
 export const getAllCategories = ({ transactionsList: { categories: { byId, order }}}) => order.map(id => byId[id]);
@@ -44,17 +37,22 @@ export const getCurrentPeriodType = ({ transactionsList: { periodType }}) => per
 
 export const getSelectedAccountId = ({ transactionsList: { selectedAccount }}) => selectedAccount;
 
-export const filterTransactionsByTimeRange = ({
-  transactions,
-  currentDate,
-  periodType
+export const isTransactionsFetching = ({ transactionsList: { transactionsFetching }}) => transactionsFetching;
+
+export const getTimeRange = ({
+  transactionsList: {
+    currentDate,
+    periodType
+  }
 }) => {
   const delta = find(values(periodTypes), { value: periodType }).single;
-  const lowerBound = moment(currentDate).startOf(delta);
-  const higherBound = moment(currentDate).endOf(delta);
+  const fromDate = moment(currentDate).startOf(delta);
+  const toDate = moment(currentDate).endOf(delta);
 
-  return transactions
-    .filter(({ date }) => date >= lowerBound && date <= higherBound);
+  return {
+    fromDate,
+    toDate
+  }
 };
 
 export const getTransactionsSum = transactions => sumBy(transactions, 'value');
@@ -70,22 +68,14 @@ export const getTransactionsGroupedByCategories = ({
     accounts: {
       byId: accountsById
     },
-    selectedAccount,
-    currentDate,
-    periodType
+    selectedAccount
   }
 }) => {
   const account = accountsById[selectedAccount];
   const currency = account ? account.currency : null;
   const transactionsList = getTransactionsList(byId);
-  const filteredByAccount = filterTransactionsByAccount(transactionsList, selectedAccount);
-  const transactions = filterTransactionsByTimeRange({
-    transactions: filteredByAccount,
-    currentDate,
-    periodType
-  });
 
-  return chain(transactions)
+  return chain(transactionsList)
     .groupBy('categoryId')
     .transform((acc, transactions, key) => {
       const { name, icon } = get(categoriesById, key, {});
@@ -116,21 +106,12 @@ export const getTransactionsChartData = ({
     accounts: {
       byId: accountsById
     },
-    selectedAccount,
-    currentDate,
-    periodType
+    selectedAccount
   }
 }) => {
   const account = accountsById[selectedAccount];
   const currency = account ? account.currency : null;
-  const transactionsList = getTransactionsList(byId);
-
-  const filteredByAccount = filterTransactionsByAccount(transactionsList, selectedAccount);
-  const transactions = filterTransactionsByTimeRange({
-    transactions: filteredByAccount,
-    currentDate,
-    periodType
-  });
+  const transactions = getTransactionsList(byId);
 
   const incomeTransactions = filterTransactionsByCategoryType(transactions, categoryTypes.INCOME_CATEGORY);
   const outcomeTransactions = filterTransactionsByCategoryType(transactions, categoryTypes.OUTCOME_CATEGORY);

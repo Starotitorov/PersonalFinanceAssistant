@@ -3,10 +3,7 @@ import {
   setCategories,
   fetchCategoriesListDataStart,
   fetchCategoriesListDataSuccess,
-  fetchCategoriesListDataFailure,
-  refreshCategoriesListDataStart,
-  refreshCategoriesListDataSuccess,
-  refreshCategoriesListDataFailure
+  fetchCategoriesListDataFailure
 } from './actions';
 import { arrayToObjectById } from 'src/utils';
 
@@ -15,8 +12,7 @@ const initialState = {
     byId: {},
     order: []
   },
-  fetching: false,
-  refreshing: false
+  fetching: false
 };
 
 const categoriesList = handleActions({
@@ -24,19 +20,12 @@ const categoriesList = handleActions({
     ...state,
     fetching: true
   }),
-  [refreshCategoriesListDataStart]: state => ({
-    ...state,
-    refreshing: true
-  }),
   [combineActions(
     fetchCategoriesListDataSuccess,
-    fetchCategoriesListDataFailure,
-    refreshCategoriesListDataSuccess,
-    refreshCategoriesListDataFailure
+    fetchCategoriesListDataFailure
   )](state) {
     return {
       ...state,
-      refreshing: false,
       fetching: false
     };
   },

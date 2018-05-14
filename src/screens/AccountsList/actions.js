@@ -11,10 +11,6 @@ export const fetchAccountsListDataStart = createAction('ACCOUNTS_LIST/FETCH_ACCO
 export const fetchAccountsListDataFailure = createAction('ACCOUNTS_LIST/FETCH_ACCOUNTS_LIST_DATA_FAILURE');
 export const fetchAccountListDataSuccess = createAction('ACCOUNTS_LIST/FETCH_ACCOUNTS_LIST_DATA_SUCCESS');
 
-export const refreshAccountsListDataStart = createAction('ACCOUNTS_LIST/REFRESH_ACCOUNTS_LIST_DATA_START');
-export const refreshAccountsListDataFailure = createAction('ACCOUNTS_LIST/REFRESH_ACCOUNTS_LIST_DATA_FAILURE');
-export const refreshAccountListDataSuccess = createAction('ACCOUNTS_LIST/REFRESH_ACCOUNTS_LIST_DATA_SUCCESS');
-
 const fetchAccountsListDataRequest = () => dispatch => api.fetchAccounts()
   .then(({ accounts }) => {
     dispatch(setAccounts(accounts));
@@ -29,18 +25,6 @@ export const fetchAccountsListData = () => async dispatch => {
     dispatch(fetchAccountListDataSuccess());
   } catch (e) {
     dispatch(fetchAccountsListDataFailure(e));
-  }
-};
-
-export const refreshAccountsListData = () => async dispatch => {
-  dispatch(refreshAccountsListDataStart());
-
-  try {
-    await dispatch(fetchAccountsListDataRequest());
-
-    dispatch(refreshAccountListDataSuccess());
-  } catch (e) {
-    dispatch(refreshAccountsListDataFailure(e));
   }
 };
 

@@ -12,5 +12,15 @@ export default StyleSheet.create({
   },
   pickerStyle: {
     width: '45%'
+  },
+  button: {
+    alignSelf: 'flex-start',
+    width: '45%',
+    marginTop: 8,
+    marginLeft: 0
+  },
+  buttonInner: {
+    paddingTop: 8,
+    paddingBottom: 8
   }
 });

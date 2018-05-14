@@ -1,3 +1,4 @@
+import moment from 'moment';
 import config from './config';
 import { JWTStorage } from 'src/utils';
 import { networkService } from 'src/services';
@@ -136,12 +137,17 @@ export const addTransfer = async transferData => post(
   JSON.stringify({ transfer: transferData })
 );
 
-export const fetchTransactions = async () => get(
+export const fetchTransactions = async ({ accountId, fromDate, toDate }) => get(
   `${API_URL}/transactions`,
   {
     Accept: 'application/json',
     'Content-Type': 'application/json',
     Authorization: await JWTStorage.getToken()
+  },
+  {
+    accountId,
+    fromDate: moment(fromDate),
+    toDate: moment(toDate)
   }
 );
 

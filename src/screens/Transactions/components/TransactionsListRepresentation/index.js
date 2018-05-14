@@ -1,3 +1,3 @@
-import TransactionsListRepresentation from './TransactionsListRepresentationView';
+import TransactionsListRepresentation from './TransactionsListRepresentationContainer';
 
 export default TransactionsListRepresentation;

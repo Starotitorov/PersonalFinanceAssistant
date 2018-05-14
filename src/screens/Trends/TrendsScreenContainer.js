@@ -1,24 +1,24 @@
 import { connect } from 'react-redux';
-import { compose, lifecycle } from 'recompose';
+import { compose, withHandlers } from 'recompose';
 import { getTrendsData, isTrendsDataFetching, getDateRange } from './selectors';
-import { withLoadingIndicator } from 'src/components';
 import { fetchTrendsData, setDateRange } from './actions';
 import TrendsScreen from './TrendsScreen';
 
 const mapStateToProps = state => ({
   dateRange: getDateRange(state),
-  isLoading: isTrendsDataFetching(state),
+  isTrendsDataFetching: isTrendsDataFetching(state),
   data: getTrendsData(state)
 });
 
-const withTrendsData = lifecycle({
-  componentDidMount() {
-    this.props.fetchTrendsData()
+const withHandleGetData = withHandlers({
+  handleGetData: ({ setDateRange, fetchTrendsData }) => dateRange => {
+    setDateRange(dateRange);
+
+    fetchTrendsData();
   }
 });
 
 export default compose(
   connect(mapStateToProps, { fetchTrendsData, setDateRange }),
-  withTrendsData,
-  withLoadingIndicator
+  withHandleGetData
 )(TrendsScreen);
