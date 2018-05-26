@@ -14,7 +14,8 @@ import {
   setViewType,
   fetchTransactionsStart,
   fetchTransactionsFailure,
-  resetTransactions
+  resetTransactions,
+  resetTransactionsListData
 } from './actions';
 import { periodTypes, LIST } from './constants';
 
@@ -104,7 +105,8 @@ const transactionsList = handleActions({
     ...state,
     viewType
   }),
-  [resetTransactions]: state => ({ ...state, transactions: arrayToObjectById([]) })
+  [resetTransactions]: state => ({ ...state, transactions: arrayToObjectById([]) }),
+  [resetTransactionsListData]: () => initialState
 }, initialState);
 
 export default transactionsList;

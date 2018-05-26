@@ -3,7 +3,14 @@ import { NavigationActions } from 'react-navigation';
 import shortid from 'shortid';
 import * as api from 'src/api';
 import { LIST, CHART } from './constants';
-import { getAllAccounts, getAllCategories, getTimeRange, getSelectedAccountId } from './selectors';
+import {
+  getAllAccounts,
+  getAllCategories,
+  getTimeRange,
+  getSelectedAccountId,
+  getCurrentPeriodType,
+  getCurrentDate
+} from './selectors';
 
 export const changePeriodView = periodView => dispatch => {
   dispatch(setPeriodView(periodView));
@@ -20,6 +27,8 @@ export const changeCurrentDate = createAction(
   'TRANSACTIONS_LIST/CHANGE_CURRENT_DATE',
   currentDate => ({ currentDate })
 );
+
+export const resetTransactionsListData = createAction('TRANSACTIONS_LIST/RESET_TRANSACTIONS_LIST_DATA');
 
 export const changeDate = isChangeForward => (dispatch, getState) => {
   const { transactionsList: { currentDate, periodType }} = getState();
@@ -74,15 +83,23 @@ export const fetchTransactions = () => async (dispatch, getState) => {
   dispatch(fetchTransactionsStart(requestId));
 
   const state = getState();
+  const currentDate = getCurrentDate(state);
+  const periodType = getCurrentPeriodType(state);
   const { fromDate, toDate } = getTimeRange(state);
   const accountId = getSelectedAccountId(state);
 
   try {
-    const { transactions } = await api.fetchTransactions({ accountId, fromDate, toDate })
+    const { transactions } = await api.fetchTransactions({ accountId, fromDate, toDate });
 
     const { transactionsList: { fetchTransactionsRequestId } } = getState();
 
     if (fetchTransactionsRequestId === requestId) {
+      dispatch(setPeriodView(periodType));
+
+      dispatch(changeCurrentDate(currentDate));
+
+      dispatch(setSelectedAccount(accountId));
+
       dispatch(setTransactions(transactions));
     }
   } catch(e) {

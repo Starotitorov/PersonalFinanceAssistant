@@ -3,7 +3,8 @@ import {
   setCategories,
   fetchCategoriesListDataStart,
   fetchCategoriesListDataSuccess,
-  fetchCategoriesListDataFailure
+  fetchCategoriesListDataFailure,
+  resetCategoriesListData
 } from './actions';
 import { arrayToObjectById } from 'src/utils';
 
@@ -36,7 +37,8 @@ const categoriesList = handleActions({
       ...state,
       categories: arrayToObjectById(categories)
     };
-  }
+  },
+  [resetCategoriesListData]: () => initialState
 }, initialState);
 
 export default categoriesList;

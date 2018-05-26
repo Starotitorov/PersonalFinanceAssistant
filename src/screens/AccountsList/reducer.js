@@ -3,7 +3,8 @@ import {
   setAccounts,
   fetchAccountsListDataStart,
   fetchAccountListDataSuccess,
-  fetchAccountsListDataFailure
+  fetchAccountsListDataFailure,
+  resetAccountsListData
 } from './actions';
 import { arrayToObjectById } from 'src/utils';
 
@@ -37,7 +38,8 @@ const accountsList = handleActions({
       ...state,
       accounts: arrayToObjectById(accounts)
     };
-  }
+  },
+  [resetAccountsListData]: () => initialState
 }, initialState);
 
 export default accountsList;

@@ -5,7 +5,8 @@ import {
   changeDateBack,
   fetchTransactionsListData,
   selectTransaction,
-  addTransaction
+  addTransaction,
+  resetTransactionsListData
 } from './actions';
 import {
   getViewType,
@@ -20,6 +21,8 @@ const mapStateToProps = state => ({
 
 const withTransactionsListData = lifecycle({
   componentDidMount() {
+    this.props.resetTransactionsListData();
+
     this.props.fetchTransactionsListData();
   }
 });
@@ -30,7 +33,8 @@ export default compose(
     changeDateBack,
     fetchTransactionsListData,
     selectTransaction,
-    addTransaction
+    addTransaction,
+    resetTransactionsListData
   }),
   withTransactionsListData
 )(TransactionsScreen);

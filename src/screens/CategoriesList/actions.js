@@ -11,6 +11,8 @@ export const fetchCategoriesListDataStart = createAction('CATEGORIES_LIST/FETCH_
 export const fetchCategoriesListDataFailure = createAction('CATEGORIES_LIST/FETCH_CATEGORIES_LIST_DATA_FAILURE');
 export const fetchCategoriesListDataSuccess = createAction('CATEGORIES_LIST/FETCH_CATEGORIES_LIST_DATA_SUCCESS');
 
+export const resetCategoriesListData = createAction('CATEGORIES_LIST/RESET_CATEGORIES_LIST_DATA');
+
 const fetchCategoriesListDataRequest = () => dispatch => api.fetchCategories()
   .then(({ categories }) => {
     dispatch(setCategories(categories));

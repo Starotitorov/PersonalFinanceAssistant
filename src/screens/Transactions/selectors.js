@@ -21,6 +21,12 @@ export const getFormattedCurrentDate = ({ transactionsList: { currentDate, perio
   }
 };
 
+export const getCurrentDate = ({
+  transactionsList: {
+    currentDate
+  }
+}) => currentDate;
+
 export const isTransactionsListDataFetching = ({
   transactionsList: {
     fetching

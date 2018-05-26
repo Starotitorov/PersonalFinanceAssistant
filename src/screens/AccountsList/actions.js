@@ -11,6 +11,8 @@ export const fetchAccountsListDataStart = createAction('ACCOUNTS_LIST/FETCH_ACCO
 export const fetchAccountsListDataFailure = createAction('ACCOUNTS_LIST/FETCH_ACCOUNTS_LIST_DATA_FAILURE');
 export const fetchAccountListDataSuccess = createAction('ACCOUNTS_LIST/FETCH_ACCOUNTS_LIST_DATA_SUCCESS');
 
+export const resetAccountsListData = createAction('ACCOUNTS_LIST/RESET_ACCOUNTS_LIST_DATA');
+
 const fetchAccountsListDataRequest = () => dispatch => api.fetchAccounts()
   .then(({ accounts }) => {
     dispatch(setAccounts(accounts));
