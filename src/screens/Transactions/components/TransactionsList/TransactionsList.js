@@ -1,12 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FlatList, ScrollView } from 'react-native';
+import { FlatList, ScrollView, RefreshControl } from 'react-native';
 import styles from './TransactionsListStyles';
+import { colors } from 'src/styles';
 
 const keyExtractor = ({ id }) => id;
 
-const TransactionsList = ({ data, EmptyListComponent, renderItem }) =>
-  <ScrollView contentContainerStyle={ styles.container }>
+const TransactionsList = ({ data, EmptyListComponent, renderItem, refreshing, onRefresh }) =>
+  <ScrollView
+    refreshControl={
+      <RefreshControl
+        refreshing={ refreshing }
+        colors={ [colors.COLOR_PRIMARY] }
+        onRefresh={ onRefresh } />
+    }
+    contentContainerStyle={ styles.container }>
     <FlatList
       data={ data }
       keyExtractor={ keyExtractor }

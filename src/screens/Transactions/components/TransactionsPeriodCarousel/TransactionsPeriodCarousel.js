@@ -6,10 +6,11 @@ import styles from './TransactionsPeriodCarouselStyles';
 export default function TransactionsPeriodCarousel({
   currentDate,
   onPressBack,
-  onPressForward
+  onPressForward,
+  disabled
 }) {
   return (
-    <View style={ styles.container }>
+    <View style={ styles.container } pointerEvents={ disabled ? 'none' : 'auto' }>
       <IconButton
         iconStyle={ styles.button }
         name="ios-arrow-back"

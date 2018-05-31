@@ -18,11 +18,14 @@ const TransactionsScreen = ({
 }) =>
   <View style={ styles.container }>
     <TransactionsPeriodCarousel
+      disabled={ refreshing }
       currentDate={ currentDate }
       onPressBack={ changeDateBack }
       onPressForward={ changeDateForward } />
     <TransactionsListRepresentation
       viewType={ viewType }
+      refreshing={ refreshing }
+      onRefresh={ refreshTransactionsListData }
       onSelectTransaction={ selectTransaction } />
     <ActionButton.Button
       type={ ActionButton.types.ADD }

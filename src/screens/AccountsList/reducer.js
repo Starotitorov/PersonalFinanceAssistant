@@ -4,7 +4,10 @@ import {
   fetchAccountsListDataStart,
   fetchAccountListDataSuccess,
   fetchAccountsListDataFailure,
-  resetAccountsListData
+  resetAccountsListData,
+  refreshAccountListDataSuccess,
+  refreshAccountsListDataStart,
+  refreshAccountsListDataFailure
 } from './actions';
 import { arrayToObjectById } from 'src/utils';
 
@@ -14,6 +17,7 @@ const initialState = {
     order: []
   },
   fetching: false,
+  refreshing: false
 };
 
 const accountsList = handleActions({
@@ -21,9 +25,15 @@ const accountsList = handleActions({
     ...state,
     fetching: true
   }),
+  [refreshAccountsListDataStart]: state => ({
+    ...state,
+    refreshing: true
+  }),
   [combineActions(
     fetchAccountsListDataFailure,
+    refreshAccountsListDataFailure,
     fetchAccountListDataSuccess,
+    refreshAccountListDataSuccess
   )](state) {
     return {
       ...state,

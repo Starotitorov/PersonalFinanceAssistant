@@ -33,6 +33,12 @@ export const isTransactionsListDataFetching = ({
   }
 }) => fetching;
 
+export const isTransactionsListDataRefreshing = ({
+  transactionsList: {
+    refreshing
+  }
+}) => refreshing;
+
 export const getViewType = ({ transactionsList: { viewType }}) => viewType;
 
 export const getAllAccounts = ({ transactionsList: { accounts: { byId, order }}}) => order.map(id => byId[id]);

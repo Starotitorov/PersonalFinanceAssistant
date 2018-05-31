@@ -2,13 +2,15 @@ import { connect } from 'react-redux';
 import { compose, lifecycle } from 'recompose';
 import {
   getAllAccounts,
-  isAccountsListDataFetching
+  isAccountsListDataFetching,
+  isAccountsListDataRefreshing
 } from './selectors';
 import {
   fetchAccountsListData,
   addAccount,
   editAccount,
-  resetAccountsListData
+  resetAccountsListData,
+  refreshAccountsListData
 } from './actions';
 import { withLoadingIndicator } from 'src/components';
 import AccountsListScreen from './AccountsListScreen';
@@ -16,6 +18,7 @@ import AccountsListScreen from './AccountsListScreen';
 const mapStateToProps = state => ({
   accounts: getAllAccounts(state),
   isLoading: isAccountsListDataFetching(state),
+  refreshing: isAccountsListDataRefreshing(state)
 });
 
 const withAccountsListData = lifecycle({
@@ -31,7 +34,8 @@ export default compose(
     fetchAccountsListData,
     addAccount,
     editAccount,
-    resetAccountsListData
+    resetAccountsListData,
+    refreshAccountsListData
   }),
   withAccountsListData,
   withLoadingIndicator

@@ -6,17 +6,20 @@ import {
   fetchTransactionsListData,
   selectTransaction,
   addTransaction,
-  resetTransactionsListData
+  resetTransactionsListData,
+  refreshTransactionsListData
 } from './actions';
 import {
   getViewType,
-  getFormattedCurrentDate
+  getFormattedCurrentDate,
+  isTransactionsListDataRefreshing
 } from './selectors';
 import TransactionsScreen from './TransactionsScreen';
 
 const mapStateToProps = state => ({
   currentDate: getFormattedCurrentDate(state),
-  viewType: getViewType(state)
+  viewType: getViewType(state),
+  refreshing: isTransactionsListDataRefreshing(state)
 });
 
 const withTransactionsListData = lifecycle({
@@ -34,7 +37,8 @@ export default compose(
     fetchTransactionsListData,
     selectTransaction,
     addTransaction,
-    resetTransactionsListData
+    resetTransactionsListData,
+    refreshTransactionsListData
   }),
   withTransactionsListData
 )(TransactionsScreen);

@@ -69,32 +69,41 @@ export const fetchTransactionsListDataStart = createAction('TRANSACTIONS_LIST/FE
 export const fetchTransactionsListDataFailure = createAction('TRANSACTIONS_LIST/FETCH_TRANSACTIONS_LIST_DATA_FAILURE');
 export const fetchTransactionsListDataSuccess = createAction('TRANSACTIONS_LIST/FETCH_TRANSACTIONS_LIST_DATA_SUCCESS');
 
+export const refreshTransactionsListDataStart = createAction('TRANSACTIONS_LIST/REFRESH_TRANSACTIONS_LIST_DATA_START');
+export const refreshTransactionsListDataFailure = createAction('TRANSACTIONS_LIST/REFRESH_TRANSACTIONS_LIST_DATA_FAILURE');
+export const refreshTransactionsListDataSuccess = createAction('TRANSACTIONS_LIST/REFRESH_TRANSACTIONS_LIST_DATA_SUCCESS');
+
 export const fetchTransactionsStart = createAction('TRANSACTIONS_LIST/FETCH_TRANSACTIONS_START');
 export const fetchTransactionsFailure = createAction('TRANSACTIONS_LIST/FETCH_TRANSACTIONS_FAILURE');
 
 export const resetTransactions = createAction('TRANSACTIONS_LIST/RESET_TRANSACTIONS');
 
-export const fetchTransactions = () => async (dispatch, getState) => {
-  dispatch(resetTransactions());
-
-  dispatch(fetchTransactionsStart());
-
+export const fetchTransactionsRequest = () => (dispatch, getState) => {
   const state = getState();
   const currentDate = getCurrentDate(state);
   const periodType = getCurrentPeriodType(state);
   const { fromDate, toDate } = getTimeRange(state);
   const accountId = getSelectedAccountId(state);
 
+  return api.fetchTransactionsOnce({ accountId, fromDate, toDate })
+    .then(({ transactions }) => {
+      dispatch(setPeriodView(periodType));
+
+      dispatch(changeCurrentDate(currentDate));
+
+      dispatch(setSelectedAccount(accountId));
+
+      dispatch(setTransactions(transactions));
+    });
+};
+
+export const fetchTransactions = () => async dispatch => {
+  dispatch(resetTransactions());
+
+  dispatch(fetchTransactionsStart());
+
   try {
-    const { transactions } = await api.fetchTransactionsOnce({ accountId, fromDate, toDate });
-
-    dispatch(setPeriodView(periodType));
-
-    dispatch(changeCurrentDate(currentDate));
-
-    dispatch(setSelectedAccount(accountId));
-
-    dispatch(setTransactions(transactions));
+    await dispatch(fetchTransactionsRequest());
   } catch(e) {
     if (e.message === 'Request cancellation.') {
       return;
@@ -133,6 +142,21 @@ export const fetchTransactionsListData = () => async dispatch => {
     dispatch(fetchTransactionsListDataSuccess());
   } catch (e) {
     dispatch(fetchTransactionsListDataFailure(e));
+  }
+};
+
+export const refreshTransactionsListData = () => async dispatch => {
+  dispatch(refreshTransactionsListDataStart());
+
+  try {
+    await Promise.all([
+      dispatch(fetchMainData()),
+      dispatch(fetchTransactionsRequest())
+    ]);
+
+    dispatch(refreshTransactionsListDataSuccess());
+  } catch (e) {
+    dispatch(refreshTransactionsListDataFailure(e));
   }
 };
 

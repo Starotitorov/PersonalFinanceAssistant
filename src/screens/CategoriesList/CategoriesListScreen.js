@@ -1,15 +1,24 @@
 import React from 'react';
 import { List } from 'react-native-elements';
-import { FlatList, ScrollView } from 'react-native';
+import { FlatList, ScrollView, RefreshControl } from 'react-native';
+import { colors } from 'src/styles';
 
 const keyExtractor = item => item.id;
 
 const CategoriesListScreen = ({
   data,
   renderItem,
-  EmptyListComponent
+  EmptyListComponent,
+  refreshing,
+  refreshCategoriesListData
 }) =>
-  <ScrollView>
+  <ScrollView
+    refreshControl={
+      <RefreshControl
+        colors={ [colors.COLOR_PRIMARY] }
+        refreshing={ refreshing }
+        onRefresh={ refreshCategoriesListData } />
+    }>
     <List>
       <FlatList
         data={ data }

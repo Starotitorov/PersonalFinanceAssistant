@@ -15,7 +15,10 @@ import {
   fetchTransactionsStart,
   fetchTransactionsFailure,
   resetTransactions,
-  resetTransactionsListData
+  resetTransactionsListData,
+  refreshTransactionsListDataFailure,
+  refreshTransactionsListDataSuccess,
+  refreshTransactionsListDataStart
 } from './actions';
 import { periodTypes, LIST } from './constants';
 
@@ -35,6 +38,7 @@ const initialState = {
   currentDate: moment(),
   periodType: periodTypes.WEEK.value,
   fetching: false,
+  refreshing: false,
   selectedAccount: null,
   transactionsFetching: false,
   viewType: LIST
@@ -53,6 +57,10 @@ const transactionsList = handleActions({
     ...state,
     fetching: true
   }),
+  [refreshTransactionsListDataStart]: state => ({
+    ...state,
+    refreshing: true
+  }),
   [fetchTransactionsStart]: state => ({
     ...state,
     transactionsFetching: true
@@ -63,11 +71,14 @@ const transactionsList = handleActions({
   }),
   [combineActions(
     fetchTransactionsListDataSuccess,
-    fetchTransactionsListDataFailure
+    fetchTransactionsListDataFailure,
+    refreshTransactionsListDataSuccess,
+    refreshTransactionsListDataFailure
   )](state) {
     return {
       ...state,
-      fetching: false
+      fetching: false,
+      refreshing: false
     };
   },
   [setTransactions]: (state, action) => {
