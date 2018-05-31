@@ -1,5 +1,5 @@
 // import FetchMock from 'react-native-fetch-mock';
-import { fetch } from 'src/utils';
+import { fetch, cancelableFetch } from 'src/utils';
 
 // Mock api
 // global.fetch = new FetchMock(require('../../mocks')).fetch;
@@ -15,12 +15,30 @@ const parseResponse = async (url, response = {}) => {
 
 const request = async (method, url, headers = {}, body, params) =>
   fetch(url, { method, headers, body, params })
-    .then(response => parseResponse(url, response))
-    .catch(async response => {
-      throw await parseResponse(url, response);
-    });
+    .then(response => parseResponse(url, response));
 
 export const get = (url, headers, params) => request('GET', url, headers, undefined, params);
+
+export const createOnceRequest = func => {
+  let req = null;
+
+  return (...args) => {
+    if (req) {
+      req.cancel();
+    }
+
+    req = cancelableFetch(func(...args));
+
+    req
+      .then(res => {
+        req = null;
+
+        return res;
+      });
+
+    return req;
+  };
+};
 
 export const post = (url, headers, body) => request('POST', url, headers, body);
 

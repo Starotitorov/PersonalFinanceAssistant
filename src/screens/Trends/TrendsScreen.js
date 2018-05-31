@@ -15,7 +15,10 @@ const TransactionsScreen = ({
 }) =>
   <ScrollView style={ styles.container }>
     <Card>
-      <TrendsDateRangePicker handleGetData={ handleGetData } dateRange={ dateRange } />
+      <TrendsDateRangePicker
+        handleGetData={ handleGetData }
+        dateRange={ dateRange }
+        isTrendsDataFetching={ isTrendsDataFetching } />
     </Card>
     <View style={ styles.innerContainer }>
       <TrendsScreenInner data={ data } isLoading={ isTrendsDataFetching } />

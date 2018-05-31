@@ -36,7 +36,16 @@ export const logIn = ({ email, password }) => dispatch => api.signIn(email, pass
       ]
     }));
   })
-  .catch(({ error }) => Alert.alert(null, error));
+  .catch(async response => {
+    let error = 'Unknown error';
+
+    try {
+      const json = await response.json();
+      error = json.error;
+    } catch(e) {}
+
+    Alert.alert(null, error)
+  });
 
 export const logInFacebook = data => dispatch => api.logInFacebook(data)
   .then(async ({ user, token }) => {

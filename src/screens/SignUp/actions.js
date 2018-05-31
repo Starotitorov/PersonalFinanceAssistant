@@ -15,7 +15,14 @@ export const signUp = (userData) => dispatch => api.signUp(userData)
       ]
     }));
   })
-  .catch(({ errors }) => {
+  .catch(async response => {
+    let errors = {};
+
+    try {
+      const json = await response.json();
+      errors = json.errors;
+    } catch(e) {}
+
     throw new SubmissionError(errors);
   });
 

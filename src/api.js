@@ -3,7 +3,7 @@ import config from './config';
 import { JWTStorage } from 'src/utils';
 import { networkService } from 'src/services';
 
-const { get, post, put, del } = networkService;
+const { get, post, put, del, createOnceRequest } = networkService;
 const API_URL = config.apiUrl;
 
 export const signIn = (email, password) => post(
@@ -150,6 +150,8 @@ export const fetchTransactions = async ({ accountId, fromDate, toDate }) => get(
     toDate: moment(toDate)
   }
 );
+
+export const fetchTransactionsOnce = createOnceRequest(fetchTransactions);
 
 export const getTransaction = async id => get(
   `${API_URL}/transactions/${id}`,

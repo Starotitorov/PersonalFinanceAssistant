@@ -6,7 +6,14 @@ import styles from './TrendsDateRangePickerStyles';
 import { formatDate } from 'src/utils';
 import { colors } from 'src/styles';
 
-const TrendsDateRangePicker = ({ dateRange: { from, to }, setFromDate, setToDate, fetchTrendsData, handleGet }) =>
+const TrendsDateRangePicker = ({
+  dateRange: { from, to },
+  setFromDate,
+  setToDate,
+  fetchTrendsData,
+  handleGet,
+  isTrendsDataFetching
+}) =>
   <View>
     <Text style={ styles.title }>Enter date range</Text>
     <View style={ styles.pickersContainer }>
@@ -28,6 +35,7 @@ const TrendsDateRangePicker = ({ dateRange: { from, to }, setFromDate, setToDate
         }} />
     </View>
     <Button
+      disabled={ isTrendsDataFetching }
       backgroundColor={ colors.COLOR_SECONDARY }
       containerViewStyle={ styles.button }
       buttonStyle={ styles.buttonInner }

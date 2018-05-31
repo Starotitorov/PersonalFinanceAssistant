@@ -1,6 +1,5 @@
 import { createAction } from 'redux-actions';
 import { NavigationActions } from 'react-navigation';
-import shortid from 'shortid';
 import * as api from 'src/api';
 import { LIST, CHART } from './constants';
 import {
@@ -76,11 +75,9 @@ export const fetchTransactionsFailure = createAction('TRANSACTIONS_LIST/FETCH_TR
 export const resetTransactions = createAction('TRANSACTIONS_LIST/RESET_TRANSACTIONS');
 
 export const fetchTransactions = () => async (dispatch, getState) => {
-  const requestId = shortid();
-
   dispatch(resetTransactions());
 
-  dispatch(fetchTransactionsStart(requestId));
+  dispatch(fetchTransactionsStart());
 
   const state = getState();
   const currentDate = getCurrentDate(state);
@@ -89,20 +86,20 @@ export const fetchTransactions = () => async (dispatch, getState) => {
   const accountId = getSelectedAccountId(state);
 
   try {
-    const { transactions } = await api.fetchTransactions({ accountId, fromDate, toDate });
+    const { transactions } = await api.fetchTransactionsOnce({ accountId, fromDate, toDate });
 
-    const { transactionsList: { fetchTransactionsRequestId } } = getState();
+    dispatch(setPeriodView(periodType));
 
-    if (fetchTransactionsRequestId === requestId) {
-      dispatch(setPeriodView(periodType));
+    dispatch(changeCurrentDate(currentDate));
 
-      dispatch(changeCurrentDate(currentDate));
+    dispatch(setSelectedAccount(accountId));
 
-      dispatch(setSelectedAccount(accountId));
-
-      dispatch(setTransactions(transactions));
-    }
+    dispatch(setTransactions(transactions));
   } catch(e) {
+    if (e.message === 'Request cancellation.') {
+      return;
+    }
+
     dispatch(fetchTransactionsFailure());
   }
 };

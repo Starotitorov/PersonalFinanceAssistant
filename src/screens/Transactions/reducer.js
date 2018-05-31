@@ -37,7 +37,6 @@ const initialState = {
   fetching: false,
   selectedAccount: null,
   transactionsFetching: false,
-  fetchTransactionsRequestId: null,
   viewType: LIST
 };
 
@@ -54,9 +53,8 @@ const transactionsList = handleActions({
     ...state,
     fetching: true
   }),
-  [fetchTransactionsStart]: (state, { payload }) => ({
+  [fetchTransactionsStart]: state => ({
     ...state,
-    fetchTransactionsRequestId: payload,
     transactionsFetching: true
   }),
   [fetchTransactionsFailure]: state => ({
