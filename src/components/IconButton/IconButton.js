@@ -5,9 +5,9 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import NativeTouchable from '../NativeTouchable';
 import styles from './IconButtonStyles';
 
-export default function IconButton({ color, iconStyle, name, size, style, ...rest }) {
+export default function IconButton({ color, iconStyle, name, size, style, disabled, onPress, ...rest }) {
   return (
-    <NativeTouchable { ...rest }>
+    <NativeTouchable { ...rest } onPress={ disabled ? () => {} : onPress }>
       <View style={ [styles.container, style] }>
         <Icon
           color={ color }

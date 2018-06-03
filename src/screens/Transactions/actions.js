@@ -8,10 +8,17 @@ import {
   getTimeRange,
   getSelectedAccountId,
   getCurrentPeriodType,
-  getCurrentDate
+  getCurrentDate,
+  isTransactionsListDataRefreshing
 } from './selectors';
 
-export const changePeriodView = periodView => dispatch => {
+export const changePeriodView = periodView => (dispatch, getState) => {
+  const refreshing = isTransactionsListDataRefreshing(getState());
+
+  if (refreshing) {
+    return;
+  }
+
   dispatch(setPeriodView(periodView));
 
   dispatch(fetchTransactions());
@@ -30,6 +37,12 @@ export const changeCurrentDate = createAction(
 export const resetTransactionsListData = createAction('TRANSACTIONS_LIST/RESET_TRANSACTIONS_LIST_DATA');
 
 export const changeDate = isChangeForward => (dispatch, getState) => {
+  const refreshing = isTransactionsListDataRefreshing(getState());
+
+  if (refreshing) {
+    return;
+  }
+
   const { transactionsList: { currentDate, periodType }} = getState();
 
   const periodModificator = periodType;
@@ -165,7 +178,13 @@ export const setSelectedAccount = createAction(
   accountId => ({ accountId })
 );
 
-export const changeAccount = accountId => dispatch => {
+export const changeAccount = accountId => (dispatch, getState) => {
+  const refreshing = isTransactionsListDataRefreshing(getState());
+
+  if (refreshing) {
+    return;
+  }
+
   dispatch(setSelectedAccount(accountId));
 
   dispatch(fetchTransactions());

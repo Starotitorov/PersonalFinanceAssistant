@@ -14,13 +14,14 @@ const SelectInputComponent = ({
   onChange,
   selectedOption,
   options,
-  style
+  style,
+  disabled
 }) =>
   <Menu onSelect={ onChange }>
-    <MenuTrigger style={ [styles.containerStyle, style] }>
-      <OptionItem item={ selectedOption } color={ colors.COLOR_WHITE } />
+    <MenuTrigger style={ [styles.containerStyle, style] } disabled={ disabled }>
+      <OptionItem item={ selectedOption } color={ disabled ? colors.LIGHT_GRAY : colors.COLOR_WHITE } />
       <Icon
-        color={ colors.COLOR_WHITE }
+        color={ disabled ? colors.LIGHT_GRAY : colors.COLOR_WHITE }
         name="arrow-drop-down"
         type="material" />
     </MenuTrigger>

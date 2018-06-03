@@ -18,7 +18,6 @@ const TransactionsScreen = ({
 }) =>
   <View style={ styles.container }>
     <TransactionsPeriodCarousel
-      disabled={ refreshing }
       currentDate={ currentDate }
       onPressBack={ changeDateBack }
       onPressForward={ changeDateForward } />

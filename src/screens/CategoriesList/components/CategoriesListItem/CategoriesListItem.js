@@ -8,7 +8,7 @@ const CategoriesListItem = ({
 }) =>
   <ListItem
     title={ name }
-    titleNumberOfLines={ 2 }
+    titleNumberOfLines={ 5 }
     leftIcon={ icon }
     onPress={ handleSelectCategory } />;
 

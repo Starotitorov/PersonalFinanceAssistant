@@ -9,10 +9,9 @@ const TransactionsHeaderTitle = ({
   selectedValue,
   accountOptions,
   selectedAccountId,
-  changeAccount,
-  disabled
+  changeAccount
 }) =>
-  <View style={ styles.container } pointerEvents={ disabled ? 'none' : 'auto' }>
+  <View style={ styles.container }>
     <View style={ styles.accountSelectInput }>
       <SelectInput
         value={ selectedAccountId }

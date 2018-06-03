@@ -8,7 +8,7 @@ const AccountListItem = ({
 }) =>
   <ListItem
     title={ name }
-    titleNumberOfLines={ 2 }
+    titleNumberOfLines={ 5 }
     leftIcon={ icon }
     rightTitle={ balance }
     onPress={ handleSelectAccount } />;
