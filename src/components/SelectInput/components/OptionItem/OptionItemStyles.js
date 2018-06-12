@@ -11,9 +11,9 @@ export default StyleSheet.create({
     marginLeft: 5
   },
   itemTextStyle: {
-    textAlign: 'center',
-    fontSize: 16,
+    fontSize: 14,
     marginLeft: 5,
-    paddingBottom: 4
+    flexWrap: 'wrap',
+    flex: 1
   }
 });

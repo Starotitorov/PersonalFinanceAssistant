@@ -12,6 +12,7 @@ export default StyleSheet.create({
     color: colors.COLOR_WHITE
   },
   currentDate: {
+    fontSize: 14,
     color: colors.COLOR_WHITE
   },
   periodContainer: {

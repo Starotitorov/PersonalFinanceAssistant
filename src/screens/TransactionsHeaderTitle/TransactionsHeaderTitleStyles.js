@@ -4,7 +4,8 @@ export default StyleSheet.create({
   container: {
     width: '100%',
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    alignItems: 'center'
   },
   accountSelectInput: {
     flexGrow: 2,
