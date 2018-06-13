@@ -35,7 +35,8 @@ export const getPieChartConfig = ({
           valueTextSize: fontSizes.FONT_SIZE_M,
           valueTextColor: processColor('green'),
           sliceSpace: 4,
-          selectionShift: 12
+          selectionShift: 12,
+          drawValues: false
         }
       }]
     },

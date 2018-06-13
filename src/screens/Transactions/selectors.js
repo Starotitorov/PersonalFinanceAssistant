@@ -141,7 +141,7 @@ export const getTransactionsChartData = ({
 
       acc.push({
         label,
-        value: Math.round((sum / totalOutcomeSum) * 100)
+        value: (sum / totalOutcomeSum) * 100
       });
     }, [])
     .value();
