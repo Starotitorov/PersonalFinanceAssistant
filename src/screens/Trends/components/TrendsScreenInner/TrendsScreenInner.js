@@ -1,3 +1,24 @@
+/*
+ * TrendsScreenInner.js
+ *
+ * Copyright (c) 2017 Artsiom Staratsitarau
+ *
+ * This file is a part of PersonalFinanceAssistant.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
 import React from 'react';
 import { View } from 'react-native';
 import { Card } from 'src/components';
@@ -6,7 +27,7 @@ import TrendsHistogram from '../TrendsHistogram';
 import TrendsList from '../TrendsList';
 import TopCategoriesList from '../TopCategoriesList';
 
-const TrendsScreenInner = ({ data, data: { topIncomeCategories, topOutcomeCategories } }) =>
+const TrendsScreenInner = ({ data, data: { topIncomeCategories, topOutcomeCategories }}) =>
   <View>
     <Card containerStyle={ styles.histogramCard }>
       <TrendsHistogram data={ data } />
@@ -23,7 +44,7 @@ const TrendsScreenInner = ({ data, data: { topIncomeCategories, topOutcomeCatego
     {
       topIncomeCategories.length > 0 &&
       <Card titleStyle={ styles.incomeTitle } title="Top income categories">
-        <TopCategoriesList categories={topIncomeCategories}/>
+        <TopCategoriesList categories={ topIncomeCategories } />
       </Card>
     }
   </View>;
