@@ -19,7 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { withProps } from 'recompose';
+import { withProps, withHandlers, compose } from 'recompose';
 import AddAccountScreen from './AddAccountScreen';
 import { createAddAccountViewModel } from '../../components/AccountForm/viewModel';
 
@@ -27,4 +27,9 @@ const withViewModel = withProps(() => ({
   viewModel: createAddAccountViewModel()
 }));
 
-export default withViewModel(AddAccountScreen);
+export default compose(
+  withViewModel,
+  withHandlers({
+    addAccount: ({ addAccount, navigation }) => accountData => addAccount({ navigation, accountData })
+  })
+)(AddAccountScreen);

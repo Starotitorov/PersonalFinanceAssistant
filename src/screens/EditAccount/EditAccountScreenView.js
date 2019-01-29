@@ -19,7 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { lifecycle, withProps, compose } from 'recompose';
+import { lifecycle, withProps, compose, withHandlers } from 'recompose';
 import { createEditAccountViewModel } from '../../components/AccountForm/viewModel';
 import EditAccountScreen from './EditAccountScreen';
 
@@ -37,5 +37,8 @@ const withSelectedAccount = lifecycle({
 
 export default compose(
   withSelectedAccount,
-  withViewModel
+  withViewModel,
+  withHandlers({
+    updateAccount: ({ updateAccount, navigation }) => accountData => updateAccount({ navigation, accountData })
+  })
 )(EditAccountScreen);

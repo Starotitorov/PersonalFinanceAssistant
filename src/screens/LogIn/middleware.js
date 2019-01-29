@@ -19,11 +19,10 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { AsyncStorage } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import { setCurrentUser, setToken, resetCurrentUser } from './actions';
 import { USER_KEY } from 'src/constants/asyncStorage';
 import { JWTStorage } from 'src/utils';
-import { cacheService } from 'src/services';
 
 export const cacheAuthorizationDataToAsyncStorage = () => next => (action) => {
   next(action);
@@ -44,9 +43,6 @@ export const cacheAuthorizationDataToAsyncStorage = () => next => (action) => {
         JSON.stringify(null)
       );
       JWTStorage.removeToken();
-
-      cacheService.clear();
-
       break;
     default:
       break;

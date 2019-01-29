@@ -32,6 +32,7 @@ const LogInForm = ({ handleSubmit, submitting, error, invalid }) =>
     <View style={ styles.fields }>
       <Field
         name="email"
+        keyboardType="email-address"
         props={{
           label: 'Email',
           placeholder: 'Enter email...'
@@ -47,7 +48,7 @@ const LogInForm = ({ handleSubmit, submitting, error, invalid }) =>
         component={ TextInputField } />
     </View>
     <PrimaryButton
-      title="Log in"
+      title="Sign in"
       disabled={ submitting || invalid }
       onPress={ handleSubmit } />
   </View>;

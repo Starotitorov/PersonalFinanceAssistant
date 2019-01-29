@@ -20,7 +20,7 @@
  */
 
 import { createAction } from 'redux-actions';
-import { NavigationActions } from 'react-navigation';
+import { NavigationActions, StackActions } from 'react-navigation';
 import * as api from 'src/api';
 import { alerts } from 'src/utils';
 
@@ -40,13 +40,14 @@ export const setAddTransactionData = ({ accounts, categories }) => dispatch => {
   dispatch(setAccounts(accounts));
 };
 
-export const addTransaction = transactionData => dispatch => api.addTransaction(transactionData)
-  .then(() => {
-    dispatch(NavigationActions.reset({
-      index: 0,
-      actions: [
-        NavigationActions.navigate({ routeName: 'Transactions' })
-      ]
-    }));
-  })
-  .catch(() => alerts.showCanNotPerformOperationAlert());
+export const addTransaction = ({ navigation, transactionData }) => () =>
+  api.addTransaction(transactionData)
+    .then(() => {
+      navigation.dispatch(StackActions.reset({
+        index: 0,
+        actions: [
+          NavigationActions.navigate({ routeName: 'Transactions' })
+        ]
+      }));
+    })
+    .catch(() => alerts.showCanNotPerformOperationAlert());

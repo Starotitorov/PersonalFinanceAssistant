@@ -22,17 +22,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
-import { Card } from 'react-native-elements';
 import IconField from '../IconField';
 import SelectInputField from '../SelectInputField';
 import TextInputField from '../TextInputField';
 import Field from '../FormField';
 import ActionButton from '../ActionButton';
 import styles from './CategoryFormStyles';
+import Card from '../Card';
 
 const CategoryForm = ({ handleSubmit, submitting, invalid, viewModel = {}, submitButtonText }) =>
   <View style={ styles.container }>
-    <Card containerStyle={ styles.fields }>
+    <Card>
       <View style={ styles.row }>
         <Field
           { ...viewModel.icon }

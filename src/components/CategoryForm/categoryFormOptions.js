@@ -28,7 +28,7 @@ export default {
       value: INCOME_CATEGORY
     },
     {
-      label: 'Outcome',
+      label: 'Expense',
       value: OUTCOME_CATEGORY
     }
   ]

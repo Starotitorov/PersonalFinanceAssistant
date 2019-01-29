@@ -20,10 +20,11 @@
  */
 
 import { createAction } from 'redux-actions';
-import { AsyncStorage, Alert } from 'react-native';
+import { Alert } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import * as asyncStorageKeys from 'src/constants/asyncStorage';
-import { NavigationActions } from 'react-navigation';
 import * as api from 'src/api';
+import { navigationService } from '../../services';
 
 export const setCurrentUser = createAction(
   'AUTHORIZATION/SET_CURRENT_USER',
@@ -49,13 +50,7 @@ export const logIn = ({ email, password }) => dispatch => api.signIn(email, pass
   .then(async ({ user, token }) => {
     await dispatch(setAuthorizationData(user, token));
 
-    dispatch(NavigationActions.reset({
-      index: 0,
-      key: null,
-      actions: [
-        NavigationActions.navigate({ routeName: 'Home' })
-      ]
-    }));
+    navigationService.navigateToTransactionsScreen();
   })
   .catch(async response => {
     let error = 'Unknown error';
@@ -72,16 +67,10 @@ export const logInFacebook = data => dispatch => api.logInFacebook(data)
   .then(async ({ user, token }) => {
     await dispatch(setAuthorizationData(user, token));
 
-    dispatch(NavigationActions.reset({
-      index: 0,
-      key: null,
-      actions: [
-        NavigationActions.navigate({ routeName: 'Home' })
-      ]
-    }));
+    navigationService.navigateToTransactionsScreen();
   });
 
-export const getCurrentUser = () => async dispatch => {
+export const getCurrentUser = ({ navigation }) => async dispatch => {
   dispatch(fetchCurrentUserStart());
 
   let user = null;
@@ -99,17 +88,5 @@ export const getCurrentUser = () => async dispatch => {
 
   dispatch(fetchCurrentUserFinish());
 
-  if (!user || !token) {
-    dispatch(NavigationActions.reset({
-      index: 0,
-      key: null,
-      actions: [
-        NavigationActions.navigate({ routeName: 'LogIn' })
-      ]
-    }));
-  }
-};
-
-export const handleNewUser = () => dispatch => {
-  dispatch(NavigationActions.navigate({ routeName: 'SignUp' }));
+  navigation.navigate(!user || !token ? 'Auth' : 'App');
 };

@@ -22,7 +22,6 @@
 import { combineReducers } from 'redux';
 import { reducer as form } from 'redux-form';
 import { reducer as modal } from 'redux-modal';
-import navigation from 'src/screens/AppNavigator/reducer';
 import accountsList from 'src/screens/AccountsList/reducer';
 import editAccount from 'src/screens/EditAccount/reducer';
 import network from 'src/components/HOC/withNetwork/reducer';
@@ -37,7 +36,6 @@ import currency from 'src/screens/Currency/reducer';
 import authorization from 'src/screens/LogIn/reducer';
 
 export default combineReducers({
-  navigation,
   network,
   form,
   authorization,

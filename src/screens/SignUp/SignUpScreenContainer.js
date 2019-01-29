@@ -20,7 +20,7 @@
  */
 
 import { connect } from 'react-redux';
-import { signUp, handleHaveAccount } from './actions';
-import SignUpScreen from './SignUpScreen';
+import { signUp } from './actions';
+import SignUpScreenView from './SignUpScreenView';
 
-export default connect(null, { signUp, handleHaveAccount })(SignUpScreen);
+export default connect(null, { signUp })(SignUpScreenView);

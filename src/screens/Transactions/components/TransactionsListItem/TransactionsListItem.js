@@ -25,6 +25,7 @@ import { Badge } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import styles from './TransactionsListItemStyles';
+import { getSumString } from '../../helpers';
 
 const TransactionsListItem = ({
   isOpen,
@@ -46,7 +47,9 @@ const TransactionsListItem = ({
         </View>
         <View style={ styles.rightText }>
           <Badge value={ transactions.length } />
-          <Text style={ styles.transactionsSum }>{ category.sum.toFixed(2) } { category.currency }</Text>
+          <Text style={ styles.transactionsSum }>
+            { getSumString(category.sum, category.currency) }
+          </Text>
         </View>
       </View>
     </TouchableOpacity>

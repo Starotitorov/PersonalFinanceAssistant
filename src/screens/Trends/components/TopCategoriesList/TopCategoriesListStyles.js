@@ -25,10 +25,12 @@ import { margins } from 'src/styles';
 export default StyleSheet.create({
   listItem: {
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    alignItems: 'flex-end'
   },
   leftPart: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    alignItems: 'flex-end'
   },
   position: {
     marginRight: margins.MARGIN_XS

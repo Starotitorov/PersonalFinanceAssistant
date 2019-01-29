@@ -20,13 +20,25 @@
  */
 
 import { reduxForm } from 'redux-form';
+import moment from 'moment';
 import TransactionForm from './TransactionForm';
 import validate from './validate';
 import { getInitialValues } from './helpers';
 import { TRANSACTION_FORM } from './constants';
+import { withHandlers, compose } from 'recompose';
 
-export default reduxForm({
-  form: TRANSACTION_FORM,
-  initialValues: getInitialValues(),
-  validate
-})(TransactionForm);
+export default compose(
+  withHandlers({
+    onSubmit: ({ onSubmit }) => data =>
+      onSubmit({
+        ...data,
+        value: Number(data.value),
+        date: moment(data.date).startOf('day').toISOString()
+      })
+  }),
+  reduxForm({
+    form: TRANSACTION_FORM,
+    initialValues: getInitialValues(),
+    validate
+  })
+)(TransactionForm);

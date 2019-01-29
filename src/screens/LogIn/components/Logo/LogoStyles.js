@@ -20,6 +20,7 @@
  */
 
 import { StyleSheet } from 'react-native';
+import { fontSizes, margins } from 'src/styles';
 
 export default StyleSheet.create({
   container: {
@@ -27,7 +28,12 @@ export default StyleSheet.create({
     alignItems: 'center'
   },
   image: {
-    width: 120,
-    height: 120
+    width: 100,
+    height: 100,
+    marginBottom: 24
+  },
+  slogan: {
+    marginTop: margins.MARGIN_S,
+    fontSize: fontSizes.FONT_SIZE_M
   }
 });

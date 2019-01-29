@@ -25,8 +25,9 @@ import { removeAccount } from './actions';
 import { RemoveHeaderIcon } from 'src/components';
 
 const withHandleRemove = withHandlers({
-  onPress: ({ navigation: { state: { params: { account: { id }}}}, removeAccount }) => () => {
-    removeAccount(id);
+  onPress: ({ navigation, removeAccount }) => () => {
+    const { state: { params: { account: { id }}}} = navigation;
+    return removeAccount({ navigation, id });
   }
 });
 

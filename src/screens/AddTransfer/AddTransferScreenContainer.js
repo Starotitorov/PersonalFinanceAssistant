@@ -20,7 +20,7 @@
  */
 
 import { connect } from 'react-redux';
-import { compose, lifecycle } from 'recompose';
+import { compose, lifecycle, withHandlers } from 'recompose';
 import { addTransfer, setAccounts } from './actions';
 import { getAddTransferFormOptions } from './selectors';
 import AddTransferScreen from './AddTransferScreen';
@@ -39,5 +39,8 @@ const mapStateToProps = state => ({
 
 export default compose(
   connect(mapStateToProps, { addTransfer, setAccounts }),
-  withSetAddTransferData
+  withSetAddTransferData,
+  withHandlers({
+    addTransfer: ({ addTransfer, navigation }) => transferData => addTransfer({ navigation, transferData })
+  })
 )(AddTransferScreen);

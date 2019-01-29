@@ -20,20 +20,20 @@
  */
 
 import React from 'react';
-import { StackNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 import { DrawerButton } from 'src/components';
 import Currency from '../Currency';
 import getDefaultNavigationOptions from 'src/helpers/getDefaultNavigationOptions';
 
-export default StackNavigator({
+export default createStackNavigator({
   Currency: {
     screen: Currency,
     navigationOptions: ({ navigation }) => ({
       title: 'Exchange rates',
-      headerLeft: <DrawerButton navigation={ navigation } />
+      headerLeft: () => <DrawerButton navigation={ navigation } />
     })
   }
 }, {
   initialRouteName: 'Currency',
-  navigationOptions: getDefaultNavigationOptions()
+  defaultNavigationOptions: getDefaultNavigationOptions()
 });

@@ -26,11 +26,12 @@ import styles from './FacebookLoginBtnStyles';
 
 const FacebookLoginBtn = ({ handleLogin }) =>
   <SocialIcon
-    title="Log In With Facebook"
+    title="Sign in with Facebook"
     button
     type="facebook"
     iconSize={ 18 }
     style={ styles.button }
+    raised={ false }
     onPress={ handleLogin } />;
 
 FacebookLoginBtn.propTypes = {

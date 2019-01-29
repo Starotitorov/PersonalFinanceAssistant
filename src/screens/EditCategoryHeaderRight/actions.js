@@ -19,17 +19,34 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { NavigationActions } from 'react-navigation';
+import { NavigationActions, StackActions } from 'react-navigation';
+import get from 'lodash/get';
 import * as api from 'src/api';
 import { alerts } from 'src/utils';
+import { OUTCOME_CATEGORY } from '../../constants/categoryTypes';
+import {
+  OUTCOME_CATEGORIES_ROUTE_NAME,
+  INCOME_CATEGORIES_ROUTE_NAME
+} from '../CategoryTabs/constants';
 
-export const removeCategory = id => dispatch => api.removeCategory(id)
-  .then(() => {
-    dispatch(NavigationActions.reset({
-      index: 0,
-      actions: [
-        NavigationActions.navigate({ routeName: 'CategoryTabs' })
-      ]
-    }));
-  })
-  .catch(() => alerts.showCanNotPerformOperationAlert());
+export const removeCategory = ({ navigation, id }) => () => {
+  const categoryTypeId = get(navigation, 'state.params.category.categoryTypeId');
+
+  return api.removeCategory(id)
+    .then(() => {
+      navigation.dispatch(StackActions.reset({
+        index: 0,
+        actions: [
+          NavigationActions.navigate({
+            routeName: 'CategoryTabs',
+            action: NavigationActions.navigate({
+              routeName: categoryTypeId === OUTCOME_CATEGORY
+                ? OUTCOME_CATEGORIES_ROUTE_NAME
+                : INCOME_CATEGORIES_ROUTE_NAME
+            })
+          })
+        ]
+      }));
+    })
+    .catch(() => alerts.showCanNotPerformOperationAlert());
+};

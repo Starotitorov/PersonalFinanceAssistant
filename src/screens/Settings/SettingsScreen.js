@@ -21,12 +21,19 @@
 
 import React from 'react';
 import { View, Text } from 'react-native';
-import { List, ListItem, Card } from 'react-native-elements';
+import { NavigationActions } from 'react-navigation';
+import { List, ListItem } from 'react-native-elements';
 import { Gravatar } from 'react-native-gravatar';
+import { Card } from 'src/components';
 import styles from './SettingsScreenStyles';
 
-export default function SettingsScreen({ user, logout, handleChangePassword }) {
+export default function SettingsScreen({ user, logout, navigation }) {
   const userEmail = user ? user.email : '';
+  const handleChangePassword = () => {
+    navigation.dispatch(
+      NavigationActions.navigate({ routeName: 'ChangePassword' })
+    );
+  };
 
   return (
     <View>
@@ -41,10 +48,18 @@ export default function SettingsScreen({ user, logout, handleChangePassword }) {
         <Text style={ styles.userName }>{ userEmail }</Text>
       </Card>
       <List>
-        <ListItem title="Change password" titleStyle={ styles.changePassword } onPress={ handleChangePassword } />
+        <ListItem
+          title="Change password"
+          titleStyle={ styles.changePassword }
+          hideChevron
+          onPress={ handleChangePassword } />
       </List>
       <List>
-        <ListItem titleStyle={ styles.logout } title="Log out" hideChevron onPress={ logout } />
+        <ListItem
+          titleStyle={ styles.logout }
+          title="Sign out"
+          hideChevron
+          onPress={ logout } />
       </List>
     </View>
   );

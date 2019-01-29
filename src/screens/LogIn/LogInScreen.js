@@ -30,12 +30,14 @@ import styles from './LogInScreenStyles';
 const LogInScreen = ({ logIn, logInFacebook, handleNewUser }) =>
   <View style={ styles.container }>
     <Logo style={ styles.logo } />
-    <LogInForm onSubmit={ logIn } />
-    <TouchableOpacity style={ styles.newUserBtn } onPress={ handleNewUser }>
-      <Text style={ styles.newUserLabel }>I am a new user</Text>
-    </TouchableOpacity>
-    <Text style={ styles.or }>or</Text>
-    <FacebookLoginBtn onLoginSuccess={ logInFacebook } />
+    <View style={ styles.content }>
+      <LogInForm onSubmit={ logIn } />
+      <TouchableOpacity style={ styles.newUserBtn } onPress={ handleNewUser }>
+        <Text style={ styles.newUserLabel }>I am a new user</Text>
+      </TouchableOpacity>
+      <Text style={ styles.or }>or</Text>
+      <FacebookLoginBtn onLoginSuccess={ logInFacebook } />
+    </View>
   </View>;
 
 LogInScreen.propTypes = {

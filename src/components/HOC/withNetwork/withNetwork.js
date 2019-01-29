@@ -21,7 +21,7 @@
 
 import { withHandlers, lifecycle, compose } from 'recompose';
 import { connect } from 'react-redux';
-import { NetInfo } from 'react-native';
+import NetInfo from '@react-native-community/netinfo';
 import { setConnectionInfo } from './actions';
 
 const withHandleConnectionChange = withHandlers({
@@ -30,19 +30,17 @@ const withHandleConnectionChange = withHandlers({
 
 const withLifecycle = lifecycle({
   componentDidMount() {
-    NetInfo.getConnectionInfo()
+    NetInfo.fetch()
       .then(this.props.handleConnectionChange);
 
-    NetInfo.addEventListener(
-      'connectionChange',
+    this.unsubscribe = NetInfo.addEventListener(
       this.props.handleConnectionChange
     );
   },
   componentWillUnmount() {
-    NetInfo.removeEventListener(
-      'connectionChange',
-      this.props.handleConnectionChange
-    );
+    if (typeof this.unsubscribe === 'function') {
+      this.unsubscribe();
+    }
   }
 });
 

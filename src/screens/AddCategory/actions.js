@@ -19,17 +19,26 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { NavigationActions } from 'react-navigation';
+import { NavigationActions, StackActions } from 'react-navigation';
+import get from 'lodash/get';
 import * as api from 'src/api';
 import { alerts } from 'src/utils';
+import { INCOME_CATEGORIES_ROUTE_NAME } from '../CategoryTabs/constants';
 
-export const addCategory = categoryData => dispatch => api.addCategory(categoryData)
-  .then(() => {
-    dispatch(NavigationActions.reset({
-      index: 0,
-      actions: [
-        NavigationActions.navigate({ routeName: 'CategoryTabs' })
-      ]
-    }));
-  })
-  .catch(() => alerts.showCanNotPerformOperationAlert());
+export const addCategory = ({ categoryData, navigation }) => () => {
+  const activeTab = get(navigation, 'state.params.activeTab', INCOME_CATEGORIES_ROUTE_NAME);
+
+  return api.addCategory(categoryData)
+    .then(() => {
+      navigation.dispatch(StackActions.reset({
+        index: 0,
+        actions: [
+          NavigationActions.navigate({
+            routeName: 'CategoryTabs',
+            action: NavigationActions.navigate({ routeName: activeTab })
+          })
+        ]
+      }));
+    })
+    .catch(() => alerts.showCanNotPerformOperationAlert());
+};

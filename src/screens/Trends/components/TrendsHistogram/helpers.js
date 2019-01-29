@@ -49,7 +49,7 @@ export const getHistogramConfig = ({
       }
     }, {
       values: outcome,
-      label: 'Outcome',
+      label: 'Expense',
       config: {
         drawValues: false,
         colors: [processColor('blue')]

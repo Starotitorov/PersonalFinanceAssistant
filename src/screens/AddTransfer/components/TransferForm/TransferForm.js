@@ -22,13 +22,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
-import { Card } from 'react-native-elements';
 import {
   TextInputField as TextInput,
   SelectInputField as SelectInput,
   DatePickerField,
   ActionButton,
   Field,
+  Card,
   CalculatorInputField
 } from 'src/components';
 import styles from './TransferFormStyles';
@@ -42,7 +42,7 @@ const TransferForm = ({
   submitting
 }) =>
   <View style={ styles.container }>
-    <Card containerStyle={ styles.fields }>
+    <Card>
       <Field
         { ...viewModel.value }
         component={ CalculatorInputField } />

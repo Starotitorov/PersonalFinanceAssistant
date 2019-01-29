@@ -30,6 +30,7 @@ const PrimaryButton = ({ disabled, onPress, title, containerViewStyle }) =>
     containerViewStyle={ [styles.buttonContainer, containerViewStyle] }
     buttonStyle={ styles.button }
     disabledStyle={ styles.disabledStyle }
+    disabledTitleStyle={ styles.disabledTitleStyle }
     title={ title }
     disabled={ disabled }
     onPress={ onPress } />;

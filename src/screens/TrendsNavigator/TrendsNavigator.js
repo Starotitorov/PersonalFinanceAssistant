@@ -20,22 +20,22 @@
  */
 
 import React from 'react';
-import { StackNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 import { DrawerButton } from 'src/components';
 import getDefaultNavigationOptions from 'src/helpers/getDefaultNavigationOptions';
 import Trends from '../Trends';
 import TrendsHeaderRight from '../TrendsHeaderRight';
 
-export default StackNavigator({
+export default createStackNavigator({
   Trends: {
     screen: Trends,
     navigationOptions: ({ navigation }) => ({
       title: 'Trends',
-      headerLeft: <DrawerButton navigation={ navigation } />,
-      headerRight: <TrendsHeaderRight />
+      headerLeft: () => <DrawerButton navigation={ navigation } />,
+      headerRight: () => <TrendsHeaderRight />
     })
   }
 }, {
   initialRouteName: 'Trends',
-  navigationOptions: getDefaultNavigationOptions()
+  defaultNavigationOptions: getDefaultNavigationOptions()
 });

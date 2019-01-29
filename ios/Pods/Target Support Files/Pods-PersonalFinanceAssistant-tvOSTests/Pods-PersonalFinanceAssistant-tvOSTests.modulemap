@@ -1,6 +1,0 @@
-framework module Pods_PersonalFinanceAssistant_tvOSTests {
-  umbrella header "Pods-PersonalFinanceAssistant-tvOSTests-umbrella.h"
-
-  export *
-  module * { export * }
-}

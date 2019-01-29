@@ -24,8 +24,8 @@ import { getAddCategoryFormInitialValues } from './selectors';
 import { addCategory } from './actions';
 import AddCategoryScreenView from './AddCategoryScreenView';
 
-const mapStateToProps = () => ({
-  initialValues: getAddCategoryFormInitialValues()
+const mapStateToProps = (state, ownProps) => ({
+  initialValues: getAddCategoryFormInitialValues(state, ownProps)
 });
 
 export default connect(mapStateToProps, { addCategory })(AddCategoryScreenView);

@@ -26,4 +26,4 @@ import Application from './src';
 // Disable warnings
 console.disableYellowBox = true;
 
-AppRegistry.registerComponent('PersonalFinanceAssistant', () => Application);
+AppRegistry.registerComponent('MoneyTracker', () => Application);

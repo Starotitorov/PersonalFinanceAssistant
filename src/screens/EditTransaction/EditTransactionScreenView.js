@@ -19,7 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { lifecycle, withProps, compose } from 'recompose';
+import { lifecycle, withProps, compose, withHandlers } from 'recompose';
 import { createEditTransactionViewModel } from '../../components/TransactionForm/viewModel';
 import EditTransactionScreen from './EditTransactionScreen';
 
@@ -37,5 +37,9 @@ const withEditTransactionData = lifecycle({
 
 export default compose(
   withEditTransactionData,
-  withViewModel
+  withViewModel,
+  withHandlers({
+    updateTransaction: ({ updateTransaction, navigation }) => transactionData =>
+      updateTransaction({ navigation, transactionData })
+  })
 )(EditTransactionScreen);

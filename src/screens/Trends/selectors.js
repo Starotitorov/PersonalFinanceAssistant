@@ -19,9 +19,8 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { chain, sumBy, findIndex, times, constant } from 'lodash';
+import { chain, sumBy, findIndex, times, constant, get } from 'lodash';
 import moment from 'moment';
-import { get } from 'lodash';
 import * as categoryTypes from 'src/constants/categoryTypes';
 import filterTransactionsByCategoryType from 'src/helpers/filterTransactionsByCategoryType';
 import getTransactionsList from 'src/helpers/getTransactionsList';
@@ -29,8 +28,8 @@ import { getTimeIntervals } from './helpers';
 import { DEFAULT_BASE_CURRENCY } from 'src/constants/currency';
 
 const DATE_FORMAT = 'YYYY-MM-DD';
-const getConvertedTransactionValue = ({ value, date, account: { currency }} = {}, exchangeRates) =>
-  value * get(exchangeRates, `[${currency}_${DEFAULT_BASE_CURRENCY}].val[${date.format(DATE_FORMAT)}]`, 1);
+const getConvertedTransactionValue = ({ value, account: { currency }} = {}, exchangeRates) =>
+  value * get(exchangeRates, `[${currency}_${DEFAULT_BASE_CURRENCY}].val[${moment().format(DATE_FORMAT)}]`, 1);
 
 const getIntervalNames = intervals =>
   intervals.map(([leftBorder]) => moment(leftBorder).format('MMMM'));
@@ -43,7 +42,12 @@ const getTransactionsStatisticsByIntervals = (transactions, intervals, exchangeR
         return acc;
       }
 
-      const totalSum = Math.abs(sumBy(transactions, transaction => getConvertedTransactionValue(transaction, exchangeRates)));
+      const totalSum = Math.abs(
+        sumBy(
+          transactions,
+          transaction => getConvertedTransactionValue(transaction, exchangeRates)
+        )
+      );
 
       const newArray = [...acc];
 
@@ -57,7 +61,12 @@ export const getTopPopularCategories = (transactions, exchangeRates, count) =>
   chain(transactions)
     .groupBy('categoryId')
     .reduce((acc, transactions) => {
-      const totalSum = Math.abs(sumBy(transactions, transaction => getConvertedTransactionValue(transaction, exchangeRates)));
+      const totalSum = Math.abs(
+        sumBy(
+          transactions,
+          transaction => getConvertedTransactionValue(transaction, exchangeRates)
+        )
+      );
       const { id, name, icon } = transactions[0].category;
 
       return [...acc, { id, name, icon, sum: totalSum, currency: DEFAULT_BASE_CURRENCY }];

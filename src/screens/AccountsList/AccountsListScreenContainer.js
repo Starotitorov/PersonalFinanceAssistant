@@ -20,7 +20,8 @@
  */
 
 import { connect } from 'react-redux';
-import { compose, lifecycle } from 'recompose';
+import { NavigationActions } from 'react-navigation';
+import { compose, lifecycle, withHandlers } from 'recompose';
 import {
   getAllAccounts,
   isAccountsListDataFetching,
@@ -59,5 +60,13 @@ export default compose(
     refreshAccountsListData
   }),
   withAccountsListData,
-  withLoadingIndicator
+  withLoadingIndicator,
+  withHandlers({
+    addAccount: ({ navigation }) => () => {
+      navigation.dispatch(NavigationActions.navigate({ routeName: 'AddAccount' }));
+    },
+    editAccount: ({ navigation, editAccount }) => id => {
+      editAccount({ navigation, id });
+    }
+  })
 )(AccountsListScreen);

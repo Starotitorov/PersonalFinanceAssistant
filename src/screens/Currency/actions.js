@@ -21,7 +21,6 @@
 
 import { createAction } from 'redux-actions';
 import * as api from 'src/api';
-import { USD, EUR, DEFAULT_BASE_CURRENCY } from 'src/constants/currency';
 import { getRequestQueryParameter } from './helpers';
 
 export const fetchExchangeRatesStart = createAction('CURRENCY/FETCH_EXCHANGE_RATES_START');

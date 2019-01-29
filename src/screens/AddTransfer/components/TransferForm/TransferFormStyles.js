@@ -28,10 +28,6 @@ export default StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'stretch'
   },
-  fields: {
-    marginLeft: 0,
-    marginRight: 0
-  },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',

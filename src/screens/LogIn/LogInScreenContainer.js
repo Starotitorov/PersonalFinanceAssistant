@@ -20,10 +20,10 @@
  */
 
 import { connect } from 'react-redux';
-import { logIn, logInFacebook, handleNewUser } from './actions';
-import LogInScreen from './LogInScreen';
+import { logIn, logInFacebook } from './actions';
+import LogInScreenView from './LogInScreenView';
 
 export default connect(
   null,
-  { logIn, logInFacebook, handleNewUser }
-)(LogInScreen);
+  { logIn, logInFacebook }
+)(LogInScreenView);

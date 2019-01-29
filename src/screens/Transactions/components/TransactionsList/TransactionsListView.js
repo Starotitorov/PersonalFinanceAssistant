@@ -27,7 +27,9 @@ import TransactionsList from './TransactionsList';
 
 const withRenderListItem = withHandlers({
   renderItem: ({ onSelectTransaction }) => ({ item }) =>
-    <TransactionsListItem data={ item } onSelectTransaction={ onSelectTransaction } />
+    <TransactionsListItem
+      data={ item }
+      onSelectTransaction={ onSelectTransaction } />
 });
 
 export default withRenderListItem(withEmptyListComponent(TransactionsList, 'No transactions'));

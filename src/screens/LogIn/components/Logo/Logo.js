@@ -22,12 +22,14 @@
 import React from 'react';
 import { Text } from 'react-native-elements';
 import { Image, View, ViewPropTypes } from 'react-native';
+import config from 'src/config';
 import styles from './LogoStyles';
 
 const Logo = ({ style }) =>
   <View style={ [styles.container, style] }>
     <Image style={ styles.image } source={ require('../../../../../assets/money.png') } />
-    <Text h4>Personal Finance Assistant</Text>
+    <Text h4>{config.appName}</Text>
+    <Text style={ styles.slogan }>{config.appSlogan}</Text>
   </View>;
 
 Logo.propTypes = {

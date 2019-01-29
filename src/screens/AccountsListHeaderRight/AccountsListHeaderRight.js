@@ -21,18 +21,26 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
+import { withHandlers, compose } from 'recompose';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { TouchableOpacity } from 'react-native';
 import { handleAddTransfer } from './actions';
 import { colors } from 'src/styles';
 import styles from './AccountsListHeaderRightStyles';
 
-const AccountsListHeaderRight = ({ handleAddTransfer }) =>
-  <TouchableOpacity onPress={ handleAddTransfer }>
+const AccountsListHeaderRight = ({ addTransfer }) =>
+  <TouchableOpacity onPress={ addTransfer }>
     <Icon
       style={ styles.icon }
       color={ colors.COLOR_WHITE }
       name="compare-arrows" />
   </TouchableOpacity>;
 
-export default connect(null, { handleAddTransfer })(AccountsListHeaderRight);
+export default compose(
+  connect(null, { handleAddTransfer }),
+  withHandlers({
+    addTransfer: ({ handleAddTransfer, navigation }) => () => {
+      handleAddTransfer({ navigation });
+    }
+  })
+)(AccountsListHeaderRight);

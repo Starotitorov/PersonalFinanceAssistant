@@ -1,7 +1,7 @@
 /*
  * index.js
  *
- * Copyright (c) 2017 Artsiom Staratsitarau
+ * Copyright (c) 2020 Artsiom Staratsitarau
  *
  * This file is a part of PersonalFinanceAssistant.
  *
@@ -19,18 +19,18 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import accountsMocks from './api/endpoints/accounts';
-import authorizationMocks from './api/endpoints/authorization';
-import categoriesMocks from './api/endpoints/categories';
-import transfersMocks from './api/endpoints/transfers';
-import transactionsMocks from './api/endpoints/transactions';
-import fixerMocks from './third-party/fixer';
+import FetchMock from 'react-native-fetch-mock';
+import config from '../src/config';
 
-export default {
-  ...accountsMocks,
-  ...authorizationMocks,
-  ...categoriesMocks,
-  ...transfersMocks,
-  ...transactionsMocks,
-  ...fixerMocks
-};
+export function mockAPI(globalFetch) {
+  return new FetchMock(
+    require('./mocks'),
+    {
+      delay: 500,
+      fetch: globalFetch,
+      exclude: [
+        `${config.currencyConverterApiUrl}(.*)`,
+      ],
+    }
+  ).fetch;
+}

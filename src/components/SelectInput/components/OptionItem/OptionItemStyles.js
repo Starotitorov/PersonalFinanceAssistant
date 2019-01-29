@@ -24,6 +24,7 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   itemWrapperStyle: {
     flex: 1,
+    width: '100%',
     flexDirection: 'row',
     alignItems: 'center'
   },

@@ -20,20 +20,23 @@
  */
 
 import { Platform } from 'react-native';
+import { API_URL, CURRENCY_CONVERTER_API_URL } from 'react-native-dotenv';
 
-const facebookLoginBehaviour = Platform.OS === 'android' ? 'web_only' : 'web';
+const facebookLoginBehaviour = Platform.OS === 'android' ? 'web_only' : 'browser';
 
 const DEVELOPERS = [
   {
-    email: 'starotitorov1997@gmail.com',
-    name: 'Artem Starotitorov'
+    email: 'artem.starotitorov@gmail.com',
+    name: 'Artsiom Staratsitarau'
   }
 ];
 
 export default {
-  apiUrl: 'https://personalfinanceassistant.herokuapp.com',
-  currencyConverterApiUrl: 'https://financeassistantconverter.herokuapp.com',
-  // apiUrl: 'http://localhost:8080',
+  appName: 'Money Tracker',
+  appDescription: 'application for tracking expenses and incomes.',
+  appSlogan: 'Personal finance tracking app',
+  apiUrl: API_URL,
+  currencyConverterApiUrl: CURRENCY_CONVERTER_API_URL,
   developers: DEVELOPERS,
   facebookLoginBehaviour
 };

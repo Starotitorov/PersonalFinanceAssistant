@@ -19,34 +19,29 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { TabNavigator, TabBarTop } from 'react-navigation';
-import OutcomeCategoriesList from '../OutcomeCategoriesList';
-import IncomeCategoriesList from '../IncomeCategoriesList';
-import { colors } from 'src/styles';
+import React, { Component } from 'react';
+import { StyleSheet } from 'react-native';
+import CategoriesTabNavigator from './CategoriesTabNavigator';
+import CategoryTabs from './components/CategoryTabs';
+import AddCategoryButton from './components/AddCategoryButton';
 
-export default TabNavigator({
-  IncomeCategoriesList: {
-    screen: IncomeCategoriesList,
-    navigationOptions: {
-      tabBarLabel: 'Income'
-    }
-  },
-  OutcomeCategoriesList: {
-    screen: OutcomeCategoriesList,
-    navigationOptions: {
-      tabBarLabel: 'Outcome'
-    }
-  }
-}, {
-  initialRouteName: 'IncomeCategoriesList',
-  swipeEnabled: true,
-  lazy: false,
-  animationEnabled: true,
-  tabBarPosition: 'top',
-  tabBarComponent: TabBarTop,
-  tabBarOptions: {
-    style: {
-      backgroundColor: colors.COLOR_PRIMARY
-    }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
   }
 });
+
+export default class CategoryTabsScreen extends Component {
+  static router = CategoriesTabNavigator.router;
+
+  render() {
+    const { navigation } = this.props;
+
+    return (
+      <CategoryTabs style={ styles.container }>
+        <CategoriesTabNavigator navigation={ navigation } />
+        <AddCategoryButton />
+      </CategoryTabs>
+    );
+  }
+}

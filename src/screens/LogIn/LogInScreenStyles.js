@@ -24,7 +24,16 @@ import { margins } from 'src/styles';
 
 export default StyleSheet.create({
   container: {
+    maxHeight: 600,
+    marginVertical: margins.MARGIN_XXL,
+    marginLeft: margins.MARGIN_L,
+    marginRight: margins.MARGIN_L,
     flex: 1,
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
+  content: {
+    width: '100%',
     justifyContent: 'center',
     alignItems: 'center'
   },
@@ -39,7 +48,6 @@ export default StyleSheet.create({
     marginBottom: 12
   },
   logo: {
-    alignSelf: 'center',
-    marginBottom: margins.MARGIN_XL
+    alignSelf: 'center'
   }
 });

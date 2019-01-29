@@ -20,7 +20,7 @@
  */
 
 import { connect } from 'react-redux';
-import { compose, lifecycle } from 'recompose';
+import { compose, lifecycle, withHandlers } from 'recompose';
 import {
   changeDateForward,
   changeDateBack,
@@ -61,5 +61,13 @@ export default compose(
     resetTransactionsListData,
     refreshTransactionsListData
   }),
-  withTransactionsListData
+  withTransactionsListData,
+  withHandlers({
+    selectTransaction: ({ selectTransaction, navigation }) => id => {
+      selectTransaction({ navigation, id });
+    },
+    addTransaction: ({ addTransaction, navigation }) => () => {
+      addTransaction({ navigation });
+    }
+  })
 )(TransactionsScreen);

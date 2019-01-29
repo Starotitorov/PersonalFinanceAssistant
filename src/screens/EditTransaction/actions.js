@@ -20,7 +20,7 @@
  */
 
 import { createAction } from 'redux-actions';
-import { NavigationActions } from 'react-navigation';
+import { NavigationActions, StackActions } from 'react-navigation';
 import * as api from 'src/api';
 import { alerts } from 'src/utils';
 
@@ -29,7 +29,7 @@ export const setTransaction = createAction(
   transaction => ({ transaction })
 );
 
-export const updateTransaction = transactionData => (dispatch, getState) => {
+export const updateTransaction = ({ navigation, transactionData }) => (dispatch, getState) => {
   const { editTransaction: { transaction: { id }}} = getState();
   const transaction = {
     ...transactionData,
@@ -38,7 +38,7 @@ export const updateTransaction = transactionData => (dispatch, getState) => {
 
   return api.updateTransaction(id, transaction)
     .then(() => {
-      dispatch(NavigationActions.reset({
+      navigation.dispatch(StackActions.reset({
         index: 0,
         actions: [
           NavigationActions.navigate({ routeName: 'Transactions' })

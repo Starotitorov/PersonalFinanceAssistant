@@ -19,7 +19,9 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { API_URL } from '../config';
+import config from '../../../src/config';
+
+const API_URL = config.apiUrl;
 
 export default {
   [`GET ${API_URL}/categories`]: ({ method, url, params, urlparams, headers }) => {
@@ -27,24 +29,21 @@ export default {
       categories: [
         {
           categoryTypeId: 0,
-          icon: 'cash',
-          id: 0,
+          icon: 'credit-card',
+          id: 1,
           name: 'Salary',
-          userId: 0
         },
         {
           categoryTypeId: 1,
           icon: 'food',
-          id: 1,
+          id: 2,
           name: 'Food',
-          userId: 0
         },
         {
           categoryTypeId: 1,
-          icon: 'cat',
-          id: 2,
-          name: 'C.A.T.',
-          userId: 0
+          icon: 'dumbbell',
+          id: 3,
+          name: 'Sport',
         }
       ]
     };
@@ -52,11 +51,10 @@ export default {
   [`GET ${API_URL}/categories/{id}`]: ({ method, url, params, urlparams, headers }) => {
     return {
       category: {
-        categoryTypeId: 0,
-        icon: 'cat',
+        categoryTypeId: 1,
+        icon: 'food',
         id: 2,
-        name: 'C.A.T.',
-        userId: 0
+        name: 'Food',
       }
     };
   },
@@ -65,10 +63,10 @@ export default {
 
     return {
       category: {
-        id: 10001,
+        id: 1000,
         icon,
         name,
-        categoryTypeId
+        categoryTypeId,
       }
     };
   },
@@ -81,7 +79,7 @@ export default {
         id,
         icon,
         name,
-        categoryTypeId
+        categoryTypeId,
       }
     };
   },

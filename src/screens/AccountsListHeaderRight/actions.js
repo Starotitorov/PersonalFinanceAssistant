@@ -22,8 +22,12 @@
 import { NavigationActions } from 'react-navigation';
 import { getAllAccounts } from '../AccountsList/selectors';
 
-export const handleAddTransfer = () => (dispatch, getState) => {
+export const handleAddTransfer = ({ navigation }) => (dispatch, getState) => {
   const accounts = getAllAccounts(getState());
 
-  dispatch(NavigationActions.navigate({ routeName: 'AddTransfer', params: { accounts }}));
+  navigation.dispatch(
+    NavigationActions.navigate({
+      routeName: 'AddTransfer', params: { accounts }
+    })
+  );
 };

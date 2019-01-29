@@ -33,18 +33,6 @@ import {
   isTransactionsListDataRefreshing
 } from './selectors';
 
-export const changePeriodView = periodView => (dispatch, getState) => {
-  const refreshing = isTransactionsListDataRefreshing(getState());
-
-  if (refreshing) {
-    return;
-  }
-
-  dispatch(setPeriodView(periodView));
-
-  dispatch(fetchTransactions());
-};
-
 export const setPeriodView = createAction(
   'TRANSACTIONS_LIST/SET_PERIOD_VIEW',
   periodType => ({ periodType })
@@ -55,34 +43,12 @@ export const changeCurrentDate = createAction(
   currentDate => ({ currentDate })
 );
 
+export const setSelectedAccount = createAction(
+  'TRANSACTIONS_LIST/SET_SELECTED_ACCOUNT',
+  accountId => ({ accountId })
+);
+
 export const resetTransactionsListData = createAction('TRANSACTIONS_LIST/RESET_TRANSACTIONS_LIST_DATA');
-
-export const changeDate = isChangeForward => (dispatch, getState) => {
-  const refreshing = isTransactionsListDataRefreshing(getState());
-
-  if (refreshing) {
-    return;
-  }
-
-  const { transactionsList: { currentDate, periodType }} = getState();
-
-  const periodModificator = periodType;
-
-  const timeModificator = isChangeForward ? 1 : -1;
-  const newDate = currentDate.clone().add(timeModificator, periodModificator);
-
-  dispatch(changeCurrentDate(newDate));
-
-  dispatch(fetchTransactions());
-};
-
-export const changeDateForward = () => dispatch => {
-  dispatch(changeDate(true));
-};
-
-export const changeDateBack = () => dispatch => {
-  dispatch(changeDate());
-};
 
 export const setTransactions = createAction(
   'TRANSACTIONS_LIST/SET_TRANSACTIONS',
@@ -112,23 +78,29 @@ export const fetchTransactionsFailure = createAction('TRANSACTIONS_LIST/FETCH_TR
 
 export const resetTransactions = createAction('TRANSACTIONS_LIST/RESET_TRANSACTIONS');
 
-export const fetchTransactionsRequest = () => (dispatch, getState) => {
+export const fetchTransactionsRequest = () => async (dispatch, getState) => {
   const state = getState();
   const currentDate = getCurrentDate(state);
   const periodType = getCurrentPeriodType(state);
   const { fromDate, toDate } = getTimeRange(state);
   const accountId = getSelectedAccountId(state);
 
-  return api.fetchTransactionsOnce({ accountId, fromDate, toDate })
-    .then(({ transactions }) => {
-      dispatch(setPeriodView(periodType));
+  try {
+    let transactions = [];
+    if (accountId && fromDate && toDate) {
+      ({ transactions } = await api.fetchTransactionsOnce({ accountId, fromDate, toDate }));
+    }
 
-      dispatch(changeCurrentDate(currentDate));
+    dispatch(setPeriodView(periodType));
 
-      dispatch(setSelectedAccount(accountId));
+    dispatch(changeCurrentDate(currentDate));
 
-      dispatch(setTransactions(transactions));
-    });
+    dispatch(setSelectedAccount(accountId));
+
+    dispatch(setTransactions(transactions));
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 export const fetchTransactions = () => async dispatch => {
@@ -147,6 +119,45 @@ export const fetchTransactions = () => async dispatch => {
   }
 };
 
+export const changePeriodView = periodView => (dispatch, getState) => {
+  const refreshing = isTransactionsListDataRefreshing(getState());
+
+  if (refreshing) {
+    return;
+  }
+
+  dispatch(setPeriodView(periodView));
+
+  dispatch(fetchTransactions());
+};
+
+export const changeDate = isChangeForward => (dispatch, getState) => {
+  const refreshing = isTransactionsListDataRefreshing(getState());
+
+  if (refreshing) {
+    return;
+  }
+
+  const { transactionsList: { currentDate, periodType }} = getState();
+
+  const periodModificator = periodType;
+
+  const timeModificator = isChangeForward ? 1 : -1;
+  const newDate = currentDate.clone().add(timeModificator, periodModificator);
+
+  dispatch(changeCurrentDate(newDate));
+
+  dispatch(fetchTransactions());
+};
+
+export const changeDateForward = () => dispatch => {
+  dispatch(changeDate(true));
+};
+
+export const changeDateBack = () => dispatch => {
+  dispatch(changeDate());
+};
+
 const fetchMainData = () => dispatch =>
   Promise.all([
     api.fetchAccounts(),
@@ -161,11 +172,11 @@ const fetchMainData = () => dispatch =>
       dispatch(setCategories(categories));
     });
 
-const fetchTransactionsListDataRequest = () => dispatch =>
-  Promise.all([
-    dispatch(fetchMainData()),
-    dispatch(fetchTransactions())
-  ]);
+const fetchTransactionsListDataRequest = () => async dispatch => {
+  await dispatch(fetchMainData());
+
+  await dispatch(fetchTransactions());
+};
 
 export const fetchTransactionsListData = () => async dispatch => {
   dispatch(fetchTransactionsListDataStart());
@@ -183,21 +194,15 @@ export const refreshTransactionsListData = () => async dispatch => {
   dispatch(refreshTransactionsListDataStart());
 
   try {
-    await Promise.all([
-      dispatch(fetchMainData()),
-      dispatch(fetchTransactionsRequest())
-    ]);
+    await dispatch(fetchMainData());
+
+    await dispatch(fetchTransactionsRequest());
 
     dispatch(refreshTransactionsListDataSuccess());
   } catch (e) {
     dispatch(refreshTransactionsListDataFailure(e));
   }
 };
-
-export const setSelectedAccount = createAction(
-  'TRANSACTIONS_LIST/SET_SELECTED_ACCOUNT',
-  accountId => ({ accountId })
-);
 
 export const changeAccount = accountId => (dispatch, getState) => {
   const refreshing = isTransactionsListDataRefreshing(getState());
@@ -222,10 +227,10 @@ export const switchViewType = () => (dispatch, getState) => {
   dispatch(setViewType(viewType === LIST ? CHART : LIST));
 };
 
-export const selectTransaction = id => (dispatch, getState) => {
+export const selectTransaction = ({ navigation, id }) => (dispatch, getState) => {
   const { transactionsList: { transactions: { byId }}} = getState();
 
-  dispatch(NavigationActions.navigate({
+  navigation.dispatch(NavigationActions.navigate({
     routeName: 'EditTransaction',
     params: {
       transaction: byId[id]
@@ -233,10 +238,10 @@ export const selectTransaction = id => (dispatch, getState) => {
   }));
 };
 
-export const addTransaction = () => (dispatch, getState) => {
+export const addTransaction = ({ navigation }) => (dispatch, getState) => {
   const state = getState();
 
-  dispatch(NavigationActions.navigate({
+  navigation.dispatch(NavigationActions.navigate({
     routeName: 'AddTransaction',
     params: {
       accounts: getAllAccounts(state),

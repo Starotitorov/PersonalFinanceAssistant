@@ -41,6 +41,7 @@ export default StyleSheet.create({
     marginLeft: 0
   },
   buttonInner: {
+    borderRadius: 5,
     paddingTop: 8,
     paddingBottom: 8
   }

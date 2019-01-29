@@ -21,7 +21,7 @@
 
 import React, { Component } from 'react';
 import { List } from 'react-native-elements';
-import { RefreshControl, FlatList } from 'react-native';
+import { FlatList } from 'react-native';
 import { withEmptyListComponent } from 'src/components';
 import AccountListItem from '../AccountListItem';
 

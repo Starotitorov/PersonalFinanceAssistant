@@ -21,15 +21,17 @@
 
 import { StyleSheet } from 'react-native';
 import { Card } from 'react-native-elements';
-import { defaultProps } from 'recompose';
+import { mapProps } from 'recompose';
 
 const styles = StyleSheet.create({
   containerStyle: {
+    marginTop: 20,
     marginRight: 0,
     marginLeft: 0
   }
 });
 
-export default defaultProps({
-  containerStyle: styles.containerStyle
-})(Card);
+export default mapProps(({ containerStyle, ...props }) => ({
+  ...props,
+  containerStyle: StyleSheet.flatten([styles.containerStyle, containerStyle])
+}))(Card);

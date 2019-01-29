@@ -20,20 +20,20 @@
  */
 
 import React from 'react';
-import { StackNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 import { DrawerButton } from 'src/components';
 import About from '../About';
 import getDefaultNavigationOptions from 'src/helpers/getDefaultNavigationOptions';
 
-export default StackNavigator({
+export default createStackNavigator({
   About: {
     screen: About,
     navigationOptions: ({ navigation }) => ({
       title: 'About',
-      headerLeft: <DrawerButton navigation={ navigation } />
+      headerLeft: () => <DrawerButton navigation={ navigation } />
     })
   }
 }, {
   initialRouteName: 'About',
-  navigationOptions: getDefaultNavigationOptions()
+  defaultNavigationOptions: getDefaultNavigationOptions()
 });

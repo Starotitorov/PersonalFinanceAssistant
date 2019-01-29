@@ -67,14 +67,10 @@ export const refreshAccountsListData = () => async dispatch => {
   }
 };
 
-export const addAccount = id => dispatch => {
-  dispatch(NavigationActions.navigate({ routeName: 'AddAccount' }));
-};
-
-export const editAccount = id => (dispatch, getState) => {
+export const editAccount = ({ id, navigation }) => (dispatch, getState) => {
   const { accountsList: { accounts: { byId }}} = getState();
 
-  dispatch(NavigationActions.navigate({
+  navigation.dispatch(NavigationActions.navigate({
     routeName: 'EditAccount',
     params: {
       account: byId[id]
