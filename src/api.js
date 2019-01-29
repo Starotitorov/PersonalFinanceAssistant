@@ -19,10 +19,10 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import moment from 'moment';
 import config from './config';
 import { JWTStorage } from 'src/utils';
 import { networkService } from 'src/services';
+import { formatDate } from './utils/dateUtils';
 
 const { get, post, put, del, createOnceRequest } = networkService;
 const API_URL = config.apiUrl;
@@ -167,8 +167,8 @@ export const fetchTransactions = async ({ accountId, fromDate, toDate }) => get(
   },
   {
     accountId,
-    fromDate: moment(fromDate),
-    toDate: moment(toDate)
+    fromDate: formatDate(fromDate),
+    toDate: formatDate(toDate)
   }
 );
 

@@ -29,7 +29,8 @@ const InformationModal = ({ handleHide }) =>
     onCancel={ handleHide }>
     <Text>
       The result is shown in { DEFAULT_BASE_CURRENCY }.
-      Transactions values were converted to { DEFAULT_BASE_CURRENCY } using exchange rates received from free.currencyconverterapi.com.
+      Transactions values were converted to { DEFAULT_BASE_CURRENCY } using
+      exchange rates received from free.currencyconverterapi.com.
     </Text>
   </MaterialDialog>;
 

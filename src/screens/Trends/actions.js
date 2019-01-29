@@ -62,8 +62,8 @@ export const fetchTrendsData = () => (dispatch, getState) => {
       if (transactions.length > 0) {
         const rates = await api.fetchExchangeRates({
           q: getRequestQueryParameter(),
-          date: moment(transactions[0].date).format(DATE_FORMAT),
-          endDate: moment(transactions[transactions.length - 1].date).format(DATE_FORMAT)
+          date: moment(transactions[transactions.length - 1].date).format(DATE_FORMAT),
+          endDate: moment(transactions[0].date).format(DATE_FORMAT)
         });
 
         dispatch(setExchangeRates(rates));

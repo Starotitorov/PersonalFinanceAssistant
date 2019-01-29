@@ -21,7 +21,7 @@
 
 import { StyleSheet } from 'react-native';
 import { Card } from 'react-native-elements';
-import { defaultProps } from 'recompose';
+import { mapProps } from 'recompose';
 
 const styles = StyleSheet.create({
   containerStyle: {
@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
   }
 });
 
-export default defaultProps({
-  containerStyle: styles.containerStyle
-})(Card);
+export default mapProps(({ containerStyle, ...props }) => ({
+  ...props,
+  containerStyle: StyleSheet.flatten([styles.containerStyle, containerStyle])
+}))(Card);

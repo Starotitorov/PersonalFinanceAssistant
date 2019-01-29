@@ -43,7 +43,7 @@ const TrendsScreenInner = ({ data, data: { topIncomeCategories, topOutcomeCatego
     }
     {
       topIncomeCategories.length > 0 &&
-      <Card titleStyle={ styles.incomeTitle } title="Top income categories">
+      <Card containerStyle={ styles.incomeCard } titleStyle={ styles.incomeTitle } title="Top income categories">
         <TopCategoriesList categories={ topIncomeCategories } />
       </Card>
     }

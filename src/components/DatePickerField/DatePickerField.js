@@ -22,8 +22,8 @@
 import React, { Component } from 'react';
 import { TouchableOpacity } from 'react-native';
 import TextInputField from '../TextInputField';
-import moment from 'moment';
 import DateTimePicker from 'react-native-modal-datetime-picker';
+import { formatDate } from '../../utils/dateUtils';
 
 export default class DatePickerInput extends Component {
     state = {
@@ -51,7 +51,7 @@ export default class DatePickerInput extends Component {
     handlePicked = (date) => {
       const { onChange } = this.props.input;
 
-      const value = moment(date).utc().valueOf();
+      const value = formatDate(date);
 
       onChange(value);
 

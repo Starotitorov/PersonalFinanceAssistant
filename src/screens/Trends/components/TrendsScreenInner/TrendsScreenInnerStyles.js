@@ -22,6 +22,9 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
+  incomeCard: {
+    marginBottom: 16
+  },
   incomeTitle: {
     color: 'red'
   },

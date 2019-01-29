@@ -31,6 +31,6 @@ export default StyleSheet.create({
     fontSize: 32
   },
   disabledStyle: {
-  	backgroundColor: 'gray'
+    backgroundColor: 'gray'
   }
 });
