@@ -30,3 +30,4 @@ export const COLOR_RED = '#f00';
 export const COLOR_WHITE = '#fff';
 export const COLOR_BLACK = '#000';
 export const LIGHT_GRAY = '#D1D5D8';
+export const SILVER = '#bbb';

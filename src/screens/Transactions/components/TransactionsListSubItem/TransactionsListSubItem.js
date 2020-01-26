@@ -27,9 +27,12 @@ import { getSumString } from '../../helpers';
 
 const formatDate = momentFormat.formatTransactionDate;
 
-const TransactionsListSubItem = ({ item: { date, value, currency, note }, handleSelectTransaction }) =>
+const TransactionsListSubItem = ({
+  item: { date, value, currency, note },
+  handleSelectTransaction
+}) =>
   <TouchableOpacity onPress={ handleSelectTransaction }>
-    <View style={ styles.subItemContainer }>
+    <View style={styles.subItemContainer}>
       <View style={ styles.subItemMain }>
         <View style={ styles.subItemDateContainer }>
           <Text>{ formatDate(date) }</Text>

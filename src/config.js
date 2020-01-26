@@ -31,6 +31,9 @@ const DEVELOPERS = [
 ];
 
 export default {
+  appName: 'Money Tracker',
+  appDescription: 'application for tracking expenses and incomes.',
+  appSlogan: 'Personal finance tracking app',
   apiUrl: 'https://personalfinanceassistant.herokuapp.com',
   currencyConverterApiUrl: 'https://financeassistantconverter.herokuapp.com',
   developers: DEVELOPERS,

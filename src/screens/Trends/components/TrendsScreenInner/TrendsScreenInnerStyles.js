@@ -22,7 +22,7 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-  incomeCard: {
+  container: {
     marginBottom: 16
   },
   incomeTitle: {

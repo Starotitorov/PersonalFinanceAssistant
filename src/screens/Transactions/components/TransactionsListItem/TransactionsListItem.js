@@ -29,13 +29,14 @@ import { getSumString } from '../../helpers';
 
 const TransactionsListItem = ({
   isOpen,
+  borderTop,
   data: { transactions, category },
   renderSubItems,
   toggleOpen
 }) =>
   <View>
     <TouchableOpacity onPress={ toggleOpen }>
-      <View style={ styles.groupContainer }>
+      <View style={[styles.groupContainer, borderTop && styles.borderTop]}>
         <Icon
           style={ styles.arrow }
           name={ isOpen ? 'ios-arrow-up' : 'ios-arrow-down' } />

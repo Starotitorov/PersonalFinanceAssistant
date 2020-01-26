@@ -5,14 +5,13 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
 		00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302C01ABCB91800DB3ED1 /* libRCTImage.a */; };
 		00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
-		00E356F31AD99517003FC87E /* PersonalFinanceAssistantTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PersonalFinanceAssistantTests.m */; };
+		00E356F31AD99517003FC87E /* MoneyTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* MoneyTrackerTests.m */; };
 		0D0C83080D9642B7B5A2002D /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FB3E97A2A5E4250A25BCCE9 /* libRCTFBSDK.a */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
@@ -25,7 +24,6 @@
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		1678E225D5C84000B7F02443 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C097FB3C2324EB4BBBDDB9D /* FontAwesome.ttf */; };
 		1829B6046D734F8AA71A7D4F /* libRNExitApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA27901A2700478FB0EA1336 /* libRNExitApp.a */; };
-		25297384FDEB42BF8DE83B10 /* libReactNativeExceptionHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8D0B26B664C4F8BBD5CB1CC /* libReactNativeExceptionHandler.a */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2D02E4C21E0B4AEC006451C7 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157351DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
@@ -36,15 +34,15 @@
 		2D02E4C71E0B4AEC006451C7 /* libRCTText-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3E941DF850E9000B6D8A /* libRCTText-tvOS.a */; };
 		2D02E4C81E0B4AEC006451C7 /* libRCTWebSocket-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3E991DF850E9000B6D8A /* libRCTWebSocket-tvOS.a */; };
 		2D02E4C91E0B4AEC006451C7 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
-		2DCD954D1E0B4F2C00145EB5 /* PersonalFinanceAssistantTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PersonalFinanceAssistantTests.m */; };
+		2DCD954D1E0B4F2C00145EB5 /* MoneyTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* MoneyTrackerTests.m */; };
 		3C6CF289677F4B3E938935DB /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DAC907F5950F442F8CECF32E /* SimpleLineIcons.ttf */; };
 		434019525EFD4C1AA6A6449E /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10995B702FBA419A94107181 /* Zocial.ttf */; };
 		4526B154896A4B00B6C666DE /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B4F6B724AA14FFD84C9DA01 /* libRNVectorIcons.a */; };
 		529E61BC7FC04D0489438510 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F354F0A7C8A46E39B2A2C44 /* Entypo.ttf */; };
-		663747E70682752933196E5B /* Pods_PersonalFinanceAssistant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C74AA6F50C5C919AD8F24288 /* Pods_PersonalFinanceAssistant.framework */; };
-		6D5F6CB9113A9DAE4AA12F3C /* Pods_PersonalFinanceAssistant_tvOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 541D51F2DCD651E88BDC24FA /* Pods_PersonalFinanceAssistant_tvOSTests.framework */; };
+		663747E70682752933196E5B /* Pods_MoneyTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C74AA6F50C5C919AD8F24288 /* Pods_MoneyTracker.framework */; };
+		6D5F6CB9113A9DAE4AA12F3C /* Pods_MoneyTracker_tvOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 541D51F2DCD651E88BDC24FA /* Pods_MoneyTracker_tvOSTests.framework */; };
 		6FACE99108234A1F83C0BE9C /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3EA575011B104CA2BD7AA5A4 /* Feather.ttf */; };
-		77B1A31C84E553CCC59186AE /* Pods_PersonalFinanceAssistantTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A967E6AC4D12444BB023A6 /* Pods_PersonalFinanceAssistantTests.framework */; };
+		77B1A31C84E553CCC59186AE /* Pods_MoneyTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1A967E6AC4D12444BB023A6 /* Pods_MoneyTrackerTests.framework */; };
 		7FE0E05E026D466CB747731B /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A8E0B3BCA10644F99D6729A8 /* Octicons.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		91FFF94A7EDF4EA49E744CB9 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1170CDDA7E424B668216A375 /* MaterialCommunityIcons.ttf */; };
@@ -154,7 +152,7 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = PersonalFinanceAssistant;
+			remoteInfo = MoneyTracker;
 		};
 		139105C01AF99BAD00B5F7CC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -182,7 +180,7 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
-			remoteInfo = "PersonalFinanceAssistant-tvOS";
+			remoteInfo = "MoneyTracker-tvOS";
 		};
 		3DAD3E831DF850E9000B6D8A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -380,13 +378,6 @@
 			remoteGlobalIDString = 9350E0F11CE3B0920041D815;
 			remoteInfo = RCTFBSDK;
 		};
-		AC112E59208B782700D6F0AD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E4D2269F4F20455C84B4B8E5 /* ReactNativeExceptionHandler.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = ReactNativeExceptionHandler;
-		};
 		AC112E5C208B782700D6F0AD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 55C2A26E346947C2B8E19DC5 /* RNExitApp.xcodeproj */;
@@ -437,42 +428,42 @@
 		00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTImage.xcodeproj; path = "../node_modules/react-native/Libraries/Image/RCTImage.xcodeproj"; sourceTree = "<group>"; };
 		00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTNetwork.xcodeproj; path = "../node_modules/react-native/Libraries/Network/RCTNetwork.xcodeproj"; sourceTree = "<group>"; };
 		00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTVibration.xcodeproj; path = "../node_modules/react-native/Libraries/Vibration/RCTVibration.xcodeproj"; sourceTree = "<group>"; };
-		00E356EE1AD99517003FC87E /* PersonalFinanceAssistantTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PersonalFinanceAssistantTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* MoneyTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoneyTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* PersonalFinanceAssistantTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonalFinanceAssistantTests.m; sourceTree = "<group>"; };
-		02EF190E51FB00030B2B624D /* Pods-PersonalFinanceAssistant-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalFinanceAssistant-tvOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PersonalFinanceAssistant-tvOSTests/Pods-PersonalFinanceAssistant-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		04EC5E78154AFFA61DF4C03D /* Pods-PersonalFinanceAssistantTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalFinanceAssistantTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PersonalFinanceAssistantTests/Pods-PersonalFinanceAssistantTests.debug.xcconfig"; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* MoneyTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoneyTrackerTests.m; sourceTree = "<group>"; };
+		02EF190E51FB00030B2B624D /* Pods-MoneyTracker-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoneyTracker-tvOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MoneyTracker-tvOSTests/Pods-MoneyTracker-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		04EC5E78154AFFA61DF4C03D /* Pods-MoneyTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoneyTrackerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoneyTrackerTests/Pods-MoneyTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		0F354F0A7C8A46E39B2A2C44 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		10995B702FBA419A94107181 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		1170CDDA7E424B668216A375 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* PersonalFinanceAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PersonalFinanceAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = PersonalFinanceAssistant/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = PersonalFinanceAssistant/AppDelegate.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* MoneyTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneyTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = MoneyTracker/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = MoneyTracker/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = PersonalFinanceAssistant/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = PersonalFinanceAssistant/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = PersonalFinanceAssistant/main.m; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = MoneyTracker/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = MoneyTracker/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = MoneyTracker/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		1F83FEDF5D6340718F6E2A5B /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
-		2D02E47B1E0B4A5D006451C7 /* PersonalFinanceAssistant-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PersonalFinanceAssistant-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D02E4901E0B4A5D006451C7 /* PersonalFinanceAssistant-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PersonalFinanceAssistant-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E47B1E0B4A5D006451C7 /* MoneyTracker-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MoneyTracker-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E4901E0B4A5D006451C7 /* MoneyTracker-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MoneyTracker-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EA575011B104CA2BD7AA5A4 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		4C097FB3C2324EB4BBBDDB9D /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
-		4EE9622CA4344F5D4CEBB740 /* Pods-PersonalFinanceAssistant-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalFinanceAssistant-tvOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PersonalFinanceAssistant-tvOSTests/Pods-PersonalFinanceAssistant-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		541D51F2DCD651E88BDC24FA /* Pods_PersonalFinanceAssistant_tvOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PersonalFinanceAssistant_tvOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4EE9622CA4344F5D4CEBB740 /* Pods-MoneyTracker-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoneyTracker-tvOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoneyTracker-tvOSTests/Pods-MoneyTracker-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		541D51F2DCD651E88BDC24FA /* Pods_MoneyTracker_tvOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoneyTracker_tvOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55C2A26E346947C2B8E19DC5 /* RNExitApp.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNExitApp.xcodeproj; path = "../node_modules/react-native-exit-app/ios/RNExitApp.xcodeproj"; sourceTree = "<group>"; };
 		5D9457BF8D344C2FADE4D477 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		69B3F852BBE54ED08CD59B67 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
 		6B4F6B724AA14FFD84C9DA01 /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
-		6FB6FCDF14626954F26FE751 /* Pods-PersonalFinanceAssistant.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalFinanceAssistant.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PersonalFinanceAssistant/Pods-PersonalFinanceAssistant.debug.xcconfig"; sourceTree = "<group>"; };
+		6FB6FCDF14626954F26FE751 /* Pods-MoneyTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoneyTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoneyTracker/Pods-MoneyTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		761A2A353C46420D99A2E48F /* libRNSpinkit.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSpinkit.a; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		7FB3E97A2A5E4250A25BCCE9 /* libRCTFBSDK.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTFBSDK.a; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
-		9B7B2208644E17E690D29A3A /* Pods-PersonalFinanceAssistantTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalFinanceAssistantTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PersonalFinanceAssistantTests/Pods-PersonalFinanceAssistantTests.release.xcconfig"; sourceTree = "<group>"; };
+		9B7B2208644E17E690D29A3A /* Pods-MoneyTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoneyTrackerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MoneyTrackerTests/Pods-MoneyTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
 		A8E0B3BCA10644F99D6729A8 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		AC06517420AA2255008FB790 /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
 		AC088A1D208B84D30076D4E9 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../../../Documents/FacebookSDKs-iOS-4/Bolts.framework"; sourceTree = "<group>"; };
@@ -529,18 +520,16 @@
 		ACFD2B45208BE59E009ECD7A /* BridgeUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BridgeUtils.swift; sourceTree = "<group>"; };
 		ACFD2B46208BE59E009ECD7A /* ChartDataSetConfigUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartDataSetConfigUtils.swift; sourceTree = "<group>"; };
 		ACFD2B47208BE59E009ECD7A /* EntryToDictionaryUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryToDictionaryUtils.swift; sourceTree = "<group>"; };
-		ACFD2B7A208BE82C009ECD7A /* PersonalFinanceAssistant-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PersonalFinanceAssistant-Bridging-Header.h"; sourceTree = "<group>"; };
+		ACFD2B7A208BE82C009ECD7A /* MoneyTracker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MoneyTracker-Bridging-Header.h"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		AF71A54AE2EA4B0DA6BC80F2 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
-		C3A7F6AE21BDF2CBA8F7D952 /* Pods-PersonalFinanceAssistant.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PersonalFinanceAssistant.release.xcconfig"; path = "Pods/Target Support Files/Pods-PersonalFinanceAssistant/Pods-PersonalFinanceAssistant.release.xcconfig"; sourceTree = "<group>"; };
-		C74AA6F50C5C919AD8F24288 /* Pods_PersonalFinanceAssistant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PersonalFinanceAssistant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3A7F6AE21BDF2CBA8F7D952 /* Pods-MoneyTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoneyTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-MoneyTracker/Pods-MoneyTracker.release.xcconfig"; sourceTree = "<group>"; };
+		C74AA6F50C5C919AD8F24288 /* Pods_MoneyTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoneyTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAC907F5950F442F8CECF32E /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		E137E7F8C68744069CAAFFB5 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
-		E4D2269F4F20455C84B4B8E5 /* ReactNativeExceptionHandler.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeExceptionHandler.xcodeproj; path = "../node_modules/react-native-exception-handler/ios/ReactNativeExceptionHandler.xcodeproj"; sourceTree = "<group>"; };
 		EA27901A2700478FB0EA1336 /* libRNExitApp.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNExitApp.a; sourceTree = "<group>"; };
 		EB64DE9D4731469DB76C9689 /* RCTFBSDK.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDK.xcodeproj; path = "../node_modules/react-native-fbsdk/ios/RCTFBSDK.xcodeproj"; sourceTree = "<group>"; };
-		F1A967E6AC4D12444BB023A6 /* Pods_PersonalFinanceAssistantTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PersonalFinanceAssistantTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F8D0B26B664C4F8BBD5CB1CC /* libReactNativeExceptionHandler.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libReactNativeExceptionHandler.a; sourceTree = "<group>"; };
+		F1A967E6AC4D12444BB023A6 /* Pods_MoneyTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoneyTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA4C815084FA4E7E8E6A55EB /* RNSpinkit.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSpinkit.xcodeproj; path = "../node_modules/react-native-spinkit/ios/RNSpinkit.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -550,7 +539,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */,
-				77B1A31C84E553CCC59186AE /* Pods_PersonalFinanceAssistantTests.framework in Frameworks */,
+				77B1A31C84E553CCC59186AE /* Pods_MoneyTrackerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,9 +567,8 @@
 				0D0C83080D9642B7B5A2002D /* libRCTFBSDK.a in Frameworks */,
 				4526B154896A4B00B6C666DE /* libRNVectorIcons.a in Frameworks */,
 				94DCC5BB3D65410CA95EC7D1 /* libRNSpinkit.a in Frameworks */,
-				25297384FDEB42BF8DE83B10 /* libReactNativeExceptionHandler.a in Frameworks */,
 				1829B6046D734F8AA71A7D4F /* libRNExitApp.a in Frameworks */,
-				663747E70682752933196E5B /* Pods_PersonalFinanceAssistant.framework in Frameworks */,
+				663747E70682752933196E5B /* Pods_MoneyTracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -603,7 +591,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D5F6CB9113A9DAE4AA12F3C /* Pods_PersonalFinanceAssistant_tvOSTests.framework in Frameworks */,
+				6D5F6CB9113A9DAE4AA12F3C /* Pods_MoneyTracker_tvOSTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -652,13 +640,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		00E356EF1AD99517003FC87E /* PersonalFinanceAssistantTests */ = {
+		00E356EF1AD99517003FC87E /* MoneyTrackerTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* PersonalFinanceAssistantTests.m */,
+				00E356F21AD99517003FC87E /* MoneyTrackerTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = PersonalFinanceAssistantTests;
+			path = MoneyTrackerTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -689,7 +677,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* PersonalFinanceAssistant */ = {
+		13B07FAE1A68108700A75B9A /* MoneyTracker */ = {
 			isa = PBXGroup;
 			children = (
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -699,7 +687,7 @@
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = PersonalFinanceAssistant;
+			name = MoneyTracker;
 			sourceTree = "<group>";
 		};
 		146834001AC3E56700842450 /* Products */ = {
@@ -760,7 +748,6 @@
 				EB64DE9D4731469DB76C9689 /* RCTFBSDK.xcodeproj */,
 				E137E7F8C68744069CAAFFB5 /* RNVectorIcons.xcodeproj */,
 				FA4C815084FA4E7E8E6A55EB /* RNSpinkit.xcodeproj */,
-				E4D2269F4F20455C84B4B8E5 /* ReactNativeExceptionHandler.xcodeproj */,
 				55C2A26E346947C2B8E19DC5 /* RNExitApp.xcodeproj */,
 			);
 			name = Libraries;
@@ -779,12 +766,12 @@
 			isa = PBXGroup;
 			children = (
 				AC091B57208BF63000DE3EFD /* FacebookSDK */,
-				ACFD2B7A208BE82C009ECD7A /* PersonalFinanceAssistant-Bridging-Header.h */,
+				ACFD2B7A208BE82C009ECD7A /* MoneyTracker-Bridging-Header.h */,
 				ACFD2B0C208BE59D009ECD7A /* ReactNativeCharts */,
 				AC0889E7208B83F30076D4E9 /* Frameworks */,
-				13B07FAE1A68108700A75B9A /* PersonalFinanceAssistant */,
+				13B07FAE1A68108700A75B9A /* MoneyTracker */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* PersonalFinanceAssistantTests */,
+				00E356EF1AD99517003FC87E /* MoneyTrackerTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				C6C4E917B325413FBDF1E0D0 /* Resources */,
 				AC112E2F208B782100D6F0AD /* Recovered References */,
@@ -798,10 +785,10 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* PersonalFinanceAssistant.app */,
-				00E356EE1AD99517003FC87E /* PersonalFinanceAssistantTests.xctest */,
-				2D02E47B1E0B4A5D006451C7 /* PersonalFinanceAssistant-tvOS.app */,
-				2D02E4901E0B4A5D006451C7 /* PersonalFinanceAssistant-tvOSTests.xctest */,
+				13B07F961A680F5B00A75B9A /* MoneyTracker.app */,
+				00E356EE1AD99517003FC87E /* MoneyTrackerTests.xctest */,
+				2D02E47B1E0B4A5D006451C7 /* MoneyTracker-tvOS.app */,
+				2D02E4901E0B4A5D006451C7 /* MoneyTracker-tvOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -809,12 +796,12 @@
 		91EEE14B72F7241624379200 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6FB6FCDF14626954F26FE751 /* Pods-PersonalFinanceAssistant.debug.xcconfig */,
-				C3A7F6AE21BDF2CBA8F7D952 /* Pods-PersonalFinanceAssistant.release.xcconfig */,
-				4EE9622CA4344F5D4CEBB740 /* Pods-PersonalFinanceAssistant-tvOSTests.debug.xcconfig */,
-				02EF190E51FB00030B2B624D /* Pods-PersonalFinanceAssistant-tvOSTests.release.xcconfig */,
-				04EC5E78154AFFA61DF4C03D /* Pods-PersonalFinanceAssistantTests.debug.xcconfig */,
-				9B7B2208644E17E690D29A3A /* Pods-PersonalFinanceAssistantTests.release.xcconfig */,
+				6FB6FCDF14626954F26FE751 /* Pods-MoneyTracker.debug.xcconfig */,
+				C3A7F6AE21BDF2CBA8F7D952 /* Pods-MoneyTracker.release.xcconfig */,
+				4EE9622CA4344F5D4CEBB740 /* Pods-MoneyTracker-tvOSTests.debug.xcconfig */,
+				02EF190E51FB00030B2B624D /* Pods-MoneyTracker-tvOSTests.release.xcconfig */,
+				04EC5E78154AFFA61DF4C03D /* Pods-MoneyTrackerTests.debug.xcconfig */,
+				9B7B2208644E17E690D29A3A /* Pods-MoneyTrackerTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -834,9 +821,9 @@
 				AC088A21208B84FB0076D4E9 /* FBSDKLoginKit.framework */,
 				AC088A1F208B84EB0076D4E9 /* FBSDKCoreKit.framework */,
 				AC088A1D208B84D30076D4E9 /* Bolts.framework */,
-				C74AA6F50C5C919AD8F24288 /* Pods_PersonalFinanceAssistant.framework */,
-				541D51F2DCD651E88BDC24FA /* Pods_PersonalFinanceAssistant_tvOSTests.framework */,
-				F1A967E6AC4D12444BB023A6 /* Pods_PersonalFinanceAssistantTests.framework */,
+				C74AA6F50C5C919AD8F24288 /* Pods_MoneyTracker.framework */,
+				541D51F2DCD651E88BDC24FA /* Pods_MoneyTracker_tvOSTests.framework */,
+				F1A967E6AC4D12444BB023A6 /* Pods_MoneyTrackerTests.framework */,
 			);
 			path = Frameworks;
 			sourceTree = "<group>";
@@ -875,14 +862,6 @@
 			children = (
 				AC112E61208B782700D6F0AD /* libRNSpinkit.a */,
 				AC112E63208B782700D6F0AD /* libRNSpinkit.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		AC112E51208B782600D6F0AD /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				AC112E5A208B782700D6F0AD /* libReactNativeExceptionHandler.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1062,9 +1041,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* PersonalFinanceAssistantTests */ = {
+		00E356ED1AD99517003FC87E /* MoneyTrackerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "PersonalFinanceAssistantTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "MoneyTrackerTests" */;
 			buildPhases = (
 				9CF225610108F955C11FED61 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
@@ -1076,14 +1055,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = PersonalFinanceAssistantTests;
-			productName = PersonalFinanceAssistantTests;
-			productReference = 00E356EE1AD99517003FC87E /* PersonalFinanceAssistantTests.xctest */;
+			name = MoneyTrackerTests;
+			productName = MoneyTrackerTests;
+			productReference = 00E356EE1AD99517003FC87E /* MoneyTrackerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* PersonalFinanceAssistant */ = {
+		13B07F861A680F5B00A75B9A /* MoneyTracker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "PersonalFinanceAssistant" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "MoneyTracker" */;
 			buildPhases = (
 				4AA53926E4774B21083B832E /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
@@ -1096,14 +1075,14 @@
 			);
 			dependencies = (
 			);
-			name = PersonalFinanceAssistant;
+			name = MoneyTracker;
 			productName = "Hello World";
-			productReference = 13B07F961A680F5B00A75B9A /* PersonalFinanceAssistant.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* MoneyTracker.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E47A1E0B4A5D006451C7 /* PersonalFinanceAssistant-tvOS */ = {
+		2D02E47A1E0B4A5D006451C7 /* MoneyTracker-tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "PersonalFinanceAssistant-tvOS" */;
+			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "MoneyTracker-tvOS" */;
 			buildPhases = (
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
@@ -1114,14 +1093,14 @@
 			);
 			dependencies = (
 			);
-			name = "PersonalFinanceAssistant-tvOS";
-			productName = "PersonalFinanceAssistant-tvOS";
-			productReference = 2D02E47B1E0B4A5D006451C7 /* PersonalFinanceAssistant-tvOS.app */;
+			name = "MoneyTracker-tvOS";
+			productName = "MoneyTracker-tvOS";
+			productReference = 2D02E47B1E0B4A5D006451C7 /* MoneyTracker-tvOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E48F1E0B4A5D006451C7 /* PersonalFinanceAssistant-tvOSTests */ = {
+		2D02E48F1E0B4A5D006451C7 /* MoneyTracker-tvOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "PersonalFinanceAssistant-tvOSTests" */;
+			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "MoneyTracker-tvOSTests" */;
 			buildPhases = (
 				B2FF452954358F86EFA977F8 /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
@@ -1133,9 +1112,9 @@
 			dependencies = (
 				2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */,
 			);
-			name = "PersonalFinanceAssistant-tvOSTests";
-			productName = "PersonalFinanceAssistant-tvOSTests";
-			productReference = 2D02E4901E0B4A5D006451C7 /* PersonalFinanceAssistant-tvOSTests.xctest */;
+			name = "MoneyTracker-tvOSTests";
+			productName = "MoneyTracker-tvOSTests";
+			productReference = 2D02E4901E0B4A5D006451C7 /* MoneyTracker-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -1144,7 +1123,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 930;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -1165,7 +1144,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "PersonalFinanceAssistant" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "MoneyTracker" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1230,10 +1209,6 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
-					ProductGroup = AC112E51208B782600D6F0AD /* Products */;
-					ProjectRef = E4D2269F4F20455C84B4B8E5 /* ReactNativeExceptionHandler.xcodeproj */;
-				},
-				{
 					ProductGroup = AC112E53208B782600D6F0AD /* Products */;
 					ProjectRef = 55C2A26E346947C2B8E19DC5 /* RNExitApp.xcodeproj */;
 				},
@@ -1252,10 +1227,10 @@
 			);
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* PersonalFinanceAssistant */,
-				00E356ED1AD99517003FC87E /* PersonalFinanceAssistantTests */,
-				2D02E47A1E0B4A5D006451C7 /* PersonalFinanceAssistant-tvOS */,
-				2D02E48F1E0B4A5D006451C7 /* PersonalFinanceAssistant-tvOSTests */,
+				13B07F861A680F5B00A75B9A /* MoneyTracker */,
+				00E356ED1AD99517003FC87E /* MoneyTrackerTests */,
+				2D02E47A1E0B4A5D006451C7 /* MoneyTracker-tvOS */,
+				2D02E48F1E0B4A5D006451C7 /* MoneyTracker-tvOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1513,13 +1488,6 @@
 			remoteRef = AC112E56208B782700D6F0AD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		AC112E5A208B782700D6F0AD /* libReactNativeExceptionHandler.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libReactNativeExceptionHandler.a;
-			remoteRef = AC112E59208B782700D6F0AD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		AC112E5D208B782700D6F0AD /* libRNExitApp.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1651,7 +1619,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-PersonalFinanceAssistant-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-MoneyTracker-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1669,7 +1637,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-PersonalFinanceAssistantTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-MoneyTrackerTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1687,7 +1655,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-PersonalFinanceAssistant-tvOSTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-MoneyTracker-tvOSTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1700,7 +1668,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-PersonalFinanceAssistant/Pods-PersonalFinanceAssistant-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-MoneyTracker/Pods-MoneyTracker-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
@@ -1711,7 +1679,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PersonalFinanceAssistant/Pods-PersonalFinanceAssistant-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MoneyTracker/Pods-MoneyTracker-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1721,7 +1689,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* PersonalFinanceAssistantTests.m in Sources */,
+				00E356F31AD99517003FC87E /* MoneyTrackerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1795,7 +1763,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DCD954D1E0B4F2C00145EB5 /* PersonalFinanceAssistantTests.m in Sources */,
+				2DCD954D1E0B4F2C00145EB5 /* MoneyTrackerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1804,12 +1772,12 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* PersonalFinanceAssistant */;
+			target = 13B07F861A680F5B00A75B9A /* MoneyTracker */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 		2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D02E47A1E0B4A5D006451C7 /* PersonalFinanceAssistant-tvOS */;
+			target = 2D02E47A1E0B4A5D006451C7 /* MoneyTracker-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1821,7 +1789,7 @@
 				13B07FB21A68108700A75B9A /* Base */,
 			);
 			name = LaunchScreen.xib;
-			path = PersonalFinanceAssistant;
+			path = MoneyTracker;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1829,7 +1797,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 04EC5E78154AFFA61DF4C03D /* Pods-PersonalFinanceAssistantTests.debug.xcconfig */;
+			baseConfigurationReference = 04EC5E78154AFFA61DF4C03D /* Pods-MoneyTrackerTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1844,14 +1812,11 @@
 					"$(SRCROOT)..\node_modules\neact-native-spinkitios/**",
 					"$(SRCROOT)..\node_modules\neact-native-exception-handlerios",
 				);
-				INFOPLIST_FILE = PersonalFinanceAssistantTests/Info.plist;
+				INFOPLIST_FILE = MoneyTrackerTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1859,13 +1824,13 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PersonalFinanceAssistant.app/PersonalFinanceAssistant";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoneyTracker.app/MoneyTracker";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9B7B2208644E17E690D29A3A /* Pods-PersonalFinanceAssistantTests.release.xcconfig */;
+			baseConfigurationReference = 9B7B2208644E17E690D29A3A /* Pods-MoneyTrackerTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1877,14 +1842,11 @@
 					"$(SRCROOT)..\node_modules\neact-native-spinkitios/**",
 					"$(SRCROOT)..\node_modules\neact-native-exception-handlerios",
 				);
-				INFOPLIST_FILE = PersonalFinanceAssistantTests/Info.plist;
+				INFOPLIST_FILE = MoneyTrackerTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1892,13 +1854,13 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PersonalFinanceAssistant.app/PersonalFinanceAssistant";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoneyTracker.app/MoneyTracker";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6FB6FCDF14626954F26FE751 /* Pods-PersonalFinanceAssistant.debug.xcconfig */;
+			baseConfigurationReference = 6FB6FCDF14626954F26FE751 /* Pods-MoneyTracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1921,16 +1883,16 @@
 					"eact-native-exception-handlerios",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios/**",
 				);
-				INFOPLIST_FILE = PersonalFinanceAssistant/Info.plist;
+				INFOPLIST_FILE = MoneyTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ArtemStarotitorov.PersonalFinanceAssistant;
-				PRODUCT_NAME = PersonalFinanceAssistant;
-				SWIFT_OBJC_BRIDGING_HEADER = "PersonalFinanceAssistant-Bridging-Header.h";
+				PRODUCT_BUNDLE_IDENTIFIER = ArtemStarotitorov.MoneyTracker;
+				PRODUCT_NAME = MoneyTracker;
+				SWIFT_OBJC_BRIDGING_HEADER = "MoneyTracker-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				"SYSTEM_FRAMEWORK_SEARCH_PATHS[arch=*]" = "~/Documents/FacebookSDK";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1939,7 +1901,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C3A7F6AE21BDF2CBA8F7D952 /* Pods-PersonalFinanceAssistant.release.xcconfig */;
+			baseConfigurationReference = C3A7F6AE21BDF2CBA8F7D952 /* Pods-MoneyTracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1961,16 +1923,16 @@
 					"eact-native-exception-handlerios",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios/**",
 				);
-				INFOPLIST_FILE = PersonalFinanceAssistant/Info.plist;
+				INFOPLIST_FILE = MoneyTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ArtemStarotitorov.PersonalFinanceAssistant;
-				PRODUCT_NAME = PersonalFinanceAssistant;
-				SWIFT_OBJC_BRIDGING_HEADER = "PersonalFinanceAssistant-Bridging-Header.h";
+				PRODUCT_BUNDLE_IDENTIFIER = ArtemStarotitorov.MoneyTracker;
+				PRODUCT_NAME = MoneyTracker;
+				SWIFT_OBJC_BRIDGING_HEADER = "MoneyTracker-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				"SYSTEM_FRAMEWORK_SEARCH_PATHS[arch=*]" = "~/Documents/FacebookSDK/**";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1996,19 +1958,17 @@
 					"$(SRCROOT)..\node_modules\neact-native-spinkitios/**",
 					"$(SRCROOT)..\node_modules\neact-native-exception-handlerios",
 				);
-				INFOPLIST_FILE = "PersonalFinanceAssistant-tvOS/Info.plist";
+				INFOPLIST_FILE = "MoneyTracker-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				LIBRARY_SEAsRCH_PATHS = "$(inherited) \"$(SRCROOT)/$(TARGET_NAME)\"";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.PersonalFinanceAssistant-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.MoneyTracker-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -2035,19 +1995,16 @@
 					"$(SRCROOT)..\node_modules\neact-native-spinkitios/**",
 					"$(SRCROOT)..\node_modules\neact-native-exception-handlerios",
 				);
-				INFOPLIST_FILE = "PersonalFinanceAssistant-tvOS/Info.plist";
+				INFOPLIST_FILE = "MoneyTracker-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.PersonalFinanceAssistant-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.MoneyTracker-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -2057,7 +2014,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4EE9622CA4344F5D4CEBB740 /* Pods-PersonalFinanceAssistant-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = 4EE9622CA4344F5D4CEBB740 /* Pods-MoneyTracker-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -2067,25 +2024,22 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "PersonalFinanceAssistant-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "MoneyTracker-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.PersonalFinanceAssistant-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.MoneyTracker-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PersonalFinanceAssistant-tvOS.app/PersonalFinanceAssistant-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoneyTracker-tvOS.app/MoneyTracker-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Debug;
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 02EF190E51FB00030B2B624D /* Pods-PersonalFinanceAssistant-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = 02EF190E51FB00030B2B624D /* Pods-MoneyTracker-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -2095,18 +2049,15 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "PersonalFinanceAssistant-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "MoneyTracker-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.PersonalFinanceAssistant-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.MoneyTracker-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PersonalFinanceAssistant-tvOS.app/PersonalFinanceAssistant-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MoneyTracker-tvOS.app/MoneyTracker-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Release;
@@ -2226,7 +2177,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "PersonalFinanceAssistantTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "MoneyTrackerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -2235,7 +2186,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "PersonalFinanceAssistant" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "MoneyTracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -2244,7 +2195,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "PersonalFinanceAssistant-tvOS" */ = {
+		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "MoneyTracker-tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4971E0B4A5E006451C7 /* Debug */,
@@ -2253,7 +2204,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "PersonalFinanceAssistant-tvOSTests" */ = {
+		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "MoneyTracker-tvOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4991E0B4A5E006451C7 /* Debug */,
@@ -2262,7 +2213,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "PersonalFinanceAssistant" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "MoneyTracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,

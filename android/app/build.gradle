@@ -98,7 +98,7 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        applicationId "com.personalfinanceassistant"
+        applicationId "com.moneytracker"
         minSdkVersion 16
         targetSdkVersion 22
         versionCode 1
@@ -158,9 +158,9 @@ dependencies {
     compile('com.facebook.android:facebook-android-sdk:4.22.1')
     compile project(':react-native-vector-icons')
     compile project(':react-native-spinkit')
-    compile project(':react-native-exception-handler')
     compile project(':react-native-exit-app')
     compile project(':react-native-charts-wrapper')
+    compile project(':react-native-exception-handler')
 }
 
 // Run this once to be able to run the application with BUCK

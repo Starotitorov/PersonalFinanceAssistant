@@ -24,13 +24,14 @@ import { colors } from 'src/styles';
 
 export default StyleSheet.create({
   buttonContainer: {
-    margin: 0,
     minWidth: 200,
-    borderRadius: 20
+    marginLeft: 0,
+    marginRight: 0
   },
   button: {
+    padding: 11.7,
     backgroundColor: colors.COLOR_SECONDARY,
-    borderRadius: 20
+    borderRadius: 5,
   },
   disabledStyle: {
     backgroundColor: 'darkgrey'

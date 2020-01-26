@@ -24,7 +24,15 @@ import { margins } from 'src/styles';
 
 export default StyleSheet.create({
   container: {
+    marginVertical: margins.MARGIN_XXL,
+    marginLeft: margins.MARGIN_L,
+    marginRight: margins.MARGIN_L,
     flex: 1,
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
+  content: {
+    width: '100%',
     justifyContent: 'center',
     alignItems: 'center'
   },
@@ -40,6 +48,5 @@ export default StyleSheet.create({
   },
   logo: {
     alignSelf: 'center',
-    marginBottom: margins.MARGIN_XL
-  }
+  },
 });

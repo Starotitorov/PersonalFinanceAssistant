@@ -20,12 +20,13 @@
  */
 
 import { StyleSheet } from 'react-native';
+import { margins } from 'src/styles'; 
 
 export default StyleSheet.create({
   container: {
-    minWidth: 300
+    width: '100%'
   },
   fields: {
-    marginBottom: 50
+    marginBottom: margins.MARGIN_L
   }
 });

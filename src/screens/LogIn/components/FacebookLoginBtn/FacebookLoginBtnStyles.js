@@ -23,6 +23,9 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   button: {
+    margin: 0,
+    width: '100%',
+    borderRadius: 5,
     paddingHorizontal: 24
   }
 });

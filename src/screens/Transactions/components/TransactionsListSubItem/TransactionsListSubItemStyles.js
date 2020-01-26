@@ -26,8 +26,8 @@ export default StyleSheet.create({
     width: '100%',
     padding: 10,
     backgroundColor: '#F2F2F2',
-    borderBottomColor: 'darkgray',
-    borderBottomWidth: StyleSheet.hairlineWidth
+    borderBottomColor: '#bbb',
+    borderBottomWidth: 1
   },
   subItemMain: {
     flexDirection: 'row',

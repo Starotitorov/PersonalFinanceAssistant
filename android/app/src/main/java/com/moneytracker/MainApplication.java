@@ -1,12 +1,12 @@
-package com.personalfinanceassistant;
+package com.moneytracker;
 
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.masteratul.exceptionhandler.ReactNativeExceptionHandlerPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.github.wuxudong.rncharts.MPAndroidChartPackage;
 import com.github.wumke.RNExitApp.RNExitAppPackage;
-import com.masteratul.exceptionhandler.ReactNativeExceptionHandlerPackage;
 import com.react.rnspinkit.RNSpinkitPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.react.rnspinkit.RNSpinkitPackage;
@@ -41,10 +41,10 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new ReactNativeExceptionHandlerPackage(),
             new SplashScreenReactPackage(),
             new MPAndroidChartPackage(),
             new RNExitAppPackage(),
-            new ReactNativeExceptionHandlerPackage(),
             new RNSpinkitPackage(),
             new VectorIconsPackage(),
             new RNSpinkitPackage(),

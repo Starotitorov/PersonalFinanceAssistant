@@ -31,6 +31,7 @@ const FacebookLoginBtn = ({ handleLogin }) =>
     type="facebook"
     iconSize={ 18 }
     style={ styles.button }
+    raised={false}
     onPress={ handleLogin } />;
 
 FacebookLoginBtn.propTypes = {

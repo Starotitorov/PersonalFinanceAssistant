@@ -20,6 +20,7 @@
  */
 
 import { StyleSheet } from 'react-native';
+import { colors } from 'src/styles';
 
 export default StyleSheet.create({
   container: {
@@ -27,7 +28,8 @@ export default StyleSheet.create({
     justifyContent: 'center',
     width: '100%',
     backgroundColor: '#fff',
-    borderTopWidth: StyleSheet.hairlineWidth,
-    borderBottomWidth: StyleSheet.hairlineWidth
+    borderColor: colors.SILVER,
+    borderTopWidth: 1,
+    borderBottomWidth: 1
   }
 });

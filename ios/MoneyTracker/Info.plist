@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>PersonalFinanceAssistant</string>
+	<string>Money Tracker</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -71,7 +71,7 @@
 	<key>FacebookAppID</key>
 	<string>128367271172767</string>
 	<key>FacebookDisplayName</key>
-	<string>PersonalFinanceAssistant</string>
+	<string>Money Tracker</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>

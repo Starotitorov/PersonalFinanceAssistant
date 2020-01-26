@@ -31,10 +31,10 @@ export default function AboutScreen() {
     <ScrollView>
       <Card>
         <Text h4>
-          Personal finance assistant
+          { config.appName }
         </Text>
         <Text>
-          - application, which helps you in controlling your expenses and incomes.
+          - { config.appDescription }
         </Text>
       </Card>
       <Card title="TEAM">
