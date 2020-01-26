@@ -19,13 +19,13 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { NavigationActions } from 'react-navigation';
+import { NavigationActions, StackActions } from 'react-navigation';
 import * as api from 'src/api';
 import { alerts } from 'src/utils';
 
-export const removeCategory = id => dispatch => api.removeCategory(id)
+export const removeCategory = ({ navigation, id }) => () => api.removeCategory(id)
   .then(() => {
-    dispatch(NavigationActions.reset({
+    navigation.dispatch(StackActions.reset({
       index: 0,
       actions: [
         NavigationActions.navigate({ routeName: 'CategoryTabs' })

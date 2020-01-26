@@ -19,9 +19,6 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import AppNavigator, { AppRouter } from './AppNavigator';
+import AppNavigator from './AppNavigator';
 
-export {
-  AppRouter
-};
 export default AppNavigator;

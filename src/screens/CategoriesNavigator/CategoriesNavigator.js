@@ -20,7 +20,7 @@
  */
 
 import React from 'react';
-import { StackNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 import { DrawerButton } from 'src/components';
 import CategoryTabs from '../CategoryTabs';
 import AddCategory from '../AddCategory';
@@ -28,7 +28,7 @@ import EditCategory from '../EditCategory';
 import EditCategoryHeaderRight from '../EditCategoryHeaderRight';
 import getDefaultNavigationOptions from 'src/helpers/getDefaultNavigationOptions';
 
-export default StackNavigator({
+export default createStackNavigator({
   CategoryTabs: {
     screen: CategoryTabs,
     navigationOptions: ({ navigation }) => ({
@@ -51,5 +51,5 @@ export default StackNavigator({
   }
 }, {
   initialRouteName: 'CategoryTabs',
-  navigationOptions: getDefaultNavigationOptions()
+  defaultNavigationOptions: getDefaultNavigationOptions()
 });

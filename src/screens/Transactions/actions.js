@@ -221,10 +221,10 @@ export const switchViewType = () => (dispatch, getState) => {
   dispatch(setViewType(viewType === LIST ? CHART : LIST));
 };
 
-export const selectTransaction = id => (dispatch, getState) => {
+export const selectTransaction = ({ navigation, id }) => (dispatch, getState) => {
   const { transactionsList: { transactions: { byId }}} = getState();
 
-  dispatch(NavigationActions.navigate({
+  navigation.dispatch(NavigationActions.navigate({
     routeName: 'EditTransaction',
     params: {
       transaction: byId[id]
@@ -232,10 +232,10 @@ export const selectTransaction = id => (dispatch, getState) => {
   }));
 };
 
-export const addTransaction = () => (dispatch, getState) => {
+export const addTransaction = ({ navigation }) => (dispatch, getState) => {
   const state = getState();
 
-  dispatch(NavigationActions.navigate({
+  navigation.dispatch(NavigationActions.navigate({
     routeName: 'AddTransaction',
     params: {
       accounts: getAllAccounts(state),

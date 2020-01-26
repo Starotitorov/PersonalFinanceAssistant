@@ -24,7 +24,7 @@ import { margins } from 'src/styles';
 
 export default StyleSheet.create({
   container: {
-    width: '100%',
+    width: '100%'
   },
   fields: {
     width: '100%',

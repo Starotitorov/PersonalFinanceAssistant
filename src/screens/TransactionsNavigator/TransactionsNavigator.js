@@ -20,7 +20,8 @@
  */
 
 import React from 'react';
-import { StackNavigator } from 'react-navigation';
+import { StyleSheet } from 'react-native';
+import { createStackNavigator } from 'react-navigation-stack';
 import { DrawerButton } from 'src/components';
 import getDefaultNavigationOptions from 'src/helpers/getDefaultNavigationOptions';
 import TransactionsHeaderTitle from '../TransactionsHeaderTitle';
@@ -30,14 +31,23 @@ import AddTransaction from '../AddTransaction';
 import EditTransaction from '../EditTransaction';
 import EditTransactionHeaderRight from '../EditTransactionHeaderRight';
 
-export default StackNavigator({
+const styles = StyleSheet.create({
+  transactionsHeaderTitleContainerStyle: {
+    left: 50,
+    right: 50
+  }
+});
+
+export default createStackNavigator({
   Transactions: {
     screen: Transactions,
     navigationOptions: ({ navigation }) => ({
       title: 'Transactions',
       headerTitle: <TransactionsHeaderTitle />,
       headerLeft: <DrawerButton navigation={ navigation } />,
-      headerRight: <SwitchViewTypeIcon />
+      headerRight: <SwitchViewTypeIcon />,
+      headerTitleAlign: 'left',
+      headerTitleContainerStyle: styles.transactionsHeaderTitleContainerStyle
     })
   },
   EditTransaction: {
@@ -55,5 +65,5 @@ export default StackNavigator({
   }
 }, {
   initialRouteName: 'Transactions',
-  navigationOptions: getDefaultNavigationOptions()
+  defaultNavigationOptions: getDefaultNavigationOptions()
 });

@@ -28,7 +28,7 @@ import TrendsList from '../TrendsList';
 import TopCategoriesList from '../TopCategoriesList';
 
 const TrendsScreenInner = ({ data, data: { topIncomeCategories, topOutcomeCategories }}) =>
-  <View style={styles.container}>
+  <View style={ styles.container }>
     <Card containerStyle={ styles.histogramCard }>
       <TrendsHistogram data={ data } />
     </Card>

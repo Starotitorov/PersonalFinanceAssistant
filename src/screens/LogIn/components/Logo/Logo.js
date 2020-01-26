@@ -29,7 +29,7 @@ const Logo = ({ style }) =>
   <View style={ [styles.container, style] }>
     <Image style={ styles.image } source={ require('../../../../../assets/money.png') } />
     <Text h4>{config.appName}</Text>
-    <Text style={styles.slogan}>{config.appSlogan}</Text>
+    <Text style={ styles.slogan }>{config.appSlogan}</Text>
   </View>;
 
 Logo.propTypes = {

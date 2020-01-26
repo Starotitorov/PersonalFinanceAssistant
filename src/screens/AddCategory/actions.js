@@ -19,17 +19,18 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { NavigationActions } from 'react-navigation';
+import { NavigationActions, StackActions } from 'react-navigation';
 import * as api from 'src/api';
 import { alerts } from 'src/utils';
 
-export const addCategory = categoryData => dispatch => api.addCategory(categoryData)
-  .then(() => {
-    dispatch(NavigationActions.reset({
-      index: 0,
-      actions: [
-        NavigationActions.navigate({ routeName: 'CategoryTabs' })
-      ]
-    }));
-  })
-  .catch(() => alerts.showCanNotPerformOperationAlert());
+export const addCategory = ({ categoryData, navigation }) => () =>
+  api.addCategory(categoryData)
+    .then(() => {
+      navigation.dispatch(StackActions.reset({
+        index: 0,
+        actions: [
+          NavigationActions.navigate({ routeName: 'CategoryTabs' })
+        ]
+      }));
+    })
+    .catch(() => alerts.showCanNotPerformOperationAlert());

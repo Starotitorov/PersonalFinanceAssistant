@@ -19,11 +19,11 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { NavigationActions } from 'react-navigation';
+import { NavigationActions, StackActions } from 'react-navigation';
 import * as api from 'src/api';
 import { alerts } from 'src/utils';
 
-export const addAccount = accountData => dispatch => {
+export const addAccount = ({ accountData, navigation }) => () => {
   const data = {
     ...accountData,
     balance: Number(accountData.balance)
@@ -31,7 +31,7 @@ export const addAccount = accountData => dispatch => {
 
   return api.addAccount(data)
     .then(() => {
-      dispatch(NavigationActions.reset({
+      navigation.dispatch(StackActions.reset({
         index: 0,
         actions: [
           NavigationActions.navigate({ routeName: 'AccountsList' })

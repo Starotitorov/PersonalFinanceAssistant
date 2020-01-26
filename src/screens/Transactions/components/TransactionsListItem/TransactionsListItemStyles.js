@@ -27,10 +27,6 @@ export default StyleSheet.create({
     marginRight: margins.MARGIN_M,
     fontSize: 18
   },
-  borderTop: {
-    borderTopColor: colors.SILVER,
-    borderTopWidth: 1
-  },
   groupContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',

@@ -21,12 +21,18 @@
 
 import React from 'react';
 import { View, Text } from 'react-native';
+import { NavigationActions } from 'react-navigation';
 import { List, ListItem, Card } from 'react-native-elements';
 import { Gravatar } from 'react-native-gravatar';
 import styles from './SettingsScreenStyles';
 
-export default function SettingsScreen({ user, logout, handleChangePassword }) {
+export default function SettingsScreen({ user, logout, navigation }) {
   const userEmail = user ? user.email : '';
+  const handleChangePassword = () => {
+    navigation.dispatch(
+      NavigationActions.navigate({ routeName: 'ChangePassword' })
+    );
+  };
 
   return (
     <View>

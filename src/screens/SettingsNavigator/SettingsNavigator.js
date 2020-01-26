@@ -20,13 +20,13 @@
  */
 
 import React from 'react';
-import { StackNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 import { DrawerButton } from 'src/components';
 import Settings from '../Settings';
 import ChangePassword from '../ChangePassword';
 import getDefaultNavigationOptions from 'src/helpers/getDefaultNavigationOptions';
 
-export default StackNavigator({
+export default createStackNavigator({
   Settings: {
     screen: Settings,
     navigationOptions: ({ navigation }) => ({
@@ -42,5 +42,5 @@ export default StackNavigator({
   }
 }, {
   initialRouteName: 'Settings',
-  navigationOptions: getDefaultNavigationOptions()
+  defaultNavigationOptions: getDefaultNavigationOptions()
 });

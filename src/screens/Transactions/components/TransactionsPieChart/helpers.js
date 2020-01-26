@@ -44,7 +44,9 @@ export const getPieChartConfig = ({
       enabled: true,
       textSize: fontSizes.FONT_SIZE_M,
       form: 'CIRCLE',
-      position: 'RIGHT_OF_CHART',
+      horizontalAlignment: 'RIGHT',
+      verticalAlignment: 'TOP',
+      orientation: 'VERTICAL',
       wordWrapEnabled: true
     },
     data: {

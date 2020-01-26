@@ -20,7 +20,7 @@
  */
 
 import React from 'react';
-import { StackNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 import { DrawerButton } from 'src/components';
 import AccountsList from '../AccountsList';
 import AddAccount from '../AddAccount';
@@ -30,13 +30,13 @@ import EditAccountHeaderRight from '../EditAccountHeaderRight';
 import AccountsListHeaderRight from '../AccountsListHeaderRight';
 import getDefaultNavigationOptions from 'src/helpers/getDefaultNavigationOptions';
 
-export default StackNavigator({
+export default createStackNavigator({
   AccountsList: {
     screen: AccountsList,
     navigationOptions: ({ navigation }) => ({
       title: 'Accounts',
       headerLeft: <DrawerButton navigation={ navigation } />,
-      headerRight: <AccountsListHeaderRight />
+      headerRight: <AccountsListHeaderRight navigation={ navigation } />
     })
   },
   AddAccount: {
@@ -60,5 +60,5 @@ export default StackNavigator({
   }
 }, {
   initialRouteName: 'AccountsList',
-  navigationOptions: getDefaultNavigationOptions()
+  defaultNavigationOptions: getDefaultNavigationOptions()
 });

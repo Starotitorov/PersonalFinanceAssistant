@@ -19,24 +19,14 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { NavigationActions } from 'react-navigation';
 import { LoginManager } from 'react-native-fbsdk';
 import { resetCurrentUser } from '../LogIn/actions';
+import { navigationService } from 'src/services';
 
 export const logout = () => async dispatch => {
   dispatch(resetCurrentUser());
 
   LoginManager.logOut();
 
-  dispatch(NavigationActions.reset({
-    index: 0,
-    key: null,
-    actions: [
-      NavigationActions.navigate({ routeName: 'LogIn' })
-    ]
-  }));
-};
-
-export const handleChangePassword = () => dispatch => {
-  dispatch(NavigationActions.navigate({ routeName: 'ChangePassword' }));
+  navigationService.navigateToLogInScreen();
 };

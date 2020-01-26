@@ -29,7 +29,7 @@ const ActionButton = ({ iconName, backgroundColor, color, disabled, ...props }) 
   <View style={ styles.container }>
     <Icon
       { ...props }
-      raised
+      reverse
       disabled={ disabled }
       color={ color }
       name={ iconName }

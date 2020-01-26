@@ -20,12 +20,15 @@
  */
 
 import React, { Component } from 'react';
-import { View, ScrollView, Modal, TouchableWithoutFeedback } from 'react-native';
+import chunk from 'lodash/chunk';
+import { Col, Row, Grid } from 'react-native-easy-grid';
+import { View, Modal, TouchableWithoutFeedback } from 'react-native';
 import { Icon } from 'react-native-elements';
 import icons from './icons';
 import styles from './IconPickerModalStyles';
 
 const ICON_SIZE = 24;
+const COL_LENGTH = 5;
 
 export default class IconPickerModal extends Component {
     handleIconPick = (iconName) => {
@@ -33,15 +36,26 @@ export default class IconPickerModal extends Component {
       this.props.handleHide();
     };
 
-    renderIcons = (icons, onPress) => icons.map((icon, index) => (
-      <Icon
-        containerStyle={ styles.iconContainer }
-        key={ index }
-        name={ icon }
-        fontSize={ ICON_SIZE }
-        type="material-community"
-        onPress={ () => onPress(icon) } />
-    ));
+    renderIcons = (icons, onPress) => {
+      const iconChunks = chunk(icons, COL_LENGTH);
+
+      return iconChunks.map((chunk, index) => (
+        <Col key={ index }>
+          {
+            chunk.map((icon, index) => (
+              <Row key={ index }>
+                <Icon
+                  containerStyle={ styles.iconContainer }
+                  name={ icon }
+                  fontSize={ ICON_SIZE }
+                  type="material-community"
+                  onPress={ () => onPress(icon) } />
+              </Row>
+            ))
+          }
+        </Col>
+      ));
+    }
 
     render() {
       const { show, handleHide } = this.props;
@@ -55,9 +69,9 @@ export default class IconPickerModal extends Component {
           <TouchableWithoutFeedback onPress={ handleHide }>
             <View style={ styles.container }>
               <View style={ styles.iconsOuterContainer }>
-                <ScrollView contentContainerStyle={ styles.iconsInnerContainer }>
+                <Grid>
                   {this.renderIcons(icons, this.handleIconPick)}
-                </ScrollView>
+                </Grid>
               </View>
             </View>
           </TouchableWithoutFeedback>

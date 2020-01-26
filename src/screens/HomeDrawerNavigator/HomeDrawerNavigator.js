@@ -20,7 +20,7 @@
  */
 
 import React from 'react';
-import { DrawerNavigator } from 'react-navigation';
+import { createDrawerNavigator } from 'react-navigation-drawer';
 import { DrawerIcon } from 'src/components';
 import { colors } from 'src/styles';
 import AccountsNavigator from '../AccountsNavigator';
@@ -32,7 +32,7 @@ import TrendsNavigator from '../TrendsNavigator';
 import CurrencyNavigator from '../CurrencyNavigator';
 import getDefaultNavigationOptions from 'src/helpers/getDefaultNavigationOptions';
 
-export default DrawerNavigator({
+export default createDrawerNavigator({
   Transactions: {
     screen: TransactionsNavigator,
     navigationOptions: {
@@ -97,5 +97,6 @@ export default DrawerNavigator({
   contentOptions: {
     activeTintColor: colors.COLOR_PRIMARY
   },
-  navigationOptions: getDefaultNavigationOptions()
+  unmountInactiveRoutes: true,
+  defaultNavigationOptions: getDefaultNavigationOptions()
 });

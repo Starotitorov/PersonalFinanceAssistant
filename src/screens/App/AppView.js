@@ -19,33 +19,11 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { lifecycle, compose, withProps, withHandlers } from 'recompose';
-import { addNavigationHelpers } from 'react-navigation';
-import SplashScreen from 'react-native-splash-screen';
+import { lifecycle, compose, withHandlers } from 'recompose';
 import {
-  withLoadingIndicator,
   withNetwork
 } from 'src/components';
 import App from './App';
-
-const withCurrentUser = lifecycle({
-  componentDidMount() {
-    this.props.getCurrentUser();
-  }
-});
-
-const withHandleSplashScreen = lifecycle({
-  componentDidMount() {
-    SplashScreen.hide();
-  }
-});
-
-const withNavigation = withProps(({ dispatch, navigationState }) => ({
-  navigation: addNavigationHelpers({
-    dispatch,
-    state: navigationState
-  })
-}));
 
 const withToast = withHandlers(() => {
   let toast;
@@ -64,17 +42,19 @@ const withToast = withHandlers(() => {
 });
 
 const withConnectionInfoMessage = lifecycle({
-  componentWillReceiveProps(nextProps) {
-    nextProps.isConnected ? this.props.closeToast() : this.props.openToast();
+  componentDidUpdate() {
+    const { isConnected, closeToast, openToast } = this.props;
+    
+    if (isConnected) {
+      closeToast()
+    } else {
+      openToast();
+    }
   }
 });
 
 export default compose(
-  withHandleSplashScreen,
   withNetwork,
-  withCurrentUser,
-  withLoadingIndicator,
-  withNavigation,
   withToast,
   withConnectionInfoMessage
 )(App);

@@ -28,16 +28,14 @@ export default StyleSheet.create({
     backgroundColor: '#00000055'
   },
   iconsOuterContainer: {
-    width: 240,
+    width: 260,
+    height: 200,
+    justifyContent: 'center',
+    alignItems: 'center',
     borderColor: '#888',
     borderWidth: 1,
     backgroundColor: '#ddd',
     alignSelf: 'center'
-  },
-  iconsInnerContainer: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center'
   },
   iconContainer: {
     padding: 5

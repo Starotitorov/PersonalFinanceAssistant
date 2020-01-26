@@ -24,6 +24,8 @@ import { colors } from 'src/styles';
 
 export default StyleSheet.create({
   containerStyle: {
+    flex: 1,
+    width: '100%',
     flexDirection: 'row',
     alignItems: 'center'
   },

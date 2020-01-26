@@ -24,7 +24,7 @@ import { View, TouchableOpacity, Text } from 'react-native';
 import SignUpForm from './components/SignUpForm';
 import styles from './SignUpScreenStyles';
 
-export default function LogInScreen({ signUp, handleHaveAccount }) {
+export default function SignUpScreen({ signUp, handleHaveAccount }) {
   return (
     <View style={ styles.container }>
       <SignUpForm onSubmit={ signUp } />

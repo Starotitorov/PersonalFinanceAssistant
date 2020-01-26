@@ -20,7 +20,7 @@
  */
 
 import { StyleSheet } from 'react-native';
-import { margins } from 'src/styles'; 
+import { margins } from 'src/styles';
 
 export default StyleSheet.create({
   container: {

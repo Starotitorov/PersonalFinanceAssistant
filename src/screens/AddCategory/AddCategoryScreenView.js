@@ -28,10 +28,11 @@ const withViewModel = withProps(() => ({
 }));
 
 const withHandleAddCategory = withHandlers({
-  handleAddCategory: ({ addCategory }) => ({ name: nameValue, ...rest }) => {
+  handleAddCategory: ({ addCategory, navigation }) => ({ name: nameValue, ...rest }) => {
     const name = nameValue.trim();
+    const categoryData = { name, ...rest };
 
-    return addCategory({ name, ...rest });
+    return addCategory({ navigation, categoryData });
   }
 });
 

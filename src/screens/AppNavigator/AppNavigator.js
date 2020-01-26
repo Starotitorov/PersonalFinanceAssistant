@@ -19,36 +19,17 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { StackNavigator } from 'react-navigation';
-import LogIn from '../LogIn';
-import SignUp from '../SignUp';
+import { createSwitchNavigator } from 'react-navigation';
 import HomeDrawerNavigator from '../HomeDrawerNavigator';
-import getDefaultNavigationOptions from 'src/helpers/getDefaultNavigationOptions';
+import AuthStack from './AuthStack';
+import AuthLoadingScreen from '../AuthLoadingScreen';
 
-const AppNavigator = StackNavigator({
-  LogIn: {
-    screen: LogIn,
-    navigationOptions: {
-      title: 'Log in'
-    }
-  },
-  SignUp: {
-    screen: SignUp,
-    navigationOptions: {
-      title: 'Sign up'
-    }
-  },
-  Home: {
-    screen: HomeDrawerNavigator,
-    navigationOptions: {
-      header: null
-    }
-  }
+const AppNavigator = createSwitchNavigator({
+  AuthLoading: AuthLoadingScreen,
+  Auth: AuthStack,
+  App: HomeDrawerNavigator
 }, {
-  initialRouteName: 'Home',
-  navigationOptions: getDefaultNavigationOptions()
+  initialRouteName: 'AuthLoading'
 });
-
-export const AppRouter = AppNavigator.router;
 
 export default AppNavigator;

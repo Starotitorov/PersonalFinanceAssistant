@@ -67,10 +67,10 @@ export const refreshCategoriesListData = () => async dispatch => {
   }
 };
 
-export const selectCategory = id => (dispatch, getState) => {
+export const selectCategory = ({ navigation, id }) => (dispatch, getState) => {
   const { categoriesList: { categories: { byId }}} = getState();
 
-  dispatch(NavigationActions.navigate({
+  navigation.dispatch(NavigationActions.navigate({
     routeName: 'EditCategory',
     params: {
       category: byId[id]

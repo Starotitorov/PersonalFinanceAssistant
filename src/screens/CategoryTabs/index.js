@@ -19,6 +19,4 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import CategoryTabs from './CategoryTabsScreenContainer';
-
-export default CategoryTabs;
+export { default } from './CategoryTabsScreen';

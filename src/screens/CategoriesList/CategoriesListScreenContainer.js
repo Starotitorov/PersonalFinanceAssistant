@@ -20,7 +20,7 @@
  */
 
 import { connect } from 'react-redux';
-import { compose } from 'recompose';
+import { compose, withHandlers } from 'recompose';
 import { withLoadingIndicator } from 'src/components';
 import { selectCategory, refreshCategoriesListData } from './actions';
 import { isCategoriesListDataFetching, isCategoriesListDataRefreshing } from './selectors';
@@ -38,5 +38,10 @@ export default compose(
       refreshCategoriesListData
     }
   ),
-  withLoadingIndicator
+  withLoadingIndicator,
+  withHandlers({
+    selectCategory: ({ selectCategory, navigation }) => id => {
+      selectCategory({ navigation, id });
+    }
+  })
 );

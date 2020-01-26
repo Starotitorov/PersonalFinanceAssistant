@@ -25,8 +25,9 @@ import { removeCategory } from './actions';
 import { RemoveHeaderIcon } from 'src/components';
 
 const withHandleRemove = withHandlers({
-  onPress: ({ navigation: { state: { params: { category: { id }}}}, removeCategory }) => () => {
-    removeCategory(id);
+  onPress: ({ navigation, removeCategory }) => () => {
+    const { state: { params: { category: { id }}}} = navigation;
+    return removeCategory({ navigation, id });
   }
 });
 

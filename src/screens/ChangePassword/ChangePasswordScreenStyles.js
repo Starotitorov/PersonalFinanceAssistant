@@ -20,9 +20,12 @@
  */
 
 import { StyleSheet } from 'react-native';
+import { margins } from 'src/styles';
 
 export default StyleSheet.create({
   container: {
+    marginLeft: margins.MARGIN_L,
+    marginRight: margins.MARGIN_L,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'

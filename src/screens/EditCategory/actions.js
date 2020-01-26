@@ -20,7 +20,7 @@
  */
 
 import { createAction } from 'redux-actions';
-import { NavigationActions } from 'react-navigation';
+import { NavigationActions, StackActions } from 'react-navigation';
 import * as api from 'src/api';
 import { alerts } from 'src/utils';
 
@@ -29,12 +29,12 @@ export const setCategory = createAction(
   category => ({ category })
 );
 
-export const updateCategory = categoryData => (dispatch, getState) => {
+export const updateCategory = ({ navigation, categoryData }) => (dispatch, getState) => {
   const { editCategory: { category: { id }}} = getState();
 
   return api.updateCategory(id, categoryData)
     .then(() => {
-      dispatch(NavigationActions.reset({
+      navigation.dispatch(StackActions.reset({
         index: 0,
         actions: [
           NavigationActions.navigate({ routeName: 'CategoryTabs' })

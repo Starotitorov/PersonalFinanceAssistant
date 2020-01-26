@@ -29,7 +29,7 @@ const withHandleLogin = withHandlers({
   handleLogin: ({ onLoginSuccess }) => () => {
     LoginManager.setLoginBehavior(config.facebookLoginBehaviour);
 
-    LoginManager.logInWithReadPermissions(['public_profile', 'email']).then(
+    LoginManager.logInWithPermissions(['public_profile', 'email']).then(
       result => {
         if (result.isCancelled) {
           alerts.showFacebookLoginCancelledAlert();

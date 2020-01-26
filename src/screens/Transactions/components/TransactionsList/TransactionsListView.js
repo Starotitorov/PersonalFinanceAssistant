@@ -26,9 +26,8 @@ import TransactionsListItem from '../TransactionsListItem';
 import TransactionsList from './TransactionsList';
 
 const withRenderListItem = withHandlers({
-  renderItem: ({ onSelectTransaction }) => ({ item, index }) =>
+  renderItem: ({ onSelectTransaction }) => ({ item }) =>
     <TransactionsListItem
-      borderTop={index === 0}
       data={ item }
       onSelectTransaction={ onSelectTransaction } />
 });

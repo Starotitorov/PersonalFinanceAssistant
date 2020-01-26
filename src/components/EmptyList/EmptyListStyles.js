@@ -29,7 +29,6 @@ export default StyleSheet.create({
     width: '100%',
     backgroundColor: '#fff',
     borderColor: colors.SILVER,
-    borderTopWidth: 1,
     borderBottomWidth: 1
   }
 });

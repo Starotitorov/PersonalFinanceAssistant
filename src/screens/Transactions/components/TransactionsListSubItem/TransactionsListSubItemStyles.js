@@ -25,7 +25,7 @@ export default StyleSheet.create({
   subItemContainer: {
     width: '100%',
     padding: 10,
-    backgroundColor: '#F2F2F2',
+    backgroundColor: '#E0E0E0',
     borderBottomColor: '#bbb',
     borderBottomWidth: 1
   },

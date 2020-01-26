@@ -23,6 +23,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import IconButton from '../IconButton';
 import { colors } from 'src/styles';
+import { DrawerActions } from 'react-navigation-drawer';
 
 export default function DrawerButton({ navigation }) {
   return (
@@ -30,7 +31,7 @@ export default function DrawerButton({ navigation }) {
       size={ 26 }
       color={ colors.COLOR_WHITE }
       name="md-menu"
-      onPress={ () => navigation.navigate('DrawerOpen') } />
+      onPress={ () => navigation.dispatch(DrawerActions.toggleDrawer()) } />
   );
 }
 

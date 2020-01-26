@@ -29,11 +29,14 @@ export default StyleSheet.create({
     marginRight: 0
   },
   button: {
-    padding: 11.7,
+    padding: 11.5,
     backgroundColor: colors.COLOR_SECONDARY,
-    borderRadius: 5,
+    borderRadius: 5
   },
   disabledStyle: {
     backgroundColor: 'darkgrey'
+  },
+  disabledTitleStyle: {
+    color: colors.COLOR_WHITE
   }
 });

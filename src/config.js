@@ -21,7 +21,7 @@
 
 import { Platform } from 'react-native';
 
-const facebookLoginBehaviour = Platform.OS === 'android' ? 'web_only' : 'web';
+const facebookLoginBehaviour = Platform.OS === 'android' ? 'web_only' : 'browser';
 
 const DEVELOPERS = [
   {

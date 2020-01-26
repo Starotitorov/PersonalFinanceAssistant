@@ -24,6 +24,8 @@ import { colors } from 'src/styles';
 
 export default StyleSheet.create({
   container: {
+    borderTopColor: colors.SILVER,
+    borderTopWidth: 1,
     marginTop: 20
   }
 });

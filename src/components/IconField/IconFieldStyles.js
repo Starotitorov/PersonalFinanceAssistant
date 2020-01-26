@@ -31,6 +31,7 @@ export default StyleSheet.create({
     alignItems: 'center'
   },
   icon: {
-    color: '#fff'
+    color: '#fff',
+    alignSelf: 'center',
   }
 });

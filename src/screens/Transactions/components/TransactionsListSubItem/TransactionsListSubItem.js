@@ -32,7 +32,7 @@ const TransactionsListSubItem = ({
   handleSelectTransaction
 }) =>
   <TouchableOpacity onPress={ handleSelectTransaction }>
-    <View style={styles.subItemContainer}>
+    <View style={ styles.subItemContainer }>
       <View style={ styles.subItemMain }>
         <View style={ styles.subItemDateContainer }>
           <Text>{ formatDate(date) }</Text>

@@ -37,8 +37,7 @@ const AccountForm = ({
   handleSubmit,
   submitting,
   invalid,
-  viewModel = {},
-  submitButtonText
+  viewModel = {}
 }) =>
   <View style={ styles.container }>
     <Card containerStyle={ styles.fields }>

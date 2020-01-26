@@ -19,7 +19,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 import { colors } from 'src/styles';
 
 const styles = StyleSheet.create({
@@ -34,7 +34,8 @@ const styles = StyleSheet.create({
 const getDefaultNavigationOptions = () => ({
   headerStyle: styles.header,
   headerTitleStyle: styles.title,
-  headerTintColor: colors.COLOR_WHITE
+  headerTintColor: colors.COLOR_WHITE,
+  safeAreaInsets: Platform.OS === 'android' ? { top: 0, bottom: 0 } : undefined
 });
 
 export default getDefaultNavigationOptions;

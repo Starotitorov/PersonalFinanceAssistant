@@ -21,8 +21,10 @@
 
 import * as networkService from './networkService';
 import * as cacheService from './cacheService';
+import * as navigationService from './navigationService';
 
 export {
   cacheService,
-  networkService
+  networkService,
+  navigationService
 };
