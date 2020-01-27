@@ -19,15 +19,17 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { API_URL } from '../config';
+import config from '../../../src/config';
+
+const API_URL = config.apiUrl;
+
+const CURRENT_USER_ID = 1;
 
 export default {
   [`POST ${API_URL}/signin`]: ({ method, url, params, urlparams, headers }) => {
-    const id = 1001;
-
     return {
       user: {
-        id,
+        id: CURRENT_USER_ID,
         name: `Artem Starotitorov`,
         email: `starotitorov1997@gmail.com`
       },
@@ -35,25 +37,21 @@ export default {
     };
   },
   [`POST ${API_URL}/signup`]: ({ method, url, params, urlparams, headers }) => {
-    const id = 1001;
-
     return {
       user: {
-        id,
-        name: `User${id}`,
-        email: `user${id}@example.com`
+        id: CURRENT_USER_ID,
+        name: `Artem Starotitorov`,
+        email: `starotitorov1997@gmail.com`
       },
       token: 'token'
     };
   },
   [`POST ${API_URL}/auth/facebook/callback`]: ({ method, url, params, urlparams, headers }) => {
-    const id = 1001;
-
     return {
       user: {
-        id,
-        name: `User${id}`,
-        email: `user${id}@example.com`
+        id: CURRENT_USER_ID,
+        name: `Artem Starotitorov`,
+        email: `starotitorov1997@gmail.com`
       },
       token: 'token'
     };

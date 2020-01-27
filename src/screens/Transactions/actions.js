@@ -78,23 +78,29 @@ export const fetchTransactionsFailure = createAction('TRANSACTIONS_LIST/FETCH_TR
 
 export const resetTransactions = createAction('TRANSACTIONS_LIST/RESET_TRANSACTIONS');
 
-export const fetchTransactionsRequest = () => (dispatch, getState) => {
+export const fetchTransactionsRequest = () => async (dispatch, getState) => {
   const state = getState();
   const currentDate = getCurrentDate(state);
   const periodType = getCurrentPeriodType(state);
   const { fromDate, toDate } = getTimeRange(state);
   const accountId = getSelectedAccountId(state);
 
-  return api.fetchTransactionsOnce({ accountId, fromDate, toDate })
-    .then(({ transactions }) => {
-      dispatch(setPeriodView(periodType));
+  try {
+    let transactions = [];
+    if (accountId && fromDate && toDate) {
+      ({ transactions } = await api.fetchTransactionsOnce({ accountId, fromDate, toDate }));
+    }
 
-      dispatch(changeCurrentDate(currentDate));
+    dispatch(setPeriodView(periodType));
 
-      dispatch(setSelectedAccount(accountId));
+    dispatch(changeCurrentDate(currentDate));
 
-      dispatch(setTransactions(transactions));
-    });
+    dispatch(setSelectedAccount(accountId));
+
+    dispatch(setTransactions(transactions));
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 export const fetchTransactions = () => async dispatch => {

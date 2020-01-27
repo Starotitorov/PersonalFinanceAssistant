@@ -26,6 +26,8 @@ import { setJSExceptionHandler } from 'react-native-exception-handler';
 import { configureStore } from 'src/store';
 import JSExceptionHandler from './JSExceptionHandler';
 import App from './screens/App';
+// import { mockAPI } from '../mocks';
+// global.fetch = mockAPI(global.fetch);
 
 setJSExceptionHandler(JSExceptionHandler);
 

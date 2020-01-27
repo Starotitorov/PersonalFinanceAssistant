@@ -19,20 +19,21 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { API_URL } from '../config';
+import config from '../../../src/config';
+
+const API_URL = config.apiUrl;
 
 export default {
   [`POST ${API_URL}/transfers`]: ({ method, url, params, urlparams, headers }) => {
-    const { fromAccountId, toAccountId, value, date, note } = params.transfer;
-
     return {
       transfer: {
-        id: 10001,
-        fromAccountId,
-        toAccountId,
-        value,
-        date,
-        note
+        date: '2020-01-27T19:48:06.000Z',
+        exchangeRate: 1,
+        fromAccountId: 1,
+        id: 2,
+        note: 'Transfer',
+        toAccountId: 3,
+        value: 10
       }
     };
   }

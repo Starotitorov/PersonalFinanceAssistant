@@ -19,86 +19,159 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import moment from 'moment';
-import { API_URL } from '../config';
+import config from '../../../src/config';
+
+const API_URL = config.apiUrl;
 
 export default {
   [`GET ${API_URL}/transactions`]: ({ method, url, params, urlparams, headers }) => {
+    console.log('ACCOUNT ID:' + params.accountId);
+    if (params.accountId === 'null') {
+      return {
+        transactions: []
+      }
+    }
+    
     return {
       transactions: [
         {
-          id: 10001,
-          accountId: 1,
-          categoryId: 1,
-          value: 200,
-          date: Date.now(),
-          note: 'Transaction'
-        },
-        {
-          id: 10002,
-          accountId: 1,
-          categoryId: 1,
-          value: 200,
-          date: Date.now(),
-          note: 'Transaction'
-        },
-        {
-          id: 10003,
-          accountId: 1,
-          categoryId: 1,
-          value: 200,
-          date: Date.now(),
-          note: 'Transaction'
-        },
-        {
-          id: 10004,
+          id: 1,
           accountId: 1,
           categoryId: 2,
-          value: 200,
+          categoryTypeId: 1,
+          value: 12.25,
           date: Date.now(),
-          note: 'Transaction'
-        }
+          note: 'Transaction',
+          account: {
+            id: 1,
+            currency: 'BYN'
+          },
+          category: {
+            icon: 'food',
+            id: 2,
+            name: 'Food',
+          }
+        },
+        {
+          id: 2,
+          accountId: 1,
+          categoryId: 2,
+          categoryTypeId: 1,
+          value: 11.5,
+          date: Date.now(),
+          note: 'Transaction',
+          account: {
+            id: 1,
+            currency: 'BYN'
+          },
+          category: {
+            icon: 'food',
+            id: 2,
+            name: 'Food',
+          }
+        },
+        {
+          id: 3,
+          accountId: 1,
+          categoryId: 2,
+          categoryTypeId: 1,
+          value: 21,
+          date: Date.now(),
+          note: 'Transaction',
+          account: {
+            id: 1,
+            currency: 'BYN'
+          },
+          category: {
+            icon: 'food',
+            id: 2,
+            name: 'Food',
+          }
+        },
+        {
+          id: 4,
+          accountId: 1,
+          categoryId: 3,
+          categoryTypeId: 1,
+          value: 50,
+          date: Date.now(),
+          note: 'Transaction',
+          account: {
+            id: 1,
+            currency: 'BYN'
+          },
+          category: {
+            icon: 'dumbbell',
+            id: 3,
+            name: 'Sport',
+          }
+        },
       ]
     };
   },
   [`GET ${API_URL}/transactions/{id}`]: ({ method, url, params, urlparams, headers }) => {
     return {
       transaction: {
-        id: 10004,
+        id: 3,
         accountId: 1,
         categoryId: 2,
-        value: 200,
+        categoryTypeId: 1,
+        value: 12.25,
         date: Date.now(),
-        note: 'Transaction'
+        note: 'Transaction',
+        account: {
+          id: 1,
+          currency: 'BYN'
+        },
+        category: {
+          icon: 'food',
+          id: 2,
+          name: 'Food',
+        },
       }
     };
   },
   [`POST ${API_URL}/transactions`]: ({ method, url, params, urlparams, headers }) => {
-    const { accountId, categoryId, value, date, note } = params.transaction;
-
     return {
       transaction: {
-        id: 10001,
-        accountId,
-        categoryId,
-        value,
-        date,
-        note
+        id: 1000,
+        accountId: 1,
+        categoryId: 2,
+        categoryTypeId: 1,
+        value: 12.25,
+        date: Date.now(),
+        note: 'Transaction',
+        account: {
+          id: 1,
+          currency: 'BYN'
+        },
+        category: {
+          icon: 'food',
+          id: 2,
+          name: 'Food',
+        },
       }
     };
   },
   [`PUT ${API_URL}/transactions/{id}`]: ({ method, url, params, urlparams, headers }) => {
-    const { accountId, categoryId, value, date, note } = params.transaction;
-    const { id } = urlparams;
-
     return {
       transaction: {
-        id,
-        accountId,
-        categoryId,
-        value,
-        date,
-        note
+        id: 1000,
+        accountId: 1,
+        categoryId: 2,
+        categoryTypeId: 1,
+        value: 12.25,
+        date: Date.now(),
+        note: 'Transaction',
+        account: {
+          id: 1,
+          currency: 'BYN'
+        },
+        category: {
+          icon: 'food',
+          id: 2,
+          name: 'Food',
+        },
       }
     };
   },

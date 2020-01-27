@@ -28,8 +28,8 @@ import { getTimeIntervals } from './helpers';
 import { DEFAULT_BASE_CURRENCY } from 'src/constants/currency';
 
 const DATE_FORMAT = 'YYYY-MM-DD';
-const getConvertedTransactionValue = ({ value, date, account: { currency }} = {}, exchangeRates) =>
-  value * get(exchangeRates, `[${currency}_${DEFAULT_BASE_CURRENCY}].val[${date.format(DATE_FORMAT)}]`, 1);
+const getConvertedTransactionValue = ({ value, account: { currency }} = {}, exchangeRates) =>
+  value * get(exchangeRates, `[${currency}_${DEFAULT_BASE_CURRENCY}].val[${moment().format(DATE_FORMAT)}]`, 1);
 
 const getIntervalNames = intervals =>
   intervals.map(([leftBorder]) => moment(leftBorder).format('MMMM'));

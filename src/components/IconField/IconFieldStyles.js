@@ -32,6 +32,6 @@ export default StyleSheet.create({
   },
   icon: {
     color: '#fff',
-    alignSelf: 'center',
+    alignSelf: 'center'
   }
 });

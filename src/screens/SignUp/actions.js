@@ -20,7 +20,6 @@
  */
 
 import { SubmissionError } from 'redux-form';
-import { NavigationActions, StackActions } from 'react-navigation';
 import * as api from 'src/api';
 import { setAuthorizationData } from '../LogIn/actions';
 import { navigationService } from '../../services';

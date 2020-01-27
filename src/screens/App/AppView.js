@@ -44,9 +44,9 @@ const withToast = withHandlers(() => {
 const withConnectionInfoMessage = lifecycle({
   componentDidUpdate() {
     const { isConnected, closeToast, openToast } = this.props;
-    
+
     if (isConnected) {
-      closeToast()
+      closeToast();
     } else {
       openToast();
     }
