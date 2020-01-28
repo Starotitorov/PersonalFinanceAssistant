@@ -1,7 +1,7 @@
 /*
- * AppNavigator.js
+ * AuthStack.js
  *
- * Copyright (c) 2017 Artsiom Staratsitarau
+ * Copyright (c) 2020 Artsiom Staratsitarau
  *
  * This file is a part of PersonalFinanceAssistant.
  *

@@ -3,7 +3,7 @@
  *
  * Copyright (c) 2017 Artsiom Staratsitarau
  *
- * This file is a part of MoneyTracker.
+ * This file is a part of PersonalFinanceAssistant.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
