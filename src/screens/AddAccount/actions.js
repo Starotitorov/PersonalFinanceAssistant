@@ -24,12 +24,7 @@ import * as api from 'src/api';
 import { alerts } from 'src/utils';
 
 export const addAccount = ({ accountData, navigation }) => () => {
-  const data = {
-    ...accountData,
-    balance: Number(accountData.balance)
-  };
-
-  return api.addAccount(data)
+  return api.addAccount(accountData)
     .then(() => {
       navigation.dispatch(StackActions.reset({
         index: 0,

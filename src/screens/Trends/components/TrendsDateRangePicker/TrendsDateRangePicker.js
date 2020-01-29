@@ -31,7 +31,6 @@ const TrendsDateRangePicker = ({
   dateRange: { from, to },
   setFromDate,
   setToDate,
-  fetchTrendsData,
   handleGet,
   isTrendsDataFetching
 }) =>

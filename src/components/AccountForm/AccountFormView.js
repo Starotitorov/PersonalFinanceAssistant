@@ -20,13 +20,25 @@
  */
 
 import { reduxForm } from 'redux-form';
+import moment from 'moment';
 import { ACCOUNT_FORM } from './constants';
 import AccountForm from './AccountForm';
 import validate from './validate';
 import { getInitialValues } from './helpers';
+import { withHandlers, compose } from 'recompose';
 
-export default reduxForm({
-  form: ACCOUNT_FORM,
-  initialValues: getInitialValues(),
-  validate
-})(AccountForm);
+export default compose(
+  withHandlers({
+    onSubmit: ({ onSubmit }) => data =>
+      onSubmit({
+        ...data,
+        balance: Number(data.balance),
+        initialDate: moment(data.initialDate).startOf('day').toISOString()
+      })
+  }),
+  reduxForm({
+    form: ACCOUNT_FORM,
+    initialValues: getInitialValues(),
+    validate
+  })
+)(AccountForm);

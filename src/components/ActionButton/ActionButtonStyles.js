@@ -32,5 +32,11 @@ export default StyleSheet.create({
   },
   disabledStyle: {
     backgroundColor: 'gray'
+  },
+  iconContainer: {
+    margin: 7,
+    borderRadius: 30,
+    height: 56,
+    width: 56,
   }
 });

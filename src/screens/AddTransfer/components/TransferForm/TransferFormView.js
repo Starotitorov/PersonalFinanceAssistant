@@ -20,7 +20,8 @@
  */
 
 import { reduxForm } from 'redux-form';
-import { withProps, compose } from 'recompose';
+import { withProps, compose, withHandlers } from 'recompose';
+import moment from 'moment';
 import { TRANSFER_FORM } from './constants';
 import TransferForm from './TransferForm';
 import validate from './validate';
@@ -32,6 +33,14 @@ const withViewModel = withProps(({ options }) => ({
 }));
 
 export default compose(
+  withHandlers({
+    onSubmit: ({ onSubmit }) => data =>
+      onSubmit({
+        ...data,
+        value: Number(data.value),
+        date: moment(data.date).startOf('day').toISOString()
+      })
+  }),
   reduxForm({
     form: TRANSFER_FORM,
     initialValues: getInitialValues(),
