@@ -32,8 +32,8 @@ export const getFormattedCurrentDate = ({ transactionsList: { currentDate, perio
   } else if (periodType === periodTypes.MONTH.value) {
     return currentDate.format('MMMM YYYY');
   } else if (periodType === periodTypes.WEEK.value) {
-    const weekStart = currentDate.startOf('week').format('DD.MM.YYYY');
-    const weekEnd = currentDate.endOf('week').format('DD.MM.YYYY');
+    const weekStart = currentDate.startOf('week').format('DD/MM/YYYY');
+    const weekEnd = currentDate.endOf('week').format('DD/MM/YYYY');
 
     return currentDate.format(`${weekStart} - ${weekEnd}`);
   } else if (periodType === periodTypes.DAY.value) {

@@ -33,7 +33,7 @@ export default createStackNavigator({
     screen: CategoryTabs,
     navigationOptions: ({ navigation }) => ({
       title: 'Categories',
-      headerLeft: <DrawerButton navigation={ navigation } />
+      headerLeft: () => <DrawerButton navigation={ navigation } />
     })
   },
   AddCategory: {
@@ -46,7 +46,7 @@ export default createStackNavigator({
     screen: EditCategory,
     navigationOptions: ({ navigation }) => ({
       title: 'Edit category',
-      headerRight: <EditCategoryHeaderRight navigation={ navigation } />
+      headerRight: () => <EditCategoryHeaderRight navigation={ navigation } />
     })
   }
 }, {

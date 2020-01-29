@@ -43,9 +43,9 @@ export default createStackNavigator({
     screen: Transactions,
     navigationOptions: ({ navigation }) => ({
       title: 'Transactions',
-      headerTitle: <TransactionsHeaderTitle />,
-      headerLeft: <DrawerButton navigation={ navigation } />,
-      headerRight: <SwitchViewTypeIcon />,
+      headerTitle: () => <TransactionsHeaderTitle />,
+      headerLeft: () => <DrawerButton navigation={ navigation } />,
+      headerRight: () => <SwitchViewTypeIcon />,
       headerTitleAlign: 'left',
       headerTitleContainerStyle: styles.transactionsHeaderTitleContainerStyle
     })
@@ -54,7 +54,7 @@ export default createStackNavigator({
     screen: EditTransaction,
     navigationOptions: ({ navigation }) => ({
       title: 'Edit transaction',
-      headerRight: <EditTransactionHeaderRight navigation={ navigation } />
+      headerRight: () => <EditTransactionHeaderRight navigation={ navigation } />
     })
   },
   AddTransaction: {

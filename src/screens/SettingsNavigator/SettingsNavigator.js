@@ -31,7 +31,7 @@ export default createStackNavigator({
     screen: Settings,
     navigationOptions: ({ navigation }) => ({
       title: 'Settings',
-      headerLeft: <DrawerButton navigation={ navigation } />
+      headerLeft: () => <DrawerButton navigation={ navigation } />
     })
   },
   ChangePassword: {

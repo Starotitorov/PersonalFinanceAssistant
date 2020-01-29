@@ -31,8 +31,8 @@ export default createStackNavigator({
     screen: Trends,
     navigationOptions: ({ navigation }) => ({
       title: 'Trends',
-      headerLeft: <DrawerButton navigation={ navigation } />,
-      headerRight: <TrendsHeaderRight />
+      headerLeft: () => <DrawerButton navigation={ navigation } />,
+      headerRight: () => <TrendsHeaderRight />
     })
   }
 }, {

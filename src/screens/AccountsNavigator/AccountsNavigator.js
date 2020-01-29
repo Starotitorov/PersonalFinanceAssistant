@@ -35,8 +35,8 @@ export default createStackNavigator({
     screen: AccountsList,
     navigationOptions: ({ navigation }) => ({
       title: 'Accounts',
-      headerLeft: <DrawerButton navigation={ navigation } />,
-      headerRight: <AccountsListHeaderRight navigation={ navigation } />
+      headerLeft: () => <DrawerButton navigation={ navigation } />,
+      headerRight: () => <AccountsListHeaderRight navigation={ navigation } />
     })
   },
   AddAccount: {
@@ -49,7 +49,7 @@ export default createStackNavigator({
     screen: EditAccount,
     navigationOptions: ({ navigation }) => ({
       title: 'Edit account',
-      headerRight: <EditAccountHeaderRight navigation={ navigation } />
+      headerRight: () => <EditAccountHeaderRight navigation={ navigation } />
     })
   },
   AddTransfer: {

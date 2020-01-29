@@ -20,7 +20,8 @@
  */
 
 import { createAction } from 'redux-actions';
-import { AsyncStorage, Alert } from 'react-native';
+import { Alert } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import * as asyncStorageKeys from 'src/constants/asyncStorage';
 import * as api from 'src/api';
 import { navigationService } from '../../services';

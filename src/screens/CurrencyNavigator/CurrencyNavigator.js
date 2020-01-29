@@ -30,7 +30,7 @@ export default createStackNavigator({
     screen: Currency,
     navigationOptions: ({ navigation }) => ({
       title: 'Exchange rates',
-      headerLeft: <DrawerButton navigation={ navigation } />
+      headerLeft: () => <DrawerButton navigation={ navigation } />
     })
   }
 }, {

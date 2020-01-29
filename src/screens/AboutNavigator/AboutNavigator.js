@@ -30,7 +30,7 @@ export default createStackNavigator({
     screen: About,
     navigationOptions: ({ navigation }) => ({
       title: 'About',
-      headerLeft: <DrawerButton navigation={ navigation } />
+      headerLeft: () => <DrawerButton navigation={ navigation } />
     })
   }
 }, {

@@ -256,6 +256,8 @@ PODS:
     - ReactCommon/jscallinvoker (= 0.61.0)
   - ReactNativeExceptionHandler (2.10.8):
     - React
+  - RNCAsyncStorage (1.7.1):
+    - React
   - RNCharts (0.5.7):
     - Charts (= 3.3.0)
     - React
@@ -266,7 +268,7 @@ PODS:
     - React
   - RNReanimated (1.7.0):
     - React
-  - RNScreens (2.0.0-alpha.29):
+  - RNScreens (1.0.0-alpha.23):
     - React
   - RNVectorIcons (6.6.0):
     - React
@@ -306,6 +308,7 @@ DEPENDENCIES:
   - ReactCommon/jscallinvoker (from `../node_modules/react-native/ReactCommon`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - ReactNativeExceptionHandler (from `../node_modules/react-native-exception-handler`)
+  - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - RNCharts (from `../node_modules/react-native-charts-wrapper`)
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
@@ -382,6 +385,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   ReactNativeExceptionHandler:
     :path: "../node_modules/react-native-exception-handler"
+  RNCAsyncStorage:
+    :path: "../node_modules/@react-native-community/async-storage"
   RNCharts:
     :path: "../node_modules/react-native-charts-wrapper"
   RNCMaskedView:
@@ -432,11 +437,12 @@ SPEC CHECKSUMS:
   React-RCTVibration: c8e67f140a83a14a1ad9042950cca08ab29423fd
   ReactCommon: 584ef683c340894c1c82be43ce760390493ae8bf
   ReactNativeExceptionHandler: 8025d98049c25f186835a3af732dd7c9974d6dce
+  RNCAsyncStorage: 8539fc80a0075fcc9c8e2dff84cd22dc5bf1dacf
   RNCharts: e9461314e1930516d6c986d1be00440aeb26d5f2
   RNCMaskedView: e5b99bc191945f157adeede68da9d424462de177
   RNGestureHandler: 02905abe54e1f6e59c081a10b4bd689721e17aa6
   RNReanimated: 031fe8d9ea93c2bd689a40f05320ef9d96f74d7f
-  RNScreens: b20bdb598fe95ac37aada88a5e92f36622549e49
+  RNScreens: f28b48b8345f2f5f39ed6195518291515032a788
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   Yoga: 3f70bbd9aa01e04eefec36e2a085b2fc0ff1dd98
