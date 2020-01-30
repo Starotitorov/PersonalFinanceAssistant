@@ -48,11 +48,13 @@ export default StyleSheet.create({
     marginBottom: margins.MARGIN_L
   },
   changePassword: {
+    marginLeft: 0,
     textAlign: 'center',
     color: colors.COLOR_SECONDARY
   },
   logout: {
     padding: 2.5,
+    marginLeft: 0,
     textAlign: 'center',
     color: colors.COLOR_RED
   }

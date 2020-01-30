@@ -1,13 +1,8 @@
-# PersonalFinanceAssistant
+# Money Tracker
 
 React Native application for tracking expenses and incomes.
 
-![Log in](./screenshots/login.png)
-![Transactions list](./screenshots/transactions-list.png)
-![Pie chart](./screenshots/pie-chart.png)
-![Add transaction form](./screenshots/add-transaction.png)
-![Trends](./screenshots/trends.png)
-![Top categories](./screenshots/top-categories.png)
+<img src="screenshots/login.png" alt="Log in screen" width="250"/> <img src="screenshots/signup.png" alt="Sign up screen" width="250"/> <img src="screenshots/accounts.png" alt="Accounts screen" width="250"/> <img src="screenshots/add-account.png" alt="Add account screen" width="250"/> <img src="screenshots/categories.png" alt="Categories screen" width="250"/> <img src="screenshots/transactions.png" alt="Transaction list screen" width="250"/> <img src="screenshots/pie-chart.png" alt="Pie chart represebtation of transaction list" width="250"/> <img src="screenshots/trends.png" alt="Trends screen" width="250"/> <img src="screenshots/top-categories.png" alt="List of top categories on Trends screen" width="250"/>
 
 ## Running the application
 
@@ -15,6 +10,6 @@ Follow [this instructions](https://facebook.github.io/react-native/docs/getting-
 
 Run `npm install` to install project dependencies.
 
-Execute the command `react-native run-android` to run the application in the Android emulator.
+Execute a command `react-native run-android` to run the application in the Android emulator.
 
-Execute the command `react-native run-ios` to run the application in the iOS emulator.
+Execute a command `react-native run-ios` to run the application in the iOS emulator.
