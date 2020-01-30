@@ -32,7 +32,7 @@ export default StyleSheet.create({
   },
   subItemMain: {
     flexDirection: 'row',
-    alignItems: 'stretch',
+    alignItems: 'stretch'
   },
   subItemNote: {
     marginTop: 4,

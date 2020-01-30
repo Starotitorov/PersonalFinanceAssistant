@@ -23,15 +23,13 @@ import { NavigationActions, StackActions } from 'react-navigation';
 import * as api from 'src/api';
 import { alerts } from 'src/utils';
 
-export const addAccount = ({ accountData, navigation }) => () => {
-  return api.addAccount(accountData)
-    .then(() => {
-      navigation.dispatch(StackActions.reset({
-        index: 0,
-        actions: [
-          NavigationActions.navigate({ routeName: 'AccountsList' })
-        ]
-      }));
-    })
-    .catch(() => alerts.showCanNotPerformOperationAlert());
-};
+export const addAccount = ({ accountData, navigation }) => () => api.addAccount(accountData)
+  .then(() => {
+    navigation.dispatch(StackActions.reset({
+      index: 0,
+      actions: [
+        NavigationActions.navigate({ routeName: 'AccountsList' })
+      ]
+    }));
+  })
+  .catch(() => alerts.showCanNotPerformOperationAlert());

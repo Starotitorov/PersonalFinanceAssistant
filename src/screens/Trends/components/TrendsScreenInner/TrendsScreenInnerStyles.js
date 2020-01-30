@@ -29,6 +29,7 @@ export default StyleSheet.create({
     color: 'red'
   },
   histogramCard: {
+    marginTop: 0,
     marginRight: 0,
     marginLeft: 0
   },

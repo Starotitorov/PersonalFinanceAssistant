@@ -28,11 +28,11 @@ import {
   DatePickerField,
   ActionButton,
   Field,
+  Card,
   CalculatorInputField
 } from 'src/components';
 import styles from './TransferFormStyles';
 import { normalizeDate, formatDate } from 'src/utils';
-import { Card } from 'src/components';
 
 const TransferForm = ({
   isSameCurrency,

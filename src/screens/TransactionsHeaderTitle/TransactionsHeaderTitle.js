@@ -26,13 +26,14 @@ import options from './options';
 import styles from './TransactionsHeaderTitleStyles';
 
 const TransactionsHeaderTitle = ({
+  refreshing,
   changePeriodView,
   selectedValue,
   accountOptions,
   selectedAccountId,
   changeAccount
 }) =>
-  <View style={ styles.container }>
+  <View style={ styles.container } pointerEvents={ refreshing ? 'none' : 'auto' }>
     <View style={ styles.accountSelectInput }>
       <SelectInput
         value={ selectedAccountId }

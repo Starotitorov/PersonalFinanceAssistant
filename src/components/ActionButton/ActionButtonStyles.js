@@ -37,6 +37,6 @@ export default StyleSheet.create({
     margin: 7,
     borderRadius: 30,
     height: 56,
-    width: 56,
+    width: 56
   }
 });

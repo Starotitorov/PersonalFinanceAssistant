@@ -3,7 +3,6 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "precommit": "lint-staged",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
     "eslint": "./node_modules/.bin/eslint --fix ./src"
@@ -52,7 +51,7 @@
     "redux-actions": "^2.2.1",
     "redux-form": "^8.2.2",
     "redux-logger": "^3.0.6",
-    "redux-modal": "^1.7.3",
+    "redux-modal": "^3.0.2",
     "redux-thunk": "^2.2.0",
     "revalidate": "^1.2.0"
   },
@@ -68,7 +67,9 @@
     "eslint-plugin-lodash": "^2.4.4",
     "eslint-plugin-react": "^7.2.1",
     "eslint-plugin-react-native": "^3.0.1",
+    "husky": "^4.2.1",
     "jest": "^25.1.0",
+    "lint-staged": "^10.0.7",
     "metro-react-native-babel-preset": "^0.58.0",
     "miragejs": "^0.1.33",
     "react-native-fetch-mock": "^0.8.0",
@@ -76,10 +77,15 @@
     "remote-redux-devtools": "^0.5.0",
     "shortid": "^2.2.8"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run eslint"
+    }
+  },
   "lint-staged": {
     "*.js": [
-      "eslint --fix",
-      "git add"
+      "eslint --fix"
     ]
   },
   "jest": {

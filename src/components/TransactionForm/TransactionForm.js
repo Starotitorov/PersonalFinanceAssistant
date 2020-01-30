@@ -36,7 +36,7 @@ const TransactionForm = ({
   handleSubmit,
   submitting,
   invalid,
-  viewModel = {},
+  viewModel = {}
 }) =>
   <View style={ styles.container }>
     <Card>
