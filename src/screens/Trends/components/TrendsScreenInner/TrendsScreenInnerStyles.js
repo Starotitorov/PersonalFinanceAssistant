@@ -23,13 +23,12 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    marginBottom: 16
+    marginBottom: 20
   },
   incomeTitle: {
     color: 'red'
   },
   histogramCard: {
-    marginTop: 0,
     marginRight: 0,
     marginLeft: 0
   },

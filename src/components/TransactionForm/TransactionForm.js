@@ -22,7 +22,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
-import { Card } from 'react-native-elements';
 import SelectInput from '../SelectInputField';
 import TextInput from '../TextInputField';
 import DatePickerField from '../DatePickerField';
@@ -31,16 +30,16 @@ import CalculatorInputField from '../CalculatorInputField';
 import Field from '../FormField';
 import { normalizeDate, formatDate } from 'src/utils';
 import styles from './TransactionFormStyles';
+import Card from '../Card';
 
 const TransactionForm = ({
   handleSubmit,
   submitting,
   invalid,
   viewModel = {},
-  submitButtonText
 }) =>
   <View style={ styles.container }>
-    <Card containerStyle={ styles.fields }>
+    <Card>
       <Field
         { ...viewModel.value }
         component={ CalculatorInputField } />

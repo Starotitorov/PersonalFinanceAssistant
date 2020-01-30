@@ -25,6 +25,7 @@ import { mapProps } from 'recompose';
 
 const styles = StyleSheet.create({
   containerStyle: {
+    marginTop: 20,
     marginRight: 0,
     marginLeft: 0
   }

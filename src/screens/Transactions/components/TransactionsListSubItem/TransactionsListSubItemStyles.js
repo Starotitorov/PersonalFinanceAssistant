@@ -20,21 +20,22 @@
  */
 
 import { StyleSheet } from 'react-native';
+import { colors } from 'src/styles';
 
 export default StyleSheet.create({
   subItemContainer: {
     width: '100%',
     padding: 10,
     backgroundColor: '#E0E0E0',
-    borderBottomColor: '#bbb',
+    borderBottomColor: colors.SILVER,
     borderBottomWidth: 1
   },
   subItemMain: {
     flexDirection: 'row',
     alignItems: 'stretch',
-    marginBottom: 4
   },
   subItemNote: {
+    marginTop: 4,
     fontStyle: 'italic'
   },
   subItemDateContainer: {

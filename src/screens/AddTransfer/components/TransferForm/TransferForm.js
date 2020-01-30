@@ -22,7 +22,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
-import { Card } from 'react-native-elements';
 import {
   TextInputField as TextInput,
   SelectInputField as SelectInput,
@@ -33,6 +32,7 @@ import {
 } from 'src/components';
 import styles from './TransferFormStyles';
 import { normalizeDate, formatDate } from 'src/utils';
+import { Card } from 'src/components';
 
 const TransferForm = ({
   isSameCurrency,
@@ -42,7 +42,7 @@ const TransferForm = ({
   submitting
 }) =>
   <View style={ styles.container }>
-    <Card containerStyle={ styles.fields }>
+    <Card>
       <Field
         { ...viewModel.value }
         component={ CalculatorInputField } />

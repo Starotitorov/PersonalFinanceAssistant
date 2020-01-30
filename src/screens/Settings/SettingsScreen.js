@@ -22,8 +22,9 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import { NavigationActions } from 'react-navigation';
-import { List, ListItem, Card } from 'react-native-elements';
+import { List, ListItem } from 'react-native-elements';
 import { Gravatar } from 'react-native-gravatar';
+import { Card } from 'src/components';
 import styles from './SettingsScreenStyles';
 
 export default function SettingsScreen({ user, logout, navigation }) {

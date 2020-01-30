@@ -26,7 +26,6 @@ export default StyleSheet.create({
     flex: 1
   },
   innerContainer: {
-    flex: 1,
-    marginTop: 16
+    flex: 1
   }
 });
