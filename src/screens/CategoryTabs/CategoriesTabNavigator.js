@@ -24,22 +24,26 @@ import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 import OutcomeCategoriesList from '../OutcomeCategoriesList';
 import IncomeCategoriesList from '../IncomeCategoriesList';
 import { colors } from 'src/styles';
+import {
+  INCOME_CATEGORIES_ROUTE_NAME,
+  OUTCOME_CATEGORIES_ROUTE_NAME
+} from './constants';
 
 export default createMaterialTopTabNavigator({
-  IncomeCategoriesList: {
+  [INCOME_CATEGORIES_ROUTE_NAME]: {
     screen: IncomeCategoriesList,
     navigationOptions: {
       tabBarLabel: 'Income'
     }
   },
-  OutcomeCategoriesList: {
+  [OUTCOME_CATEGORIES_ROUTE_NAME]: {
     screen: OutcomeCategoriesList,
     navigationOptions: {
       tabBarLabel: 'Outcome'
     }
   }
 }, {
-  initialRouteName: 'IncomeCategoriesList',
+  initialRouteName: INCOME_CATEGORIES_ROUTE_NAME,
   swipeEnabled: true,
   tabBarPosition: 'top',
   tabBarOptions: {

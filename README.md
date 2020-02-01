@@ -2,7 +2,7 @@
 
 React Native application for tracking expenses and incomes.
 
-<img src="screenshots/login.png" alt="Log in screen" width="250"/> <img src="screenshots/signup.png" alt="Sign up screen" width="250"/> <img src="screenshots/accounts.png" alt="Accounts screen" width="250"/> <img src="screenshots/add-account.png" alt="Add account screen" width="250"/> <img src="screenshots/categories.png" alt="Categories screen" width="250"/> <img src="screenshots/transactions.png" alt="Transaction list screen" width="250"/> <img src="screenshots/pie-chart.png" alt="Pie chart represebtation of transaction list" width="250"/> <img src="screenshots/trends.png" alt="Trends screen" width="250"/> <img src="screenshots/top-categories.png" alt="List of top categories on Trends screen" width="250"/>
+<img src="screenshots/login.png" alt="Log in screen" width="280"/> <img src="screenshots/signup.png" alt="Sign up screen" width="280"/> <img src="screenshots/accounts.png" alt="Accounts screen" width="280"/> <img src="screenshots/add-account.png" alt="Add account screen" width="280"/> <img src="screenshots/categories.png" alt="Categories screen" width="280"/> <img src="screenshots/transactions.png" alt="Transaction list screen" width="280"/> <img src="screenshots/pie-chart.png" alt="Pie chart represebtation of transaction list" width="280"/> <img src="screenshots/trends.png" alt="Trends screen" width="280"/> <img src="screenshots/top-categories.png" alt="List of top categories on Trends screen" width="280"/>
 
 ## Running the application
 

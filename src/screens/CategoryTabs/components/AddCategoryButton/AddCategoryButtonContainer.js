@@ -27,8 +27,12 @@ export default compose(
   withNavigation,
   withHandlers({
     addCategory: ({ navigation }) => () => {
+      const { index, routes } = navigation.state;
       navigation.dispatch(NavigationActions.navigate({
-        routeName: 'AddCategory'
+        routeName: 'AddCategory',
+        params: {
+          activeTab: routes[index].routeName
+        }
       }));
     }
   })

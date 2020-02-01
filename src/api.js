@@ -25,6 +25,7 @@ import { networkService } from 'src/services';
 import { formatDate } from './utils/dateUtils';
 
 const { get, post, put, del, createOnceRequest } = networkService;
+
 const API_URL = config.apiUrl;
 
 export const signIn = (email, password) => post(

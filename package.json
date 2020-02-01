@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "eslint": "./node_modules/.bin/eslint --fix ./src"
+    "eslint": "./node_modules/.bin/eslint ./src"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.7.1",

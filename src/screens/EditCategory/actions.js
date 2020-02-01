@@ -23,6 +23,8 @@ import { createAction } from 'redux-actions';
 import { NavigationActions, StackActions } from 'react-navigation';
 import * as api from 'src/api';
 import { alerts } from 'src/utils';
+import { OUTCOME_CATEGORY } from '../../constants/categoryTypes';
+import { OUTCOME_CATEGORIES_ROUTE_NAME, INCOME_CATEGORIES_ROUTE_NAME } from '../CategoryTabs/constants';
 
 export const setCategory = createAction(
   'EDIT_CATEGORY/SET_CATEGORY',
@@ -30,14 +32,21 @@ export const setCategory = createAction(
 );
 
 export const updateCategory = ({ navigation, categoryData }) => (dispatch, getState) => {
-  const { editCategory: { category: { id }}} = getState();
+  const { editCategory: { category: { id, categoryTypeId }}} = getState();
 
   return api.updateCategory(id, categoryData)
     .then(() => {
       navigation.dispatch(StackActions.reset({
         index: 0,
         actions: [
-          NavigationActions.navigate({ routeName: 'CategoryTabs' })
+          NavigationActions.navigate({
+            routeName: 'CategoryTabs',
+            action: NavigationActions.navigate({
+              routeName: categoryTypeId === OUTCOME_CATEGORY
+                ? OUTCOME_CATEGORIES_ROUTE_NAME
+                : INCOME_CATEGORIES_ROUTE_NAME
+            })
+          })
         ]
       }));
     })

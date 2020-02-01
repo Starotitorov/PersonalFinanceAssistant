@@ -19,11 +19,22 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import { INCOME_CATEGORY } from 'src/constants/categoryTypes';
+import get from 'lodash/get';
+import { INCOME_CATEGORY, OUTCOME_CATEGORY } from 'src/constants/categoryTypes';
+import { INCOME_CATEGORIES_ROUTE_NAME } from '../CategoryTabs/constants';
 
+export const getAddCategoryFormInitialValues = (state, ownProps) => {
+  const activeTab = get(
+    ownProps,
+    'navigation.state.params.activeTab',
+    INCOME_CATEGORIES_ROUTE_NAME
+  );
 
-export const getAddCategoryFormInitialValues = () => ({
-  name: '',
-  icon: '',
-  categoryTypeId: INCOME_CATEGORY
-});
+  return {
+    name: '',
+    icon: '',
+    categoryTypeId: activeTab === INCOME_CATEGORIES_ROUTE_NAME
+      ? INCOME_CATEGORY
+      : OUTCOME_CATEGORY
+  };
+};

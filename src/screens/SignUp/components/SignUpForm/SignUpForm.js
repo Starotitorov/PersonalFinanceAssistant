@@ -40,6 +40,7 @@ function SignUpForm({ handleSubmit, submitting, invalid }) {
           component={ TextInputField } />
         <Field
           name="email"
+          keyboardType="email-address"
           props={{
             label: 'Email',
             placeholder: 'Enter email...'
