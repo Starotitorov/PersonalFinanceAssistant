@@ -57,6 +57,7 @@
     "revalidate": "^1.2.0"
   },
   "devDependencies": {
+    "@bam.tech/react-native-make": "^1.0.3",
     "babel-eslint": "^7.2.3",
     "babel-jest": "^21.2.0",
     "babel-plugin-module-resolver": "^3.0.0",
