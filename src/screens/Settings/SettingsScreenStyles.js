@@ -53,7 +53,6 @@ export default StyleSheet.create({
     color: colors.COLOR_SECONDARY
   },
   logout: {
-    padding: 2.5,
     marginLeft: 0,
     textAlign: 'center',
     color: colors.COLOR_RED

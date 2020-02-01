@@ -48,10 +48,18 @@ export default function SettingsScreen({ user, logout, navigation }) {
         <Text style={ styles.userName }>{ userEmail }</Text>
       </Card>
       <List>
-        <ListItem title="Change password" titleStyle={ styles.changePassword } onPress={ handleChangePassword } />
+        <ListItem
+          title="Change password"
+          titleStyle={ styles.changePassword }
+          hideChevron
+          onPress={ handleChangePassword } />
       </List>
       <List>
-        <ListItem titleStyle={ styles.logout } title="Log out" hideChevron onPress={ logout } />
+        <ListItem
+          titleStyle={ styles.logout }
+          title="Log out"
+          hideChevron
+          onPress={ logout } />
       </List>
     </View>
   );
