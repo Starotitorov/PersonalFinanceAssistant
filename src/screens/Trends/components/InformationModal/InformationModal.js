@@ -24,13 +24,15 @@ import { Text } from 'react-native';
 import { MaterialDialog } from 'react-native-material-dialog';
 import { DEFAULT_BASE_CURRENCY } from 'src/constants/currency';
 
+import styles from './InformationModalStyles';
+
 const InformationModal = ({ handleHide }) =>
   <MaterialDialog
     onCancel={ handleHide }>
-    <Text>
-      The result is shown in { DEFAULT_BASE_CURRENCY }.
-      Transactions values were converted to { DEFAULT_BASE_CURRENCY } using
-      exchange rates received from free.currencyconverterapi.com.
+    <Text style={ styles.message }>
+      The results are shown in { DEFAULT_BASE_CURRENCY }.
+      Transaction values were converted to { DEFAULT_BASE_CURRENCY } using
+      exchange rates received from the free.currencyconverterapi.com.
     </Text>
   </MaterialDialog>;
 
