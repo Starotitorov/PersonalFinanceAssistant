@@ -20,6 +20,7 @@
  */
 
 import { Platform } from 'react-native';
+import { API_URL, CURRENCY_CONVERTER_API_URL } from 'react-native-dotenv';
 
 const facebookLoginBehaviour = Platform.OS === 'android' ? 'web_only' : 'browser';
 
@@ -34,8 +35,8 @@ export default {
   appName: 'Money Tracker',
   appDescription: 'application for tracking expenses and incomes.',
   appSlogan: 'Personal finance tracking app',
-  apiUrl: 'https://personalfinanceassistant.herokuapp.com',
-  currencyConverterApiUrl: 'https://financeassistantconverter.herokuapp.com',
+  apiUrl: API_URL,
+  currencyConverterApiUrl: CURRENCY_CONVERTER_API_URL,
   developers: DEVELOPERS,
   facebookLoginBehaviour
 };

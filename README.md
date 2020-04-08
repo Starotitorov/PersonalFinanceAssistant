@@ -6,7 +6,7 @@ React Native application for tracking expenses and incomes.
 
 ## Running the application
 
-Follow [this instructions](https://facebook.github.io/react-native/docs/getting-started#installing-dependencies-3) to install required dependencies.
+Follow [these instructions](https://facebook.github.io/react-native/docs/getting-started#installing-dependencies-3) to install the required dependencies.
 
 Run `npm install` to install project dependencies.
 
