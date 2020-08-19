@@ -48,7 +48,7 @@ const LogInForm = ({ handleSubmit, submitting, error, invalid }) =>
         component={ TextInputField } />
     </View>
     <PrimaryButton
-      title="Log in"
+      title="Sign in"
       disabled={ submitting || invalid }
       onPress={ handleSubmit } />
   </View>;

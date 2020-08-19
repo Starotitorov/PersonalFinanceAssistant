@@ -39,7 +39,7 @@ export default createMaterialTopTabNavigator({
   [OUTCOME_CATEGORIES_ROUTE_NAME]: {
     screen: OutcomeCategoriesList,
     navigationOptions: {
-      tabBarLabel: 'Outcome'
+      tabBarLabel: 'Expense'
     }
   }
 }, {

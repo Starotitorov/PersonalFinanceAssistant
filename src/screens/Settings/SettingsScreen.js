@@ -57,7 +57,7 @@ export default function SettingsScreen({ user, logout, navigation }) {
       <List>
         <ListItem
           titleStyle={ styles.logout }
-          title="Log out"
+          title="Sign out"
           hideChevron
           onPress={ logout } />
       </List>

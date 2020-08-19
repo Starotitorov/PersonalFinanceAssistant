@@ -25,15 +25,15 @@ export const EUR = 'EUR';
 
 export default [
   {
-    label: 'Belarussian Ruble (BYN)',
+    label: 'Belarusian Ruble (BYN)',
     value: BYN
   },
   {
-    label: 'US Dollar',
+    label: 'US Dollar (USD)',
     value: USD
   },
   {
-    label: 'Euro',
+    label: 'Euro (EUR)',
     value: EUR
   }
 ];

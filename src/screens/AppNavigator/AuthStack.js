@@ -28,7 +28,7 @@ const AuthStack = createStackNavigator({
   LogIn: {
     screen: LogIn,
     navigationOptions: {
-      title: 'Log in'
+      title: 'Sign in'
     }
   },
   SignUp: {
